@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.sites', #required by allauth
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',    
+    'allauth.socialaccount',   
+    'books', 
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,10 @@ ROOT_URLCONF = 'reading_loft.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates', 'allauth'), 
+        ],      
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
