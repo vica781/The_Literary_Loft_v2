@@ -1,0 +1,92 @@
+/* Reset default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+/* Top bar */
+.top-bar {
+  background-color: #ede6d7;
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Main navigation */
+.main-nav {
+  background-color: #4d5252;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.nav-links {
+  list-style-type: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 20px;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Header main */
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.search-bar {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px;
+  width: 300px;
+}
+
+.search-bar button {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.logo h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+}
+
+.user-actions > * {
+  margin-left: 15px;
+}
+
+.login-button {
+  background-color: #4d5252;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
