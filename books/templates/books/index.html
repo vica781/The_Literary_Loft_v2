@@ -1,7 +1,23 @@
-{% extends "base.html" %} {% block content %}
-<!-- Your content for the index page -->
-<div class="container pt-5 d-flex flex-row">  
-  <h1>Welcome to The Literary Loft</h1>
-  <!-- Add more content here -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        background-image: url('{% static "images/loft_8.jpg" %}');
+    }
+</style>
+{% endblock %}
+
+{% block hero_content %}
+<div class="hero-section">
+  <div class="hero-content">
+    <h2>Sanctuary for loyal literary friends</h2>
+    <button class="cta-button">Shop Now</button>
+  </div>
 </div>
+{% endblock %}
+
+{% block content %}
+<!-- Main content here -->
 {% endblock %}

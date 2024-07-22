@@ -5,7 +5,7 @@
   <head>
     {% block meta %}
     <!-- Required meta tags -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -16,7 +16,12 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
-    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
+    {% endblock %} 
+    
+    {% block extra_meta %} 
+    {% endblock %} 
+    
+    {% block corecss %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -29,8 +34,12 @@
       src="https://kit.fontawesome.com/b7df1fe1c5.js"
       crossorigin="anonymous"
     ></script>
-
-    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+    {% endblock %} 
+    
+    {% block extra_css %}
+    {% endblock %}
+    
+    {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -52,21 +61,28 @@
       integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
       crossorigin="anonymous"
     ></script>
-    {% endblock %} {% block extra_js %} {% endblock %} {% block title %}
+    <!-- Google Fonts -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    {% endblock %} 
+    
+    {% block extra_js %}
+    {% endblock %} 
+    
+    {% block title %}
     <title>The Literary Loft{% block extra_title %}{% endblock %}</title>
     {% endblock %}
   </head>
   <body>
+    {% block page_header %}
     <header>
       <div class="top-bar">
         <p>Free shipping to the United Kingdom for orders over £20.00</p>
       </div>
       <nav class="main-nav">
         <ul class="nav-links">
-          {% comment %}
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Blog</a></li>
-          {% endcomment %}
+          <li><a href="{% url 'books:shop' %}">Shop</a></li>                    
           <li><a href="{% url 'books:about' %}">About Us</a></li>
           <li><a href="{% url 'books:contact' %}">Contact Us</a></li>
         </ul>
@@ -79,9 +95,13 @@
             <i class="fas fa-search"></i>
           </button>
         </div>
-        <div class="logo">
-          <h1>The Literary Loft</h1>
-        </div>
+        <div class="logo-container">
+    <img src="{% static 'images/logo_1.png' %}" alt="The Literary Loft Logo" class="logo-image">
+    <div class="logo-text">
+      <h1 class="main-title">The Literary Loft</h1>
+      <p class="subtitle">There is no friend as loyal as a book</p>
+    </div>
+  </div>
         <div class="user-actions">
           <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
           <select class="currency-select">
@@ -92,11 +112,32 @@
           <a href="#" class="login-button">Login / Register</a>
         </div>
       </div>
+      <div>
+        <nav class="category-nav">
+          <ul>
+            <li><a href="#">Fiction Books</a></li>
+            <li><a href="#">Non-Fiction Books</a></li>
+            <li><a href="#">Children's Books</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
-
+    {% endblock %}
+    
+    {% block hero_content %}
+    {% endblock %} 
+    
+    {% block content %}
+    {% endblock %}
+    
+    {% block page_footer %}
+    {% endblock %} 
+    
     {% if message %}
     <div class="message-container"></div>
-    {% endif %} {% block page_header %} {% endblock %} {% block content %} 
-    {% endblock %} {% block postloadjs %} {% endblock %}
+    {% endif %} 
+    
+    {% block postloadjs %}
+    {% endblock %}
   </body>
 </html>
