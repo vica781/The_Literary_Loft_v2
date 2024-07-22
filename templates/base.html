@@ -16,12 +16,7 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
-    {% endblock %} 
-    
-    {% block extra_meta %} 
-    {% endblock %} 
-    
-    {% block corecss %}
+    {% endblock %} {% block extra_meta %} {% endblock %} {% block corecss %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -34,12 +29,7 @@
       src="https://kit.fontawesome.com/b7df1fe1c5.js"
       crossorigin="anonymous"
     ></script>
-    {% endblock %} 
-    
-    {% block extra_css %}
-    {% endblock %}
-    
-    {% block corejs %}
+    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -62,15 +52,13 @@
       crossorigin="anonymous"
     ></script>
     <!-- Google Fonts -->
-     <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    {% endblock %} 
-    
-    {% block extra_js %}
-    {% endblock %} 
-    
-    {% block title %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    {% endblock %} {% block extra_js %} {% endblock %} {% block title %}
     <title>The Literary Loft{% block extra_title %}{% endblock %}</title>
     {% endblock %}
   </head>
@@ -80,14 +68,31 @@
       <div class="top-bar">
         <p>Free shipping to the United Kingdom for orders over £20.00</p>
       </div>
-      <nav class="main-nav">
+      {% comment %} <nav class="main-nav">
         <ul class="nav-links">
-          <li><a href="{% url 'books:shop' %}">Shop</a></li>                    
+          <li><a href="{% url 'books:shop' %}">Shop</a></li>
           <li><a href="{% url 'books:about' %}">About Us</a></li>
           <li><a href="{% url 'books:contact' %}">Contact Us</a></li>
         </ul>
         <p class="shipping-info">UK Delivery & Worldwide Shipping from £1.99</p>
-      </nav>
+      </nav> {% endcomment %}
+      <nav class="navbar navbar-expand-lg bg-secondary py-2">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ps-3">
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'books:shop' %}">Shop</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'books:about' %}">About Us</a></li>
+        <li class="nav-item"><a class="nav-link text-white" href="{% url 'books:contact' %}">Contact Us</a></li>
+      </ul>
+      <span class="navbar-text text-white pe-3">
+        UK Delivery & Worldwide Shipping from £1.99
+      </span>
+    </div>
+  </div>
+</nav>
       <div class="header-main">
         <div class="search-bar">
           <input type="text" placeholder="Search by Title, ISBN or Keyword" />
@@ -96,12 +101,16 @@
           </button>
         </div>
         <div class="logo-container">
-    <img src="{% static 'images/logo_1.png' %}" alt="The Literary Loft Logo" class="logo-image">
-    <div class="logo-text">
-      <h1 class="main-title">The Literary Loft</h1>
-      <p class="subtitle">There is no friend as loyal as a book</p>
-    </div>
-  </div>
+          <img
+            src="{% static 'images/logo_1.png' %}"
+            alt="The Literary Loft Logo"
+            class="logo-image"
+          />
+          <div class="logo-text">
+            <h1 class="main-title">The Literary Loft</h1>
+            <p class="subtitle">There is no friend as loyal as a book</p>
+          </div>
+        </div>
         <div class="user-actions">
           <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
           <select class="currency-select">
@@ -122,22 +131,9 @@
         </nav>
       </div>
     </header>
-    {% endblock %}
-    
-    {% block hero_content %}
-    {% endblock %} 
-    
-    {% block content %}
-    {% endblock %}
-    
-    {% block page_footer %}
-    {% endblock %} 
-    
-    {% if message %}
+    {% endblock %} {% block hero_content %} {% endblock %} {% block content %}
+    {% endblock %} {% block page_footer %} {% endblock %} {% if message %}
     <div class="message-container"></div>
-    {% endif %} 
-    
-    {% block postloadjs %}
-    {% endblock %}
+    {% endif %} {% block postloadjs %} {% endblock %}
   </body>
 </html>

@@ -171,7 +171,7 @@ body {
 .hero-section {
   background-size: cover;
   background-position: center;
-  height: 650px;
+  height: 660px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -182,17 +182,21 @@ body {
 }
 
 .hero-content {
-  background-color: rgba(255, 255, 255, 0.7);
+  /* background-color: rgba(255, 255, 255, 0.7); */
   padding: 20px;
   border-radius: 10px;
-  max-width: 50%;
+  max-width: 550px;
+  max-height: 400px;
+  right: 1%;
+  top: 2%;
+  position: absolute;
 }
 
 .hero-section h2 {
-  font-size: 3em;
+  font-size: 4.1rem;
   margin-bottom: 20px;
   color: #4d5252;
-  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+  text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
   position: relative;
   z-index: 1;
 }
