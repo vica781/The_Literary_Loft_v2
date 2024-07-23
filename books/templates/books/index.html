@@ -2,22 +2,26 @@
 {% load static %}
 
 {% block extra_css %}
-<style>
-    .hero-section {
-        background-image: url('{% static "images/loft.jpg" %}');
-    }
-</style>
-{% endblock %}
-
-{% block hero_content %}
-<div class="hero-section">
-  <div class="hero-content">
-    <h2>Your sanctuary for loyal literary friends</h2>
-    <button class="cta-button">Shop Now</button>
-  </div>
-</div>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="hero-section" style="background-image: url('{% static "images/loft.jpg" %}');">
+    <div class="running-banner">
+        Step into The Literary Loft and find your companion.
+        <span class="scroll-indicator">&#9660;</span>
+    </div>
+</div>
+
+<div id="hero-content" class="hero-content">
+    <h2>Your sanctuary for loyal literary friends</h2>
+    <button class="cta-button">Shop Now</button>
+</div>
+
 <!-- Main content here -->
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static 'js/hero_banner.js' %}"></script>
 {% endblock %}
