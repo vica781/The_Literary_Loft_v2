@@ -133,7 +133,7 @@ body {
 }
 
 .logo-image {
-  width: 50px;
+  width: 250px;
   height: auto;
   margin-right: 15px;
 }
@@ -312,6 +312,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  .top-bar {
+  font-size: 12px;
+}
+  
   .navbar-nav {
     margin-left: 0;
   }
