@@ -119,16 +119,18 @@
           </button>
         </div>
         <div class="logo-container">
-          <img
-            src="{% static 'images/hand_books_2.jpg' %}"
-            alt="The Literary Loft Logo"
-            class="logo-image"
-          />
-          <div class="logo-text">
-            <h1 class="main-title">The Literary Loft</h1>
-            <p class="subtitle">There is no friend as loyal as a book</p>
-          </div>
-        </div>
+  <a href="{% url 'books:index' %}">
+    <img
+      src="{% static 'images/hand_books_2.jpg' %}"
+      alt="The Literary Loft Logo"
+      class="logo-image"
+    />
+    <div class="logo-text">
+      <h1 class="main-title">The Literary Loft</h1>
+      <p class="subtitle">There is no friend as loyal as a book</p>
+    </div>
+  </a>
+</div>
         <div class="user-actions">
           <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
           <select class="currency-select">
