@@ -77,11 +77,11 @@ body {
   border-bottom: 3px solid #ede6d7;
 }
 
-.nav-links li.has-dropdown > a::after {
+/* .nav-links li.has-dropdown > a::after {
   content: '▼';
   font-size: 0.7em;
   margin-left: 5px;
-}
+} */
 
 .navbar-nav .nav-item .nav-link {
     color: white !important;
@@ -90,13 +90,19 @@ body {
 }
 
 .navbar-nav {
+  display: flex;
+  align-items: row;
+  flex-direction: row;
   margin-left: 10rem;
 }
 
 .navbar-text {
-    color: white !important;
-    font-weight: bold;
-    margin-right: 10rem;
+  display: flex;
+  align-items: row;
+  color: white !important;
+  font-weight: bold;
+  margin-right: 10rem;
+  padding-left: 1rem;
 }
 
 .navbar-nav .nav-item .nav-link {
@@ -112,10 +118,6 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link:active {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.navbar-nav .nav-item .nav-link.active {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -299,30 +301,19 @@ body {
 }
 
 /* -------------------------------Responsive design------------------------- */
-@media (max-width: 991px) {
-  .navbar-collapse,
-  .navbar-nav,
-  .navbar-text {
-    margin-bottom: 1rem;
-  }
-  
-  .navbar-text {
-    display: block;
-  }
-}
-
+/* -------------------------------SMALL DISPLAYS----------------------------- */
+@media (max-width: 468px) {}
+/* -------------------------------MEDIUM DISPLAYS---------------------------- */  
 @media (max-width: 768px) {
   .top-bar {
   font-size: 12px;
 }
-  
-  .navbar-nav {
-    margin-left: 0;
-  }
 
-  .navbar-text {
-    margin-right: 0;
-  }
+.navbar-nav,
+.navbar-text {
+    font-size: 12px;
+    margin: 0;
+  }  
 
   .main-nav {
     flex-direction: column;
@@ -385,5 +376,20 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+  }
+}
+/* -------------------------------LARGE DISPLAYS----------------------------- */
+@media (max-width: 991px) {
+  .navbar-collapse,
+  .navbar-nav,
+  .navbar-text {
+    margin-bottom: 1rem;
+  }
+  
+  .navbar-nav,
+  .navbar-text {
+    display: block;
+    font-size: smaller;
+    margin: 0;
   }
 }
