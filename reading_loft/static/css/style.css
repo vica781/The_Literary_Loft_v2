@@ -77,11 +77,11 @@ body {
   border-bottom: 3px solid #ede6d7;
 }
 
-/* .nav-links li.has-dropdown > a::after {
+.nav-links li.has-dropdown > a::after {
   content: '▼';
   font-size: 0.7em;
   margin-left: 5px;
-} */
+}
 
 .navbar-nav .nav-item .nav-link {
     color: white !important;
@@ -119,6 +119,27 @@ body {
 
 .navbar-nav .nav-item .nav-link:active {
     background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* --------------------------------Search bar------------------------------- */
+.search-bar {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.search-bar input {
+  border: none;
+  padding: 10px;
+  width: 300px;
+}
+
+.search-bar button {
+  background-color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
 }
 
 /* ------------------------------Header main-------------------------------- */
@@ -179,12 +200,13 @@ logo-container a:hover {
 .logo-image {  
   width: 150px;
   height: auto;
-  margin-right: 15px;
+  margin: 0 20px 0 0;
 }
 
 .logo-text {
   display: flex;
   flex-direction: column;
+  margin-right: 80px;
 }
 
 .main-title {
@@ -201,27 +223,6 @@ logo-container a:hover {
   font-size: 1.2rem;
   color: #666;
   margin: 0;
-}
-
-/* --------------------------------Search bar------------------------------- */
-.search-bar {
-  display: flex;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.search-bar input {
-  border: none;
-  padding: 10px;
-  width: 300px;
-}
-
-.search-bar button {
-  background-color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
 }
 
 /* --------------------------------User actions---------------------------- */
@@ -245,9 +246,10 @@ logo-container a:hover {
 /* ---------------------------Category navigation--------------------------- */
 .category-nav {
   background-color: #fff;
-  padding: 15px 0;
+  padding: 5px 0;
   border-top: #dbdfdf 1px solid;
   border-bottom: #dbdfdf 1px solid;
+  margin: 0;
 }
 
 .category-nav ul {
@@ -273,8 +275,82 @@ logo-container a:hover {
   color: #4d5252;
 }
 
+/* -----------------------------Category Dropdown--------------------------- */
+.category-nav .dropdown-menu {
+  border: none;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.category-nav .dropdown-item {
+  font-family: "Nunito", sans-serif;
+  color: #4d5252;
+  padding: 0.5rem 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.category-nav .dropdown-item:hover,
+.category-nav .dropdown-item:focus {
+  background-color: rgba(77, 82, 82, 0.1);
+}
+
+/* ----------------------------Book Categories Nav-------------------------- */
+.category-nav {
+  background-color: #fff;
+  padding: 10px 0;
+  border-top: #dbdfdf 1px solid;
+  border-bottom: #dbdfdf 1px solid;
+}
+
+.category-nav .nav-item {
+  margin: 0 20px;
+}
+
+.category-nav .nav-link {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4d5252;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+}
+
+.category-nav .nav-link:hover,
+.category-nav .nav-link:focus {
+  background-color: rgba(77, 82, 82, 0.2);
+  color: #4d5252;
+}
+
+.category-nav .nav-link:active {
+  background-color: rgba(77, 82, 82, 0.3);
+}
+
+.category-nav .dropdown-toggle::after {
+  display: none;
+}
+
+.category-nav .fa-chevron-down {
+  font-size: 0.8rem;
+}
+
+.category-nav .dropdown-menu {
+  z-index: 1030;
+}
+
+.category-nav .dropdown {
+  position: relative;
+}
+
+.category-nav .dropdown-menu.show {
+  display: block !important;
+}
+
+.category-nav .dropdown-item {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  color: rgb(6, 99, 130);
+}
 /* -------------------------------Hero section----------------------------- */
-/* Hero section */
 .hero-section {
     background-size: cover;
     background-position: center;  
@@ -295,6 +371,7 @@ logo-container a:hover {
 
 .scroll-indicator {
     display: inline-block;
+    font-size: 1.2rem;
     margin-left: 10px;
     animation: bounce 2s infinite;
     cursor: pointer;
@@ -424,7 +501,27 @@ logo-container a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
+  
+  .category-nav .nav {
+    flex-direction: column;
+  }
+  
+  .category-nav .nav-item {
+    margin: 5px 0;
+  }
+
+  .category-nav .dropdown-menu {
+    border: none;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 1);
+    line-height: 1rem;
+  }
+
+  .category-nav .dropdown-item {
+    padding: 0.5rem 1rem;
+  }  
 }
+
 /* -------------------------------LARGE DISPLAYS----------------------------- */
 @media (max-width: 991px) {
   .navbar-collapse,
