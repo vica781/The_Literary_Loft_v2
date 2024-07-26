@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+<title>Login - The Literary Loft</title> 
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Login</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <input type="checkbox" name="remember" id="remember">
+            <label for="remember">Remember me</label>
+        </div>
+        <div>
+            <a href="#">Forgot password?</a>
+        </div>
+        <div>
+            <a href="#">Create account</a>
+            <a href="#">Resend activation email</a>
+        </div>
+
+        <button type="submit">Sign in</button>
+    </form>
+    <p>Don't have an account? <a href="#">Create account</a></p>
+    <p>Forgot your password? <a href="#">Reset password</a></p>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ block.super }}
+<script src="{% static 'js/csrf.js' %}"></script> 
+{% endblock %}

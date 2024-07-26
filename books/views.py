@@ -17,3 +17,6 @@ def about(request):
 def contact(request):
     """ A view that displays the contact page """
     return render(request, 'books/contact.html')
+def login(request):
+    """ A view that displays the login page """
+    return render(request, 'accounts/login.html')
