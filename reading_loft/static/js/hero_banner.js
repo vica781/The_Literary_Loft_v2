@@ -8,3 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+function updateCartCount(count) {
+  document.querySelector('.cart-count').textContent = count;
+}
+
+updateCartCount(10); // 10 is the count of items in the cart

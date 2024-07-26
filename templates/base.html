@@ -16,6 +16,7 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
+    
     {% endblock %} {% block extra_meta %}
     <!-- Font Awesome -->
     <script
@@ -38,7 +39,13 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    {% endblock %} {% block extra_css %} {% endblock %} {% block corejs %}
+    {% endblock %} 
+    
+    {% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    {% endblock %} 
+    
+    {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -124,11 +131,14 @@
           </a>
         </div>
         <div class="user-actions">
-          <a href="#" class="cart-icon"><i class="fas fa-shopping-cart"></i></a>
+          <a href="#" class="cart-icon">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+          </a>
           <select class="currency-select">
-            <option value="GBP">GBP</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
+            <option value="GBP">£</option>
+            <option value="USD">$</option>
+            <option value="EUR">€</option>
           </select>
           <a href="#" class="login-button">Login / Register</a>
         </div>
