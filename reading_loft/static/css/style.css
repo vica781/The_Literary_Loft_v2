@@ -233,7 +233,7 @@ logo-container a:hover {
 }
 
 .cart-icon:hover {
-  color: #3a3f3f;
+  color: #e7c713eb;
   text-decoration: none;
 }
 
@@ -405,7 +405,7 @@ logo-container a:hover {
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #4d5252;
+    background-color: rgb(77, 82, 82, 0.9);
     color: white;
     padding: 10px 0;
     text-align: center;
