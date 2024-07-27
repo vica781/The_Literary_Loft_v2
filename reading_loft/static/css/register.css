@@ -4,7 +4,7 @@
     align-items: flex-start;
     justify-content: center;
     background-color: #e0dcd3;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 .register-form {
     background-color: #fff;
@@ -44,9 +44,9 @@
     border-color: #3a3f3f;
     box-shadow: 0 0 0 0.2rem rgba(74, 82, 82, 0.25);
 }
-a {
+/* a {
     color: #4d5252;
 }
 a:hover {
     color: #3a3f3f;
-}
+} */

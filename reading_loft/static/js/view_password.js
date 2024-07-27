@@ -11,11 +11,24 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
-    const confirmPassword = document.getElementById('confirm_password');
+    const confirmPasswordToggle = document.getElementById('confirm_password');
 
     toggleConfirmPassword.addEventListener('click', function() {
-        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-        confirmPassword.setAttribute('type', type);
+        const type = confirmPasswordToggle.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPasswordToggle.setAttribute('type', type);
         this.classList.toggle('fa-eye-slash');
+    });
+    const form = document.getElementById('registerForm');
+    const password = document.getElementById('password');
+    const confirmPassword = document.getElementById('confirm_password');
+    const passwordError = document.getElementById('passwordError');
+
+    form.addEventListener('submit', function(e) {
+        if (password.value !== confirmPassword.value) {
+            e.preventDefault();
+            passwordError.textContent = "Passwords do not match";
+        } else {
+            passwordError.textContent = "";
+        }
     });
 });
