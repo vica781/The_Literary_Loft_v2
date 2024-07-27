@@ -20,3 +20,6 @@ def contact(request):
 def login(request):
     """ A view that displays the login page """
     return render(request, 'accounts/login.html')
+def register(request):
+    """ A view that displays the register page """
+    return render(request, 'accounts/register.html')
