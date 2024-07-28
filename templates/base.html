@@ -16,11 +16,15 @@
       type="text/css"
       href="{% static 'css/style.css' %}"
     />
-    {% endblock %} 
+    {% endblock %}
 
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="{% static 'images/favicon.png' %}" />
-    
+    <link
+      rel="icon"
+      type="image/jpeg"
+      href="{% static 'images/favicon.png' %}"
+    />
+
     {% block extra_meta %}
     <!-- Font Awesome -->
     <script
@@ -35,9 +39,7 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    {% endblock %} 
-    
-    {% block corecss %}
+    {% endblock %} {% block corecss %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -45,16 +47,12 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    {% endblock %} 
-    
-    {% block extra_css %}
+    {% endblock %} {% block extra_css %}
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    {% endblock %} 
-    
-    {% block corejs %}
+    {% endblock %} {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -71,13 +69,9 @@
         $(".dropdown-toggle").dropdown();
       });
     </script>
-    {% endblock %} 
-    
-    {% block extra_js %}
+    {% endblock %} {% block extra_js %}
     <script src="{% static 'js/csrf.js' %}"></script>
-    {% endblock %} 
-    
-    {% block title %}
+    {% endblock %} {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
   </head>
@@ -154,11 +148,21 @@
             <option value="GBP">£</option>
             <option value="USD">$</option>
             <option value="EUR">€</option>
-          </select>
-          <a href="{% url 'books:login' %}" class="login-button"><i class="fas fa-user"></i> Login / Register</a>
-
-        </div>
+          </select>                 
+        
+        {% if user.is_authenticated %}
+          {% comment %} <span class="navbar-text mr-3">Welcome, {{ user.username }}</span> {% endcomment %}
+          <a href="{% url 'books:logout' %}" class="logout-button"
+            ><i class="fas fa-user"></i> Logout</a
+          >
+          {% else %}
+          <a href="{% url 'books:login' %}" class="login-button"
+            ><i class="fas fa-user"></i> Login / Register</a
+          >
+          {% endif %}
       </div>
+    </div>
+      
       <nav class="category-nav">
         <div class="container">
           <ul class="nav justify-content-center">
@@ -224,7 +228,21 @@
         </div>
       </nav>
     </header>
-    {% endblock %} 
+    {% endblock %}        
+    
+    {% if messages %}
+<div class="container mt-3">
+  {% for message in messages %}
+  <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
     
     {% block hero_content %} 
     {% endblock %} 
@@ -234,11 +252,6 @@
     
     {% block page_footer %} 
     {% endblock %} 
-    
-    {% comment %} {% if
-    message %}
-    <div class="message-container"></div>
-    {% endif %} {% endcomment %} 
     
     {% block postloadjs %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

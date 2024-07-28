@@ -9,6 +9,7 @@ urlpatterns = [
     path('shop/', views.shop, name='shop'),  # 'shop' view for the Shop page
     path('about/', views.about, name='about'),  # 'about' view for About Us page
     path('contact/', views.contact, name='contact'),  # 'contact' view for Contact Us page
-    path('login/', views.user_login, name='login'),
-    path('register/', views.register, name='register'),  # 'register' view for Register page
+    path('register/', views.register, name='register'),  # 'register' view for Register page    
+    path('login/', views.user_login, name='login'), # 'login' view for Login page
+    path('logout/', views.user_logout, name='logout'), # 'logout' view 
 ]
