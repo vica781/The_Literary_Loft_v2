@@ -305,6 +305,7 @@ logo-container a:hover {
   border-radius: 5px;
   background-color: white;
   color: #4d5252;
+  cursor: pointer;
 }
 
 .login-button,
@@ -328,8 +329,6 @@ logo-container a:hover {
 .logout-button i {
   margin-right: 5px;
 }
-
-/* -------------------------------Currency Flags---------------------------- */
 
 /* ---------------------------Category navigation--------------------------- */
 .category-nav {
@@ -509,9 +508,9 @@ logo-container a:hover {
 }
 
 /* -------------------------------Responsive design------------------------- */
-/* -------------------------------SMALL DISPLAYS----------------------------- */
+/* -------------------------------SMALL DISPLAYS---------------------------- */
 @media (max-width: 468px) {}
-/* -------------------------------MEDIUM DISPLAYS---------------------------- */  
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
 @media (max-width: 768px) {
   .top-bar {
   font-size: 12px;
