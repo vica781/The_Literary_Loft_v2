@@ -6,6 +6,9 @@ from django.contrib.auth import login as auth_login
 from django.contrib.auth.backends import ModelBackend
 from django.urls import reverse
 from django.contrib.auth import logout
+from django.db.models import Q
+from django.shortcuts import get_object_or_404
+from .models import Book, Category, Subcategory
 
 
 def index(request):
@@ -72,3 +75,33 @@ def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('books:index')
+
+def book_list(request, category_slug=None, subcategory_slug=None):
+    category = None
+    subcategory = None
+    books = Book.objects.all()
+    
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        books = books.filter(subcategory__category=category)
+    
+    if subcategory_slug:
+        subcategory = get_object_or_404(Subcategory, slug=subcategory_slug)
+        books = books.filter(subcategory=subcategory)
+    
+    return render(request, 'books/book_list.html', {
+        'category': category,
+        'subcategory': subcategory,
+        'books': books
+    })
+
+def book_detail(request, id):
+    book = get_object_or_404(Book, id=id)
+    return render(request, 'books/book_detail.html', {'book': book})
+
+def search_books(request):
+    query = request.GET.get('q')
+    books = Book.objects.filter(
+        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
+    ) if query else Book.objects.all()
+    return render(request, 'books/search_results.html', {'books': books, 'query': query})
