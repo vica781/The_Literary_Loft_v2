@@ -12,9 +12,9 @@ def index(request):
     """ A view that displays the home page """    
     return render(request, 'books/index.html')
 
-def shop(request):
+def book_list(request):
     """ A view that displays the shop page """
-    return render(request, 'books/shop.html')
+    return render(request, 'books/book_list.html')
 
 def about(request):
     """ A view that displays the about page """
