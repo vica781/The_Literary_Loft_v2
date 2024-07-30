@@ -10,23 +10,7 @@ from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .models import Book, Category, Subcategory
 
-
-def index(request):
-    """ A view that displays the home page """    
-    return render(request, 'books/index.html')
-
-def book_list(request):
-    """ A view that displays the shop page """
-    return render(request, 'books/book_list.html')
-
-def about(request):
-    """ A view that displays the about page """
-    return render(request, 'books/about.html')
-
-def contact(request):
-    """ A view that displays the contact page """
-    return render(request, 'books/contact.html')
-
+# USER REGISTRATION / LOGIN / LOGOUT
 def register(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
@@ -56,7 +40,6 @@ def register(request):
     
     return render(request, 'accounts/register.html')
 
-
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -70,16 +53,30 @@ def user_login(request):
             messages.error(request, "Invalid email or password")
     return render(request, 'accounts/login.html')
 
-
 def user_logout(request):
     logout(request)
     messages.success(request, "You have been logged out successfully.")
     return redirect('books:index')
 
+# HOME PAGE / ABOUT / CONTACT
+def index(request):
+    """ A view that displays the home page """    
+    return render(request, 'books/index.html')
+
+def about(request):
+    """ A view that displays the about page """
+    return render(request, 'books/about.html')
+
+def contact(request):
+    """ A view that displays the contact page """
+    return render(request, 'books/contact.html')
+
+# BOOK LIST / BOOK DETAIL
 def book_list(request, category_slug=None, subcategory_slug=None):
     category = None
     subcategory = None
     books = Book.objects.all()
+    categories = Category.objects.all()
     
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -92,7 +89,8 @@ def book_list(request, category_slug=None, subcategory_slug=None):
     return render(request, 'books/book_list.html', {
         'category': category,
         'subcategory': subcategory,
-        'books': books
+        'books': books,
+        'categories': categories
     })
 
 def book_detail(request, id):
