@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load static %} 
 
 {% block content %}
 <div class="book-detail">
   <div class="book-header">
     <div class="book-cover">
       {% if book.cover_image %}
-        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover">
+        <img src="{% static 'images/book_covers/'|add:book.cover_image %}" alt="{{ book.title }} cover">
       {% else %}
         <p>No cover image available</p>
       {% endif %}
@@ -20,7 +21,7 @@
         <label for="quantity">Quantity:</label>
         <select name="quantity" id="quantity">
           {% for i in "123456789"|make_list %}
-            <option value="{{ i }}">{{ i }}</option>
+          <option value="{{ i }}">{{ i }}</option>
           {% endfor %}
         </select>
         <p>Price: £{{ book.price }}</p>
