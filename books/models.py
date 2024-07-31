@@ -48,6 +48,9 @@ class Book(models.Model):
     subcategory = models.ForeignKey(Subcategory, related_name='books', on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
+    pages = models.PositiveIntegerField(blank=True, null=True)
+    publication_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
         return self.title

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="book-detail">
+  <div class="book-header">
+    <div class="book-cover">
+      {% if book.cover_image %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover">
+      {% else %}
+        <p>No cover image available</p>
+      {% endif %}
+    </div>
+    <div class="book-info">
+      <h1>{{ book.title }}</h1>
+      <p>By {{ book.author }}</p>
+      <p>{{ book.isbn }}</p>
+      <p>Pages: {{ book.pages }} | Published: {{ book.publication_date }}</p>
+      <form method="post" action="{% url 'books:add_to_cart' book.id %}">
+        {% csrf_token %}
+        <label for="quantity">Quantity:</label>
+        <select name="quantity" id="quantity">
+          {% for i in "123456789"|make_list %}
+            <option value="{{ i }}">{{ i }}</option>
+          {% endfor %}
+        </select>
+        <p>Price: £{{ book.price }}</p>
+        <button type="submit">ADD TO CART</button>
+      </form>
+    </div>
+    <div class="book-summary">
+      <h2>Summary</h2>
+      <p>{{ book.description }}</p>
+    </div>
+  </div>
+  <div class="book-tabs">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#summary">Summary</a></li>
+      <li><a data-toggle="tab" href="#author">Author</a></li>
+      <li><a data-toggle="tab" href="#details">Product Details</a></li>
+      <li><a data-toggle="tab" href="#review">Review</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="summary" class="tab-pane fade in active">
+        <p>{{ book.description }}</p>
+      </div>
+      <div id="author" class="tab-pane fade">
+        <!-- Add author information -->
+      </div>
+      <div id="details" class="tab-pane fade">
+        <p>ISBN: {{ book.isbn }}</p>
+        <p>Pages: {{ book.pages }}</p>
+        <p>Published: {{ book.publication_date }}</p>
+        <p>Category: {{ book.subcategory.category }}</p>
+        <p>Subcategory: {{ book.subcategory }}</p>
+      </div>
+      <div id="review" class="tab-pane fade">
+        <!-- Add review section -->
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

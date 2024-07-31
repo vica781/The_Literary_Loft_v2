@@ -1,15 +1,16 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block title %}
-<title>Shop - The Literary Loft</title> 
-{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-    
-    <div class="container pt-5">
-        <h1>Shop</h1>
-        <p>Find your next literary friend here.</p>
-        <!-- Add more content here -->
-    </div>
+<h1>Our Books</h1>
+<div class="book-list">
+    {% for book in books %}
+        <div class="book-item">
+            <h2><a href="{% url 'books:book_detail' book.id %}">{{ book.title }}</a></h2>
+            <p>By {{ book.author }}</p>
+            <p>Price: £{{ book.price }}</p>
+        </div>
+    {% empty %}
+        <p>No books available.</p>
+    {% endfor %}
+</div>
 {% endblock %}

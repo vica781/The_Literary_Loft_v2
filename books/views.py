@@ -95,7 +95,13 @@ def book_list(request, category_slug=None, subcategory_slug=None):
 
 def book_detail(request, id):
     book = get_object_or_404(Book, id=id)
-    return render(request, 'books/book_detail.html', {'book': book})
+    return render(request, 'books/book_details.html', {'book': book})
+
+def add_to_cart(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    # Here add the logic to add the book to the cart
+    # For now, just redirect back to the book detail page
+    return redirect('books:book_detail', id=book_id)
 
 def search_books(request):
     query = request.GET.get('q')
