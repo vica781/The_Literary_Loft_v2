@@ -26,7 +26,48 @@ body {
   font-optical-sizing: auto;
 }
 
-/* --------------------------------Top bar--------------------------------- */
+/* --------------------------Django MESSAGE_TAGS---------------------------- */
+.alert {
+  position: relative;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.alert-dismissible .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.alert-error, .alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-info {
+  color: #0c5460;
+  background-color: #d1ecf1;
+  border-color: #bee5eb;
+}
+
+.alert-warning {
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
+}
+
+/* --------------------------------Top bar----------------------------------- */
 .top-bar {
   background-color: #e0dcd3;
   color: #4d5252;
@@ -264,9 +305,11 @@ logo-container a:hover {
   border-radius: 5px;
   background-color: white;
   color: #4d5252;
+  cursor: pointer;
 }
 
-.login-button {
+.login-button,
+.logout-button {
   background-color: #4d5252;
   color: white;
   padding: 10px 15px;
@@ -275,13 +318,15 @@ logo-container a:hover {
   transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
+.login-button:hover,
+.logout-button:hover {
   background-color: #7d8080;
   color: white;
   text-decoration: none;
 }
 
-.login-button i {
+.login-button i,
+.logout-button i {
   margin-right: 5px;
 }
 
@@ -463,9 +508,9 @@ logo-container a:hover {
 }
 
 /* -------------------------------Responsive design------------------------- */
-/* -------------------------------SMALL DISPLAYS----------------------------- */
+/* -------------------------------SMALL DISPLAYS---------------------------- */
 @media (max-width: 468px) {}
-/* -------------------------------MEDIUM DISPLAYS---------------------------- */  
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
 @media (max-width: 768px) {
   .top-bar {
   font-size: 12px;
