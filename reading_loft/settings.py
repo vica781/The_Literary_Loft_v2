@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',   
-    'books', 
+    'books',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
@@ -158,6 +159,30 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'reading_loft', 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_URL = '/book_covers/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'book_covers')
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': {
+            'items': [
+                'heading', '|',
+                'bold', 'italic', 'underline', '|',
+                'link', '|',
+                'bulletedList', 'numberedList', '|',
+                'blockQuote', '|',
+                'undo', 'redo'
+            ],
+            'shouldNotGroupWhenFull': True
+        },
+        'height': 300,
+        'width': '100%',
+    },
+}
+
+
+
 
 
 # Default primary key field type

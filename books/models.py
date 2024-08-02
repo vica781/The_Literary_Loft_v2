@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django_ckeditor_5.fields import CKEditor5Field
 
 class Category(models.Model):
     CATEGORY_CHOICES = [
@@ -41,10 +42,10 @@ class Subcategory(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
-    about_author = models.TextField(blank=True)
+    about_author = CKEditor5Field(blank=True)
     isbn = models.CharField("ISBN", max_length=13, unique=True)
-    description = models.TextField(blank=True)
-    review = models.TextField(blank=True)
+    description = CKEditor5Field(blank=True)
+    review = CKEditor5Field(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
     subcategory = models.ForeignKey(Subcategory, related_name='books', on_delete=models.SET_NULL, null=True)

@@ -1,0 +1,72 @@
+.book-detail {
+  padding-top: 20px;
+}
+
+.book-header {
+  margin-bottom: 20px;
+}
+
+.book-cover img {
+  max-width: 100%;
+  height: auto;
+}
+
+.book-info h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.book-info p {
+  margin-bottom: 10px;
+}
+
+.book-summary h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.book-tabs .nav-tabs {
+  margin-bottom: 20px;
+}
+
+.book-tabs .tab-content {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+
+.book-tabs .nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.book-tabs .nav-item {
+  margin-bottom: -1px;
+}
+
+.book-tabs .nav-link {
+  border: 1px solid #dee2e6;
+  border-bottom: none;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  color: #495057;
+  background-color: #f8f9fa;
+  margin-right: 2px;
+}
+
+.book-tabs .nav-link:hover {
+  background-color: #e9ecef;
+}
+
+.book-tabs .nav-link.active {
+  color: #495057;
+  background-color: #fff;
+  border-bottom-color: #fff;
+}
+
+.book-tabs .tab-content {
+  padding: 20px;
+  border: 1px solid #dee2e6;
+  border-top: none;
+  background-color: #fff;
+}
