@@ -22,6 +22,12 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.get_name_display())
         super().save(*args, **kwargs)
+        
+    def capitalized_name(self):
+        return self.name.capitalize()
+
+    def __str__(self):
+        return self.capitalized_name()
 
 class Subcategory(models.Model):
     name = models.CharField(max_length=100)
@@ -38,6 +44,12 @@ class Subcategory(models.Model):
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+        
+    def capitalized_name(self):
+        return self.name.capitalize()
+
+    def __str__(self):
+        return self.capitalized_name()
 
 class Book(models.Model):
     title = models.CharField(max_length=200)
