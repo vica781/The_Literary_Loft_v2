@@ -73,26 +73,32 @@ def contact(request):
 
 # BOOK LIST / BOOK DETAIL
 def book_list(request, category_slug=None, subcategory_slug=None):
-    category = None
-    subcategory = None
     books = Book.objects.all()
     categories = Category.objects.all()
     
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         books = books.filter(subcategory__category=category)
-    
-    if subcategory_slug:
+    elif subcategory_slug:
         subcategory = get_object_or_404(Subcategory, slug=subcategory_slug)
         books = books.filter(subcategory=subcategory)
+    else:
+        # Group books by main categories
+        fiction_books = books.filter(subcategory__category__name='fiction')
+        non_fiction_books = books.filter(subcategory__category__name='non_fiction')
+        children_books = books.filter(subcategory__category__name='children')
+        
+        return render(request, 'books/book_list.html', {
+            'fiction_books': fiction_books,
+            'non_fiction_books': non_fiction_books,
+            'children_books': children_books,
+            'categories': categories
+        })
     
     return render(request, 'books/book_list.html', {
-        'category': category,
-        'subcategory': subcategory,
         'books': books,
         'categories': categories
     })
-
 def book_detail(request, id):
     book = get_object_or_404(Book, id=id)
     return render(request, 'books/book_details.html', {'book': book})
