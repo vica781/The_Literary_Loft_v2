@@ -99,7 +99,8 @@
 }
 
 .breadcrumb {
-    background-color: #f8f9fa;
+    /* background-color: #f8f9fa; */
+    background-color: transparent;
     padding: 0.75rem 1rem;
     border-radius: 0.25rem;
     margin-bottom: 1rem;
@@ -118,6 +119,7 @@
 .category-section h2 .dropdown-toggle {
     padding: 0;
     margin-left: 10px;
+    color: #4d5252;
 }
 
 .dropdown-menu {

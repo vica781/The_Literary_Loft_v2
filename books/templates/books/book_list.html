@@ -1,70 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block title %}
 <title>All books - The Literary Loft</title>
 {% endblock %} 
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/book_list.css' %}">
 {% endblock %}
-
 {% block content %}
-<div class="container">  
+<div class="container">
     <!-- Breadcrumb navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">Our Books</a></li>
             {% if category %}
-                <li class="breadcrumb-item active" aria-current="page">{{ category.name|title }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.name|title }}</li>
             {% endif %}
             {% if subcategory %}
-                <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}">{{ subcategory.category.name|title }}</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ subcategory.name|title }}</li>
+            <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}">{{ subcategory.category.name|title }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ subcategory.name|title }}</li>
             {% endif %}
         </ol>
     </nav>
-
     <h1 class="text-center my-4">Our Books</h1>
-
     {% if not category and not subcategory %}
-        {% for main_category in categories %}
-            <div class="category-section mb-4">
-                <h2 class="text-center mb-3">
-                    {{ main_category.name|title }}
-                    <div class="dropdown d-inline-block">
-                        <button class="btn btn-link dropdown-toggle" type="button" id="{{ main_category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {% comment %} <i class="fas fa-chevron-down"></i> {% endcomment %}
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="{{ main_category.slug }}Dropdown">
-                            {% for subcategory in main_category.subcategories.all %}
-                                <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">{{ subcategory.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </h2>
-                <div class="row book-grid">
-                    {% for book in books %}
-                        {% if book.subcategory.category == main_category %}
-                            {% include 'books/book_item.html' with book=book %}
-                        {% endif %}
+    {% for main_category in categories %}
+    <div class="category-section mb-4">
+        <h2 class="text-center mb-3">
+            {{ main_category.display_name }}
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-link dropdown-toggle" type="button" id="{{ main_category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {% comment %} <i class="fas fa-chevron-down"></i> {% endcomment %}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="{{ main_category.slug }}Dropdown">
+                    {% for subcategory in main_category.subcategories.all %}
+                    <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">{{ subcategory.name|title }}</a>
                     {% endfor %}
                 </div>
             </div>
-        {% endfor %}
-    {% else %}
-        <h2 class="text-center mb-4">
-            {% if category %}{{ category.name }}{% else %}{{ subcategory.name }}{% endif %}
         </h2>
         <div class="row book-grid">
             {% for book in books %}
-                {% include 'books/book_item.html' with book=book %}
+            {% if book.subcategory.category == main_category %}
+            {% include 'books/book_item.html' with book=book %}
+            {% endif %}
             {% endfor %}
         </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2 class="text-center mb-4">
+        {% if category %}{{ category.name|title }}{% else %}{{ subcategory.name|title }}{% endif %}
+    </h2>
+    <div class="row book-grid">
+        {% for book in books %}
+        {% include 'books/book_item.html' with book=book %}
+        {% endfor %}
+    </div>
     {% endif %}
-
     {% if not books %}
-        <p class="text-center">No books available.</p>
+    <p class="text-center">No books available.</p>
     {% endif %}
 </div>
 {% endblock %}

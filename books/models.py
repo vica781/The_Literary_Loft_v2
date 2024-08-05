@@ -5,7 +5,7 @@ from django_ckeditor_5.fields import CKEditor5Field
 class Category(models.Model):
     CATEGORY_CHOICES = [
         ('fiction', 'Fiction Books'),
-        ('non_fiction', 'Non-Fiction Books'),
+        ('non-fiction', 'Non-Fiction Books'),  # Change this line
         ('children', "Children's Books"),
     ]
     
@@ -15,19 +15,16 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = "Categories"
     
-    def __str__(self):
-        return self.get_name_display()
-    
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.get_name_display())
         super().save(*args, **kwargs)
-        
-    def capitalized_name(self):
-        return self.name.capitalize()
+    
+    def display_name(self):
+        return self.get_name_display()
 
     def __str__(self):
-        return self.capitalized_name()
+        return self.display_name()
 
 class Subcategory(models.Model):
     name = models.CharField(max_length=100)
@@ -41,9 +38,13 @@ class Subcategory(models.Model):
         return f"{self.category.get_name_display()} - {self.name}"
     
     def save(self, *args, **kwargs):
+        self.name = self.name.replace('_', '-')
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return f"{self.category.display_name()} - {self.name}"
         
     def capitalized_name(self):
         return self.name.capitalize()

@@ -90,7 +90,6 @@ def book_list(request, category_slug=None, subcategory_slug=None):
         'categories': categories,
         'category': category,
         'subcategory': subcategory,
-        'page_title': category.capitalized_name() if category else (subcategory.capitalized_name() if subcategory else 'All Books')
     }
     return render(request, 'books/book_list.html', context)
     
