@@ -13,9 +13,9 @@
   <!-- Breadcrumb navigation -->
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">Our Books</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">All Books</a></li>
       <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=book.subcategory.category.slug %}">{{ book.subcategory.category.display_name }}</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_subcategory' subcategory_slug=book.subcategory.slug %}">{{ book.subcategory.name }}</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_subcategory' subcategory_slug=book.subcategory.slug %}">{{ book.subcategory.name|title }}</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ book.title }}</li>
     </ol>
   </nav>

@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from books.models import Category, Subcategory  # Replace 'books' with your actual app name
+from books.models import Category, Subcategory  
 
 class Command(BaseCommand):
     help = 'Updates category and subcategory names and slugs'

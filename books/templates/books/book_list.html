@@ -11,17 +11,18 @@
     <!-- Breadcrumb navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">Our Books</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">All Books</a></li>
             {% if category %}
-            <li class="breadcrumb-item active" aria-current="page">{{ category.name|title }}</li>
+            <li class="breadcrumb-item active" aria-current="page">{{ category.display_name }}</li>
             {% endif %}
             {% if subcategory %}
-            <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}">{{ subcategory.category.name|title }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}">{{ subcategory.category.display_name }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ subcategory.name|title }}</li>
             {% endif %}
         </ol>
     </nav>
-    <h1 class="text-center my-4">Our Books</h1>
+
+    {% comment %} <h1 class="text-center my-4">Our Books</h1> {% endcomment %}
     {% if not category and not subcategory %}
     {% for main_category in categories %}
     <div class="category-section mb-4">
