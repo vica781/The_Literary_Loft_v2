@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}
 <title>All books - The Literary Loft</title>
-{% endblock %} 
+{% endblock %}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/book_list.css' %}">
 {% endblock %}
@@ -21,8 +21,6 @@
             {% endif %}
         </ol>
     </nav>
-
-    {% comment %} <h1 class="text-center my-4">Our Books</h1> {% endcomment %}
     {% if not category and not subcategory %}
     {% for main_category in categories %}
     <div class="category-section mb-4">
@@ -30,7 +28,6 @@
             {{ main_category.display_name }}
             <div class="dropdown d-inline-block">
                 <button class="btn btn-link dropdown-toggle" type="button" id="{{ main_category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {% comment %} <i class="fas fa-chevron-down"></i> {% endcomment %}
                 </button>
                 <div class="dropdown-menu" aria-labelledby="{{ main_category.slug }}Dropdown">
                     {% for subcategory in main_category.subcategories.all %}
@@ -50,7 +47,20 @@
     {% endfor %}
     {% else %}
     <h2 class="text-center mb-4">
-        {% if category %}{{ category.name|title }}{% else %}{{ subcategory.name|title }}{% endif %}
+        {% if category %}
+            {{ category.display_name }}
+            <div class="dropdown d-inline-block">
+                <button class="btn btn-link dropdown-toggle" type="button" id="{{ category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                </button>
+                <div class="dropdown-menu" aria-labelledby="{{ category.slug }}Dropdown">
+                    {% for subcategory in category.subcategories.all %}
+                    <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">{{ subcategory.name|title }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            {{ subcategory.name|title }}
+        {% endif %}
     </h2>
     <div class="row book-grid">
         {% for book in books %}
