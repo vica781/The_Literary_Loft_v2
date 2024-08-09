@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from django.contrib.auth import login as auth_login
-from django.contrib.auth.backends import ModelBackend
 from django.urls import reverse
 from django.contrib.auth import logout
 from django.db.models import Q
@@ -78,12 +76,13 @@ def book_list(request, category_slug=None, subcategory_slug=None):
     category = None
     subcategory = None
     
-    if category_slug:
-        category = get_object_or_404(Category, slug=category_slug)
-        books = books.filter(subcategory__category=category)
-    elif subcategory_slug:
+    if subcategory_slug:
         subcategory = get_object_or_404(Subcategory, slug=subcategory_slug)
         books = books.filter(subcategory=subcategory)
+    
+    elif category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        books = books.filter(subcategory__category=category)
     
     context = {
         'books': books,
