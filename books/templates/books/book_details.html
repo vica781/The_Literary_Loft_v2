@@ -47,7 +47,8 @@
     </div>
     <div class="col-md-4 book-summary">
       <h2>Summary</h2>
-      <p>{{ book.description|safe }}</p>
+      <p>{{ book.description|truncatewords:60|safe }}</p>
+      <p><a href="#summary" class="btn btn-link">Read more</a></p>
     </div>
   </div>
   <div class="row book-tabs mt-4">
