@@ -27,10 +27,9 @@ SECRET_KEY = 'django-insecure-xn=s!-(cj3*+bih7)(9c148_xw2z0x1b8yg#1(2!de0fy6@*he
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['the-reading-loft.herokuapp.com', ' localhost']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost', '127.0.0.1']
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
