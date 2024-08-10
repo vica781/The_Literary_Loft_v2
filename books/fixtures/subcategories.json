@@ -1,0 +1,119 @@
+[
+    {
+        "model": "books.subcategory",
+        "pk": 1,
+        "fields": {
+            "name": "Classics",
+            "slug": "classics",
+            "category": 1
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 2,
+        "fields": {
+            "name": "Crime & Thriller",
+            "slug": "crime-thriller",
+            "category": 1
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 3,
+        "fields": {
+            "name": "Historical Fiction",
+            "slug": "historical-fiction",
+            "category": 1
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 4,
+        "fields": {
+            "name": "Fantasy",
+            "slug": "fantasy",
+            "category": 1
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 5,
+        "fields": {
+            "name": "Art, Craft & Photography",
+            "slug": "art-craft-photography",
+            "category": 2
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 6,
+        "fields": {
+            "name": "Biography & True Stories",
+            "slug": "biography-true-stories",
+            "category": 2
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 7,
+        "fields": {
+            "name": "Food & Drink",
+            "slug": "food-drink",
+            "category": 2
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 8,
+        "fields": {
+            "name": "Foraging",
+            "slug": "foraging",
+            "category": 2
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 9,
+        "fields": {
+            "name": "Travel",
+            "slug": "travel",
+            "category": 2
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 10,
+        "fields": {
+            "name": "Activity Books",
+            "slug": "activity-books",
+            "category": 3
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 11,
+        "fields": {
+            "name": "Education",
+            "slug": "education",
+            "category": 3
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 12,
+        "fields": {
+            "name": "Fiction",
+            "slug": "childrens-fiction",
+            "category": 3
+        }
+    },
+    {
+        "model": "books.subcategory",
+        "pk": 13,
+        "fields": {
+            "name": "Non-Fiction",
+            "slug": "childrens-non-fiction",
+            "category": 3
+        }
+    }
+]

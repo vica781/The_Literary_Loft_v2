@@ -1,0 +1,26 @@
+[
+    {
+        "model": "books.category",
+        "pk": 1,
+        "fields": {
+            "name": "fiction",
+            "slug": "fiction-books"
+        }
+    },
+    {
+        "model": "books.category",
+        "pk": 2,
+        "fields": {
+            "name": "non-fiction",
+            "slug": "non-fiction-books"
+        }
+    },
+    {
+        "model": "books.category",
+        "pk": 3,
+        "fields": {
+            "name": "children",
+            "slug": "childrens-books"
+        }
+    }
+]
