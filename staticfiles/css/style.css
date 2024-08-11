@@ -77,6 +77,34 @@ body {
   font-weight: 600;
 }
 
+.top-bar {
+  background-color: #e0dcd3;
+  color: #4d5252;
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+}
+
+.top-bar-btn a.cta-top-bar-button {
+  padding: .25rem .5rem;
+  margin-left: 1rem;
+  font-size: 0.8rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  background-color: #4d5252;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.top-bar-btn a.cta-top-bar-button:hover {
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+}
+
+
+
+
 /* -----------------------------Main navigation---------------------------- */
 .main-nav {
   background-color: #4d5252;
@@ -205,8 +233,7 @@ body {
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
-  
+  color: inherit;  
 }
 
 logo-container a:hover {
@@ -492,7 +519,7 @@ logo-container a:hover {
     text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
 }
 
-.cta-button {
+.hero-content a.cta-button {
     padding: 10px 20px;
     font-size: 1.2em;
     background-color: #4d5252;
@@ -503,8 +530,10 @@ logo-container a:hover {
     transition: background-color 0.3s ease;
 }
 
-.cta-button:hover {
+.hero-content a.cta-button:hover {
     background-color: #3a3f3f;
+    text-decoration: none;
+    color: #fff;
 }
 
 /* -------------------------------Responsive design------------------------- */
