@@ -1,0 +1,58 @@
+[33me91650a[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m Reinstall packages
+[33mc76c2b8[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;31mheroku/main[m[33m)[m Collect statics
+[33mf12b84d[m Update gitignore
+[33m3a221de[m Trigger deployment on Heroku-24 stack
+[33mb07c4d7[m Remov secret key and set debug
+[33mf1f3c09[m Updated ALLOWED_HOSTS setting
+[33mcb6d043[m First attempt to deploy to Heroku
+[33m4a3afc2[m Feat: add shorter summary & 'Read more' link to book description
+[33md4f52e9[m Feat: link dropdown menu subcategories to relevant books
+[33m4b68572[m Feat: add 'Shop Now' btn to top-bar, link all 'Shop Now' btns to book_list
+[33md908f76[m Feat: add dropdown functionality to page heading/book's category
+[33m3f0f287[m Feat: fix issue with categories display in breadcrumb nav
+[33m80aee96[m Feat: add breadcrumbs to an individual book's page
+[33mfb94ea9[m Feat: add more items to non-fiction books category
+[33m9f58813[m Feat: add books to some subcategories
+[33mb5053e3[m Resolve: fix issue with underscore & hyphen in Non-Fiction category display
+[33md25e54f[m Feat: add breadcrumb navigation
+[33m47ca428[m Feat: organise books in books_list.html by categories
+[33mf29cd4b[m Style: add grid and style to book_list.html
+[33ma513f94[m Style: install CKeditor-5 to style book infor text
+[33me587053[m Fix: resolve issue with book cover img displaying in book_details.html
+[33me27f7b2[m Update: change Book model add extra fields
+[33mb2fff53[m Install Pillow set up bases for shop and book details
+[33m76740a9[m Admin: register Category, Subcategory and Book models in admin.py
+[33m30c8118[m Cleanup: update views.py reorganize code and improve structure
+[33m0302a07[m Feat: add models for Category, Subcategory, Book
+[33m7a1ccbb[m Relocate folders in directory
+[33mcca0604[m Update structure of directory
+[33m4123df4[m Feat: add images
+[33m595c5d7[m Feat: add flag images to currency-select
+[33m123d71f[m Feat: add logout functionality & user notifications
+[33m629ede3[m Feat: check functionality of register form & add redirect to login page
+[33m17427fc[m Style: add style to register page
+[33mac905aa[m Feat: create basic template for register page
+[33mcbc4278[m Feat: add tab titles to existing pages
+[33m0351287[m Feat: add favicon
+[33mcabde97[m Style: add style to login page
+[33m4f43be4[m Feat: add draft login page
+[33ma699f4a[m Feat: add page name to browser tab
+[33mef03b95[m Style: change hero image
+[33m349223b[m Feat: add cart count functionality
+[33maa65482[m Feat: restructure categories nav, add dropdown items
+[33m1b0113d[m Feat: link logo and titles to index.html
+[33m97d9a5f[m Fix: align elements in collapse menue
+[33me04491a[m Style: add classes to make top-bar responsive
+[33m067d838[m Feat: Add images to the project, change html entity for scroll-bar
+[33m896396c[m Feat: change hero-section add banner with scroll-indicator to improve UI
+[33mdfeda38[m Feat: restyle hero_section
+[33m30172e5[m Feat: add hero_section to index.html
+[33mf5c120b[m Feat: add header to base.html
+[33md5b120b[m Feat: add books app and templates
+[33m90a27ef[m Feat: add blocks to project's base.html
+[33m978d2cb[m Feat: add allauth and base templates
+[33mbdcbd0d[m Merge branch 'main' of https://github.com/vica781/The_Literary_Loft
+[33m2cd4a4e[m Feat: setup allauth
+[33mbca30e4[m Update issue templates
+[33mf1aca70[m Initial commit with Django setup
+[33m8b00e6c[m Initial commit
