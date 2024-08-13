@@ -34,8 +34,8 @@ class Subcategory(models.Model):
     class Meta:
         verbose_name_plural = "Subcategories"
     
-    def __str__(self):
-        return f"{self.category.get_name_display()} - {self.name}"
+    # def __str__(self):
+    #     return f"{self.category.get_name_display()} - {self.name}"
     
     def save(self, *args, **kwargs):
         self.name = self.name.replace('_', '-')
@@ -70,3 +70,9 @@ class Book(models.Model):
 
     def __str__(self):
         return self.title
+    
+    def save(self, *args, **kwargs):
+        if self.subcategory.category.name not in [self.subcategory.category.name for cat in Category.objects.all()]:
+            raise ValueError("Subcategory does not match the selected Category")
+        super().save(*args, **kwargs)
+

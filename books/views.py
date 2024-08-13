@@ -78,7 +78,7 @@ def book_list(request, category_slug=None, subcategory_slug=None):
     categories = Category.objects.all()
     category = None
     subcategory = None
-    
+
     if subcategory_slug:
         subcategory = get_object_or_404(Subcategory, slug=subcategory_slug)
         books = books.filter(subcategory=subcategory)
@@ -86,7 +86,7 @@ def book_list(request, category_slug=None, subcategory_slug=None):
     elif category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         books = books.filter(subcategory__category=category)
-    
+
     context = {
         'books': books,
         'categories': categories,
@@ -94,6 +94,7 @@ def book_list(request, category_slug=None, subcategory_slug=None):
         'subcategory': subcategory,
     }
     return render(request, 'books/book_list.html', context)
+
     
     
 def book_detail(request, id):
