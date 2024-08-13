@@ -1,0 +1,307 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$PYAvtJPRFHgPFr4gLovIkM$YGq07vN09NLe+Katk1f2cSNldYalK39qNPwnz9wFFg8=",
+        "last_login": "2024-08-10T15:04:13.133Z",
+        "is_superuser": true,
+        "username": "vk781",
+        "first_name": "",
+        "last_name": "",
+        "email": "books@mail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-07-27T18:51:34.729Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$UeP0qBVDZGg7NIp101wgpq$bjR2pYR3TrUzmJ7wo2vIGKfk+1opB0A+B1fvGqpF4iw=",
+        "last_login": "2024-07-28T13:14:53.286Z",
+        "is_superuser": false,
+        "username": "user_1@mail.com",
+        "first_name": "User",
+        "last_name": "One",
+        "email": "user_1@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-28T12:24:54.361Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$EJSAoeIrTMNJJ4i3I3J5el$ebSBnuzhm3EQwSq4e6E/MWx4/TKOLX+hOLt2eA2Dl5U=",
+        "last_login": "2024-07-28T13:21:44.924Z",
+        "is_superuser": false,
+        "username": "user_2@mail.com",
+        "first_name": "User",
+        "last_name": "Two",
+        "email": "user_2@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-28T13:21:43.940Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$VjD1nZIzFDDeAAc0pVLLWh$i3cOhJSXbXKGNjkZzzTWbAqJ7q1mIyShLKaRKBYvuB8=",
+        "last_login": "2024-07-28T13:23:26.127Z",
+        "is_superuser": false,
+        "username": "user_3@mail.com",
+        "first_name": "User",
+        "last_name": "Three",
+        "email": "user_3@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-28T13:23:25.166Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$600000$LbonIpJECBN2aBxfBgiJ1i$8UckRnTUBsilQK0OGHsIMsxd2Z28BQbjRH3ZbyrMZmo=",
+        "last_login": "2024-07-28T14:40:15.874Z",
+        "is_superuser": false,
+        "username": "user_4@mail.com",
+        "first_name": "User",
+        "last_name": "Four",
+        "email": "user_4@mail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-07-28T14:40:14.292Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "06lza7zsiypfmfbu54w4k38zbpsctz6u",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgAh2X7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERozj9boTxkeoO-I711mRsdV1mkrsiD9rl1Dg9r4f7d1Cwl28dXQL0BpyzyXlUrBXAiJS11spaZO_BGvRwzpnA4EA8OKUVpTgw6SzeH9bmN9Y:1scndd:_smgY1ajwbijO7dYJRMKgh4Urf6jv8oBscChyezOy1o",
+        "expire_date": "2024-08-24T15:04:13.147Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "7j29q1t893hh2fyn58lxld6o0jcim0pg",
+    "fields": {
+        "session_data": ".eJxVjEEOwiAQRe_C2hCgAh2X7nsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnERozj9boTxkeoO-I711mRsdV1mkrsiD9rl1Dg9r4f7d1Cwl28dXQL0BpyzyXlUrBXAiJS11spaZO_BGvRwzpnA4EA8OKUVpTgw6SzeH9bmN9Y:1sbPF0:ivIGaj8r4_J1v39a9pOZrcOKUOHLejh_F_XoYzlhrZo",
+        "expire_date": "2024-08-20T18:49:02.807Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "aa1qfw13fo8qcfhsd9skvai0rvkmh7vs",
+    "fields": {
+        "session_data": "e30:1sXmkz:DWltWrY0XWj4umHagyCkTqHU9lpPF-sGW02hTVAV3s0",
+        "expire_date": "2024-08-10T19:07:05.596Z"
+    }
+},
+{
+    "model": "sites.site",
+    "fields": {
+        "domain": "the_literary_loft.example.com",
+        "name": "The Literary Loft"
+    }
+},
+{
+    "model": "books.category",
+    "pk": 1,
+    "fields": {
+        "name": "children",
+        "slug": "childrens-books"
+    }
+},
+{
+    "model": "books.category",
+    "pk": 2,
+    "fields": {
+        "name": "fiction",
+        "slug": "fiction-adults"
+    }
+},
+{
+    "model": "books.category",
+    "pk": 8,
+    "fields": {
+        "name": "non-fiction",
+        "slug": "non-fiction"
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 1,
+    "fields": {
+        "name": "Fiction",
+        "slug": "childrens-fiction",
+        "category": 1
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 2,
+    "fields": {
+        "name": "Crime & Thriller",
+        "slug": "crime-thriller",
+        "category": 2
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 3,
+    "fields": {
+        "name": "Education",
+        "slug": "education",
+        "category": 1
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 4,
+    "fields": {
+        "name": "Art, Craft & Photography",
+        "slug": "art-craft-photography",
+        "category": 8
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 5,
+    "fields": {
+        "name": "Biography & True Stories",
+        "slug": "biography-true-stories",
+        "category": 8
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 6,
+    "fields": {
+        "name": "Food & Drink",
+        "slug": "food-drink",
+        "category": 8
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 7,
+    "fields": {
+        "name": "Historical Fiction",
+        "slug": "historical-fiction",
+        "category": 2
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 8,
+    "fields": {
+        "name": "Fantasy",
+        "slug": "fantasy",
+        "category": 2
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 9,
+    "fields": {
+        "name": "Activity Books",
+        "slug": "activity-books",
+        "category": 1
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 10,
+    "fields": {
+        "name": "Children's Non-Fiction",
+        "slug": "childrens-non-fiction",
+        "category": 1
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 11,
+    "fields": {
+        "name": "Foraging",
+        "slug": "foraging",
+        "category": 8
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 12,
+    "fields": {
+        "name": "Classics",
+        "slug": "classics",
+        "category": 2
+    }
+},
+{
+    "model": "books.subcategory",
+    "pk": 13,
+    "fields": {
+        "name": "Travel",
+        "slug": "travel",
+        "category": 8
+    }
+},
+{
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+        "title": "The New Annotated Sherlock Holmes: Novels v. 3: The Novels",
+        "author": "Arthur Doyle",
+        "about_author": "Sir Arthur Conan Doyle (1859-1930) is most noted for his Sherlock Holmes detective stories. He was a prolific writer whose other works include a wide range of science fiction stories, historical novels, romances, poetry, and nonfiction. Leslie S. Klinger is the multi-award-winning author of The New Annotated Sherlock Holmes, New Annotated Dracula, New Annotated Frankenstein, and The New Annotated H. P. Lovecraft, Volumes I and II. He lives in Los Angeles, California.",
+        "isbn": "9780393058000",
+        "description": "The publication of Leslie S. Klinger's brilliant new annotations of Sir Arthur Conan Doyle's four classic Holmes novels in 2005 created a Holmes sensation. Klinger reassembles Doyle's four seminal novels in their original order, with over 1,000 notes, 350 illustrations and period photographs, and tantalizing new Sherlockian theories. Inside, readers will find:\r\n\r\nA Study in Scarlet (1887)-a tale of murder and revenge that tells of Holmes and Dr. Watson's first meeting;\r\nThe Sign of Four (1889)-a chilling tale of lost treasure...and of how Watson met his wife;\r\nThe Hound of the Baskervilles (1901)-hailed as the greatest mystery novel of all time; and\r\nThe Valley of Fear (1914)-a fresh murder scene that leads Holmes to solve a long-forgotten mystery.\r\nWhether as a stand-alone volume or as a companion to the short stories, this classic work illuminates the timeless genius of Conan Doyle for an entirely new generation.",
+        "review": "A beautiful and thoroughly enjoyable edition...will appeal to first time readers and seasoned veterans. -- Daniel Stashower - Washington Post Book World\r\nA generous work, scholarly yet utterly accessible, a remarkable showcase of the detective's continuing allure. -- David L. Ulin - Los Angeles Times\r\nA must-have for any serious mystery fan, this edition will stand as the benchmark for generations to come. -- Publishers Weekly\r\nA vast work of entertaining ingenuity and erudition. -- Boston Globe\r\nEven the sleuth of Baker Street would be awed by the ingenious deductions and dazzling speculations of modern Sherlockian scholarship. -- Michael Dirda\r\nHailed as the definitive exegesis of Holmes and his times. -- Mark Weingarten - The New York Times\r\nA feast for any fans of the greatest detective who ever stalked the earth. -- Maureen Corrigan - Fresh Air",
+        "price": "46.09",
+        "stock": 5,
+        "subcategory": 2,
+        "created_at": "2024-08-01T20:26:01.823Z",
+        "updated_at": "2024-08-01T20:26:01.823Z",
+        "cover_image": "book_covers/doyle_novels.jpg",
+        "pages": 992,
+        "publication_date": "2005-10-25"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+        "title": "Billy the Kid",
+        "author": "Michael Morpurgo",
+        "about_author": "<p><strong>Michael Morpurgo</strong> OBE is one of Britain's best-loved writers for children, and has sold more than 35 million books around the world. He has written more than 150 novels and won many prizes, including the Smarties Prize, the Whitbread Award and the Blue Peter Book Award, while several of his books have been adapted for stage and screen, including the global theatrical phenomenon War Horse. Michael was Children's Laureate from 2003 to 2005, and founded the charity Farms for City Children with his wife, Clare. He was knighted in 2018 for services to literature and charity.</p>",
+        "isbn": "9780007105472",
+        "description": "<p>Billy was a champion soccer star, playing for Chelsea in the 1930s. But that was before war broke out... Billy the Kid is told through the voice of an 80 year old man, who looks back on his life as Chelsea's champion striker until the outbreak of war in 1939 and on through his subsequent life. Billy joins Chelsea as a football apprentice, rises through the reserves to become a real champion. His passion for football sees him through the war years - even as a prisoner of war he organises a friendly against the Italians - but, having been injured by a mine he cannot play for Chelsea on his return to England. Billy turns to vagrancy and alcohol and for years he wanders up and down the country. He re-settles in London in a derelict house and is befriended by a family who move him to a shed in their garden. He, in turn, helps their son with his football who in his turn becomes a Chelsea player. Billy becomes a Chelsea Pensioner and his 80th birthday is celebrated when Chelsea play at home. A novel for both children and adults which deals with some difficult issues. Michael Morpurgo's storytelling is superb and this will be a welcome follow up to the previous Morpurgo / Foreman collaboration - Farm Boy.</p>",
+        "review": "<p>'a thrilling and moving story about a Chelsea footballer who gets caught up in the ravages of the Second World War, with the focus on the Beautiful Game as a common bond that can link nations and generations.</p><p>' Foreman's shimmering watercolours and line, so agile and expressive, are a perfect match for Morpurgo's assured and memorable narrative. This is a book that will be treasured by any child or teacher learning about the Second World War.</p><p>' TES 'It's wonderful!' Kate Agnew&nbsp;</p><p>'Michael Morpurgo, whose command of his material is absolute, told with all the author's open-hearted clarity, and richly illustrated by Michael Foreman.</p><p>' Guardian 'A story that combines football and war. It is a lot like an afternoon at Stamford Bridge, and ideal for football fans aged eight and over.</p><p>' Daily Telegraph 'If you just love good stories, stunning pictures and beautiful books, you'll want this book for your own.' Young Writer.</p>",
+        "price": "7.94",
+        "stock": 30,
+        "subcategory": 1,
+        "created_at": "2024-08-01T20:29:01.848Z",
+        "updated_at": "2024-08-02T12:14:43.979Z",
+        "cover_image": "book_covers/billy_the_kid.jpg",
+        "pages": 128,
+        "publication_date": "2002-01-02"
+    }
+},
+{
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+        "title": "The Secret Garden: A Robert Ingpen Illustrated Classic",
+        "author": "Burnett, Frances Hodgson",
+        "about_author": "<p><strong>Frances Hodgson Burnett (1849-1924)</strong> was born and lived her early life in Manchester, England before emigrating to the US with her family. After the death of her eldest son, Lionel, she returned to England in 1890 and rented an estate with several walled gardens - it was in the rose garden, her outdoor studio, that the notion of The Secret Garden was born. Robert Ingpen was born in 1936 in Geelong, Australia. He studied illustration art and book design at The Royal Melbourne Institute of Technology. In 1986 he was awarded the Hans Christian Andersen Medal for his contribution to children's literature and has been honoured with Membership of the Order of Australia. A world-renowned artist and author, he has designed, illustrated and written over 100 books. This series of classic works illustrated by Robert includes Treasure Island, Peter Pan and Wendy, The Jungle Book, The Wind in the Willows and A Christmas Carol. Robert lives and works in Anglesea, near his home town of Geelong.</p>",
+        "isbn": "9781913519667",
+        "description": 
