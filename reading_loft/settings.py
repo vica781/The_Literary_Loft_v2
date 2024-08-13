@@ -199,7 +199,27 @@ if 'USE_AWS' in os.environ:
     # Override static and media URL's in production
     STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+    
+# Stripe Settings
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_51P9WJ2Rv8IFW2dKdJjHhr3rnX8ub5gQ0')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'sk_test_51P9WJ2Rv8IFW2dKdO4yPaBaRSVcigNSV')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'whsec_wLdmndl4KWImb1STyeCyWqysotfDcpbE')
 
+# Currency and delivery settings
+STRIPE_CURRENCY = 'gbp'
+FREE_DELIVERY_THRESHOLD = 20  # In GBP
+STANDARD_DELIVERY_PERCENTAGE = 10  # Delivery charge percentage for orders under the threshold
+
+# Default email settings
+DEFAULT_FROM_EMAIL = 'theliteraryloft@example.com'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+# CKEditor settings 
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': {
@@ -217,12 +237,3 @@ CKEDITOR_5_CONFIGS = {
         'width': '100%',
     },
 }
-
-
-
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

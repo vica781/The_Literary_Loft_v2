@@ -7,6 +7,9 @@ from django.contrib.auth import logout
 from django.db.models import Q
 from django.shortcuts import get_object_or_404
 from .models import Book, Category, Subcategory
+from django.conf import settings
+import stripe
+
 
 # USER REGISTRATION / LOGIN / LOGOUT
 def register(request):
@@ -109,3 +112,29 @@ def search_books(request):
         Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
     ) if query else Book.objects.all()
     return render(request, 'books/search_results.html', {'books': books, 'query': query})
+
+# PAYMENT PROCESS
+def calculate_order_amount(request):
+    cart = request.session.get('cart', {})
+    total = 0
+    for item in cart.values():
+        total += item['price'] * item['quantity']
+    return int(total * 100)  # Convert GBP to pence
+
+def process_payment(request):
+    currency = request.session.get('currency', 'gbp')  # Default to GBP
+    amount = calculate_order_amount(request)
+    
+    try:
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        intent = stripe.PaymentIntent.create(
+            amount=amount,  # Amount in pence
+            currency=currency,
+            payment_method_types=["card"],
+        )
+        return render(request, 'payment.html', {'client_secret': intent.client_secret})
+    except stripe.error.StripeError as e:
+        # Handle error
+        messages.error(request, "An error occurred during payment processing.")
+        return redirect('books:checkout')  # Adjust redirect as needed
+
