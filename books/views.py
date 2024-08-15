@@ -9,6 +9,7 @@ from django.shortcuts import get_object_or_404
 from .models import Book, Category, Subcategory
 from django.conf import settings
 import stripe
+from django.http import JsonResponse
 
 
 # USER REGISTRATION / LOGIN / LOGOUT
@@ -95,24 +96,40 @@ def book_list(request, category_slug=None, subcategory_slug=None):
     }
     return render(request, 'books/book_list.html', context)
 
+# SEARCH BOOKS
+def search_suggestions(request):
+    query = request.GET.get('q', '')
+    if query:
+        books = Book.objects.filter(
+            Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query) | 
+            Q(subcategory__name__icontains=query)
+        )[:15]  # Limit to 15 suggestions
+        suggestions = [{'id': book.id, 'title': book.title, 'author': book.author} for book in books]
+        return JsonResponse(suggestions, safe=False)
+    return JsonResponse([], safe=False)
+
+def search_books(request):
+    query = request.GET.get('q', '')
+    books = Book.objects.filter(
+        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
+    ) if query else Book.objects.all()
     
-    
+    context = {
+        'books': books,
+        'query': query
+    }
+    return render(request, 'books/search_results.html', context)
+       
 def book_detail(request, id):
     book = get_object_or_404(Book, id=id)
     return render(request, 'books/book_details.html', {'book': book})
 
+# ADD TO CART
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     # Here add the logic to add the book to the cart
     # For now, just redirect back to the book detail page
     return redirect('books:book_detail', id=book_id)
-
-def search_books(request):
-    query = request.GET.get('q')
-    books = Book.objects.filter(
-        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
-    ) if query else Book.objects.all()
-    return render(request, 'books/search_results.html', {'books': books, 'query': query})
 
 # PAYMENT PROCESS
 def calculate_order_amount(request):

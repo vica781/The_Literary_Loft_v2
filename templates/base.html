@@ -74,8 +74,9 @@
     {% block extra_js %}
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/flags.js' %}"></script>
+    <script src="{% static 'js/search.js' %}"></script>
     {% endblock %} 
-    
+     
     {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
@@ -130,10 +131,11 @@
 
       <div class="header-main">
         <div class="search-bar">
-          <input type="text" placeholder="Search by Title, ISBN or Keyword" />
-          <button type="submit">
+          <input type="text" id="search-input" placeholder="Search by Title, ISBN, or Keyword" />
+        <button type="submit" id="search-button">
             <i class="fas fa-search"></i>
-          </button>
+        </button>
+        <div id="suggestions" class="suggestions"></div>
         </div>
         <div class="logo-container">
           <a href="{% url 'books:index' %}">
