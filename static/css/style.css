@@ -185,8 +185,7 @@ body {
     position: relative;
     display: flex;
     align-items: center;
-    width: 300px;
-    margin: 0 auto;
+    width: 300px;    
 }
 
 .search-bar input {
@@ -232,12 +231,12 @@ body {
     border-top: 1px solid #ccc;
 }
 /* ------------------------------Header main-------------------------------- */
-.header-main {
+/* .header-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
-}
+} */
 
 .logo-container a,
 .logo-container a:hover,
