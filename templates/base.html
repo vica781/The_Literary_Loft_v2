@@ -39,7 +39,9 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    {% endblock %} {% block corecss %}
+    {% endblock %} 
+    
+    {% block corecss %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -47,12 +49,16 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    {% endblock %} {% block extra_css %}
+    {% endblock %} 
+    
+    {% block extra_css %}
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    {% endblock %} {% block corejs %}
+    {% endblock %} 
+    
+    {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -69,11 +75,15 @@
         $(".dropdown-toggle").dropdown();
       });
     </script>
-    {% endblock %} {% block extra_js %}
+    {% endblock %} 
+    
+    {% block extra_js %}
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/flags.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-    {% endblock %} {% block title %}
+    {% endblock %} 
+    
+    {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
   </head>
@@ -81,11 +91,13 @@
   <body>
     {% block page_header %}
     <header>
-      <div class="top-bar d-flex justify-content-center align-items-center">
-        <p class="mb-0">
+      <div
+        class="top-bar d-flex justify-content-center align-items-center flex-column flex-md-row"
+      >
+        <p class="mb-0 text-center">
           Free shipping to the United Kingdom for orders over £20.00
         </p>
-        <div id="top-bar-btn" class="top-bar-btn">
+        <div id="top-bar-btn" class="top-bar-btn mt-2 mt-md-0">
           <a href="{% url 'books:book_list' %}" class="btn cta-top-bar-button"
             >Shop Now</a
           >
@@ -126,8 +138,10 @@
             </span>
           </div>
         </div>
-      </nav> 
-      <div class="header-main container-fluid d-flex justify-content-between align-items-center px-5 py-2 justfy-content-md-center">
+      </nav>
+      <div
+        class="header-main container-fluid d-flex justify-content-between align-items-center px-5 py-2 justfy-content-md-center"
+      >
         <div class="search-bar">
           <input
             type="text"
@@ -155,7 +169,7 @@
         <div class="user-actions">
           <a href="#" class="cart-icon">
             <i class="fas fa-shopping-bag"></i>
-            <span class="cart-count" id='cart-count'>0</span>
+            <span class="cart-count" id="cart-count">0</span>
           </a>
           <div class="currency-select-wrapper">
             <select class="currency-select" id="currencySelect">
@@ -313,39 +327,38 @@
     
     {% if messages %}
     <div class="container mt-3">
-    {% for message in messages %}
-    <div
-      class="alert {{ message.tags }} alert-dismissible fade show"
-      role="alert"
+      {% for message in messages %}
+      <div
+        class="alert {{ message.tags }} alert-dismissible fade show"
+        role="alert"
       >
-    {{ message }}
-    <button
-    type="button"
-    class="close"
-    data-dismiss="alert"
-    aria-label="Close"
-    >
-    <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  {% endfor %}
-  </div>
-  {% endif %} 
-  
-  {% block hero_content %} 
-  {% endblock %} 
-  
-  {% block content %} 
-  {% endblock %} 
-  
-  {% block page_footer %} 
-  {% endblock %} 
-  
-  {% block postloadjs %}
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
-  {% endblock %}
-
-</body>
+        {{ message }}
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %} 
+    
+    {% block hero_content %} 
+    {% endblock %} 
+    
+    {% block content %} 
+    {% endblock %} 
+    
+    {% block page_footer %} 
+    {% endblock %} 
+    
+    {% block postloadjs %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    {% endblock %}
+  </body>
 </html>

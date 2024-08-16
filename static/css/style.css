@@ -231,13 +231,6 @@ body {
     border-top: 1px solid #ccc;
 }
 /* ------------------------------Header main-------------------------------- */
-/* .header-main {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-} */
-
 .logo-container a,
 .logo-container a:hover,
 .logo-container a:focus,
