@@ -631,8 +631,61 @@ body {
 
   .category-nav .dropdown-item {
     padding: 0.5rem 1rem;
-  }  
+  }
+  /* Show burger menu only on small screens */
+
+  .navbar-toggler {
+      display: block;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #4d5252;
+      cursor: pointer;
+  }
+
+  .navbar-toggler-icon {
+      display: inline;
+  }
+
+  .navbar-close-icon {
+      display: none;
+  }
+
+  .category-nav ul {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .category-nav.open ul {
+      display: flex;
+  }
+
+  .category-nav.open .navbar-toggler-icon {
+      display: none;
+  }
+
+  .category-nav.open .navbar-close-icon {
+      display: inline;
+  }
 }
+
+/* Hide burger menu on large screens */
+@media (min-width: 769px) {
+    .navbar-toggler {
+        display: none;
+    }
+
+    .category-nav ul {
+        display: flex;
+    }
+
+    .navbar-toggler-icon,
+    .navbar-close-icon {
+        display: none;
+    }
+}
+
 
 /* -------------------------------LARGE DISPLAYS----------------------------- */
 @media (max-width: 991px) {
