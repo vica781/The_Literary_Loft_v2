@@ -250,7 +250,7 @@ body {
   color: inherit;  
 }
 
-logo-container a:hover {
+.logo-container a:hover {
   text-decoration: none;
 }
 
@@ -542,47 +542,28 @@ logo-container a:hover {
 @media (max-width: 468px) {}
 /* -------------------------------MEDIUM DISPLAYS--------------------------- */  
 @media (max-width: 768px) {
-  .top-bar {
-  font-size: 12px;
-}
-
-.navbar-nav,
-.navbar-text {
-    font-size: 12px;
-    margin: 0;
-  }  
-
-  .main-nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .nav-link {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .nav-link li {
-    margin: 0 0 10px 0;
-  }
-
-  .nav-link a {
-    display: block;
-    padding: 10px;
-  }
-
   .header-main {
     flex-direction: column;
     align-items: center;
   }
 
-  .logo-image {
-    margin: 0;
+  .logo-container a {
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
   }
 
-  .logo-container a {
-    flex-direction: column;
-    text-align: center;
+  .logo-image {
+    margin: 0 10px 0 0; 
+    width: 90px; 
+  }
+
+  .main-title {
+    font-size: 1.4rem; 
+  }
+
+  .subtitle {
+    font-size: .8rem; 
   }
 
   .search-bar {
@@ -597,7 +578,6 @@ logo-container a:hover {
   .hero-section {
     height: auto;
     min-height: 60vh;
-    /* min-width: 50vw; */
     padding: 40px 20px;
     align-items: center;
     text-align: center;
@@ -623,14 +603,14 @@ logo-container a:hover {
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-  
+
   .category-nav .nav {
     flex-direction: column;
   }
-  
+
   .category-nav .nav-item {
     margin: 5px 0;
-  } 
+  }
 
   .category-nav .dropdown-item {
     padding: 0.5rem 1rem;

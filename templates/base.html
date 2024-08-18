@@ -81,6 +81,7 @@
   <body>
     {% block page_header %}
     <header>
+      <!-- TOP BAR -->
       <div
         class="top-bar d-flex justify-content-center 
         align-items-center flex-column flex-md-row"
@@ -94,7 +95,8 @@
             >
         </div>
       </div>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-0">
+      <!-- NAVBAR: MAIN MENU -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-secondary py-1">
         <div
           class="container-fluid d-flex flex-column flex-md-row 
           align-items-center justify-content-between"
@@ -127,10 +129,12 @@
           </span>
         </div>
       </nav>
+      <!-- NAVBAR: SEARCH, BAG, CURRENCY -->
       <div
         class="header-main container-fluid d-flex justify-content-between 
         align-items-center px-5 py-2 justfy-content-md-center"
         >
+        <!-- Search bar -->
         <div class="search-bar">
           <input
             type="text"
@@ -142,6 +146,7 @@
           </button>
           <div id="suggestions" class="suggestions"></div>
         </div>
+        <!-- Logo image -->
         <div class="logo-container">
           <a href="{% url 'books:index' %}">
             <img
@@ -149,17 +154,20 @@
               alt="The Literary Loft Logo"
               class="logo-image"
               />
+            <!-- Logo text -->
             <div class="logo-text">
               <h1 class="main-title">The Literary Loft</h1>
               <p class="subtitle">There is no friend as loyal as a book</p>
             </div>
           </a>
         </div>
+        <!-- User actions BAG -->
         <div class="user-actions">
           <a href="#" class="cart-icon">
           <i class="fas fa-shopping-bag"></i>
           <span class="cart-count" id="cart-count">0</span>
           </a>
+          <!-- User actions CURRENCY-->
           <div class="currency-select-wrapper">
             <select class="currency-select" id="currencySelect">
               <option
@@ -193,6 +201,7 @@
           {% endif %}
         </div>
       </div>
+      <!-- NAVBAR: CATEGORIES -->
       <nav class="category-nav">
         <div class="container">
           <ul class="nav justify-content-center">
