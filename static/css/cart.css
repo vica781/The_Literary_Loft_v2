@@ -11,12 +11,70 @@
     background-color: #c8ccd2;
     border-color: #9da0a5;
 }
+
+.quantity-form {
+    display: inline-block;
+  }
+  .quantity-input {
+    width: 50px;
+  }
 /* ------------------------------Responsivness------------------------------ */
 @media (max-width: 768px) {
-  .book-cover img {
-    max-width: 70%;
-    height: auto;
-  }
+    .table {
+        width: 100%;
+        display: block;
+        overflow-x: auto;
+    }
 
-  
+    .table thead {
+        display: none;
+    }
+
+    .table tr {
+        display: block;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        padding: 0.5rem 0;
+    }
+
+    .table td:before {
+        content: attr(data-label);
+        font-weight: bold;
+        text-transform: capitalize;
+    }
+
+    .quantity-form {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .quantity-input {
+        width: 50px;
+        margin-right: 0.5rem;
+        text-align: center;
+    }
+
+    .table td:last-child {
+        text-align: center;
+        flex-direction: column;
+        margin-top: 0.5rem;
+    }
+
+    .checkout-btn {
+        width: 100%;
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .remove-btn {
+        width: 100%;
+    }
 }

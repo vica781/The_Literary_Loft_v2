@@ -139,6 +139,7 @@ def add_to_cart(request, book_id):
     messages.success(request, f'Added {book.title} to your bag')
     return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
 
+# VIEW CART
 def view_cart(request):
     cart = request.session.get('cart', {})
     cart_items = []
@@ -154,6 +155,39 @@ def view_cart(request):
             'total': item_total
         })
     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total': total})
+
+# UPDATE CART
+def update_cart(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        quantity = int(request.POST.get('quantity'))
+        
+        cart = request.session.get('cart', {})
+        
+        if book_id in cart:
+            if quantity > 0:
+                cart[book_id]['quantity'] = quantity
+                messages.success(request, "Cart updated successfully.")
+            else:
+                del cart[book_id]
+                messages.success(request, "Item removed from cart.")
+        
+        request.session['cart'] = cart
+    return redirect('books:view_cart')
+
+# REMOVE FROM CART
+def remove_from_cart(request):
+    if request.method == 'POST':
+        book_id = request.POST.get('book_id')
+        
+        cart = request.session.get('cart', {})
+        
+        if book_id in cart:
+            del cart[book_id]
+            messages.success(request, "Item removed from cart.")
+        
+        request.session['cart'] = cart
+    return redirect('books:view_cart')
 
 # PAYMENT PROCESS
 def calculate_order_amount(request):
