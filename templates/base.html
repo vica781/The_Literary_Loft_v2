@@ -158,9 +158,9 @@
         </div>
         <!-- User actions BAG -->
         <div class="user-actions">
-          <a href="#" class="cart-icon">
+          <a href="{% url 'books:view_cart' %}" class="cart-icon">
             <i class="fas fa-shopping-bag"></i>
-            <span class="cart-count" id="cart-count">0</span>
+            <span class="cart-count" id="cart-count">{{ cart_count }}</span>
           </a>
           <!-- User actions CURRENCY-->
           <div class="currency-select-wrapper">

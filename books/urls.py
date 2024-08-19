@@ -20,4 +20,5 @@ urlpatterns = [
     path('book_list/', views.book_list, name='book_list_alt'),  # Alternative for listing all books
     path('search/', views.search_books, name='search_books'),
     path('search-suggestions/', views.search_suggestions, name='search_suggestions'),
+    path('cart/', views.view_cart, name='view_cart'),
 ]

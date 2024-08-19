@@ -1,12 +1,13 @@
-{% extends 'base.html' %} {% load static %} 
+{% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 <title>Book Details - The Literary Loft</title>
-{% endblock %} 
+{% endblock %}
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/book_details.css' %}" />
-{% endblock %} 
+{% endblock %}
 
 {% block content %}
 <div class="container book-detail">
@@ -22,29 +23,31 @@
   <div class="row book-header">
     <div class="col-md-4 book-cover">
       {% if book.cover_image %}
-<img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" />
-{% else %}
-<p>No cover image available</p>
-{% endif %}
+        <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" class="img-fluid" />
+      {% else %}
+        <p>No cover image available</p>
+      {% endif %}
     </div>
     <div class="col-md-4 book-info">
-    <h1>{{ book.title }}</h1>
-    <p>By {{ book.author }}</p>
-    <p>Pages: {{ book.pages }} | Published: {{ book.publication_date }}</p>
-    <form method="post" action="{% url 'books:add_to_cart' book.id %}">
-      {% csrf_token %}
-      <div class="form-group">
-        <label for="quantity">Quantity:</label>
-        <select class="form-control" name="quantity" id="quantity">
-          {% for i in "1234567890"|make_list %}
-          <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
-          {% endfor %}
-        </select>
+      <h1>{{ book.title }}</h1>
+      <p>By {{ book.author }}</p>
+      <p>Pages: {{ book.pages }} | Published: {{ book.publication_date }}</p>
+      <div class="book-price">
+        £{{ book.price|floatformat:2 }}
       </div>
-      <p>£{{ book.price }}</p>
-      <button type="submit" class="btn btn-primary">ADD TO BAG</button>
-    </form>
-  </div>
+      <form method="post" action="{% url 'books:add_to_cart' book.id %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="quantity">Quantity:</label>
+          <select class="form-control" name="quantity" id="quantity" style="width: auto; display: inline-block;">
+            {% for i in "1234567890"|make_list %}
+            <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <button type="submit" class="btn add_to_cart mt-3">ADD TO BAG</button>
+      </form>
+    </div>
     <div class="col-md-4 book-summary">
       <h2>Summary</h2>
       <p>{{ book.description|truncatewords:70|safe }}</p>
@@ -55,81 +58,33 @@
     <div class="col-12">
       <ul class="nav nav-tabs" id="bookTabs" role="tablist">
         <li class="nav-item">
-          <a
-            class="nav-link active"
-            id="summary-tab"
-            data-toggle="tab"
-            href="#summary"
-            role="tab"
-            >Summary</a
-          >
+          <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab">Summary</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            id="author-tab"
-            data-toggle="tab"
-            href="#author"
-            role="tab"
-            >Author</a
-          >
+          <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab">Author</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            id="details-tab"
-            data-toggle="tab"
-            href="#details"
-            role="tab"
-            >Product Details</a
-          >
+          <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab">Product Details</a>
         </li>
         <li class="nav-item">
-          <a
-            class="nav-link"
-            id="review-tab"
-            data-toggle="tab"
-            href="#review"
-            role="tab"
-            >Review</a
-          >
+          <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab">Review</a>
         </li>
       </ul>
       <div class="tab-content" id="bookTabsContent">
-        <div
-          class="tab-pane fade show active"
-          id="summary"
-          role="tabpanel"
-          aria-labelledby="summary-tab"
-        >
+        <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
           <p>{{ book.description|safe }}</p>
         </div>
-        <div
-          class="tab-pane fade"
-          id="author"
-          role="tabpanel"
-          aria-labelledby="author-tab"
-        >
+        <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
           <p>{{ book.about_author|safe }}</p>
         </div>
-        <div
-          class="tab-pane fade"
-          id="details"
-          role="tabpanel"
-          aria-labelledby="details-tab"
-        >
+        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
           <p>ISBN: {{ book.isbn }}</p>
           <p>Pages: {{ book.pages }}</p>
           <p>Published: {{ book.publication_date }}</p>
           <p>Category: {{ book.subcategory.category }}</p>
           <p>Subcategory: {{ book.subcategory }}</p>
         </div>
-        <div
-          class="tab-pane fade"
-          id="review"
-          role="tabpanel"
-          aria-labelledby="review-tab"
-        >
+        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
           <p>{{ book.review|safe }}</p>
         </div>
       </div>

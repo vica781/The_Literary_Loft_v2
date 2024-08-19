@@ -127,9 +127,33 @@ def book_detail(request, id):
 # ADD TO CART
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    # Here add the logic to add the book to the cart
-    # For now, just redirect back to the book detail page
-    return redirect('books:book_detail', id=book_id)
+    cart = request.session.get('cart', {})
+    quantity = int(request.POST.get('quantity', 1))
+
+    if str(book_id) in cart:
+        cart[str(book_id)]['quantity'] += quantity
+    else:
+        cart[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}
+
+    request.session['cart'] = cart
+    messages.success(request, f'Added {book.title} to your bag')
+    return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
+
+def view_cart(request):
+    cart = request.session.get('cart', {})
+    cart_items = []
+    total = 0
+    for book_id, item in cart.items():
+        book = Book.objects.get(id=int(book_id))
+        item_total = item['quantity'] * float(item['price'])
+        total += item_total
+        cart_items.append({
+            'book': book,
+            'quantity': item['quantity'],
+            'price': item['price'],
+            'total': item_total
+        })
+    return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total': total})
 
 # PAYMENT PROCESS
 def calculate_order_amount(request):

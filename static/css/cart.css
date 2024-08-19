@@ -1,0 +1,22 @@
+.checkout-btn {
+    color: #fff;
+    background-color: #4d5252;
+    border-color: #4d5252;
+    font-weight: bolder;
+    margin-top: 1.5rem;
+}
+
+.checkout-btn:hover {
+    color: #4d5252;
+    background-color: #c8ccd2;
+    border-color: #9da0a5;
+}
+/* ------------------------------Responsivness------------------------------ */
+@media (max-width: 768px) {
+  .book-cover img {
+    max-width: 70%;
+    height: auto;
+  }
+
+  
+}
