@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'books',
     'django_ckeditor_5',
     'storages',
+    'checkout',
 ]
 
 MIDDLEWARE = [
