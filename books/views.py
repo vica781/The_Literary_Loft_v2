@@ -9,7 +9,12 @@ from django.shortcuts import get_object_or_404
 from .models import Book, Category, Subcategory
 from django.conf import settings
 import stripe
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
+from django.http import HttpResponseBadRequest
+import uuid
+from django.contrib.auth.decorators import login_required
+from .models import Order, OrderItem
+from django.views.decorators.csrf import csrf_exempt
 
 
 # USER REGISTRATION / LOGIN / LOGOUT
@@ -212,5 +217,96 @@ def process_payment(request):
     except stripe.error.StripeError as e:
         # Handle error
         messages.error(request, "An error occurred during payment processing.")
-        return redirect('books:checkout')  # Adjust redirect as needed
+        return redirect('books:checkout')  # to adjust redirect
+    
+    # CHECKOUT
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    
+    def checkout(request):
+        cart = request.session.get('cart', {})
+        if not cart:
+            messages.error(request, "Your cart is empty")
+            return redirect('books:book_list')
 
+    total = calculate_order_amount(request)
+    intent = stripe.PaymentIntent.create(
+        amount=total,
+        currency=settings.STRIPE_CURRENCY,
+    )
+
+    context = {
+        'client_secret': intent.client_secret,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'cart_items': cart,
+        'total': total / 100,  # Convert back to pounds for display
+    }
+    return render(request, 'books/checkout.html', context)
+
+# STRIPE WEBHOOK
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META['HTTP_STRIPE_SIGNATURE']
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WH_SECRET
+        )
+    except ValueError as e:
+        # Invalid payload
+        return HttpResponse(status=400)
+    except stripe.error.SignatureVerificationError as e:
+        # Invalid signature
+        return HttpResponse(status=400)
+
+    # Handle the event
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        handle_successful_payment_intent(payment_intent)
+    # ... handle other event types
+
+    return HttpResponse(status=200)
+
+def stripe_webhook(request):
+    if request.method != "POST":
+        return HttpResponseBadRequest("Invalid request method")
+
+def handle_successful_payment_intent(payment_intent):
+    # Logic to handle the successful payment
+    # e.g., updating order status, sending a confirmation email, etc.
+    pass
+
+# ORDER CONFIRMATION
+def order_success(request):
+    cart = request.session.get('cart', {})
+    if not cart:
+        messages.error(request, "Your cart is empty.")
+        return redirect('books:book_list')
+
+    total = calculate_order_amount(request) / 100  # Convert back to pounds
+    order = Order.objects.create(
+        user=request.user,
+        order_number=str(uuid.uuid4()),
+        total_amount=total,
+    )
+
+    for book_id, item in cart.items():
+        book = Book.objects.get(id=book_id)
+        OrderItem.objects.create(
+            order=order,
+            book=book,
+            quantity=item['quantity'],
+            price=item['price'],
+        )
+
+    # Clear the cart after successful order
+    request.session['cart'] = {}
+
+    return render(request, 'books/order_success.html', {'order': order})
+
+# ORDER HISTORY
+@login_required
+def order_history(request):
+    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    return render(request, 'books/order_history.html', {'orders': orders})

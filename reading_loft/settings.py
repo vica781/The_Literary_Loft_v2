@@ -200,9 +200,9 @@ if 'USE_AWS' in os.environ:
     MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
     
 # Stripe Settings
-STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', 'pk_test_51P9WJ2Rv8IFW2dKdJjHhr3rnX8ub5gQ0')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', 'sk_test_51P9WJ2Rv8IFW2dKdO4yPaBaRSVcigNSV')
-STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', 'whsec_wLdmndl4KWImb1STyeCyWqysotfDcpbE')
+STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET')
 
 # Currency and delivery settings
 STRIPE_CURRENCY = 'gbp'

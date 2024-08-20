@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Order History - The Literary Loft</title>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Your Order History</h1>
+    {% if orders %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr>
+                    <td>{{ order.order_number }}</td>
+                    <td>{{ order.created_at }}</td>
+                    <td>£{{ order.total_amount }}</td>
+                    <td><a href="{% url 'books:order_detail' order.id %}">View Details</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You have no previous orders.</p>
+    {% endif %}
+</div>
+{% endblock %}
