@@ -50,6 +50,7 @@ class OrderItem(models.Model):
     book = models.ForeignKey(Book, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(null=False, blank=False, default=0)
     price = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, editable=False)
+    item_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, blank=False, editable=False)
 
     def save(self, *args, **kwargs):
         self.item_total = self.book.price * self.quantity
