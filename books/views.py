@@ -8,6 +8,7 @@ from .models import Book, Category, Subcategory
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
+
 # USER REGISTRATION / LOGIN / LOGOUT
 def register(request):
     if request.method == 'POST':

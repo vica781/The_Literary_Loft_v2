@@ -6,8 +6,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
-    path('', include('books.urls')),  # Include the books app URLs
+    path('', include('books.urls')),  # the books app URLs
     path('ckeditor5/', include('django_ckeditor_5.urls')),
+    path('checkout/', include('checkout.urls')),  # the checkout app URLs
 ]
 
 # Serve static and media files in development

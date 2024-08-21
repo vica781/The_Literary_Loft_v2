@@ -47,10 +47,14 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',   
-    'books',
-    'django_ckeditor_5',
+    'books',    
     'storages',
     'checkout',
+        
+    # other apps
+    'crispy_forms',
+    'crispy_bootstrap4',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +70,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'reading_loft.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -80,7 +86,12 @@ TEMPLATES = [
                 'django.template.context_processors.request', #requiered by allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'books.context_processors.cart_contents',
+            ],
+            'builtins': [ 
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field', 
             ],
         },
     },
