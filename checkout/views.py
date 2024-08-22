@@ -27,7 +27,7 @@ def handle_successful_payment_intent(payment_intent):
 
 
 # Main Views
-def checkout(request):  # checkout view
+def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
         messages.error(request, "There is nothing in your bag at the moment. Please, add items to your bag before checking out.")
@@ -38,7 +38,16 @@ def checkout(request):  # checkout view
         if form.is_valid():
             order = form.save(commit=False)
             total = calculate_order_amount(request) / 100  # Convert back to pounds
-            order.total_amount = total
+            order.order_total = total
+            
+            # Calculate delivery cost
+            if total < settings.FREE_DELIVERY_THRESHOLD:
+                delivery_cost = total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+            else:
+                delivery_cost = 0
+            
+            order.delivery_cost = delivery_cost
+            order.grand_total = total + delivery_cost
             order.order_number = str(uuid.uuid4())
             order.save()
 
@@ -83,10 +92,20 @@ def checkout(request):  # checkout view
             'total': item_total
         })
 
+    # Calculate delivery cost
+    if total_display < settings.FREE_DELIVERY_THRESHOLD:
+        delivery = total_display * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+    else:
+        delivery = 0
+
+    grand_total = total_display + delivery
+
     context = {
         'order_form': form,
         'cart_items': cart_items,
         'total': total_display,
+        'delivery': delivery,
+        'grand_total': grand_total,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
