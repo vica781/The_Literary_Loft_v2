@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} 
+{% extends 'base.html' %} 
+{% load static %} 
 
 {% block title %}
 <title>Shopping Bag - The Literary Loft</title>
@@ -23,52 +24,63 @@
       </tr>
     </thead>
     <tbody>
-  {% for item in cart_items %}
-  <tr>
-    <td data-label="Book">{{ item.book.title }}</td>
-    <td data-label="Quantity">
-      <form
-        method="post"
-        action="{% url 'books:update_cart' %}"
-        class="quantity-form"
-      >
-        {% csrf_token %}
-        <input type="hidden" name="book_id" value="{{ item.book.id }}" />
-        <input
-          type="number"
-          name="quantity"
-          value="{{ item.quantity }}"
-          min="1"
-          class="quantity-input"
-        />
-        <button type="submit" class="btn btn-sm btn-secondary">
-          Update
-        </button>
-      </form>
-    </td>
-    <td data-label="Price">£{{ item.price|floatformat:2 }}</td>
-    <td data-label="Total">£{{ item.total|floatformat:2 }}</td>
-    <td data-label="Actions">
-      <button
-        type="button"
-        class="btn btn-sm btn-danger remove-btn"
-        data-toggle="modal"
-        data-target="#removeModal"
-        data-book-id="{{ item.book.id }}"
-        data-book-title="{{ item.book.title }}"
-      >
-        Remove
-      </button>
-    </td>
-  </tr>
-  {% endfor %}
-</tbody>
-
+      {% for item in cart_items %}
+      <tr>
+        <td data-label="Book">{{ item.book.title }}</td>
+        <td data-label="Quantity">
+          <form
+            method="post"
+            action="{% url 'books:update_cart' %}"
+            class="quantity-form"
+          >
+            {% csrf_token %}
+            <input type="hidden" name="book_id" value="{{ item.book.id }}" />
+            <input
+              type="number"
+              name="quantity"
+              value="{{ item.quantity }}"
+              min="1"
+              max="99"
+              class="quantity-input"
+            />
+            <button type="submit" class="btn btn-sm btn-secondary">
+              Update
+            </button>
+          </form>
+        </td>
+        <td data-label="Price">£{{ item.price|floatformat:2 }}</td>
+        <td data-label="Total">£{{ item.total|floatformat:2 }}</td>
+        <td data-label="Actions">
+          <button
+            type="button"
+            class="btn btn-sm btn-danger remove-btn"
+            data-toggle="modal"
+            data-target="#removeModal"
+            data-book-id="{{ item.book.id }}"
+            data-book-title="{{ item.book.title }}"
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
   </table>
   <h3>Total: £{{ total|floatformat:2 }}</h3>
-  <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn">Proceed to Checkout</a>
+  <div class="d-flex justify-content-between">
+    <a href="{% url 'books:book_list' %}" class="btn continue-shopping-btn"
+      >Continue Shopping</a
+    >
+    <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn"
+      >Proceed to Checkout</a
+    >
+  </div>
   {% else %}
   <p>Your bag is empty.</p>
+  <div id="hero-content" class="hero-content">
+    <h2>Your sanctuary for loyal literary friends</h2>
+    <a href="{% url 'books:book_list' %}" class="cta-button">Shop Now</a>
+  </div>
   {% endif %}
 </div>
 
@@ -114,8 +126,6 @@
     </div>
   </div>
 </div>
-{% endblock %} 
-
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script src="{% static 'js/remove_from_bag_btn.js' %}"></script>
 {% endblock %}

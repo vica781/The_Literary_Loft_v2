@@ -1,3 +1,4 @@
+.continue-shopping-btn,
 .checkout-btn {
     color: #fff;
     background-color: #4d5252;
@@ -6,6 +7,7 @@
     margin-top: 1.5rem;
 }
 
+.continue-shopping-btn:hover,
 .checkout-btn:hover {
     color: #4d5252;
     background-color: #c8ccd2;
@@ -68,11 +70,16 @@
         margin-top: 0.5rem;
     }
 
+    .continue-shopping-btn,
     .checkout-btn {
-        width: 100%;
+        width: 100%;        
         text-align: center;
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
+
+    .d-flex.justify-content-between {
+    flex-direction: column;
+}
 
     .remove-btn {
         width: 100%;
