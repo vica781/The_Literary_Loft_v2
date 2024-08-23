@@ -43,7 +43,9 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
       crossorigin="anonymous"
     />
-    {% endblock %} {% block extra_css %}
+    {% endblock %} 
+    
+    {% block extra_css %}
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -65,14 +67,17 @@
         $(".dropdown-toggle").dropdown();
       });
     </script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
     {% endblock %} 
+        
     {% block extra_js %}
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/flags.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-    <script src="{% static 'js/category_nav.js' %}"></script>
-    <script src="{% static 'js/checkout.js' %}"></script>
+    <script src="{% static 'js/category_nav.js' %}"></script>    
     {% endblock %} 
+    
     {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
