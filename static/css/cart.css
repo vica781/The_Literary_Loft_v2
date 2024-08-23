@@ -1,3 +1,19 @@
+.continue-shopping-btn,
+.checkout-btn {
+    color: #fff;
+    background-color: #4d5252;
+    border-color: #4d5252;
+    font-weight: bolder;
+    margin-top: 1.5rem;
+}
+
+.continue-shopping-btn:hover,
+.checkout-btn:hover {
+    color: #4d5252;
+    background-color: #c8ccd2;
+    border-color: #c8ccd2;
+}
+
 .quantity-form {
     display: inline-block;
   }
