@@ -16,6 +16,13 @@ body {
   font-family: "Nunito", sans-serif;
 }
 
+.cart-page .category-nav,
+.cart-page .navbar-toggler,
+.checkout-page .category-nav,
+.checkout-page .navbar-toggler {
+    display: none !important;
+}
+
 /* --------------------------------Fonts----------------------------------- */
 .libre-baskerville {
   font-family: "Libre Baskerville", serif;

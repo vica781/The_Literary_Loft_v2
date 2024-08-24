@@ -35,7 +35,9 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
-    {% endblock %} {% block corecss %}
+    {% endblock %} 
+    
+    {% block corecss %}
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -45,12 +47,14 @@
     />
     {% endblock %} 
     
-    {% block extra_css %}
+    {% block extra_css %} 
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    {% endblock %} {% block corejs %}
+    {% endblock %} 
+    
+    {% block corejs %}
     <!-- jQuery, Popper.js, Bootstrap JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
@@ -70,19 +74,21 @@
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %} 
-        
+    
     {% block extra_js %}
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/flags.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
-    <script src="{% static 'js/category_nav.js' %}"></script>    
+    <script src="{% static 'js/category_nav.js' %}"></script>
     {% endblock %} 
     
     {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
-  </head>
-  <body>
+  </head>  
+  <body
+    class="{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}"
+  >
     {% block page_header %}
     <header>
       <!-- TOP BAR -->
@@ -203,6 +209,7 @@
         </div>
       </div>
       <!-- NAVBAR: CATEGORIES -->
+      {% if not request.path == '/cart/' and not request.path == '/checkout/' %}
       <nav class="category-nav">
         <div class="container">
           <!-- Button for toggling the navbar -->
@@ -328,8 +335,11 @@
           </ul>
         </div>
       </nav>
+      {% endif %}
     </header>
-    {% endblock %} {% if messages %}
+    {% endblock %} 
+    
+    {% if messages %}
     <div class="container mt-3">
       {% for message in messages %}
       <div
@@ -348,12 +358,17 @@
       </div>
       {% endfor %}
     </div>
-    {% endif %}     
+    {% endif %} 
+    
     {% block hero_content %} 
-    {% endblock %} {% block content %} 
     {% endblock %} 
+    
+    {% block content %} 
+    {% endblock %} 
+    
     {% block page_footer %} 
     {% endblock %} 
+    
     {% block postloadjs %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

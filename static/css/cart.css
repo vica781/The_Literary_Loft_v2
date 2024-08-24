@@ -9,12 +9,17 @@
 }
 
 /* --------------------------------Global----------------------------------- */
+.main-nav-separator {
+    border-bottom: 1px solid #ddd; 
+    margin-bottom: 20px; 
+}
+
 .bag-heading {
   font-family: "Libre Baskerville", serif;
   font-weight: 700;
   font-size: 2rem;
   margin-bottom: 20px;
-  margin-top: 20px;
+  margin-top: 50px;
   color: #4d5252;
   text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
 }
@@ -124,7 +129,6 @@
   outline: none;
 }
 
-
 /* -------------------------------Responsive styles------------------------- */
 @media (max-width: 768px) {
   .table {
@@ -187,6 +191,7 @@
 
   .bag-heading {
     font-size: 1.5rem;
+    margin-top: 10px;
   }
 
   .bag-empty {
