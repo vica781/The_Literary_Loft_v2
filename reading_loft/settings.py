@@ -228,8 +228,6 @@ DEFAULT_FROM_EMAIL = 'theliteraryloft@example.com'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
-
 # CKEditor settings 
 CKEDITOR_5_CONFIGS = {
     'default': {

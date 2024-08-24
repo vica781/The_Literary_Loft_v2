@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="container">
-  <h1>Your Shopping Bag</h1>
+  <h1 class="bag-heading">Your Shopping Bag</h1>
   {% if cart_items %}
   <table class="table">
     <thead>
@@ -76,10 +76,14 @@
     >
   </div>
   {% else %}
-  <p>Your bag is empty.</p>
-  <div id="hero-content" class="hero-content">
-    <h2>Your sanctuary for loyal literary friends</h2>
-    <a href="{% url 'books:book_list' %}" class="cta-button">Shop Now</a>
+  <p class="d-flex bag-empty">
+    There is nothing in your bag at the moment. Please, add items to your bag.
+  </p>
+  <div class="hero-content cart-hero-content">
+    <h2 class="hero-title">Your sanctuary for loyal literary friends</h2>
+    <a href="{% url 'books:book_list' %}" class="cta-button cart-cta-btn">
+      Shop Now
+    </a>
   </div>
   {% endif %}
 </div>
@@ -126,6 +130,8 @@
     </div>
   </div>
 </div>
-{% endblock %} {% block extra_js %}
+{% endblock %} 
+
+{% block extra_js %}
 <script src="{% static 'js/remove_from_bag_btn.js' %}"></script>
 {% endblock %}

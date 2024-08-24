@@ -30,7 +30,8 @@ def handle_successful_payment_intent(payment_intent):
 def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
-        messages.error(request, "There is nothing in your bag at the moment. Please, add items to your bag before checking out.")
+        messages.error(request, "There is nothing in your bag at the moment. \
+            Please, add items to your bag before checking out.")
         return redirect('books:book_list')
 
     if request.method == 'POST':
@@ -67,6 +68,11 @@ def checkout(request):
         form = OrderForm()
 
     # Calculate total and create PaymentIntent
+    if not settings.STRIPE_PUBLIC_KEY:
+        messages.error(request, "Stripe public key is missing. \
+            Make sure you have set it in your environment variables.")
+        return redirect('checkout:checkout')
+    
     total = calculate_order_amount(request)
     try:
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -168,22 +174,3 @@ def order_success(request):
 def order_history(request):
     orders = Order.objects.filter(user=request.user).order_by('-created_at')
     return render(request, 'checkout/order_history.html', {'orders': orders})
-
-
-# Deprecated or Unused Views (deside whether to keep or remove after testing)
-
-# def process_payment(request):
-#     currency = request.session.get('currency', 'gbp')
-#     amount = calculate_order_amount(request)
-
-#     try:
-#         stripe.api_key = settings.STRIPE_SECRET_KEY
-#         intent = stripe.PaymentIntent.create(
-#             amount=amount,  # Amount in pence
-#             currency=currency,
-#             payment_method_types=["card"],
-#         )
-#         return render(request, 'payment.html', {'client_secret': intent.client_secret})
-#     except stripe.error.StripeError:
-#         messages.error(request, "An error occurred during payment processing.")
-#         return redirect('checkout:checkout')

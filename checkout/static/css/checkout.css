@@ -1,3 +1,26 @@
+.checkout-heading {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #4d5252;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+}
+
+.checkout-total {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #4d5252;
+    margin-top: 20px;
+}
+
+.checkout-form {
+    font-family: "Nunito", sans-serif;
+    margin-top: 20px;
+}
+
 .continue-shopping-btn,
 .checkout-btn {
     color: #fff;
@@ -54,12 +77,21 @@
 
 /* ------------------------------Responsivness------------------------------ */
 @media (max-width: 768px) {
+.checkout-heading {
+    font-size: 1.5rem;
+}
+
+.checkout-total {
+    font-size: 1.2rem;
+}
+
 .continue-shopping-btn,
 .checkout-btn {
     width: 100%;        
     text-align: center;
     margin-top: 1rem;
 }
+
 .d-flex.justify-content-between {
     flex-direction: column;
 }
