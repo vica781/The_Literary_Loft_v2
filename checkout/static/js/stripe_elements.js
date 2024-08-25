@@ -53,13 +53,14 @@ card.addEventListener('change', function (event) {
 let form = document.getElementById('payment-form');
 form.addEventListener('submit', function (ev) {
     ev.preventDefault();
+    console.log("Form submitted, starting payment process...");
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
     $('#payment-form').fadeToggle(100);
     $('#loading-overlay').fadeToggle(100);
 
     // Get the boolean value of the save_info checkbox
-    let saveInfo = Boolean($('#id-save-info').attr('checked'));
+    let saveInfo = Boolean($('#id-save-info').prop('checked'));
 
     // From using the {% csrf_token %} in the form
     let csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
@@ -71,6 +72,7 @@ form.addEventListener('submit', function (ev) {
     let url = '/checkout/cache_checkout_data/';
 
     $.post(url, postData).done(function () {
+        console.log("Cache checkout data success, confirming card payment...");
         stripe.confirmCardPayment(stripe_client_secret, {
             payment_method: {
                 card: card,
@@ -89,6 +91,7 @@ form.addEventListener('submit', function (ev) {
             }
         }).then(function (result) {
             if (result.error) {
+                console.error("Payment failed:", result.error.message);
                 let errorDiv = document.getElementById('card-errors');
                 let html = `
                     <span class="icon" role="alert">
@@ -100,20 +103,18 @@ form.addEventListener('submit', function (ev) {
                 $('#loading-overlay').fadeToggle(100);
                 card.update({ 'disabled': false });
                 $('#submit-button').attr('disabled', false);
-            }
-            else {
+            } else {
+                console.log("Payment successful, payment intent status:", result.paymentIntent.status);
                 if (result.paymentIntent.status === 'succeeded') {
                     form.submit();
+                } else {
+                    console.error("Unexpected payment intent status:", result.paymentIntent.status);
                 }
             }
-        }
-        );
-    }
-    ).fail(function () {
-        // just reload the page, the error will be in django messages
+        });
+    }).fail(function (jqXHR, textStatus, errorThrown) {
+        console.error("Cache checkout data failed:", textStatus, errorThrown);
+        // Just reload the page, the error will be in django messages
         location.reload();
-    }
-    );
-}
-);
-
+    });
+});

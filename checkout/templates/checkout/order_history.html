@@ -21,9 +21,9 @@
                 {% for order in orders %}
                 <tr>
                     <td>{{ order.order_number }}</td>
-                    <td>{{ order.created_at }}</td>
+                    <td>{{ order.date }}</td>
                     <td>£{{ order.total_amount }}</td>
-                    <td><a href="{% url 'books:order_detail' order.id %}">View Details</a></td>
+                    <td><a href="{% url 'checkout:order_history' %}">order history here</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

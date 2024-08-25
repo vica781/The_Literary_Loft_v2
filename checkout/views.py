@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 
 import stripe
@@ -11,7 +12,6 @@ import uuid
 from .models import Order, OrderItem
 from books.models import Book
 from .forms import OrderForm
-
 
 # Helper Functions
 
@@ -24,7 +24,6 @@ def calculate_order_amount(request):
 def handle_successful_payment_intent(payment_intent):
     # Logic to handle successful payment
     pass
-
 
 # Main Views
 def checkout(request):
@@ -63,7 +62,7 @@ def checkout(request):
             request.session['cart'] = {}
             messages.success(request, "Order placed successfully.")
             
-            return redirect('books:order_success')
+            return redirect('checkout:order_success')
     else:
         form = OrderForm()
 
@@ -118,6 +117,29 @@ def checkout(request):
 
     return render(request, 'checkout/checkout.html', context)
 
+@require_POST
+@csrf_exempt
+def cache_checkout_data(request):
+    try:
+        # Retrieve the payment intent ID and other data
+        payment_intent_id = request.POST.get('client_secret').split('_secret')[0]
+        save_info = request.POST.get('save_info')
+
+        # Optionally update the payment intent with additional metadata
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        stripe.PaymentIntent.modify(
+            payment_intent_id,
+            metadata={
+                'user': request.user.id,
+                'save_info': save_info,
+                'cart': str(request.session.get('cart', {}))
+            }
+        )
+
+        return JsonResponse({'success': True})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
+
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -146,7 +168,7 @@ def order_success(request):
     cart = request.session.get('cart', {})
     if not cart:
         messages.error(request, "Your cart is empty.")
-        return redirect('books:book_list')
+        return render(request, 'checkout/order_success.html')
 
     total = calculate_order_amount(request) / 100  # Convert back to pounds
     order = Order.objects.create(
@@ -172,5 +194,5 @@ def order_success(request):
 
 @login_required
 def order_history(request):
-    orders = Order.objects.filter(user=request.user).order_by('-created_at')
+    orders = Order.objects.filter(user=request.user).order_by('-date')
     return render(request, 'checkout/order_history.html', {'orders': orders})

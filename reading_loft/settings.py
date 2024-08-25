@@ -219,7 +219,7 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET')
 # Currency and delivery settings
 STRIPE_CURRENCY = 'gbp'
 FREE_DELIVERY_THRESHOLD = 20  # In GBP
-STANDARD_DELIVERY_PERCENTAGE = 10  # Delivery charge percentage for orders under the threshold
+STANDARD_DELIVERY_COST = 10  # Delivery charge percentage for orders under the threshold
 
 # Default email settings
 DEFAULT_FROM_EMAIL = 'theliteraryloft@example.com'

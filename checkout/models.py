@@ -8,7 +8,8 @@ from books.models import Book
 
 # ORDER INFORMATION
 class Order(models.Model):
-    order_number = models.CharField(max_length=32, null=False, editable=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True, related_name='orders')
+    order_number = models.CharField(max_length=36, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
     phone_number = models.CharField(max_length=20, null=False, blank=False)
