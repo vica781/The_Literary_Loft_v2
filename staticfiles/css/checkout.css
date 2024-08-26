@@ -1,0 +1,107 @@
+/* Divider line below the main navigation */
+.main-nav-separator {
+    border-bottom: 1px solid #ddd; 
+    margin-bottom: 20px; 
+}
+
+.checkout-heading {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: #4d5252;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+}
+
+.checkout-total {
+    font-family: "Nunito", sans-serif;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    color: #4d5252;
+    margin-top: 20px;
+}
+
+.checkout-form {
+    font-family: "Nunito", sans-serif;
+    margin-top: 20px;
+}
+
+.continue-shopping-btn,
+.checkout-btn {
+    color: #fff;
+    background-color: #4d5252;
+    border-color: #4d5252;
+    font-weight: bolder;
+    margin-top: 1.5rem;
+}
+
+.continue-shopping-btn:hover,
+.checkout-btn:hover {
+    color: #4d5252;
+    background-color: #c8ccd2;
+    border-color: #c8ccd2;
+}
+
+.StripeElement,
+.stripe-style-input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+}
+
+.StripeElement--focus,
+.stripe-style-input:focus,
+.stripe-style-input:active {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.StripeElement--webkit-autofill {
+  background-color: #fefde5 !important;
+}
+
+.stripe-style-input::placeholder {
+    color: #aab7c4;
+}
+
+.fieldset-label {
+    position: relative;
+    right: .5rem;
+}
+
+#payment-form .form-control,
+#card-element {
+    color: #000;
+    border: 1px solid #000;
+}
+
+/* ------------------------------Responsivness------------------------------ */
+@media (max-width: 768px) {
+.checkout-heading {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.checkout-total {
+    font-size: 1.2rem;
+    margin-top: 0;
+}
+
+.continue-shopping-btn,
+.checkout-btn {
+    width: 100%;        
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.d-flex.justify-content-between {
+    flex-direction: column;
+}
+}

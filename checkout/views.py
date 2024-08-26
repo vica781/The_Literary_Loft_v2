@@ -42,7 +42,7 @@ def checkout(request):
             
             # Calculate delivery cost
             if total < settings.FREE_DELIVERY_THRESHOLD:
-                delivery_cost = total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+                delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
             else:
                 delivery_cost = 0
             
@@ -99,7 +99,7 @@ def checkout(request):
 
     # Calculate delivery cost
     if total_display < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total_display * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+        delivery = total_display * settings.STANDARD_DELIVERY_COST / 100
     else:
         delivery = 0
 
