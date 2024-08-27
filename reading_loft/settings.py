@@ -14,6 +14,7 @@ import dj_database_url
 from pathlib import Path
 from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
+from django.conf import settings
 
 load_dotenv()
 
@@ -114,9 +115,9 @@ ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/accounts/login/'
+LOGOUT_REDIRECT_URL = '/login/'
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-debug',
@@ -183,6 +184,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+json_file_path = os.path.join(settings.STATIC_ROOT, 'json/countries.json')
+
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

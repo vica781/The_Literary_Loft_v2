@@ -116,7 +116,7 @@
         "code": "MT"
     },
     {
-        "country": "Mexico ",
+        "country": "Mexico",
         "code": "MX"
     },
     {
@@ -142,6 +142,10 @@
     {
         "country": "Romania",
         "code": "RO"
+    },
+    {
+        "country": "Russia",
+        "code": "RU"
     },
     {
         "country": "Singapore",
