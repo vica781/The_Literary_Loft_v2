@@ -34,6 +34,7 @@ def checkout(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
+            order.user = request.user
             total = calculate_order_amount(request) / 100  # Convert back to pounds
             order.order_total = total
 
@@ -151,5 +152,20 @@ def order_success(request, order_number):
 
 @login_required
 def order_history(request):
-    orders = Order.objects.filter(user=request.user).order_by('-date')
-    return render(request, 'checkout/order_history.html', {'orders': orders})
+    sort_by = request.GET.get('sort_by', 'date')
+    sort_order = request.GET.get('sort_order', 'desc')
+
+    if sort_order == 'asc':
+        orders = Order.objects.filter(user=request.user).order_by(sort_by)
+    else:
+        orders = Order.objects.filter(user=request.user).order_by(f'-{sort_by}')
+
+    context = {
+        'orders': orders,
+        'sort_by': sort_by,
+        'sort_order': sort_order,
+    }
+
+    return render(request, 'checkout/order_history.html', context)
+
+

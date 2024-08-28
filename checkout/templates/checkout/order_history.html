@@ -1,33 +1,63 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 <title>Order History - The Literary Loft</title>
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order_history.css' %}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
-    <h1>Your Order History</h1>
+    <h1 class="mb-4 order-history">Your Orders History</h1>
     {% if orders %}
-        <table class="table">
-            <thead>
+    <div class="table-responsive history-table">
+        <table class="table table-striped table-bordered">
+            <thead class="thead-dark">
                 <tr>
-                    <th>Order Number</th>
-                    <th>Date</th>
-                    <th>Total</th>
-                    <th>Details</th>
+                    <th scope="col"></th>
+                    <th scope="col">
+                        <a href="?sort_by=order_number&sort_order={% if sort_by == 'order_number' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">
+                            Order Number
+                            {% if sort_by == 'order_number' %}
+                                {% if sort_order == 'asc' %}↑{% else %}↓{% endif %}
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="?sort_by=date&sort_order={% if sort_by == 'date' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">
+                            Date
+                            {% if sort_by == 'date' %}
+                                {% if sort_order == 'asc' %}↑{% else %}↓{% endif %}
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="?sort_by=grand_total&sort_order={% if sort_by == 'grand_total' and sort_order == 'asc' %}desc{% else %}asc{% endif %}">
+                            Total
+                            {% if sort_by == 'grand_total' %}
+                                {% if sort_order == 'asc' %}<span class="arrow">↑<span>{% else %}<span class="arrow">↓<span>{% endif %}
+                            {% endif %}
+                        </a>
+                    </th>
+                    <th scope="col" id="details">Details</th>
                 </tr>
             </thead>
             <tbody>
                 {% for order in orders %}
                 <tr>
-                    <td>{{ order.order_number }}</td>
-                    <td>{{ order.date }}</td>
-                    <td>£{{ order.total_amount }}</td>
-                    <td><a href="{% url 'checkout:order_history' %}">order history here</a></td>
+                    <td>{{ forloop.counter }}</td>
+                    <td><span class="order-number history">#{{ order.order_number }}</span></td>
+                    <td>{{ order.date|date:"d M Y H:i" }}</td>
+                    <td>£{{ order.grand_total }}</td>
+                    <td><a href="{% url 'checkout:order_success' order.order_number %}">View Details</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+    </div>
     {% else %}
         <p>You have no previous orders.</p>
     {% endif %}
