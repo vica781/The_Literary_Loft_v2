@@ -1,7 +1,7 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
@@ -14,23 +14,20 @@ from books.models import Book
 from .forms import OrderForm
 
 # Helper Functions
-
 def calculate_order_amount(request):
     cart = request.session.get('cart', {})
     total = sum(item['price'] * item['quantity'] for item in cart.values())
     return int(total * 100)  # Convert GBP to pence
 
-
 def handle_successful_payment_intent(payment_intent):
-    # Logic to handle successful payment
-    pass
+    # Placeholder for processing logic when a payment is successful
+    print(f"PaymentIntent {payment_intent['id']} was successful!")
+    # Implement additional logic like updating order status, sending confirmation emails, etc.
 
-# Main Views
 def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
-        messages.error(request, "There is nothing in your bag at the moment. \
-            Please, add items to your bag before checking out.")
+        messages.error(request, "There is nothing in your bag at the moment. Please, add items to your bag before checking out.")
         return redirect('books:book_list')
 
     if request.method == 'POST':
@@ -39,78 +36,62 @@ def checkout(request):
             order = form.save(commit=False)
             total = calculate_order_amount(request) / 100  # Convert back to pounds
             order.order_total = total
-            
-            # Calculate delivery cost
+
+            # Calculate delivery cost as a percentage of the order total
             if total < settings.FREE_DELIVERY_THRESHOLD:
-                delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
+                delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
             else:
                 delivery_cost = 0
-            
+
             order.delivery_cost = delivery_cost
             order.grand_total = total + delivery_cost
             order.order_number = str(uuid.uuid4())
             order.save()
 
             for book_id, item in cart.items():
-                book = Book.objects.get(id=int(book_id))
+                book = get_object_or_404(Book, id=int(book_id))
                 OrderItem.objects.create(
                     order=order,
                     book=book,
                     quantity=item['quantity'],
                     price=item['price']
                 )
+
+            # Clear the cart after a successful order
             request.session['cart'] = {}
             messages.success(request, "Order placed successfully.")
-            
-            return redirect('checkout:order_success')
+
+            # Redirect to the order success page with the order number
+            return redirect('checkout:order_success', order_number=order.order_number)
     else:
         form = OrderForm()
 
     # Calculate total and create PaymentIntent
-    if not settings.STRIPE_PUBLIC_KEY:
-        messages.error(request, "Stripe public key is missing. \
-            Make sure you have set it in your environment variables.")
-        return redirect('checkout:checkout')
-    
-    total = calculate_order_amount(request)
+    total = calculate_order_amount(request) / 100  # Convert back to pounds
+    delivery_cost = 0  # Default to 0 unless conditions require otherwise
+
+    # If the total is less than the free delivery threshold, calculate the delivery cost as a percentage
+    if total < settings.FREE_DELIVERY_THRESHOLD:
+        delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
+
+    grand_total = total + delivery_cost
+
     try:
         stripe.api_key = settings.STRIPE_SECRET_KEY
         intent = stripe.PaymentIntent.create(
-            amount=total,
+            amount=int(grand_total * 100),  # Convert back to pence for Stripe
             currency=settings.STRIPE_CURRENCY,
         )
-    except stripe.error.StripeError as e:
+    except stripe.error.StripeError:
         messages.error(request, "An error occurred while creating the payment intent.")
         return redirect('checkout:checkout')
 
-    # Prepare cart items for display
-    cart_items = []
-    total_display = 0
-    for book_id, item in cart.items():
-        book = Book.objects.get(id=int(book_id))
-        item_total = item['quantity'] * float(item['price'])
-        total_display += item_total
-        cart_items.append({
-            'book': book,
-            'quantity': item['quantity'],
-            'price': item['price'],
-            'total': item_total
-        })
-
-    # Calculate delivery cost
-    if total_display < settings.FREE_DELIVERY_THRESHOLD:
-        delivery = total_display * settings.STANDARD_DELIVERY_COST / 100
-    else:
-        delivery = 0
-
-    grand_total = total_display + delivery
-
     context = {
         'order_form': form,
-        'cart_items': cart_items,
-        'total': total_display,
-        'delivery': delivery,
-        'grand_total': grand_total,
+        'cart_items': [{'book': get_object_or_404(Book, id=int(book_id)), 'quantity': item['quantity'], 'price': item['price'], 'total': item['quantity'] * float(item['price'])} for book_id, item in cart.items()],
+        'total': total,
+        'delivery': delivery_cost,  # Already in pounds
+        'grand_total': grand_total,  # Already in pounds
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
@@ -121,11 +102,9 @@ def checkout(request):
 @csrf_exempt
 def cache_checkout_data(request):
     try:
-        # Retrieve the payment intent ID and other data
         payment_intent_id = request.POST.get('client_secret').split('_secret')[0]
         save_info = request.POST.get('save_info')
 
-        # Optionally update the payment intent with additional metadata
         stripe.api_key = settings.STRIPE_SECRET_KEY
         stripe.PaymentIntent.modify(
             payment_intent_id,
@@ -162,35 +141,13 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
-
 @login_required
-def order_success(request):
-    cart = request.session.get('cart', {})
-    if not cart:
-        messages.error(request, "Your cart is empty.")
-        return render(request, 'checkout/order_success.html')
+def order_success(request, order_number):
+    # Retrieve the existing order using the order_number
+    order = get_object_or_404(Order, order_number=order_number)
 
-    total = calculate_order_amount(request) / 100  # Convert back to pounds
-    order = Order.objects.create(
-        user=request.user,
-        order_number=str(uuid.uuid4()),
-        total_amount=total,
-    )
-
-    for book_id, item in cart.items():
-        book = Book.objects.get(id=book_id)
-        OrderItem.objects.create(
-            order=order,
-            book=book,
-            quantity=item['quantity'],
-            price=item['price'],
-        )
-
-    # Clear the cart after a successful order
-    request.session['cart'] = {}
-
+    # Render the order success page with the order details
     return render(request, 'checkout/order_success.html', {'order': order})
-
 
 @login_required
 def order_history(request):

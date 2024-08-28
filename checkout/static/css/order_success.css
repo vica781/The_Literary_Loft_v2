@@ -1,0 +1,28 @@
+.successful-order {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: #4d5252;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+}
+
+.order-number {
+    font-weight: bold;
+    color: #4CAF50; 
+    font-size: 1.2rem; 
+    background-color: #f0f0f0; 
+    padding: 2px 5px;
+    border-radius: 3px;
+}
+/* -------------------------------Responsive design------------------------- */
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
+@media (max-width: 768px) {
+  .successful-order {
+    font-size: 1.5rem;
+  }
+    .order-number {
+        font-size: .9rem;
+    }
+}

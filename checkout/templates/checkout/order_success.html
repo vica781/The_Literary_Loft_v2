@@ -1,13 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
 <title>Order Success - The Literary Loft</title>
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/order_success.css' %}">
+{% endblock %}
+
+
 {% block content %}
 <div class="container">
-    <h1>Thank You!</h1>
-    <p>Your order ({{ order.order_number }}) has been placed successfully.</p>
+    <h1 class="mb-4 successful-order">Thank You!</h1>
+    <p>Your order <span class="order-number">#{{ order.order_number }}</span> has been placed successfully.</p>
     <p>You can view your <a href="{% url 'checkout:order_history' %}">order history here</a>.</p>
 </div>
 {% endblock %}
