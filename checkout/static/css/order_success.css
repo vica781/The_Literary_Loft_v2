@@ -16,6 +16,14 @@
     padding: 2px 5px;
     border-radius: 3px;
 }
+
+.order-summary {
+    font-family: "Nunito", sans-serif;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------MEDIUM DISPLAYS--------------------------- */  
 @media (max-width: 768px) {
@@ -25,4 +33,11 @@
     .order-number {
         font-size: .9rem;
     }
+    .order-summary {
+        font-size: 1.5rem;
+    }
+    .table-responsive {
+    margin-top: 20px;
+    font-size: .75rem;
+}
 }
