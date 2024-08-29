@@ -46,7 +46,7 @@ def user_login(request):
         user = authenticate(request, username=email, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, f"Logged in successfully as {user.furstname}")
+            messages.success(request, f"Logged in successfully as {user.first_name}")
             return redirect(reverse('books:index'))
         else:
             messages.error(request, "Invalid email or password")
