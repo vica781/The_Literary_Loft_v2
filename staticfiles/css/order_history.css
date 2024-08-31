@@ -1,0 +1,61 @@
+.order-history {
+    font-family: "Libre Baskerville", serif;
+    font-weight: 700;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: #4d5252;
+    text-shadow: 1px 1px 4px rgba(255, 255, 255, 1);
+}
+
+.order-number {
+    font-weight: bold;
+    color: #388E3C; 
+    font-size: 1rem;     
+}
+
+.table thead th a,
+.arrow,
+#details {
+    color: #ffffff;     
+    text-decoration: none; 
+    font-size: 1.2rem;
+}
+
+/* Change color on hover to indicate it's clickable */
+.table thead th a:hover {
+    color: #dddddd; 
+    text-decoration: underline;
+}
+
+.table {
+    border: 1px solid #dddddd; 
+}
+
+.table tbody tr:hover {
+    background-color: #f9f9f9; 
+}
+
+.table tbody td {
+    vertical-align: middle; 
+}
+
+/* -------------------------------Responsive design------------------------- */
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
+@media (max-width: 768px) {  
+    .order-history {
+        font-size: 1.5rem;
+    }
+    .history-table {
+        margin-top: 20px;
+        font-size: .75rem;
+    }
+    .order-number.history {
+        font-size: .8rem; 
+    }
+    .table thead th a,
+.arrow,
+#details {
+    font-size: .94rem;
+}
+}
