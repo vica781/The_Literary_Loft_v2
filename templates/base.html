@@ -220,7 +220,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
               {% if user.is_authenticated %}
-              <a href="{% url 'checkout:order_history' %}" class="dropdown-item">My Account</a>
+              <a href="{% url 'checkout:my_account' %}" class="dropdown-item">My Account</a>
               <a href="{% url 'books:logout' %}" class="dropdown-item">Logout</a>
               {% else %}
               <a href="{% url 'books:login' %}" class="dropdown-item">Login</a>

@@ -5,13 +5,14 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserChangeForm
 
 import stripe
 import uuid
 
 from .models import Order, OrderItem
 from books.models import Book
-from .forms import OrderForm
+from .forms import OrderForm, CustomUserChangeForm
 
 # Helper Functions
 def calculate_order_amount(request):
@@ -142,6 +143,7 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
+# ORDER-RELATED VIEWS
 @login_required
 def order_success(request, order_number):
     # Retrieve the existing order using the order_number
@@ -168,4 +170,26 @@ def order_history(request):
 
     return render(request, 'checkout/order_history.html', context)
 
+@login_required
+def my_account(request):
+    orders = Order.objects.filter(user=request.user).order_by('-date')
+    form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'orders': orders,
+        'form': form,
+    }
+    return render(request, 'checkout/my_account.html', context)
 
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully.')
+            return redirect('checkout:my_account')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+
+    orders = Order.objects.filter(user=request.user).order_by('-date')
+    return render(request, 'checkout/my_account.html', {'form': form, 'orders': orders})

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>My Account - The Literary Loft</title>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/my_account.css' %}">
+{% endblock %} 
+
+{% block content %}
+<div class="container my-account-page">
+    <h1 class="my-account">My Account</h1>
+    <div class="row">
+        <div class="col-lg-4">
+            <h3 class="profile-info">Profile Information</h3>
+            <form method="post" action="{% url 'checkout:edit_profile' %}">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    {{ form.first_name.label_tag }}
+                    {{ form.first_name }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form.last_name.label_tag }}
+                    {{ form.last_name }}
+                </div>
+                
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                    <small class="form-text text-muted">{{ form.email.help_text }}</small>
+                </div>
+                
+                <button type="submit" class="btn save-changes-btn">Save Changes</button>
+            </form>
+        </div>
+
+        <div class="col-lg-8">
+            <h3 class="order-history">Order History</h3>
+            {% include 'checkout/order_history_table.html' %}
+        </div>
+    </div>
+</div>
+{% endblock %}

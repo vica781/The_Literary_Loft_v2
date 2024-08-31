@@ -1,0 +1,26 @@
+{% if orders %}
+<div class="table-responsive history-table">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Order Number</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>#{{ order.order_number }}</td>
+                <td>{{ order.date|date:"d M Y H:i" }}</td>
+                <td>£{{ order.grand_total }}</td>
+                <td><a href="{% url 'checkout:order_success' order.order_number %}">View Details</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p>You have no previous orders.</p>
+{% endif %}
