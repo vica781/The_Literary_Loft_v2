@@ -71,13 +71,22 @@
   </table>
   <h3>Total: £{{ total|floatformat:2 }}</h3>
   <div class="d-flex justify-content-between">
-    <a href="{% url 'books:book_list' %}" class="btn continue-shopping-btn"
-      >Continue Shopping</a
-    >
-    <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn"
-      >Proceed to Checkout</a
-    >
-  </div>
+    <a href="{% url 'books:book_list' %}" class="btn continue-shopping-btn">Continue Shopping</a>
+    {% if user.is_authenticated %}
+        <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn">Proceed to Checkout</a>
+    {% else %}
+        <div class="dropdown">
+            <button class="btn checkout-btn dropdown-toggle" type="button" id="checkoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Proceed to Checkout
+            </button>
+            <div class="dropdown-menu" aria-labelledby="checkoutDropdown">
+                <a class="dropdown-item" href="{% url 'account_login' %}?next={% url 'checkout:checkout' %}">Login & Checkout</a>
+                <a class="dropdown-item" href="{% url 'account_signup' %}?next={% url 'checkout:checkout' %}">Sign Up & Checkout</a>
+                <a class="dropdown-item" href="{% url 'checkout:checkout' %}">Guest Checkout</a>
+            </div>
+        </div>
+    {% endif %}
+</div>
   {% else %}
   <p class="d-flex bag-empty">
     There is nothing in your bag at the moment. Please, add items to your bag.

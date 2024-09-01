@@ -19,6 +19,28 @@
     <h1 class="mb-4 checkout-heading">Checkout</h1>
     <p class="mb-4 checkout-total">Total: £{{ total|floatformat:2 }}</p>
 
+    {% if not user.is_authenticated %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">Create an account or checkout as a guest</h4>
+                <p>Creating an account has several benefits:</p>
+                <ul>
+                    <li>Track your order status</li>
+                    <li>View your order history</li>
+                    <li>Save your shipping information for future purchases</li>
+                    <li>Receive exclusive offers and updates</li>
+                </ul>
+                <hr>
+                <p class="mb-0">
+                    <a href="{% url 'account_signup' %}?next={{ request.path }}" class="btn btn-primary">Create Account</a>
+                    <button class="btn btn-secondary" id="guest-checkout-btn">Continue as Guest</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="row">
         <!-- Order Summary -->
         <div class="col-12 col-lg-6 order-lg-last mb-5">
@@ -68,7 +90,7 @@
         </div>
 
         <!-- Checkout Form -->
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6" id="checkout-form-container"{% if not user.is_authenticated %} style="display: none;"{% endif %}>
             <p class="text-muted checkout-form">Please fill out the form below to complete your order:</p>
             <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
@@ -129,7 +151,7 @@
                     </p>
                 </div>
             </form>
-        </div>
+        </div>        
     </div>
 </div>
 {% endblock %}

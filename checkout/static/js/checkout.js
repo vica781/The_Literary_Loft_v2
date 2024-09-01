@@ -22,3 +22,15 @@ if (paymentForm) {
         });
     });
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    const guestCheckoutBtn = document.getElementById('guest-checkout-btn');
+    const checkoutFormContainer = document.getElementById('checkout-form-container');
+
+    if (guestCheckoutBtn) {
+        guestCheckoutBtn.addEventListener('click', function() {
+            checkoutFormContainer.style.display = 'block';
+            guestCheckoutBtn.parentElement.parentElement.style.display = 'none';
+        });
+    }
+});

@@ -1,5 +1,5 @@
 function sortTable(column) {
-    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+    let table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("ordersTable");
     switching = true;
     dir = "asc";

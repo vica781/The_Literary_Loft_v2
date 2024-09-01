@@ -10,6 +10,7 @@ class OrderForm(forms.ModelForm):
         choices=[], 
         widget=forms.Select(attrs={'id': 'country', 'name': 'country'})
     )
+    save_info = forms.BooleanField(required=False, initial=False, widget=forms.CheckboxInput())
 
     class Meta:
         model = Order
@@ -41,7 +42,7 @@ class OrderForm(forms.ModelForm):
         # Set the choices for the country field
         self.fields['country'].choices = [('', '--Select a country--')] + country_list
             
-        # Setting placeholders and CSS classes for fields
+        # Set placeholders and CSS classes for fields
         placeholders = {
             'full_name': 'Full Name',
             'email': 'Email',
@@ -54,12 +55,18 @@ class OrderForm(forms.ModelForm):
             'county': 'County'
         }
         
+        # Add placeholder and class for save_info field
+        self.fields['save_info'].widget.attrs['class'] = 'form-check-input'
+        self.fields['save_info'].label = 'Save this information for next time'
+        
+        # Set autofocus on full_name field
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
-            placeholder = placeholders[field] + (' *' if self.fields[field].required else '')
-            self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
-            self.fields[field].label = False
+            if field in placeholders:
+                placeholder = placeholders[field] + (' *' if self.fields[field].required else '')
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+                self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+                self.fields[field].label = False
 
 class ReadOnlyEmailWidget(forms.TextInput):
     def __init__(self, attrs=None):

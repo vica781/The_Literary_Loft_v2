@@ -12,6 +12,7 @@ urlpatterns = [
     path('order-history/', views.order_history, name='order_history'),  # Order history page
     path('my-account/', views.my_account, name='my_account'),  # My Account page
     path('edit-profile/', views.edit_profile, name='edit_profile'),
+    path('guest-order-lookup/', views.guest_order_lookup, name='guest_order_lookup'),
     
      # Password reset URLs
     path('password_reset/', auth_views.PasswordResetView.as_view(

@@ -35,7 +35,15 @@ def checkout(request):
         form = OrderForm(request.POST)
         if form.is_valid():
             order = form.save(commit=False)
-            order.user = request.user
+            # handle both authenticated and guest users
+            if request.user.is_authenticated:
+                order.user = request.user
+            else:
+                order.guest_email = form.cleaned_data['email']
+                
+        if not request.user.is_authenticated:
+            request.session['guest_order_number'] = str(order.order_number)
+                
             total = calculate_order_amount(request) / 100  # Convert back to pounds
             order.order_total = total
 
@@ -144,19 +152,44 @@ def stripe_webhook(request):
     return HttpResponse(status=200)
 
 # ORDER-RELATED VIEWS
-@login_required
 def order_success(request, order_number):
-    # Retrieve the existing order using the order_number
     order = get_object_or_404(Order, order_number=order_number)
-
-    # Render the order success page with the order details
-    return render(request, 'checkout/order_success.html', {'order': order})
+    
+    if request.user.is_authenticated:
+        if order.user != request.user:
+            messages.error(request, "You don't have permission to view this order.")
+            return redirect('books:index')  # or another appropriate page
+    else:
+        # For guest users, check if the order number is in the session
+        if str(order_number) != request.session.get('guest_order_number'):
+            messages.error(request, "You don't have permission to view this order.")
+            return redirect('books:index')  # or another appropriate page
+    
+    # Clear the cart
+    if 'cart' in request.session:
+        del request.session['cart']
+    
+    template = 'checkout/order_success.html'
+    context = {
+        'order': order,
+        'is_guest': not request.user.is_authenticated,
+    }
+    
+    # return render(request, template, context)
+    return redirect('checkout:order_success', order_number=order.order_number)
 
 @login_required
 def order_history(request):
     sort_by = request.GET.get('sort_by', 'date')
     sort_order = request.GET.get('sort_order', 'desc')
-
+    
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(user=request.user)
+    else:
+        # For guest users, retrieve orders based on the stored order number
+        guest_order_number = request.session.get('guest_order_number')
+        orders = Order.objects.filter(order_number=guest_order_number) if guest_order_number else Order.objects.none()
+        
     if sort_order == 'asc':
         orders = Order.objects.filter(user=request.user).order_by(sort_by)
     else:
@@ -193,3 +226,17 @@ def edit_profile(request):
 
     orders = Order.objects.filter(user=request.user).order_by('-date')
     return render(request, 'checkout/my_account.html', {'form': form, 'orders': orders})
+
+# Add a new view for guest order lookup
+def guest_order_lookup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        order_number = request.POST.get('order_number')
+        
+        try:
+            order = Order.objects.get(guest_email=email, order_number=order_number)
+            return render(request, 'checkout/guest_order_detail.html', {'order': order})
+        except Order.DoesNotExist:
+            messages.error(request, "No order found with the provided details.")
+    
+    return render(request, 'checkout/guest_order_lookup.html')

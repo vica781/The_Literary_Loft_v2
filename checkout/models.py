@@ -9,6 +9,7 @@ from books.models import Book
 # ORDER INFORMATION
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True, related_name='orders')
+    guest_email = models.EmailField(max_length=254, null=True, blank=True)
     order_number = models.CharField(max_length=36, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)

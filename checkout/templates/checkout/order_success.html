@@ -14,6 +14,10 @@
     <h1 class="mb-4 successful-order">Thank You!</h1>
     <p>Your order <span class="order-number">#{{ order.order_number }}</span> has been placed successfully.</p>
 
+    {% if order.guest_email %}
+    <p>A confirmation email has been sent to {{ order.guest_email }}.</p>
+    {% endif %}
+
     <!-- Order Recap -->
     <h2 class="mt-5 order-summary">Order Summary</h2>
     <div class="table-responsive">
@@ -53,6 +57,13 @@
         </table>
     </div>
 
-    <p class="mt-4">You can view your <a href="{% url 'checkout:order_history' %}">orders' history here</a>.</p>
+    {% if is_guest %}
+    <div class="mt-4 alert alert-info">
+        <p>Thank you for your purchase! To easily access your order history in the future, consider <a href="{% url 'account_signup' %}">creating an account</a>.</p>
+        <p>If you need to check the status of this order in the future, please use our <a href="{% url 'checkout:guest_order_lookup' %}">guest order lookup</a> with your email and order number.</p>
+    </div>
+    {% else %}
+    <p>You can view your <a href="{% url 'checkout:order_history' %}">order history here</a>.</p>
+    {% endif %}
 </div>
 {% endblock %}
