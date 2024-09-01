@@ -27,6 +27,7 @@
 .save-changes-btn,
 .change-password-btn {
   color: #fff;
+  font-weight: bold;
   background-color: #4d5252;
   border-color: #4d5252;
   margin-top: 1rem;

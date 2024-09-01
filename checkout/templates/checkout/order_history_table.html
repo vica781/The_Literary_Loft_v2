@@ -1,11 +1,13 @@
+{% load static %}
+
 {% if orders %}
 <div class="table-responsive history-table">
-    <table class="table table-striped table-bordered">
+    <table class="table table-striped table-bordered" id="ordersTable">
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Order Number</th>
-                <th scope="col">Date</th>
-                <th scope="col">Total</th>
+                <th>Date <i class="fas fa-sort sort-icon" data-column="1"></i></th>
+                <th>Total <i class="fas fa-sort sort-icon" data-column="2"></i></th>    
                 <th scope="col">Details</th>
             </tr>
         </thead>
@@ -13,8 +15,8 @@
             {% for order in orders %}
             <tr>
                 <td>#{{ order.order_number }}</td>
-                <td>{{ order.date|date:"d M Y H:i" }}</td>
-                <td>£{{ order.grand_total }}</td>
+                <td data-date="{{ order.date|date:'Y-m-d H:i' }}">{{ order.date|date:"d M Y H:i" }}</td>
+                <td data-total="{{ order.grand_total }}">£{{ order.grand_total }}</td>
                 <td><a href="{% url 'checkout:order_success' order.order_number %}">View Details</a></td>
             </tr>
             {% endfor %}
@@ -24,3 +26,7 @@
 {% else %}
 <p>You have no previous orders.</p>
 {% endif %}
+
+{% block postloadjs %}
+<script src="{% static 'js/sort_out_orders_history_table.js' %}"></script>
+{% endblock %}
