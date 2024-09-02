@@ -5,7 +5,7 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.forms import UserChangeForm
+# from django.contrib.auth.forms import UserChangeForm
 
 import stripe
 import uuid
@@ -44,37 +44,37 @@ def checkout(request):
         if not request.user.is_authenticated:
             request.session['guest_order_number'] = str(order.order_number)
                 
-            total = calculate_order_amount(request) / 100  # Convert back to pounds
-            order.order_total = total
+        total = calculate_order_amount(request) / 100  # Convert back to pounds
+        order.order_total = total
 
-            # Calculate delivery cost as a percentage of the order total
-            if total < settings.FREE_DELIVERY_THRESHOLD:
-                delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
-            else:
-                delivery_cost = 0
+        # Calculate delivery cost as a percentage of the order total
+        if total < settings.FREE_DELIVERY_THRESHOLD:
+            delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
+        else:
+            delivery_cost = 0
 
-            order.delivery_cost = delivery_cost
-            order.grand_total = total + delivery_cost
-            order.order_number = str(uuid.uuid4())
-            order.save()
+        order.delivery_cost = delivery_cost
+        order.grand_total = total + delivery_cost
+        order.order_number = str(uuid.uuid4())
+        order.save()
 
-            for book_id, item in cart.items():
-                book = get_object_or_404(Book, id=int(book_id))
-                OrderItem.objects.create(
-                    order=order,
-                    book=book,
-                    quantity=item['quantity'],
-                    price=item['price']
-                )
+        for book_id, item in cart.items():
+            book = get_object_or_404(Book, id=int(book_id))
+            OrderItem.objects.create(
+                order=order,
+                book=book,
+                quantity=item['quantity'],
+                price=item['price']
+            )
 
-            # Clear the cart after a successful order
-            request.session['cart'] = {}
-            messages.success(request, "Order placed successfully.")
+        # Clear the cart after a successful order
+        request.session['cart'] = {}
+        messages.success(request, "Order placed successfully.")
 
-            # Redirect to the order success page with the order number
-            return redirect('checkout:order_success', order_number=order.order_number)
-    else:
-        form = OrderForm()
+        # Redirect to the order success page with the order number
+        return redirect('checkout:order_success', order_number=order.order_number)
+    
+    form = OrderForm()
 
     # Calculate total and create PaymentIntent
     total = calculate_order_amount(request) / 100  # Convert back to pounds
@@ -158,12 +158,12 @@ def order_success(request, order_number):
     if request.user.is_authenticated:
         if order.user != request.user:
             messages.error(request, "You don't have permission to view this order.")
-            return redirect('books:index')  # or another appropriate page
+            return redirect('books:index')  
     else:
         # For guest users, check if the order number is in the session
-        if str(order_number) != request.session.get('guest_order_number'):
+        if not order_number:  
             messages.error(request, "You don't have permission to view this order.")
-            return redirect('books:index')  # or another appropriate page
+            return redirect('books:index')  
     
     # Clear the cart
     if 'cart' in request.session:
@@ -172,11 +172,9 @@ def order_success(request, order_number):
     template = 'checkout/order_success.html'
     context = {
         'order': order,
-        'is_guest': not request.user.is_authenticated,
     }
     
-    # return render(request, template, context)
-    return redirect('checkout:order_success', order_number=order.order_number)
+    return render(request, template, context)
 
 @login_required
 def order_history(request):

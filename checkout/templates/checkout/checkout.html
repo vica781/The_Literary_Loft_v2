@@ -33,7 +33,7 @@
                 </ul>
                 <hr>
                 <p class="mb-0">
-                    <a href="{% url 'account_signup' %}?next={{ request.path }}" class="btn btn-primary">Create Account</a>
+                    <a href="{% url 'books:register' %}?next={{ request.path }}" class="btn btn-primary">Create Account</a>
                     <button class="btn btn-secondary" id="guest-checkout-btn">Continue as Guest</button>
                 </p>
             </div>
@@ -91,9 +91,9 @@
 
         <!-- Checkout Form -->
         <div class="col-12 col-lg-6" id="checkout-form-container"{% if not user.is_authenticated %} style="display: none;"{% endif %}>
-            <p class="text-muted checkout-form">Please fill out the form below to complete your order:</p>
             <form action="{% url 'checkout:checkout' %}" method="POST" id="payment-form">
                 {% csrf_token %}
+                <p class="text-muted checkout-form">Please fill out the form below to complete your order:</p>
                 <fieldset class="rounded px-3 mb-5">
                     <legend class="fieldset-label small text-black px-2 w-auto">Details</legend>
                     {{ order_form.full_name|as_crispy_field }}

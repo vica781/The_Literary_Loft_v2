@@ -14,7 +14,7 @@
     <h1 class="mb-4 successful-order">Thank You!</h1>
     <p>Your order <span class="order-number">#{{ order.order_number }}</span> has been placed successfully.</p>
 
-    {% if order.guest_email %}
+    {% if not user.is_authenticated %}
     <p>A confirmation email has been sent to {{ order.guest_email }}.</p>
     {% endif %}
 
@@ -57,10 +57,9 @@
         </table>
     </div>
 
-    {% if is_guest %}
+    {% if not user.is_authenticated %}
     <div class="mt-4 alert alert-info">
-        <p>Thank you for your purchase! To easily access your order history in the future, consider <a href="{% url 'account_signup' %}">creating an account</a>.</p>
-        <p>If you need to check the status of this order in the future, please use our <a href="{% url 'checkout:guest_order_lookup' %}">guest order lookup</a> with your email and order number.</p>
+        <p>Thank you for your purchase! To easily access your order history in the future, consider <a href="{% url 'books:register' %}">creating an account</a>.</p>
     </div>
     {% else %}
     <p>You can view your <a href="{% url 'checkout:order_history' %}">order history here</a>.</p>
