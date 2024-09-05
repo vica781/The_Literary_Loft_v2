@@ -538,6 +538,13 @@ body {
     color: #fff;
 }
 
+/* -------------------------------Footer----------------------------------- */
+/* Divider line below the main navigation */
+.main-nav-separator {
+    border-bottom: 1px solid #ddd; 
+    margin-bottom: 20px; 
+}
+
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------SMALL DISPLAYS---------------------------- */
 @media (max-width: 468px) {}
