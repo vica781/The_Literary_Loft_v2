@@ -533,7 +533,7 @@ body {
 }
 
 .hero-content a.cta-button:hover {
-    background-color: #3a3f3f;
+    background-color: #646a6a;
     text-decoration: none;
     color: #fff;
 }
@@ -541,9 +541,130 @@ body {
 /* -------------------------------Footer----------------------------------- */
 /* Divider line below the main navigation */
 .main-nav-separator {
-    border-bottom: 1px solid #ddd; 
-    margin-bottom: 20px; 
+  border-bottom: 1px solid #ddd; 
+  margin-bottom: 20px; 
 }
+
+.fa.fa-twitter{
+	font-family:sans-serif;
+}
+.fa.fa-twitter::before{
+	content:"𝕏";
+	font-size:1.2em;
+}
+
+.footer {
+  background-color: #e0e0e0;
+  padding: 3rem 0;
+  font-family: "Nunito", sans-serif;
+}
+
+.footer h5 {
+  font-family: "Libre Baskerville", serif;
+  color: #4d5252;
+  font-weight: 700;
+}
+
+.footer-logo {
+  max-width: 150px;
+}
+
+.footer-divider {
+  border-top: 1.5px solid #3f4545;
+  margin: 2rem 0;
+}
+
+.social-icons a {
+  color: #4d5252;
+  font-size: 1.5rem;
+  margin-right: 1rem;
+}
+
+.btn-subscribe {
+  background-color: #4d5252;
+  color: white;
+}
+
+.btn-subscribe:hover {
+  background-color: #646a6a;
+  color: white;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.footer-bottom {
+  color: white;
+  background-color: #626565;
+  padding: 1rem 0;
+}
+
+/* Footer Dropdown Styles */
+.footer-nav {
+  padding-left: 0;
+}
+
+.footer-nav .footer-item {
+  margin: 10px 0;
+}
+
+.footer-nav .footer-link {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #4d5252;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.footer-nav .footer-link:hover,
+.footer-nav .footer-link:focus {
+  background-color: rgba(77, 82, 82, 0.2);
+  color: #4d5252;
+  text-decoration: none;
+}
+
+.footer-nav .footer-link:active {
+  background-color: rgba(77, 82, 82, 0.3);
+}
+
+.footer-nav .dropdown-toggle::after {
+  display: none;
+}
+
+.footer-nav .fa-chevron-down {
+  font-size: 0.8rem;
+}
+
+.footer-nav .dropdown {
+  position: relative;
+}
+
+.footer-nav .dropdown-menu {
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.footer-nav .dropdown-item {
+  font-family: "Nunito", sans-serif;
+  font-size: 0.9rem;
+  color: green;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.footer-nav .dropdown-item:hover,
+.footer-nav .dropdown-item:focus {
+  background-color: rgba(77, 82, 82, 0.1);
+}
+
+
 
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------SMALL DISPLAYS---------------------------- */
@@ -678,6 +799,20 @@ body {
 
   .category-nav.open .navbar-close-icon {
       display: inline;
+  }
+
+  .footer-nav .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: #f5f5f5;
+    border: 0;
+    box-shadow: 1px;
+  }
+
+  .footer-nav .dropdown-item {
+    padding: 0.5rem 1rem 0.5rem 2rem;
   }
 }
 

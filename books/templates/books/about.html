@@ -5,8 +5,16 @@
 <title>About Us - The Literary Loft</title> 
 {% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock %}
+
 {% block content %}
     <!-- Your content for the about page -->
+     {% if user.is_authenticated and user.is_superuser %}
+     SUPERUSER
+        {% comment %} <a href="{% url 'books:book_create' %}" class="btn btn-primary">Add a Book</a> {% endcomment %}
+    {% endif %}
     <div class="container pt-5">
         <h1>About Us</h1>
         <p>Learn more about our story and mission.</p>
