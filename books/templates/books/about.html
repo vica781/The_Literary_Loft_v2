@@ -1,23 +1,175 @@
-{% extends "base.html" %}
-{% load static %}
+{% extends "base.html" %} 
+{% load static %} 
 
 {% block title %}
-<title>About Us - The Literary Loft</title> 
-{% endblock %}
+<title>Our Story - The Literary Loft</title>
+{% endblock %} 
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/about.css' %}" />
+{% endblock %} 
 
 {% block content %}
-    <!-- Your content for the about page -->
-     {% if user.is_authenticated and user.is_superuser %}
-     SUPERUSER
-        {% comment %} <a href="{% url 'books:book_create' %}" class="btn btn-primary">Add a Book</a> {% endcomment %}
-    {% endif %}
-    <div class="container pt-5">
-        <h1>About Us</h1>
-        <p>Learn more about our story and mission.</p>
-        <!-- Add more content here -->
+<div class="main-content">
+  <div class="hero-section" style="background-image: url('{% static "images/about/about_books.jpg" %}');">
+  <div class="container">
+    <div class="hero-content">
+      {% comment %} <h1 class="display-4 mb-4">Our Story</h1> {% endcomment %}
+      <p class="lead">
+        Welcome to <strong>The Literary Loft</strong>, your go-to destination
+        for a curated selection of books. Our story is one of passion,
+        resilience, and family, born out of a challenging yet transformative
+        time.
+      </p>
+      <div class="container my-5">
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <h2
+              class="section-title mb-3"
+              data-toggle="collapse"
+              data-target="#beginnings"
+            >
+              Our Beginnings
+              <span class="chevron"></span>
+            </h2>
+            <div id="beginnings" class="section-content collapse">
+              <p>
+                The idea for The Literary Loft was sparked during the height of
+                the global pandemic. As the world came to a standstill and many
+                of us found solace in the pages of books, it became clear that
+                there was a need for a personalized, online bookshop that could
+                deliver more than just books – it could deliver comfort,
+                adventure, and a sense of community.
+              </p>
+              <p>
+                From the cozy confines of our living room, my youngest son
+                Timothy and I began to brainstorm. Timothy, a dedicated student
+                with a love for technology, brought fresh, innovative ideas to
+                the table. Together, we envisioned a platform where book lovers
+                could easily find their next great read, interact with fellow
+                bibliophiles, and enjoy a seamless shopping experience.
+              </p>
+            </div>
+
+            <h2
+              class="section-title mb-3 mt-4"
+              data-toggle="collapse"
+              data-target="#building"
+            >
+              Building the Dream
+              <span class="chevron"></span>
+            </h2>
+            <div id="building" class="section-content collapse">
+              <p>
+                With a clear vision in mind, we reached out to my elder son Ilya
+                and his wife Olivia. Ilya's business acumen and Olivia's
+                marketing expertise were invaluable as we started to turn our
+                dream into reality. They brought structure and strategy to our
+                initial ideas, helping us lay a solid foundation for our
+                business.
+              </p>
+              <p>
+                We worked tirelessly, often late into the night, turning our
+                living room into a hub of creativity and hard work. Timothy
+                managed the technical aspects, building and refining our
+                website, while Ilya focused on business planning and logistics.
+                Olivia, with her keen eye for design, created our brand identity
+                and marketing campaigns.
+              </p>
+            </div>
+
+            <h2
+              class="section-title mb-3 mt-4"
+              data-toggle="collapse"
+              data-target="#growing"
+            >
+              Growing Together
+              <span class="chevron"></span>
+            </h2>
+            <div id="growing" class="section-content collapse">
+              <p>
+                What began as a family project soon attracted the attention of
+                our friends and extended family, who were eager to contribute.
+                Our small team grew, bringing in diverse skills and
+                perspectives. Each person added their unique touch, from
+                curating book selections to enhancing customer service and
+                expanding our online presence.
+              </p>
+            </div>
+
+            <h2
+              class="section-title mb-3 mt-4"
+              data-toggle="collapse"
+              data-target="#mission"
+            >
+              Our Mission
+              <span class="chevron"></span>
+            </h2>
+            <div id="mission" class="section-content collapse">
+              <p>
+                At The Literary Loft, we are dedicated to creating a haven for
+                book lovers. Our mission is to provide a curated collection of
+                books that cater to diverse tastes and interests, while
+                fostering a community of readers who share a love for
+                literature.
+              </p>
+            </div>
+
+            <h2
+              class="section-title mb-3 mt-4"
+              data-toggle="collapse"
+              data-target="#values"
+            >
+              Our Values
+              <span class="chevron"></span>
+            </h2>
+            <div id="values" class="section-content collapse">
+              <ul>
+                <li>
+                  <strong>Passion for Books:</strong> We believe in the
+                  transformative power of reading. Every book in our collection
+                  is handpicked to ensure it meets our high standards.
+                </li>
+                <li>
+                  <strong>Family and Community:</strong> Our business is built
+                  on the strength of family and the support of our community. We
+                  strive to create a welcoming space for all book enthusiasts.
+                </li>
+                <li>
+                  <strong>Quality and Service:</strong> We are committed to
+                  providing high-quality products and exceptional customer
+                  service. Your satisfaction is our top priority.
+                </li>
+                <li>
+                  <strong>Sustainability:</strong> We are dedicated to
+                  environmentally friendly practices, using eco-friendly
+                  packaging and supporting sustainable publishing initiatives.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-{% endblock %}
+  </div>
+
+  {% endblock %} 
+  
+  {% block extra_js %}
+  <script>
+    $(document).ready(function () {
+      $(".section-title").click(function () {
+        // Toggle the text color of the title
+        $(this).toggleClass("text-success");
+
+        // Toggle the chevron direction
+        $(this).find(".chevron").toggleClass("down");
+
+        // Toggle the visibility of the section content
+        $(this).next(".section-content").slideToggle(); // Use slideToggle for a smooth transition
+      });
+    });
+  </script>
+  {% endblock %}
+</div>

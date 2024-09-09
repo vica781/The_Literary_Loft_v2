@@ -44,9 +44,15 @@
     border-color: #3a3f3f;
     box-shadow: 0 0 0 0.2rem rgba(74, 82, 82, 0.25);
 }
-/* a {
-    color: #4d5252;
+
+/* Remove the default blue outline and add a custom border on focus */
+.form-control:focus {
+    outline: none; 
+    box-shadow: none; 
+    border-color: #4d5252; 
 }
-a:hover {
-    color: #3a3f3f;
-} */
+
+/* Add a subtle background color on focus */
+.form-control:focus {
+    background-color: #f7f7f7; 
+}

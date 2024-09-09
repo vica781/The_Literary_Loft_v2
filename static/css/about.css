@@ -1,0 +1,113 @@
+/* Base styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.main-content {
+    min-height: calc(80vh - 60px);
+    overflow-y: auto;
+    position: relative;
+}
+
+/* Hero section styles */
+.hero-section {
+    min-height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 2rem 0;
+}
+
+/* Container and section styles */
+.container {
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+.section-content {
+    background-color: rgba(217, 211, 211, 0.9);
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 15px;
+}
+
+/* Typography */
+h1.display-4 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+h2.section-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}
+
+.lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Chevron styles */
+.chevron {
+    display: inline-block;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.chevron::before {
+    border-style: solid;
+    border-width: 0.25em 0.25em 0 0;
+    content: '';
+    display: inline-block;
+    height: 0.45em;
+    position: relative;
+    top: 0.15em;
+    transform: rotate(-45deg);
+    vertical-align: top;
+    width: 0.45em;
+}
+
+.chevron.down::before {
+    transform: rotate(135deg);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    h1.display-4 {
+        font-size: 2rem;
+    }
+
+    h2.section-title {
+        font-size: 1.5rem;
+    }
+
+    .lead {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+}

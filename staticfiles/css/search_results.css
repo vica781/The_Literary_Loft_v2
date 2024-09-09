@@ -98,6 +98,20 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Remove the default blue outline and add a custom border on focus */
+.form-control:focus {
+    outline: none; 
+    box-shadow: none; 
+    border-color: #4d5252; 
+}
+
+/* Add a subtle background color on focus */
+.form-control:focus {
+    background-color: #f7f7f7; 
+}
+
+/* -------------------------------Responsive design------------------------- */
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */
 @media (max-width: 768px) {
     .password-reset-form,
     .password-reset-done-message,
