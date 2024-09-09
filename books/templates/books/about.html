@@ -1,5 +1,4 @@
-{% extends "base.html" %} 
-{% load static %} 
+{% extends "base.html" %} {% load static %} 
 
 {% block title %}
 <title>Our Story - The Literary Loft</title>
@@ -12,141 +11,139 @@
 
 {% block content %}
 <div class="main-content">
-  <div class="hero-section" style="background-image: url('{% static "images/about/about_books.jpg" %}');">
   <div class="container">
-    <div class="hero-content">
-      {% comment %} <h1 class="display-4 mb-4">Our Story</h1> {% endcomment %}
-      <p class="lead">
-        Welcome to <strong>The Literary Loft</strong>, your go-to destination
-        for a curated selection of books. Our story is one of passion,
-        resilience, and family, born out of a challenging yet transformative
-        time.
-      </p>
-      <div class="container my-5">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2
-              class="section-title mb-3"
-              data-toggle="collapse"
-              data-target="#beginnings"
-            >
-              Our Beginnings
-              <span class="chevron"></span>
-            </h2>
-            <div id="beginnings" class="section-content collapse">
-              <p>
-                The idea for The Literary Loft was sparked during the height of
-                the global pandemic. As the world came to a standstill and many
-                of us found solace in the pages of books, it became clear that
-                there was a need for a personalized, online bookshop that could
-                deliver more than just books – it could deliver comfort,
-                adventure, and a sense of community.
-              </p>
-              <p>
-                From the cozy confines of our living room, my youngest son
-                Timothy and I began to brainstorm. Timothy, a dedicated student
-                with a love for technology, brought fresh, innovative ideas to
-                the table. Together, we envisioned a platform where book lovers
-                could easily find their next great read, interact with fellow
-                bibliophiles, and enjoy a seamless shopping experience.
-              </p>
-            </div>
+    <div class="row">
+      <!-- First Column: Lead Paragraph -->
+      <div class="col-md-6 lead-column">
+        <p class="lead">
+          Welcome to <strong>The Literary Loft</strong>, your go-to destination
+          for a curated selection of books. Our story is one of passion,
+          resilience, and family, born out of a challenging yet transformative
+          time.
+        </p>
+      </div>
 
-            <h2
-              class="section-title mb-3 mt-4"
-              data-toggle="collapse"
-              data-target="#building"
-            >
-              Building the Dream
-              <span class="chevron"></span>
-            </h2>
-            <div id="building" class="section-content collapse">
-              <p>
-                With a clear vision in mind, we reached out to my elder son Ilya
-                and his wife Olivia. Ilya's business acumen and Olivia's
-                marketing expertise were invaluable as we started to turn our
-                dream into reality. They brought structure and strategy to our
-                initial ideas, helping us lay a solid foundation for our
-                business.
-              </p>
-              <p>
-                We worked tirelessly, often late into the night, turning our
-                living room into a hub of creativity and hard work. Timothy
-                managed the technical aspects, building and refining our
-                website, while Ilya focused on business planning and logistics.
-                Olivia, with her keen eye for design, created our brand identity
-                and marketing campaigns.
-              </p>
-            </div>
+      <!-- Second Column: Section Titles -->
+      <div class="col-md-6">
+        <div class="container my-5">
+          <div class="row">
+            <div class="col-lg-12 mx-auto">
+              <h2
+                class="section-title toggleable mb-3"
+                data-target="#beginnings"
+              >
+                Our Beginnings
+              </h2>
+              <div id="beginnings" class="section-content collapse">
+                <p>
+                  The idea for The Literary Loft was sparked during the height
+                  of the global pandemic. As the world came to a standstill and
+                  many of us found solace in the pages of books, it became clear
+                  that there was a need for a personalized, online bookshop that
+                  could deliver more than just books – it could deliver comfort,
+                  adventure, and a sense of community.
+                </p>
+                <p>
+                  From the cozy confines of our living room, my youngest son
+                  Timothy and I began to brainstorm. Timothy, a dedicated
+                  student with a love for technology, brought fresh, innovative
+                  ideas to the table. Together, we envisioned a platform where
+                  book lovers could easily find their next great read, interact
+                  with fellow bibliophiles, and enjoy a seamless shopping
+                  experience.
+                </p>
+              </div>
 
-            <h2
-              class="section-title mb-3 mt-4"
-              data-toggle="collapse"
-              data-target="#growing"
-            >
-              Growing Together
-              <span class="chevron"></span>
-            </h2>
-            <div id="growing" class="section-content collapse">
-              <p>
-                What began as a family project soon attracted the attention of
-                our friends and extended family, who were eager to contribute.
-                Our small team grew, bringing in diverse skills and
-                perspectives. Each person added their unique touch, from
-                curating book selections to enhancing customer service and
-                expanding our online presence.
-              </p>
-            </div>
+              <h2
+                class="section-title toggleable mb-3 mt-4"
+                data-target="#building"
+              >
+                Building the Dream
+              </h2>
+              <div id="building" class="section-content collapse">
+                <p>
+                  With a clear vision in mind, we reached out to my elder son
+                  Ilya and his wife Olivia. Ilya's business acumen and Olivia's
+                  marketing expertise were invaluable as we started to turn our
+                  dream into reality. They brought structure and strategy to our
+                  initial ideas, helping us lay a solid foundation for our
+                  business.
+                </p>
+                <p>
+                  We worked tirelessly, often late into the night, turning our
+                  living room into a hub of creativity and hard work. Timothy
+                  managed the technical aspects, building and refining our
+                  website, while Ilya focused on business planning and
+                  logistics. Olivia, with her keen eye for design, created our
+                  brand identity and marketing campaigns.
+                </p>
+              </div>
 
-            <h2
-              class="section-title mb-3 mt-4"
-              data-toggle="collapse"
-              data-target="#mission"
-            >
-              Our Mission
-              <span class="chevron"></span>
-            </h2>
-            <div id="mission" class="section-content collapse">
-              <p>
-                At The Literary Loft, we are dedicated to creating a haven for
-                book lovers. Our mission is to provide a curated collection of
-                books that cater to diverse tastes and interests, while
-                fostering a community of readers who share a love for
-                literature.
-              </p>
-            </div>
+              <h2
+                class="section-title toggleable mb-3 mt-4"
+                data-target="#growing"
+              >
+                Growing Together
+              </h2>
+              <div id="growing" class="section-content collapse">
+                <p>
+                  What began as a family project soon attracted the attention of
+                  our friends and extended family, who were eager to contribute.
+                  Our small team grew, bringing in diverse skills and
+                  perspectives. Each person added their unique touch, from
+                  curating book selections to enhancing customer service and
+                  expanding our online presence.
+                </p>
+              </div>
 
-            <h2
-              class="section-title mb-3 mt-4"
-              data-toggle="collapse"
-              data-target="#values"
-            >
-              Our Values
-              <span class="chevron"></span>
-            </h2>
-            <div id="values" class="section-content collapse">
-              <ul>
-                <li>
-                  <strong>Passion for Books:</strong> We believe in the
-                  transformative power of reading. Every book in our collection
-                  is handpicked to ensure it meets our high standards.
-                </li>
-                <li>
-                  <strong>Family and Community:</strong> Our business is built
-                  on the strength of family and the support of our community. We
-                  strive to create a welcoming space for all book enthusiasts.
-                </li>
-                <li>
-                  <strong>Quality and Service:</strong> We are committed to
-                  providing high-quality products and exceptional customer
-                  service. Your satisfaction is our top priority.
-                </li>
-                <li>
-                  <strong>Sustainability:</strong> We are dedicated to
-                  environmentally friendly practices, using eco-friendly
-                  packaging and supporting sustainable publishing initiatives.
-                </li>
-              </ul>
+              <h2
+                class="section-title toggleable mb-3 mt-4"
+                data-target="#mission"
+              >
+                Our Mission
+              </h2>
+              <div id="mission" class="section-content collapse">
+                <p>
+                  At The Literary Loft, we are dedicated to creating a haven for
+                  book lovers. Our mission is to provide a curated collection of
+                  books that cater to diverse tastes and interests, while
+                  fostering a community of readers who share a love for
+                  literature.
+                </p>
+              </div>
+
+              <h2
+                class="section-title toggleable mb-3 mt-4"
+                data-target="#values"
+              >
+                Our Values
+              </h2>
+              <div id="values" class="section-content collapse">
+                <ul>
+                  <li>
+                    <strong>Passion for Books:</strong> We believe in the
+                    transformative power of reading. Every book in our
+                    collection is handpicked to ensure it meets our high
+                    standards.
+                  </li>
+                  <li>
+                    <strong>Family and Community:</strong> Our business is built
+                    on the strength of family and the support of our community.
+                    We strive to create a welcoming space for all book
+                    enthusiasts.
+                  </li>
+                  <li>
+                    <strong>Quality and Service:</strong> We are committed to
+                    providing high-quality products and exceptional customer
+                    service. Your satisfaction is our top priority.
+                  </li>
+                  <li>
+                    <strong>Sustainability:</strong> We are dedicated to
+                    environmentally friendly practices, using eco-friendly
+                    packaging and supporting sustainable publishing initiatives.
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
@@ -154,22 +151,292 @@
     </div>
   </div>
 
-  {% endblock %} 
-  
-  {% block extra_js %}
-  <script>
-    $(document).ready(function () {
-      $(".section-title").click(function () {
-        // Toggle the text color of the title
-        $(this).toggleClass("text-success");
+  <!-- Section for Why Your Purchase Matters -->
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-4">Why Your Purchase Matters</h2>
+    <div class="row">
+      <!-- First Card -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/about/reason_1.webp' %}"
+            alt="Recycling Pre-Loved Books"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Recycling Pre-Loved Books</h5>
+            <p class="card-text">
+              Each year, approximately 320 million books end up in landfills
+              worldwide, contributing to unnecessary waste. At 'The Literary
+              Loft', we believe that reducing this number is crucial to lowering
+              carbon emissions. Our mission is to make a difference through the
+              three R's: Reduce, Reuse, and Recycle.
+            </p>
+            <p class="card-text">
+              By purchasing a pre-loved book, you're playing a vital role in
+              helping the planet—one book at a time. Your choice helps keep
+              books in circulation and out of landfills, ensuring their stories
+              continue to be shared without harming the environment.
+            </p>
+            <p class="card-text">
+              Thank you for being a part of the change! Together, we're building
+              a more sustainable future for generations to come.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        // Toggle the chevron direction
-        $(this).find(".chevron").toggleClass("down");
+      <!-- Second Card -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/about/reason_2.webp' %}"
+            alt="Supporting Small Business"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Supporting Small Business</h5>
+            <p class="card-text">
+              At "The Literary Loft", we're not just a business—we're a small
+              team of avid book lovers with a passion for stories and a
+              commitment to our community. Every book we sell is wrapped with
+              care, and every order helps us employ local people with big
+              hearts.
+            </p>
+            <p class="card-text">
+              When you choose to support small, independent retailers like ours,
+              you're not just buying a book. You're contributing to the diverse
+              and vibrant community of independent booksellers who work hard to
+              keep the love of reading alive.
+            </p>
+            <p class="card-text">
+              Thank you for helping us continue sharing stories and supporting
+              local jobs—one book at a time.
+            </p>
+          </div>
+        </div>
+      </div>
 
-        // Toggle the visibility of the section content
-        $(this).next(".section-content").slideToggle(); // Use slideToggle for a smooth transition
-      });
-    });
-  </script>
-  {% endblock %}
+      <!-- Third Card -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/about/reason_3.webp' %}"
+            alt="Building a Sustainable Future"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Building a Sustainable Future</h5>
+            <p class="card-text">
+              At "The Literary Loft", we are committed to sustainability. All of
+              our packaging materials are made from recycled materials and can
+              be recycled again and again, ensuring a minimal impact on the
+              environment.
+            </p>
+            <p class="card-text">
+              Through our Book Recycling Scheme, you can easily recycle your
+              unwanted books with us. Together, we can reduce waste and help
+              protect the planet, one book at a time.
+            </p>
+            <p class="card-text">
+              Thank you for being a part of our journey toward a greener, more
+              sustainable future.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meet the Team Section -->
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-4">Meet the Team</h2>
+    <div class="row">
+      <!-- First Team Member -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/team/tim.webp' %}"
+            alt="Tim - Tech Wizard"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Tim</h5>
+            <p class="card-text">
+              Our tech wizard and the heart of our digital operations. His
+              innovative solutions keep our website running smoothly.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Team Member -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/team/ilya.webp' %}"
+            alt="Ilya - Strategic Mind"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Ilya</h5>
+            <p class="card-text">
+              The strategic mind behind our business. His expertise in
+              management helps steer our family venture toward success.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Team Member -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/team/liv.webp' %}"
+            alt="Liv - Creative Soul"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Liv</h5>
+            <p class="card-text">
+              The creative soul of The Literary Loft. Her design skills make
+              sure our platform is as beautiful as it is functional.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fourth Team Member -->
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img
+            class="card-img-top"
+            src="{% static 'images/team/myself_3.webp' %}"
+            alt="Victoria - Proud Parent"
+          />
+          <div class="card-body">
+            <h5 class="card-title">Victoria</h5>
+            <p class="card-text">
+              The proud parent who brought the family together to create
+              something wonderful out of a challenging time. My passion for
+              books and love for my family drive everything we do at The
+              Literary Loft.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Join Our Journey -->
+  <div class="container my-5">
+    <h2 class="section-title text-center mb-4">Join Our Journey</h2>
+    <p class="text-center">
+      We invite you to join our journey and become a part of The Literary Loft
+      community. Whether you're looking for your next great read or want to
+      connect with fellow book lovers, you'll find a home here. Thank you for
+      supporting our family business and sharing in our love of literature.
+    </p>
+  </div>
 </div>
+
+<!-- Frequently Asked Questions -->
+<div class="container my-5">
+  <h2 class="section-title text-center mb-4">Frequently Asked Questions</h2>
+  <div class="faq-container">
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-1">
+        When will my order arrive?
+      </h3>
+      <div id="faq-1" class="section-content collapse">
+        <p>
+          All orders are processed and despatched within 1 business day. We
+          offer FREE UK delivery as standard service which takes approximately
+          3-5 business days to arrive. International parcels typically take
+          between 5-8 business days to arrive. See here for more info on
+          Shipping.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-2">
+        Do you offer speedy delivery?
+      </h3>
+      <div id="faq-2" class="section-content collapse">
+        <p>
+          Yes we do! Delivery for UK orders costs £1.99 and is delivered in 1-2
+          business days.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-3">
+        What condition can I expect the item to be in?
+      </h3>
+      <div id="faq-3" class="section-content collapse">
+        <p>
+          We sell both pre loved and new items. You will see the item condition
+          on the description page summary. All our pre loved items undergo a 3
+          stage quality control process by our dedicated warehouse team to
+          ensure that the item is in good condition. All our new items are
+          supplied directly by publishers and will be in pristine condition.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-4">
+        What happens if I receive a damaged item?
+      </h3>
+      <div id="faq-4" class="section-content collapse">
+        <p>
+          No sweat, our excellent customer care team are on hand 5 days a week
+          to resolve any issue and will be happy to organize a replacement for
+          you (where available).
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-5">
+        Can I change the delivery address after purchase?
+      </h3>
+      <div id="faq-5" class="section-content collapse">
+        <p>
+          Yes simply shoot us a message on the contact us page and we will
+          endeavour to change the delivery address if it has not been sent out
+          yet.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-6">
+        Can I recycle books with you?
+      </h3>
+      <div id="faq-6" class="section-content collapse">
+        <p>
+          Yes we have a recycling scheme and offer a drop box outside our
+          warehouse in Leicestershire. Just send us a message on our contact us
+          page and we will get back to you.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <h3 class="section-title toggleable faq-question" data-target="#faq-7">
+        Do you sell eBooks?
+      </h3>
+      <div id="faq-7" class="section-content collapse">
+        <p>Yes we will soon be adding eBooks to our store.</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 
+
+{% block extra_js %}
+<script src="{% static 'js/plus_minus.js' %}"></script>
+{% endblock %}
