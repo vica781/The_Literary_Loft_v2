@@ -5,7 +5,6 @@
 {% endblock %} 
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" href="{% static 'css/about.css' %}" />
 {% endblock %} 
 
@@ -449,5 +448,6 @@
 {% endblock %} 
 
 {% block extra_js %}
+{{ block.super }}
 <script src="{% static 'js/plus_minus.js' %}"></script>
 {% endblock %}
