@@ -173,7 +173,6 @@ h2.section-title {
 
 .lead-background {
   position: relative;
-  background-image: url('{% static "images/about/about_books.jpg" %}');
   background-size: cover;
   background-position: center;
   padding: 30px;
