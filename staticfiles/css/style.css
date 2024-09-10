@@ -655,13 +655,48 @@ body {
   font-family: "Nunito", sans-serif;
   font-size: 0.9rem;
   color: green;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem .5rem;
   transition: background-color 0.3s ease;
 }
 
 .footer-nav .dropdown-item:hover,
 .footer-nav .dropdown-item:focus {
   background-color: rgba(77, 82, 82, 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style for footer links */
+.footer-nav .footer-link {
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+  color: #4d5252;
+  text-decoration: none;
+  transition: color 0.3s ease, background-color 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+.footer-nav .footer-link:hover,
+.footer-nav .footer-link:focus {
+  background-color: rgba(77, 82, 82, 0.2);
+  color: #4d5252;
+  text-decoration: none;
+}
+
+.footer-nav .footer-link:active {
+  background-color: rgba(77, 82, 82, 0.3);
+}
+
+/* Add some padding to the top of each section for better scrolling */
+#why-your-purchase-matters,
+#meet-the-team,
+#frequently-asked-questions {
+  padding-top: 60px;
+  margin-top: -60px;
 }
 
 
