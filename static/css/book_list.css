@@ -84,13 +84,13 @@
 }
 
 .book-title {
-    font-size: .9rem;
+    font-size: 1.2rem;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
 .book-author {
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     color: #666;
     margin-bottom: 5px;
 }
@@ -141,10 +141,10 @@
         padding-bottom: 100%; 
     }
     .book-title {
-        font-size: .75rem;
+        font-size: 1rem;
     }
     .book-author {
-        font-size: .7rem;
+        font-size: .9rem;
     }
     .add-to-cart {
         font-size: 0.8em;
