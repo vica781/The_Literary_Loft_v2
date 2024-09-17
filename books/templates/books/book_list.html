@@ -27,7 +27,7 @@
     {% if not category and not subcategory %}
     {% for main_category in categories %}
     <div class="category-section mb-4">
-        <h2 class="text-center mb-3">
+        <h2 class="category-name text-center mb-3">
             {{ main_category.display_name }}
             <div class="dropdown d-inline-block">
                 <button class="btn btn-link dropdown-toggle" type="button" id="{{ main_category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
