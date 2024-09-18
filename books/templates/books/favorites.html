@@ -1,15 +1,58 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title %}
+<title>My Favorite Books - The Literary Loft</title>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/favorites.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="container">
-    <h1>My Favorite Books</h1>
-    <div class="row book-grid">
-        {% for book in favorite_books %}
-            {% include 'books/book_item.html' with book=book %}
-        {% empty %}
-            <p>You haven't added any books to your favorites yet.</p>
-        {% endfor %}
-    </div>
+<div class="container mt-5">
+    <h1 class="mb-4 libre-baskerville text-center favorite-heading">My Favorite Books</h1>
+    {% if favorite_books %}
+        <div class="row book-grid" id="favorites-container">
+            {% for book in favorite_books %}
+                <div class="col-6 col-md-3 mb-4 favorite-book-item" data-book-id="{{ book.id }}">
+                    <div class="book-item">
+                        <a href="{% url 'books:book_detail' book.id %}" class="book-link">
+                            {% if book.cover_image %}
+                                <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');">
+                                    <button class="favorite-btn active" data-book-id="{{ book.id }}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                            {% else %}
+                                <div class="no-image">
+                                    No Image
+                                    <button class="favorite-btn active" data-book-id="{{ book.id }}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                            {% endif %}
+                            <h3 class="book-title">{{ book.title }}</h3>
+                            <p class="book-author">{{ book.author }}</p>
+                            <p class="book-price">£{{ book.price }}</p>
+                        </a>
+                        <form method="post" action="{% url 'books:add_to_cart' book.id %}">
+                            {% csrf_token %}
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="btn add-to-cart">ADD TO BAG</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div id="empty-favorites" class="text-center">
+            <p class="nunito favorite-empty">You haven't added any books to your favorites yet.</p>
+        </div>
+    {% endif %}
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/favorites.js' %}"></script>
 {% endblock %}

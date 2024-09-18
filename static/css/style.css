@@ -708,12 +708,10 @@ html {
     position: absolute;
     top: -12px;
     right: -12px;
-    /* background: none; */
     border: 1px solid #4d5252;
     border-radius: 50%;
     width: 2.5rem;
     height: 2.5rem;
-    /* padding: 2px 10px; */
     background-color: #4d5252;
     color: #fff;
     font-size: 1.5rem;
@@ -722,7 +720,6 @@ html {
 }
 
 .favorite-btn.active {
-    /* color: #ff6b6b; */
     color: #eb6d6d;
 }
 
