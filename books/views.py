@@ -7,6 +7,10 @@ from django.db.models import Q
 from .models import Book, Category, Subcategory
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.views.decorators.http import require_POST
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 # USER REGISTRATION / LOGIN / LOGOUT
@@ -92,6 +96,11 @@ def book_list(request, category_slug=None, subcategory_slug=None):
         'subcategory': subcategory,
     }
     return render(request, 'books/book_list.html', context)
+
+@login_required
+def favorites_list(request):
+    favorite_books = request.user.favorite_books.all()
+    return render(request, 'books/favorites.html', {'favorite_books': favorite_books})
 
 # SEARCH BOOKS
 def search_suggestions(request):
@@ -182,3 +191,21 @@ def remove_from_cart(request):
         
         request.session['cart'] = cart
     return redirect('books:view_cart')
+
+# FAVORITE BOOKS
+@require_POST
+@login_required
+def toggle_favorite(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    user = request.user
+    if user in book.favorited_by.all():
+        book.favorited_by.remove(user)
+        is_favorite = False
+    else:
+        book.favorited_by.add(user)
+        is_favorite = True
+    
+    # Get the new favorite count for the user
+    favorite_count = user.favorite_books.count()
+    
+    return JsonResponse({'is_favorite': is_favorite, 'favorite_count': favorite_count})

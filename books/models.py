@@ -36,9 +36,6 @@ class Subcategory(models.Model):
     class Meta:
         verbose_name_plural = "Subcategories"
     
-    # def __str__(self):
-    #     return f"{self.category.get_name_display()} - {self.name}"
-    
     def save(self, *args, **kwargs):
         self.name = self.name.replace('_', '-')
         if not self.slug:
@@ -70,6 +67,7 @@ class Book(models.Model):
     cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
     pages = models.PositiveIntegerField(blank=True, null=True)
     publication_date = models.DateField(blank=True, null=True)
+    favorited_by = models.ManyToManyField('auth.User', related_name='favorite_books', blank=True)
 
     def __str__(self):
         return self.title

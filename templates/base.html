@@ -80,11 +80,14 @@
     <script src="{% static 'js/flags.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/category_nav.js' %}"></script>
+    <script src="{% static 'js/favorites.js' %}"></script>
     {% endblock %} 
     
     {% block title %}
     <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
     {% endblock %}
+
+    {% csrf_token %}
   </head>
   <body
     class="{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}"
@@ -175,6 +178,12 @@
           <a href="{% url 'books:view_cart' %}" class="cart-icon">
             <i class="fas fa-shopping-bag"></i>
             <span class="cart-count" id="cart-count">{{ cart_count }}</span>
+          </a>
+          <!-- Favorite Books -->
+          <a href="{% url 'books:favorites' %}" class="favorites-icon">
+            <i class="fas fa-heart"></i>
+            <span class="favorites-count" 
+            id="favorite-count">{{ request.user.favorite_books.count }}</span>
           </a>
 
           <!-- Currency Selector -->
@@ -404,11 +413,11 @@
         <!-- Logo image -->
         <div class="d-flex justify-content-center logo-container">
           <a href="{% url 'books:index' %}">
-            <img
+            {% comment %} <img
               src="{% static 'images/hand_books_darker.png' %}"
               alt="The Literary Loft Logo"
               class="logo-image"
-            />
+            /> {% endcomment %}
             <!-- Logo text -->
             <div class="logo-text">
               <h1 class="main-title">The Literary Loft</h1>

@@ -699,7 +699,60 @@ html {
   margin-top: -60px;
 }
 
+/* ------------------------- Favorite Books Section ------------------------ */
+.book-cover {
+    position: relative;
+}
 
+.favorite-btn {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    /* background: none; */
+    border: 1px solid #4d5252;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    /* padding: 2px 10px; */
+    background-color: #4d5252;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.favorite-btn.active {
+    /* color: #ff6b6b; */
+    color: #eb6d6d;
+}
+
+.favorites-icon {
+    position: relative;
+    color: #4d5252;
+    font-size: 1.2em;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.favorites-icon:hover {
+    color: #33ab1a;
+}
+
+.favorites-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: #eb6d6d;
+    color: #fff;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------SMALL DISPLAYS---------------------------- */
@@ -849,6 +902,14 @@ html {
   .footer-nav .dropdown-item {
     padding: 0.5rem 1rem 0.5rem 2rem;
   }
+
+  .favorite-btn {
+    top: -12px;
+    right: -12px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+}
 }
 
 /* Hide burger menu on large screens */

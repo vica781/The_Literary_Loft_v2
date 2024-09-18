@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>My Favorite Books</h1>
+    <div class="row book-grid">
+        {% for book in favorite_books %}
+            {% include 'books/book_item.html' with book=book %}
+        {% empty %}
+            <p>You haven't added any books to your favorites yet.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

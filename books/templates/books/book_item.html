@@ -1,10 +1,19 @@
 <div class="col-6 col-md-3 mb-4">
     <div class="book-item">
-        <a href="{% url 'books:book_detail' book.id %}">
+        <a href="{% url 'books:book_detail' book.id %}" class="book-link">
             {% if book.cover_image %}
-                <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');"></div>
+                <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');">
+                    <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
             {% else %}
-                <div class="no-image">No Image</div>
+                <div class="no-image">
+                    No Image
+                    <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                </div>
             {% endif %}
             <h3 class="book-title">{{ book.title }}</h3>
             <p class="book-author">{{ book.author }}</p>
