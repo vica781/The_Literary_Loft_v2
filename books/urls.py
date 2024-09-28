@@ -24,5 +24,10 @@ urlpatterns = [
     path('cart/update/', views.update_cart, name='update_cart'),
     path('cart/remove/', views.remove_from_cart, name='remove_from_cart'),
     path('books/toggle-favorite/<int:book_id>/', views.toggle_favorite, name='toggle_favorite'),
-    path('favorites/', views.favorites_list, name='favorites'),    
+    path('favorites/', views.favorites_list, name='favorites'),
+    
+    # Staff/Owner restricted URLs
+    path('books/add/', views.add_book, name='add_book'),
+    path('books/edit/<int:id>/', views.edit_book, name='edit_book'),
+    path('books/delete/<int:id>/', views.delete_book, name='delete_book'),    
 ]

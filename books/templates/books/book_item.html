@@ -1,28 +1,37 @@
+{% load static %}
+
 <div class="col-6 col-md-3 mb-4">
     <div class="book-item">
         <a href="{% url 'books:book_detail' book.id %}" class="book-link">
-            {% if book.cover_image %}
-                <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');">
-                    <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                </div>
-            {% else %}
-                <div class="no-image">
-                    No Image
-                    <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                </div>
+            <!-- Display book cover or fallback image -->
+            <div class="book-cover" style="background-image: url('{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static "images/no_cover_img.jpg" %}{% endif %}');">
+                <!-- Hide the favorite button for staff users -->
+                {% if not user.is_staff %}
+                <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
+                    <i class="fas fa-heart"></i>
+                </button>
+                {% endif %}
+            </div>
+            {% if not book.cover_image %}
+            <p class="text-center text-muted mt-2">Image coming soon</p>
             {% endif %}
             <h3 class="book-title">{{ book.title }}</h3>
             <p class="book-author">{{ book.author }}</p>
             <p class="book-price">£{{ book.price }}</p>
         </a>
+        <!-- Hide "Add to Bag" button for staff users -->
+        {% if not user.is_staff %}
         <form method="post" action="{% url 'books:add_to_cart' book.id %}">
             {% csrf_token %}
             <input type="hidden" name="quantity" value="1">
             <button type="submit" class="btn add-to-cart">ADD TO BAG</button>
         </form>
+        {% endif %}
+        {% if user.is_staff %}
+        <div class="admin-controls mt-2">
+            <a href="{% url 'books:edit_book' book.id %}" class="btn btn-sm btn-warning btn-edit">Edit</a>
+            <a href="{% url 'books:delete_book' book.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </div>
+        {% endif %}
     </div>
 </div>

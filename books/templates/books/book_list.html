@@ -24,6 +24,13 @@
             {% endif %}
         </ol>
     </nav>
+
+    {% if user.is_staff %}
+    <div class="text-right mb-3">
+        <a href="{% url 'books:add_book' %}" class="btn btn-primary">Add New Book</a>
+    </div>
+    {% endif %}
+
     {% if not category and not subcategory %}
     {% for main_category in categories %}
     <div class="category-section mb-4">

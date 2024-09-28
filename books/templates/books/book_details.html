@@ -25,7 +25,8 @@
       {% if book.cover_image %}
         <img src="{{ book.cover_image.url }}" alt="{{ book.title }} cover" class="img-fluid" />
       {% else %}
-        <p>No cover image available</p>
+        <img src="{% static 'images/no_cover_img.jpg' %}" alt="No cover available" class="img-fluid" />
+        <p class="text-center text-muted mt-2">No cover image available</p>
       {% endif %}
     </div>
     <div class="col-md-4 book-info">
@@ -35,6 +36,8 @@
       <div class="book-price">
         £{{ book.price|floatformat:2 }}
       </div>
+      <!-- Hide "Add to Bag" button for staff users -->
+      {% if not user.is_staff %}
       <form method="post" action="{% url 'books:add_to_cart' book.id %}">
         {% csrf_token %}
         <div class="form-group">
@@ -47,6 +50,15 @@
         </div>
         <button type="submit" class="btn add_to_cart mt-3">ADD TO BAG</button>
       </form>
+      {% endif %}
+      
+      <!-- Show Edit and Delete buttons only for staff -->
+      {% if user.is_staff %}
+      <div class="admin-controls mt-4">
+        <a href="{% url 'books:edit_book' book.id %}" class="btn btn-warning mr-2">Edit</a>
+        <a href="{% url 'books:delete_book' book.id %}" class="btn btn-danger">Delete</a>
+      </div>
+      {% endif %}
     </div>
     <div class="col-md-4 book-summary">
       <h2>Summary</h2>

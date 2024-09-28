@@ -54,12 +54,39 @@
     border-radius: 5px;
 }
 
+/* Book item link styles */
 .book-item a {
     text-decoration: none;
     color: inherit;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
+}
+
+/* Specific button styles to override the inherited color */
+.book-item .btn {
+    color: white; 
+    font-weight: bold; 
+}
+
+/* Override styles specifically for the Edit button */
+.btn-warning, .btn-edit {
+    color: black !important; 
+    font-weight: normal; 
+    background-color: #ffc107; 
+    border-color: #ffc107; 
+}
+
+/* Specific override for Edit button within the .admin-controls */
+.admin-controls .btn-warning {
+    color: black !important;
+    font-weight: normal !important; 
+}
+
+/* Delete button styling */
+.btn-danger {
+    color: white; 
+    font-weight: bold;
 }
 
 .book-cover {
@@ -114,6 +141,17 @@
 
 .add-to-cart:hover {
     background-color: #3a3f3f !important;
+}
+
+.admin-book-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+}
+
+.admin-book-actions .btn {
+    flex: 1;
+    margin: 0 0.25rem;
 }
 
 /* ------------------------Media query for large screens-------------------- */

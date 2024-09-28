@@ -5,13 +5,84 @@ from django.contrib.auth import login, authenticate, logout
 from django.urls import reverse
 from django.db.models import Q
 from .models import Book, Category, Subcategory
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth import get_user_model
+from .forms import BookForm  
+
+# Check if the user is an admin (STAFF)
+def is_admin(user):
+    return user.is_staff
+
+# ADD BOOK view
+@user_passes_test(is_admin)
+def add_book(request):
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Book added successfully!")
+            return redirect('books:book_list')
+        else:
+            messages.error(request, "There was an error adding the book. Please check the form.")
+    else:
+        form = BookForm()
+    
+    context = {
+        'form': form,
+        'categories': categories,
+        'subcategories': subcategories,
+    }
+    return render(request, 'books/add_book.html', context)
+
+# EDIT BOOK view
+@user_passes_test(is_admin)
+def edit_book(request, id):
+    book = get_object_or_404(Book, id=id)
+    categories = Category.objects.all()
+    subcategories = Subcategory.objects.all()
+    if request.method == 'POST':
+        form = BookForm(request.POST, request.FILES, instance=book)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Book updated successfully!")
+            return redirect('books:book_list')
+        else:
+            messages.error(request, "There was an error updating the book. Please check the form.")
+    else:
+        form = BookForm(instance=book)
+
+    context = {
+        'form': form,
+        'book': book,
+        'categories': categories,
+        'subcategories': subcategories,
+    }
+    return render(request, 'books/edit_book.html', context)
+
+# DELETE BOOK view
+@user_passes_test(is_admin)
+def delete_book(request, id):
+    book = get_object_or_404(Book, id=id)
+    if request.method == 'POST':
+        confirmation = request.POST.get('confirmation', '').strip()  # Strip whitespace
+        if confirmation == book.title:
+            book.delete()
+            messages.success(request, f"Book '{book.title}' has been deleted successfully.")
+            return redirect('books:book_list')  # Redirect to the book list page after deletion
+        else:
+            messages.error(request, "Confirmation failed. The book title entered did not match.")
+
+    context = {
+        'book': book
+    }
+    return render(request, 'books/delete_book.html', context)
+
 
 User = get_user_model()
-
 
 # USER REGISTRATION / LOGIN / LOGOUT
 def register(request):
