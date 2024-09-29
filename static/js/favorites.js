@@ -1,4 +1,5 @@
 $(document).ready(function() {
+    // Get CSRF token from cookies
     function getCookie(name) {
         let cookieValue = null;
         if (document.cookie && document.cookie !== '') {
@@ -16,11 +17,12 @@ $(document).ready(function() {
 
     const csrftoken = getCookie('csrftoken');
 
+    // Check if the HTTP method is CSRF-safe
     function csrfSafeMethod(method) {
-        // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
 
+    // Set up AJAX to include the CSRF token for unsafe HTTP methods
     $.ajaxSetup({
         beforeSend: function(xhr, settings) {
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -29,16 +31,28 @@ $(document).ready(function() {
         }
     });
 
+    // Update the favorite count in the UI
     function updateFavoriteCount(count) {
         $('.favorites-count').text(count);
     }
 
+    // Function to handle clicking the favorite button
     function handleFavoriteClick(e) {
         e.preventDefault();
-        var $btn = $(this);
-        var bookId = $btn.data('book-id');
-        var isOnFavoritesPage = $btn.closest('.favorite-book-item').length > 0;
+        let $btn = $(this);
+        let bookId = $btn.data('book-id');
 
+        // Convert to a real boolean value
+        let isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
+        let isOnFavoritesPage = $btn.closest('.favorite-book-item').length > 0;
+
+        // If the user is not logged in, show a toast notification and return
+        if (!isAuthenticated) {
+            $('#toastNotification').toast('show');
+            return;
+        }
+
+        // If the user is authenticated, send AJAX request to toggle favorite
         $.ajax({
             url: '/books/toggle-favorite/' + bookId + '/',
             method: 'POST',
@@ -59,12 +73,11 @@ $(document).ready(function() {
         });
     }
 
-    // Use event delegation to handle clicks on favorite buttons
+    // Event delegation to handle clicks on favorite buttons
     $(document).on('click', '.favorite-btn', handleFavoriteClick);
 
-    // Check if we're on the favorites page
+    // If on the favorites page and there are no favorite books, show a message
     if ($('#favorites-container').length > 0) {
-        // If there are no favorite books, show a message
         if ($('.favorite-book-item').length === 0) {
             $('#favorites-container').html('<p class="nunito">You haven\'t added any books to your favorites yet.</p>');
         }

@@ -95,8 +95,24 @@
     {% csrf_token %}
   </head>
   <body
-    class="{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}"
-  >
+    class="{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}">
+    <!-- Toast Notification HTML -->
+    <div class="toast-container position-fixed top-0 right-0 p-3" style="z-index: 1055;">
+        <div id="toastNotification" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="mr-auto">The Literary Loft</strong>
+                <small class="text-muted"></small>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="toast-body">
+                <i class="fas fa-info-circle mr-2"></i>
+                Please <a href="{% url 'books:login' %}"><strong>log in</strong></a> or <a href="{% url 'books:register' %}"><strong>register</strong></a> to save books to your favorites.
+            </div>
+        </div>
+    </div>
+    <!-- Page Header -->
     {% block page_header %}
     <header>
       <!-- TOP BAR -->
@@ -660,9 +676,18 @@
     {% endblock %} 
     
     {% block postloadjs %}
+    <!-- Bootstrap JS  and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+    <!-- Initialize Toast -->
+    <script>
+      $(document).ready(function() {
+          $('.toast').toast({
+              autohide: false  // Disable auto-hide
+          });
+      });
+    </script>
     {% endblock %}
   </body>
 </html>
