@@ -6,6 +6,10 @@
   margin-bottom: 20px;
 }
 
+.book-cover {
+  text-align: center;
+}
+
 .book-cover img {
   max-width: 100%;
   height: auto;
@@ -16,13 +20,14 @@
   margin-bottom: 10px;
 }
 
-.book-info p {
+.book-info p,
+.book-summary h2 {
   margin-bottom: 10px;
 }
 
 .book-summary h2 {
   font-size: 1.5rem;
-  margin-bottom: 10px;
+  margin-top: 1.5rem;
 }
 
 .book-price {
@@ -32,18 +37,20 @@
   margin: 15px 0;
 }
 
-.book-tabs .nav-tabs {
+.book-tabs {
   margin-bottom: 20px;
+}
+
+.book-tabs .nav-tabs {
+  margin-bottom: 0;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .book-tabs .tab-content {
   padding: 20px;
-  border: 1px solid #ddd;
+  border: 1px solid #dee2e6;
   border-top: none;
-}
-
-.book-tabs .nav-tabs {
-  border-bottom: 1px solid #dee2e6;
+  background-color: #fff;
 }
 
 .book-tabs .nav-item {
@@ -66,70 +73,62 @@
 }
 
 .book-tabs .nav-link.active {
-  color: #495057;
   background-color: #fff;
   border-bottom-color: #fff;
 }
 
-.book-tabs .tab-content {
-  padding: 20px;
-  border: 1px solid #dee2e6;
-  border-top: none;
-  background-color: #fff;
+.col-12 {
+  margin-bottom: 1rem;
 }
+
 .breadcrumb {
-    background-color: #dee1e4;
-    padding: 0.75rem 1rem;
-    border-radius: 0.25rem;
-    margin-bottom: 1rem;
+  background-color: #dee1e4;
+  padding: 0.75rem 1rem;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
-    content: ">";
+  content: ">";
 }
 
 .breadcrumb-item a {
-    color: #007bff;
-    text-decoration: none;
+  color: #007bff;
+  text-decoration: none;
 }
 
 .breadcrumb-item.active {
-    color: #6c757d;
+  color: #6c757d;
 }
 
 .add_to_cart {
-    color: #fff;
-    background-color: #4d5252;
-    border-color: #4d5252;
-    font-weight: bolder;
+  color: #fff;
+  background-color: #4d5252;
+  border-color: #4d5252;
+  font-weight: bolder;
 }
 
 .add_to_cart:hover {
-    color: #4d5252;
-    background-color: #c8ccd2;
-    border-color: #9da0a5;
+  color: #4d5252;
+  background-color: #c8ccd2;
+  border-color: #9da0a5;
 }
 
-/* ------------------------------ Responsivness ---------------------------- */ 
+.btn-danger {
+  font-weight: bold;
+}
+
+/* ------------------------------ Responsiveness ---------------------------- */ 
 @media (max-width: 768px) {
   .book-cover img {
     max-width: 70%;
-    height: auto;
-  }
-
-  .book-cover {
-    text-align: center;
-  }
-
-  .book-summary h2 {
-    margin-top: 1.5rem;
   }
 
   .book-info h1 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-}
-.book-tabs .nav-link {
-  padding: 0.5rem 0.6rem;
-}
+    font-size: 1.5rem;
+  }
+
+  .book-tabs .nav-link {
+    padding: 0.5rem 0.6rem;
+  }
 }

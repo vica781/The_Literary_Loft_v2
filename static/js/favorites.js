@@ -41,13 +41,10 @@ $(document).ready(function() {
         e.preventDefault();
         let $btn = $(this);
         let bookId = $btn.data('book-id');
-
-        // Convert to a real boolean value
-        let isAuthenticated = "{{ user.is_authenticated|yesno:'true,false' }}" === "true";
         let isOnFavoritesPage = $btn.closest('.favorite-book-item').length > 0;
 
-        // If the user is not logged in, show a toast notification and return
-        if (!isAuthenticated) {
+        // If the user is not authenticated, show a toast notification and return
+        if ($btn.hasClass('guest')) {
             $('#toastNotification').toast('show');
             return;
         }
