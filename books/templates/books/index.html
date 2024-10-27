@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}
-<title>Home - The Literary Loft</title> 
+{% block extra_title %}Home{% endblock %}
+
+{% block meta_description %}
+<meta name="description" content="Welcome to The Literary Loft - your sanctuary for loyal literary friends. Discover a curated selection of books across genres, with free UK shipping on orders over £20. Step into our world of books today!" />
 {% endblock %}
 
 {% block extra_css %}
@@ -19,7 +21,7 @@
 </div>
 
 <div id="hero-content" class="hero-content">
-    <h2>Your sanctuary for loyal literary friends</h2>
+    <h1>Your sanctuary for loyal literary friends</h1>
     <a href="{% url 'books:book_list' %}" class="cta-button">Shop Now</a>
 </div>
 {% endblock %}

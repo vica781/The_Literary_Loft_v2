@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-<title>Search result - The Literary Loft</title>
+{% block extra_title %}
+Search Results for "{{ query }}"
 {% endblock %}
+
+{% block meta_description %}
+Browse the search results for "{{ query }}" at The Literary Loft. Discover books that match your interests and enjoy free UK shipping on orders over £20.
+{% endblock %}
+
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">

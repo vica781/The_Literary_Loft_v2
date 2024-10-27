@@ -3,6 +3,12 @@
 
 {% block title %}
 <title>Book Details - The Literary Loft</title>
+{% endblock %}{% block extra_title %}
+{{ book.title }} by {{ book.author }} - Buy Now
+{% endblock %}
+
+{% block meta_description %}
+Buy {{ book.title }} by {{ book.author }} at The Literary Loft. Read more about this book and enjoy free UK shipping on orders over £20.
 {% endblock %}
 
 {% block extra_css %}

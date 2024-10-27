@@ -1,8 +1,11 @@
 {% extends "base.html" %} {% load static %} 
 
-{% block title %}
-<title>Our Story - The Literary Loft</title>
-{% endblock %} 
+{% block extra_title %}Our Story{% endblock %}
+
+{% block meta_description %}
+Learn more about The Literary Loft’s journey, values, and mission. Discover why we believe there's no friend as loyal as a book.
+{% endblock %}
+
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}" />

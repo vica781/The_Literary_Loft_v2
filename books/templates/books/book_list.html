@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}
-<title>All books - The Literary Loft</title>
+{% block extra_title %}
+{% if category %}{{ category.display_name }} Books{% elif subcategory %}{{ subcategory.name }} Books{% else %}All Books{% endif %}
+{% endblock %}
+
+{% block meta_description %}
+Discover a wide range of {% if category %}{{ category.display_name }}{% elif subcategory %}{{ subcategory.name }}{% else %}books{% endif %} at The Literary Loft. Browse our collection and enjoy free UK shipping on orders over £20.
 {% endblock %}
 
 {% block extra_css %}

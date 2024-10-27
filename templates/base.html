@@ -10,6 +10,8 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="description" content="{% block meta_description %}{% endblock %}">
+
     <link
       rel="stylesheet"
       type="text/css"
@@ -40,6 +42,11 @@
       href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
       rel="stylesheet"
     />
+    <meta property="og:title" content="Home - The Literary Loft" />
+    <meta property="og:description" content="Your sanctuary for loyal literary friends. Discover books with free UK shipping on orders over £20." />
+    <meta property="og:image" content="{% static 'images/loft_1.webp' %}" />
+    <meta property="og:url" content="{% url 'books:index' %}" />
+    <meta property="og:type" content="website" />
     {% endblock %} 
     
     {% block corecss %}
@@ -89,7 +96,7 @@
     {% endblock %} 
     
     {% block title %}
-    <title>The Literary Loft{% block extra_title %} {% endblock %}</title>
+    <title>The Literary Loft - {% block extra_title %}{% endblock %}</title>
     {% endblock %}
 
     {% csrf_token %}
@@ -430,12 +437,7 @@
       <div class="container">
         <!-- Logo image -->
         <div class="d-flex justify-content-center logo-container">
-          <a href="{% url 'books:index' %}">
-            {% comment %} <img
-              src="{% static 'images/hand_books_darker.png' %}"
-              alt="The Literary Loft Logo"
-              class="logo-image"
-            /> {% endcomment %}
+          <a href="{% url 'books:index' %}">        
             <!-- Logo text -->
             <div class="logo-text">
               <h1 class="main-title">The Literary Loft</h1>
