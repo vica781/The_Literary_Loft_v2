@@ -1,23 +1,12 @@
 from django.contrib.sitemaps import Sitemap
-from django.shortcuts import reverse
 from .models import Book
 
 class BookSitemap(Sitemap):
-    changefreq = "daily"
-    priority = 0.8
+    changefreq = "weekly"
+    priority = 0.9
 
     def items(self):
-        return Book.objects.all()
+        return Book.objects.all().order_by('-updated_at') 
 
-    def location(self, item):
-        return reverse('books:book_detail', args=[item.slug])
-
-class StaticViewSitemap(Sitemap):
-    priority = 0.5
-    changefreq = 'monthly'
-
-    def items(self):
-        return ['books:book_list', 'books:about', 'books:contact']
-
-    def location(self, item):
-        return reverse(item)
+    def lastmod(self, obj):
+        return obj.updated_at  
