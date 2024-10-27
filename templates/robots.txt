@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+
+Sitemap: https://the-literary-loft-a4b6116b3a17.herokuapp.com/sitemap.xml

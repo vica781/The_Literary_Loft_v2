@@ -750,6 +750,11 @@ html {
     align-items: center;
     justify-content: center;
 }
+
+/* ------------- Toast Notification (Favorite Functionality) ---------------- */
+.toast-container {
+    display: none;  
+}
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------SMALL DISPLAYS---------------------------- */
 @media (max-width: 468px) {}
