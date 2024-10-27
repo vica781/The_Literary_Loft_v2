@@ -3,14 +3,21 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from django.contrib.sitemaps import GenericSitemap  
-from books.sitemaps import BookSitemap  
+from django.contrib.sitemaps import GenericSitemap
+from books.sitemaps import BookSitemap
+from books.models import Book  
 from django.views.generic import TemplateView
+
+# Parameters for GenericSitemap
+book_sitemap_info = {
+    'queryset': Book.objects.all(),
+    'date_field': 'updated_at',  
+}
 
 # Sitemaps dictionary
 sitemaps = {
     'books': BookSitemap,
-    'static': GenericSitemap,  
+    'static': GenericSitemap(book_sitemap_info),  
 }
 
 urlpatterns = [
