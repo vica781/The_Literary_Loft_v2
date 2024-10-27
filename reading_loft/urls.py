@@ -3,13 +3,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from django.views.generic import TemplateView  
-from books.sitemaps import BookSitemap, StaticViewSitemap  
+from django.contrib.sitemaps import GenericSitemap  
+from books.sitemaps import BookSitemap  
+from django.views.generic import TemplateView
 
 # Sitemaps dictionary
 sitemaps = {
     'books': BookSitemap,
-    'static': StaticViewSitemap,
+    'static': GenericSitemap,  
 }
 
 urlpatterns = [
