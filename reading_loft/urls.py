@@ -2,6 +2,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from django.views.generic import TemplateView  
+from books.sitemaps import BookSitemap, StaticViewSitemap  
+
+# Sitemaps dictionary
+sitemaps = {
+    'books': BookSitemap,
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -9,6 +18,10 @@ urlpatterns = [
     path('', include('books.urls')),  # the books app URLs
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('checkout/', include('checkout.urls')),  # the checkout app URLs
+
+    # Sitemap and robots.txt
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
+    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 
 # Serve static and media files in development
