@@ -73,6 +73,7 @@ class Book(models.Model):
         return self.title
     
     def save(self, *args, **kwargs):
-        if self.subcategory.category.name not in [self.subcategory.category.name for cat in Category.objects.all()]:
-            raise ValueError("Subcategory does not match the selected Category")
+        # Ensure that the book's subcategory matches the selected category
+        if self.subcategory and self.subcategory.category != Category.objects.get(name=self.subcategory.category.name):
+            raise ValueError("Subcategory does not match the selected Category.")
         super().save(*args, **kwargs)
