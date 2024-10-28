@@ -1,1 +1,1 @@
-web: gunicorn reading_loft.wsgi:application
+web: gunicorn reading_loft.wsgi:application --timeout 120

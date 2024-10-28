@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
 
 # CATEGOTY
@@ -77,3 +78,6 @@ class Book(models.Model):
         if self.subcategory and self.subcategory.category != Category.objects.get(name=self.subcategory.category.name):
             raise ValueError("Subcategory does not match the selected Category.")
         super().save(*args, **kwargs)
+        
+    def get_absolute_url(self):
+        return reverse('book_detail', args=[str(self.id)])  # Adjust 'book_detail' and args as per URL configuration
