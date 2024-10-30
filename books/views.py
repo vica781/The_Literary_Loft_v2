@@ -285,4 +285,15 @@ def toggle_favorite(request, book_id):
 # MARKETING 
 def facebook_mockup(request):
     book = Book.objects.get(title="Tomorrow, and Tomorrow, and Tomorrow")
-    return render(request, 'marketing/facebook_mockup_page.html', {'book': book})
+    # Get Donna Tartt's books
+    secret_history = Book.objects.get(title="The Secret History")
+    little_friend = Book.objects.get(title="The Little Friend")
+    goldfinch = Book.objects.get(title="The Goldfinch")
+    
+    context = {
+        'book': book,
+        'secret_history': secret_history,
+        'little_friend': little_friend,
+        'goldfinch': goldfinch,
+    }
+    return render(request, 'marketing/facebook_mockup_page.html', context)

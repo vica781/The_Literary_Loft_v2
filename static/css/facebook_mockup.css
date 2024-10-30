@@ -401,3 +401,58 @@ header, .navbar, .category-nav, footer, .top-bar, .logo-container {
     opacity: 1;
     animation: fadeIn 0.5s ease;
 }
+
+.author-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.author-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 15px;
+}
+
+.featured-book {
+    text-align: center;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.book-cover-small {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.book-brief {
+    font-size: 0.9em;
+    color: #666;
+    margin: 8px 0;
+}
+
+.featured-book h6 {
+    margin: 10px 0;
+    font-weight: 600;
+}
+
+.featured-book .btn {
+    width: 100%;
+    margin-top: 10px;
+}

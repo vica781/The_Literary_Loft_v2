@@ -224,43 +224,63 @@
         </div>
 
         <!-- Author Spotlight Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    1 day ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                ✍️ Author Spotlight: Donna Tartt ✨
-                <div class="author-spotlight">
-                    <div class="author-card">
-                        <img src="{% static 'images/hand_books_darker.png' %}" alt="Donna Tartt" class="author-image">
-                        <div class="author-info">
-                            <h4>Donna Tartt</h4>
-                            <p class="author-bio">Pulitzer Prize-winning author known for her meticulously crafted literary works. Each of her three novels has garnered critical acclaim and a devoted following.</p>
-                            <div class="featured-books">
-                                <h5>Notable Works:</h5>
-                                <ul class="list-unstyled">
-                                    <li>The Secret History (1992)</li>
-                                    <li>The Little Friend (2002)</li>
-                                    <li>The Goldfinch (2013, Pulitzer Prize Winner)</li>
-                                </ul>
+<div class="post">
+    <div class="post-header">
+        <div class="post-profile-picture">
+            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
+        </div>
+        <div class="post-meta">
+            <strong>The Literary Loft</strong><br>
+            1 day ago
+        </div>
+    </div>
+    
+    <div class="post-content nunito">
+        ✍️ Author Spotlight: Donna Tartt ✨
+        <div class="author-spotlight">
+            <div class="author-card">
+                <img src="{% static 'images/facebook_book_covers/donna-tartt.jpg' %}" alt="Donna Tartt" class="author-image">
+                <div class="author-info">
+                    <h4>Donna Tartt</h4>
+                    <p class="author-bio">Pulitzer Prize-winning author known for her meticulously crafted literary works. Each of her three novels has garnered critical acclaim and a devoted following.</p>
+                    <div class="featured-books">
+                        <h5>Notable Works:</h5>
+                        <div class="book-grid">
+                            <!-- The Secret History -->
+                            <div class="featured-book">
+                                <img src="{% static 'images/facebook_book_covers/the_secret_history.jpg' %}" alt="The Secret History" class="book-cover-small">
+                                <h6>The Secret History (1992)</h6>
+                                <p class="book-brief">A mesmerizing tale of ancient Greek studies and dark academia.</p>
+                                <a href="{% url 'books:book_detail' id=secret_history.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
                             </div>
-                            <a href="#" class="btn btn-outline-primary btn-sm">Browse Books</a>
+                            
+                            <!-- The Little Friend -->
+                            <div class="featured-book">
+                                <img src="{% static 'images/facebook_book_covers/the_little_friend.jpg' %}" alt="The Little Friend" class="book-cover-small">
+                                <h6>The Little Friend (2002)</h6>
+                                <p class="book-brief">A gripping Southern Gothic mystery of childhood and loss.</p>
+                                <a href="{% url 'books:book_detail' id=little_friend.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
+                            </div>
+                            
+                            <!-- The Goldfinch -->
+                            <div class="featured-book">
+                                <img src="{% static 'images/facebook_book_covers/the_goldfinch.jpg' %}" alt="The Goldfinch" class="book-cover-small">
+                                <h6>The Goldfinch (2013)</h6>
+                                <p class="book-brief">Pulitzer Prize-winning novel about art, love, and identity.</p>
+                                <a href="{% url 'books:book_detail' id=goldfinch.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
+                            </div>
                         </div>
                     </div>
+                    <a href="{% url 'books:book_list' %}?author=Donna Tartt" class="btn btn-primary mt-3">Browse All Books</a>
                 </div>
             </div>
-            
-            <div class="post-engagement">
-                ✍️ 678 &nbsp;&nbsp;❤️ 890 &nbsp;&nbsp;|&nbsp;&nbsp; 156 Comments &nbsp;&nbsp; 78 Shares
-            </div>
         </div>
+    </div>
+    
+    <div class="post-engagement">
+        ✍️ 678 &nbsp;&nbsp;❤️ 890 &nbsp;&nbsp;|&nbsp;&nbsp; 156 Comments &nbsp;&nbsp; 78 Shares
+    </div>
+</div>
 
         <!-- Event Announcement Post -->
         <div class="post">
