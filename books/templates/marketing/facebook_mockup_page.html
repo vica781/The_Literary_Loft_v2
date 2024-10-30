@@ -146,7 +146,7 @@
                     <h4>Tomorrow, and Tomorrow, and Tomorrow</h4>
                     <p class="book-author">By Gabrielle Zevin</p>
                     <p class="book-description">A modern masterpiece about love, friendship, and creativity.</p>
-                    <p class="book-price">£16.99 <span class="original-price">£20.99</span></p>
+                    <p class="book-price">17.00 <span class="original-price">£20.99</span></p>
                     <a href="{% url 'books:book_detail' id=book.id %}" class="btn btn-primary btn-sm">Meet your new friend</a>
                 </div>
             </div>
@@ -342,4 +342,8 @@
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/facebook_mockup.js' %}"></script>
 {% endblock %}
