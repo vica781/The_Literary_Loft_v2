@@ -9,7 +9,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth import get_user_model
-from .forms import BookForm  
+from .forms import BookForm
+from django.shortcuts import render  
 
 # Check if the user is an admin (STAFF)
 def is_admin(user):
@@ -280,3 +281,7 @@ def toggle_favorite(request, book_id):
     favorite_count = user.favorite_books.count()
     
     return JsonResponse({'is_favorite': is_favorite, 'favorite_count': favorite_count})
+
+# MARKETING 
+def facebook_mockup(request):
+    return render(request, 'marketing/facebook_mockup_page.html')

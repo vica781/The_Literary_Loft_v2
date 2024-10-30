@@ -1,0 +1,403 @@
+/* Reset and General Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    font-family: "Nunito", sans-serif;
+}
+
+.container-fluid, #wrapper, #content {
+    padding: 0 !important;
+    max-width: 100% !important;
+}
+
+header, .navbar, .category-nav, footer, .top-bar, .logo-container {
+    display: none !important;
+}
+
+/* Facebook Page Layout */
+.fb-header {
+    background-color: white;
+    border-bottom: 1px solid #dddfe2;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.fb-logo {
+    color: #1877f2;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Cover Photo */
+.cover-photo-container {
+    position: relative;
+    height: 300px;
+}
+
+.cover-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* Profile Section */
+.profile-section {
+    background: white;
+    border-bottom: 1px solid #dddfe2;
+    padding: 1rem;
+}
+
+.profile-picture-container {
+    width: 168px;
+    height: 168px;
+    margin-top: -100px;
+    position: relative;
+}
+
+.profile-picture-wrapper {
+    background: white;
+    border-radius: 8px;
+    padding: 0.5rem;
+    border: 1px solid #dddfe2;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 32px;
+}
+
+.page-subtitle {
+    color: #65676B;
+    margin-top: 0.25rem;
+}
+
+/* Navigation Links */
+.fb-nav {
+    border-top: 1px solid #dddfe2;
+    padding-top: 1rem;
+    margin-top: 1rem;
+}
+
+.fb-nav-link {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: #65676B;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.fb-nav-link:hover, .fb-nav-link.active {
+    color: #1877f2;
+}
+
+.fb-nav-link.active {
+    border-bottom: 3px solid #1877f2;
+}
+
+/* Post Styling */
+.posts-container {
+    max-width: 900px;
+    margin: 1rem auto;
+}
+
+.post {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.post:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.post-profile-picture {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+    padding: 0.25rem;
+    background: white;
+}
+
+.post-meta {
+    font-size: 0.875rem;
+}
+
+.post-content {
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.post-quote {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    border-left: 4px solid #1877f2;
+    font-style: italic;
+    color: #666;
+}
+
+.post-engagement {
+    border-top: 1px solid #dddfe2;
+    padding-top: 0.75rem;
+    font-size: 0.875rem;
+    color: #65676B;
+    cursor: pointer;
+}
+
+.post-engagement:hover {
+    color: #1877f2;
+}
+
+/* Book Recommendation Card */
+.book-card {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.book-cover {
+    width: 120px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.book-details {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+.book-author, .book-price {
+    color: #65676B;
+}
+
+.book-price {
+    font-weight: bold;
+    color: #1877f2;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #65676B;
+    font-weight: normal;
+    margin-left: 0.5rem;
+}
+
+/* Offer Card */
+.special-offer, .challenge-card, .event-card, .quote-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.offer-card {
+    background: linear-gradient(45deg, #1877f2, #0099ff);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.offer-timer, .challenge-prize {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #1877f2;
+}
+
+.offer-code, .challenge-prize {
+    background: rgba(255,255,255,0.2);
+    padding: 0.5rem;
+    border-radius: 4px;
+    display: inline-block;
+    margin: 1rem 0;
+}
+
+/* Review Card */
+.review-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.rating {
+    color: #ffc107;
+}
+
+.review-text {
+    font-style: italic;
+    color: #444;
+}
+
+/* Author Spotlight */
+.author-card {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.author-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.author-info {
+    margin-left: 1rem;
+    flex: 1;
+}
+
+/* Event Details */
+.event-details {
+    padding: 1rem;
+}
+
+.event-time, .event-location, .quote-author {
+    color: #65676B;
+    margin: 0.5rem 0;
+}
+
+.event-description, .quote-text {
+    margin: 1rem 0;
+    line-height: 1.5;
+}
+
+/* Button Styles */
+.btn-primary, .shop-button {
+    background-color: #1877f2;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover, .shop-button:hover {
+    background-color: #166fe5;
+    transform: translateY(-1px);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-outline-primary {
+    color: #1877f2;
+    border: 1px solid #1877f2;
+    background-color: transparent;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: #1877f2;
+    color: white;
+    transform: translateY(-1px);
+}
+
+/* Additional Elements */
+.content-list {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.content-list div {
+    margin: 12px 0;
+    padding: 8px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quote-card {
+    text-align: center;
+}
+
+.quote-text {
+    font-size: 1.5rem;
+    color: #1c1e21;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+}
+
+.quote-text::before, .quote-text::after {
+    content: '"';
+    color: #1877f2;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .book-card, .author-card, .event-buttons {
+        flex-direction: column;
+    }
+
+    .book-cover, .author-image {
+        margin-bottom: 1rem;
+        align-self: center;
+    }
+
+    .book-details, .author-info {
+        margin-left: 0;
+    }
+
+    .quote-text {
+        font-size: 1.2rem;
+    }
+}
+
+/* Loading Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.post {
+    opacity: 1;
+    animation: fadeIn 0.5s ease;
+}

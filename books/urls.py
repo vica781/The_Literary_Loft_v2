@@ -28,5 +28,8 @@ urlpatterns = [
     # Staff/Owner restricted URLs
     path('books/add/', views.add_book, name='add_book'),
     path('books/edit/<int:id>/', views.edit_book, name='edit_book'),
-    path('books/delete/<int:id>/', views.delete_book, name='delete_book'),    
+    path('books/delete/<int:id>/', views.delete_book, name='delete_book'),
+    
+    #Marketing URLs
+    path('marketing/facebook-mockup/', views.facebook_mockup, name='facebook_mockup'),    
 ]
