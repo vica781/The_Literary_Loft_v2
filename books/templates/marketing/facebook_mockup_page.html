@@ -97,33 +97,33 @@
         </div>
 
         <!-- Special Offer Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    2 hrs ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito special-offer">
-                🎉 AUTUMN READING SALE! 🍂
-                <div class="offer-card">
-                    <h3>30% OFF</h3>
-                    <p class="offer-details">All Fiction Books This Week!</p>
-                    <div class="offer-timer">Limited Time Offer - Ends Sunday</div>
-                    <p class="offer-code">Use code: AUTUMN30</p>
-                    <a href="{% url 'books:book_list' %}" class="btn btn-primary">Shop Now</a>
-                </div>
-                <p class="terms">*Terms and conditions apply. Cannot be combined with other offers.</p>
-            </div>
-            
-            <div class="post-engagement">
-                🎉 567 &nbsp;&nbsp;❤️ 789 &nbsp;&nbsp;|&nbsp;&nbsp; 145 Comments &nbsp;&nbsp; 89 Shares
-            </div>
+<div class="post">
+    <div class="post-header">
+        <div class="post-profile-picture">
+            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
         </div>
+        <div class="post-meta">
+            <strong>The Literary Loft</strong><br>
+            2 hrs ago
+        </div>
+    </div>
+    
+    <div class="post-content nunito special-offer">
+        🎉 AUTUMN READING SALE! 🍂
+        <div class="offer-card">
+            <h3>30% OFF</h3>
+            <p class="offer-details">All Fiction Books This Week!</p>
+            <div class="offer-timer">Limited Time Offer - Ends Sunday</div>
+            <p class="offer-code">Use code: AUTUMN30</p>
+            <a href="/books/" class="btn btn-primary" onclick="event.preventDefault(); window.location.href='/books/';">Shop Now</a>
+        </div>
+        <p class="terms">*Terms and conditions apply. Cannot be combined with other offers.</p>
+    </div>
+    
+    <div class="post-engagement">
+        🎉 567 &nbsp;&nbsp;❤️ 789 &nbsp;&nbsp;|&nbsp;&nbsp; 145 Comments &nbsp;&nbsp; 89 Shares
+    </div>
+</div>
 
         <!-- Book of the Week Post -->
         <div class="post">
