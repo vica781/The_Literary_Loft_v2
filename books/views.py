@@ -284,4 +284,5 @@ def toggle_favorite(request, book_id):
 
 # MARKETING 
 def facebook_mockup(request):
-    return render(request, 'marketing/facebook_mockup_page.html')
+    book = Book.objects.get(title="Tomorrow, and Tomorrow, and Tomorrow")
+    return render(request, 'marketing/facebook_mockup_page.html', {'book': book})

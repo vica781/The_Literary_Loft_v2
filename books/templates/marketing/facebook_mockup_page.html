@@ -127,38 +127,38 @@
 
         <!-- Book of the Week Post -->
         <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    5 hrs ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                📚 Book of the Week: "Tomorrow, and Tomorrow, and Tomorrow"
-                <div class="book-recommendation">
-                    <div class="book-card">
-                        <img src="{% static 'images/hand_books_darker.png' %}" alt="Book Cover" class="book-cover">
-                        <div class="book-details">
-                            <h4>Tomorrow, and Tomorrow, and Tomorrow</h4>
-                            <p class="book-author">By Gabrielle Zevin</p>
-                            <p class="book-description">A modern masterpiece about love, friendship, and creativity.</p>
-                            <p class="book-price">£16.99 <span class="original-price">£20.99</span></p>
-                            <a href="#" class="btn btn-primary btn-sm">Add to Bag</a>
-                        </div>
-                    </div>
-                    <p class="mt-3">"This exhilarating novel weaves together games, storytelling, and love in an unforgettable narrative about the connections that define us."</p>
-                    <div class="book-tags">#BookOfTheWeek #MustRead #Fiction #Zevin #Gaming #Friendship</div>
-                </div>
-            </div>
-            
-            <div class="post-engagement">
-                📚 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments &nbsp;&nbsp; 67 Shares
-            </div>
+    <div class="post-header">
+        <div class="post-profile-picture">
+            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
         </div>
+        <div class="post-meta">
+            <strong>The Literary Loft</strong><br>
+            5 hrs ago
+        </div>
+    </div>
+
+    <div class="post-content nunito">
+        📚 Book of the Week: "Tomorrow, and Tomorrow, and Tomorrow"
+        <div class="book-recommendation">
+            <div class="book-card">
+                <img src="{% static 'images/facebook_book_covers/tomorrow-tomorrow.jpg' %}" alt="Book Cover" class="book-cover">
+                <div class="book-details">
+                    <h4>Tomorrow, and Tomorrow, and Tomorrow</h4>
+                    <p class="book-author">By Gabrielle Zevin</p>
+                    <p class="book-description">A modern masterpiece about love, friendship, and creativity.</p>
+                    <p class="book-price">£16.99 <span class="original-price">£20.99</span></p>
+                    <a href="{% url 'books:book_detail' id=book.id %}" class="btn btn-primary btn-sm">Meet your new friend</a>
+                </div>
+            </div>
+            <p class="mt-3">"This exhilarating novel weaves together games, storytelling, and love in an unforgettable narrative about the connections that define us."</p>
+            <div class="book-tags">#BookOfTheWeek #MustRead #Fiction #Zevin #Gaming #Friendship</div>
+        </div>
+    </div>
+
+    <div class="post-engagement">
+        📚 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments &nbsp;&nbsp; 67 Shares
+    </div>
+</div>
 
         <!-- Customer Review Post -->
         <div class="post">
