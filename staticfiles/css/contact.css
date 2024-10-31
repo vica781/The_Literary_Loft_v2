@@ -1,0 +1,203 @@
+/* Contact Section */
+.contact-section {
+    padding: 4rem 0;
+    background-color: #fff;
+}
+
+/* Headings */
+.contact-heading {
+    font-family: "Libre Baskerville", serif;
+    color: #4d5252;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.contact-subtitle {
+    font-family: "Nunito", sans-serif;
+    color: #666;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+/* Contact Information Card */
+.contact-info {
+    background-color: #e0dcd3;
+    padding: 2rem;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.info-block {
+    margin-bottom: 2rem;
+}
+
+.info-block:last-child {
+    margin-bottom: 0;
+}
+
+.info-block h3 {
+    font-family: "Libre Baskerville", serif;
+    color: #4d5252;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* Contact Details Styling */
+.contact-info p {
+    font-family: "Nunito", sans-serif;
+    margin-bottom: 1rem;
+    color: #4d5252;
+    line-height: 1.6;
+}
+
+.contact-info i {
+    width: 25px;
+    color: #4d5252;
+    margin-right: 0.5rem;
+}
+
+.contact-detail a {
+    color: #4d5252;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-detail a:hover {
+    color: #646a6a;
+}
+
+/* Transport Information List */
+.transport-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.transport-info li {
+    font-family: "Nunito", sans-serif;
+    color: #4d5252;
+    margin-bottom: 0.8rem;
+    line-height: 1.6;
+}
+
+.transport-info li i {
+    width: 25px;
+    margin-right: 0.5rem;
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: #f8f9fa;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.contact-form h3 {
+    font-family: "Libre Baskerville", serif;
+    color: #4d5252;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.form-group label {
+    font-family: "Nunito", sans-serif;
+    color: #4d5252;
+    font-weight: 600;
+}
+
+.form-control {
+    border: 1px solid #4d5252;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+}
+
+.form-control:focus {
+    border-color: #646a6a;
+    box-shadow: 0 0 0 0.2rem rgba(77, 82, 82, 0.25);
+}
+
+.btn-submit {
+    background-color: #4d5252;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background-color: #646a6a;
+    color: white;
+}
+
+/* Map Container */
+.map-container {
+    height: 400px;
+    margin-top: 2rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 991.98px) {
+    .contact-heading {
+        font-size: 2rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .info-block h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-form,
+    .contact-info {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .contact-section {
+        padding: 2rem 0;
+    }
+    
+    .contact-heading {
+        font-size: 1.8rem;
+    }
+    
+    .map-container {
+        height: 300px;
+    }
+    
+    .contact-form,
+    .contact-info {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .contact-heading {
+        font-size: 1.5rem;
+    }
+    
+    .contact-subtitle {
+        font-size: 1rem;
+    }
+    
+    .info-block h3 {
+        font-size: 1.2rem;
+    }
+    
+    .map-container {
+        height: 250px;
+    }
+}
