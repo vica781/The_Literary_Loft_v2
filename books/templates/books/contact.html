@@ -4,14 +4,115 @@
 {% block title %}Contact Us - The Literary Loft{% endblock %}
 
 {% block meta_description %}
-Get in touch with The Literary Loft for any inquiries, support, or book recommendations. We're here to help you find your next great read.
+<meta name="description" content="Get in touch with The Literary Loft, your local bookstore in Stratford-upon-Avon. Visit us for personalized book recommendations, inquiries about orders, or general questions. Located in the heart of Warwickshire.">
+{% endblock %}
+
+{% block extra_css %}
+{{ block.super }}
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
 {% endblock %}
 
 {% block content %}
-    <!-- Your content for the contact page -->
-    <div class="container pt-5">
-        <h1>Contact Us</h1>
-        <p>Get in touch with us through the following methods.</p>
-        <!-- Add more content here -->
+<div class="contact-section">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 text-center">
+                <h1 class="contact-heading">Contact Us</h1>
+                <p class="contact-subtitle">We'd love to hear from you</p>
+            </div>
+        </div>
+        
+        <div class="row">
+            <!-- Contact Information -->
+            <div class="col-lg-6 mb-4">
+                <div class="contact-info">
+                    <div class="info-block">
+                        <h3>Visit Our Bookstore</h3>
+                        <p class="address">
+                            <i class="fas fa-map-marker-alt"></i>
+                            15 Shakespeare Street<br>
+                            <span class="ml-4">Stratford-upon-Avon<br></span>
+                            <span class="ml-4">Warwickshire, CV37 6QW</span>
+                        </p>
+                        
+                        <p class="contact-detail">
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+441789123456">01789 123 456</a>
+                        </p>
+                        
+                        <p class="contact-detail">
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:hello@theliteraryloft.co.uk">hello@theliteraryloft.co.uk</a>
+                        </p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>Opening Hours</h3>
+                        <p class="schedule">
+                            <i class="fas fa-clock"></i>
+                            <span>Monday - Saturday: 9:30 AM - 5:30 PM<br>
+                            <span class="ml-4">Sunday: 11:00 AM - 4:00 PM</span></span>
+                        </p>
+                    </div>
+
+                    <div class="info-block">
+                        <h3>Getting Here</h3>
+                        <ul class="transport-info">
+                            <li><i class="fas fa-car"></i> Free parking available behind the store</li>
+                            <li><i class="fas fa-bus"></i> Bus routes 27 & X18 stop nearby</li>
+                            <li><i class="fas fa-train"></i> 10 minutes walk from Stratford-upon-Avon station</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-6 mb-4">
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" class="form-control" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-submit">
+                                <i class="fas fa-paper-plane mr-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2434.955396181781!2d-1.7107377842089073!3d52.19173197975493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870ce3213962c01%3A0x87a0ce2fc8b9ac41!2sStratford-upon-Avon!5e0!3m2!1sen!2suk!4v1635789654321!5m2!1sen!2suk"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
 {% endblock %}

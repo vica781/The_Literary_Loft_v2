@@ -1,0 +1,62 @@
+<div class="col-md-3 mb-4">
+  <h5>&nbsp;&nbsp; Shop</h5>
+  <ul class="list-unstyled footer-nav">
+    <!-- Adults Fiction Books -->
+    <li class="footer-item dropdown">
+      <a class="footer-link dropdown-toggle" 
+         href="{% url 'books:book_list_by_category' category_slug='fiction-adults' %}"
+         id="footerFictionDropdown"
+         role="button"
+         data-toggle="dropdown"
+         aria-haspopup="true"
+         aria-expanded="false">
+        Fiction Books <i class="fas fa-chevron-down ml-1"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="footerFictionDropdown">
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='classics' %}">Classics</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='crime-thriller' %}">Crime & Thriller</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='historical-fiction' %}">Historical Fiction</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='fantasy' %}">Fantasy</a>
+      </div>
+    </li>
+
+    <!-- Adults Non-Fiction Books -->
+    <li class="footer-item dropdown">
+      <a class="footer-link dropdown-toggle"
+         href="{% url 'books:book_list_by_category' category_slug='non-fiction' %}"
+         id="footerNonFictionDropdown"
+         role="button"
+         data-toggle="dropdown"
+         aria-haspopup="true"
+         aria-expanded="false">
+        Non-Fiction Books <i class="fas fa-chevron-down ml-1"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="footerNonFictionDropdown">
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='art-craft-photography' %}">Art, Craft & Photography</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='biography-true-stories' %}">Biography & True Stories</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='food-drink' %}">Food & Drink</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='foraging' %}">Foraging</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='travel' %}">Travel</a>
+      </div>
+    </li>
+
+    <!-- Children's Books -->
+    <li class="footer-item dropdown">
+      <a class="footer-link dropdown-toggle"
+         href="{% url 'books:book_list_by_category' category_slug='childrens-books' %}"
+         id="footerChildrenDropdown"
+         role="button"
+         data-toggle="dropdown"
+         aria-haspopup="true"
+         aria-expanded="false">
+        Children's Books <i class="fas fa-chevron-down ml-1"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="footerChildrenDropdown">
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='activity-books' %}">Activity Books</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='education' %}">Education</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='childrens-fiction' %}">Fiction</a>
+        <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug='childrens-non-fiction' %}">Non-Fiction</a>
+      </div>
+    </li>
+  </ul>
+</div>

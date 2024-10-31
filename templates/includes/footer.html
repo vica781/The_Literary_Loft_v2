@@ -1,0 +1,46 @@
+{% load static %}
+<footer class="footer">
+  <div class="container">
+    <!-- Logo Container -->
+    <div class="d-flex justify-content-center logo-container">
+      <a href="{% url 'books:index' %}">
+        <div class="logo-text">
+          <h1 class="main-title">The Literary Loft</h1>
+          <p class="subtitle">There is no friend as loyal as a book</p>
+        </div>
+      </a>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <!-- Footer Navigation -->
+    <div class="row">
+      <!-- Shop Navigation -->
+      {% include 'includes/footer_shop_nav.html' %}
+
+      <!-- Other Links -->
+      {% include 'includes/footer_other_links.html' %}
+
+      <!-- Help and Contact -->
+      {% include 'includes/footer_help_contact.html' %}
+
+      <!-- Newsletter -->
+      {% include 'includes/footer_newsletter.html' %}
+    </div>
+
+    <!-- Social Media Icons -->
+    {% include 'includes/footer_social.html' %}
+  </div>
+
+  <!-- Copyright Section -->
+  <div class="footer-bottom mt-4">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <p class="mb-0">&copy; {% now "Y" %} The Literary Loft</p>
+          <p class="mb-0">All materials used by Victoria Kalenik only for educational purposes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

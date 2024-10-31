@@ -1,0 +1,44 @@
+{% load static %}
+<div class="user-actions dropdown">
+  <!-- Cart Icon -->
+  <a href="{% url 'books:view_cart' %}" class="cart-icon">
+    <i class="fas fa-shopping-bag"></i>
+    <span class="cart-count" id="cart-count">{{ cart_count }}</span>
+  </a>
+
+  <!-- Favorite Books -->
+  <a href="{% url 'books:favorites' %}" class="favorites-icon">
+    <i class="fas fa-heart"></i>
+    <span class="favorites-count" id="favorite-count">{{ request.user.favorite_books.count }}</span>
+  </a>
+
+  <!-- Currency Selector -->
+  <div class="currency-select-wrapper">
+    <select class="currency-select" id="currencySelect">
+      <option value="GBP" data-image-url="{% static 'images/flags/uk_flag.png' %}">£</option>
+      <option value="USD" data-image-url="{% static 'images/flags/us_flag.png' %}">$</option>
+      <option value="EUR" data-image-url="{% static 'images/flags/eu_flag.png' %}">€</option>
+    </select>
+  </div>
+
+  <!-- User Dropdown -->
+  <div class="dropdown">
+    <a href="#" class="btn btn-secondary dropdown-toggle" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fas fa-user" id="user-icon"></i>
+      {% if user.is_authenticated %}
+        <span>&nbsp; {{ user.first_name }}</span>
+      {% else %}
+        <span>&nbsp; User</span>
+      {% endif %}
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+      {% if user.is_authenticated %}
+        <a href="{% url 'checkout:my_account' %}" class="dropdown-item">My Account</a>
+        <a href="{% url 'books:logout' %}" class="dropdown-item">Logout</a>
+      {% else %}
+        <a href="{% url 'books:login' %}" class="dropdown-item">Login</a>
+        <a href="{% url 'books:register' %}" class="dropdown-item">Register</a>
+      {% endif %}
+    </div>
+  </div>
+</div>

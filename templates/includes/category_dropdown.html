@@ -1,0 +1,19 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" 
+     href="{% url 'books:book_list_by_category' category_slug=category_url %}"
+     id="{{ category_url }}Dropdown"
+     role="button"
+     data-toggle="dropdown"
+     aria-haspopup="true"
+     aria-expanded="false">
+    {{ category_name }} <i class="fas fa-chevron-down ml-1"></i>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="{{ category_url }}Dropdown">
+    {% for subcategory in subcategories %}
+      <a class="dropdown-item" 
+         href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">
+        {{ subcategory.name }}
+      </a>
+    {% endfor %}
+  </div>
+</li>

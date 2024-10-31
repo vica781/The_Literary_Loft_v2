@@ -1,0 +1,25 @@
+{% load static %}
+<div class="header-main container-fluid d-flex justify-content-between align-items-center px-5 py-2 justfy-content-md-center">
+  <!-- Search bar -->
+  <div class="search-bar">
+    <input type="text" id="search-input" placeholder="Search by Title, ISBN, or Keyword" />
+    <button type="submit" id="search-button">
+      <i class="fas fa-search"></i>
+    </button>
+    <div id="suggestions" class="suggestions"></div>
+  </div>
+
+  <!-- Logo image and text -->
+  <div class="logo-container">
+    <a href="{% url 'books:index' %}">
+      <img src="{% static 'images/hand_books_darker.png' %}" alt="The Literary Loft Logo" class="logo-image" />
+      <div class="logo-text">
+        <h1 class="main-title">The Literary Loft</h1>
+        <p class="subtitle">There is no friend as loyal as a book</p>
+      </div>
+    </a>
+  </div>
+
+  <!-- User actions -->
+  {% include 'includes/user_actions.html' %}
+</div>
