@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Facebook mockup - The Literary Loft{% endblock %}
+{% block title %}The Literary Loft - Facebook Page{% endblock %}
 
-{# Override the header #}
-{% block page_header %}{% endblock %}
+{% block header %}
+<!-- Overwrite the header block to avoid including search and user elements -->
+<div class="fb-header">
+    <div class="d-flex align-items-center">
+        <span class="fb-logo">facebook</span>
+    </div>
+</div>
+{% endblock %}
 
 {# Override the footer #}
 {% block page_footer %}{% endblock %}
@@ -17,334 +23,467 @@
 <link rel="stylesheet" href="{% static 'css/facebook_mockup.css' %}">
 {% endblock %}
 
+
 {% block content %}
-<div class="min-vh-100">
-    <!-- Facebook Header -->
-    <div class="fb-header">
-    <div class="d-flex align-items-center">
-        <span class="fb-logo">facebook</span> <!-- Only displays "facebook" -->
-    </div>
-</div>
+<!-- Cover Photo -->
+  <div class="cover-photo-container">
+    <img
+      src="{% static 'images/loft_1.webp' %}"
+      class="cover-photo"
+      alt="Cover Photo"
+    />
+    <div class="cover-overlay"></div>
+  </div>
 
-    
-    <!-- Cover Photo -->
-    <div class="cover-photo-container">
-        <img src="{% static 'images/loft_1.webp' %}" class="cover-photo" alt="Cover Photo">
-        <div class="cover-overlay"></div>
-    </div>
-    
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <div class="d-flex align-items-end mb-3">
-            <!-- Profile Picture -->
-            <div class="profile-picture-container">
-                <div class="profile-picture-wrapper">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="The Literary Loft Logo">
-                </div>
-            </div>
-            
-            <!-- Page Name -->
-            <div class="ml-3 mb-3">
-                <h1 class="page-title libre-baskerville">The Literary Loft</h1>
-                <div class="page-subtitle nunito">There is no friend as loyal as a book</div>
-            </div>
+  <!-- Profile Section -->
+  <div class="profile-section">
+    <div class="d-flex align-items-end mb-3">
+      <!-- Profile Picture -->
+      <div class="profile-picture-container">
+        <div class="profile-picture-wrapper">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="The Literary Loft Logo"
+          />
         </div>
-        
-        <!-- Facebook Navigation -->
-        <div class="fb-nav">
-            <a href="#" class="fb-nav-link active">Home</a>
-            <a href="#" class="fb-nav-link">About</a>
-            <a href="#" class="fb-nav-link">Reviews</a>
-            <a href="#" class="fb-nav-link">Events</a>
-            <a href="#" class="fb-nav-link">Community</a>
-            <a href="#" class="fb-nav-link">More</a>
-        </div>
-    </div>
-    
-    <!-- Content -->
-    <div class="posts-container">
-        <!-- Welcome Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    Just now
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                📚 Welcome to our official Facebook page! 
-                <br><br>
-                Here you'll find:
-                <ul class="list-unstyled">
-                    <li>📖 Latest book recommendations</li>
-                    <li>🌟 Special offers and promotions</li>
-                    <li>📅 Event announcements</li>
-                    <li>✍️ Author spotlights</li>
-                    <li>💫 Reading challenges</li>
-                    <li>❤️ Community updates</li>
-                </ul>
-                Don’t forget to follow us for daily literary inspiration!
-                
-                <div class="post-quote libre-baskerville">"A room without books is like a body without a soul." - Cicero</div>
-            </div>
-            
-            <div class="post-engagement">
-                📚 156 &nbsp;&nbsp;❤️ 243 &nbsp;&nbsp;👍 521 &nbsp;&nbsp;|&nbsp;&nbsp; 89 Comments &nbsp;&nbsp; 45 Shares
-            </div>
-        </div>
+      </div>
 
-        <!-- Special Offer Post -->
-<div class="post">
-    <div class="post-header">
+      <!-- Page Name -->
+      <div class="ml-3 mb-3">
+        <h1 class="page-title libre-baskerville">The Literary Loft</h1>
+        <div class="page-subtitle nunito">
+          There is no friend as loyal as a book
+        </div>
+      </div>
+    </div>
+
+    <!-- Facebook Navigation -->
+    <div class="fb-nav">
+      <a href="#" class="fb-nav-link active">Home</a>
+      <a href="#" class="fb-nav-link">About</a>
+      <a href="#" class="fb-nav-link">Reviews</a>
+      <a href="#" class="fb-nav-link">Events</a>
+      <a href="#" class="fb-nav-link">Community</a>
+      <a href="#" class="fb-nav-link">More</a>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="posts-container">
+    <!-- Welcome Post -->
+    <div class="post">
+      <div class="post-header">
         <div class="post-profile-picture">
-            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
         </div>
         <div class="post-meta">
-            <strong>The Literary Loft</strong><br>
-            2 hrs ago
+          <strong>The Literary Loft</strong><br />
+          Just now
         </div>
+      </div>
+
+      <div class="post-content nunito">
+        📚 Welcome to our official Facebook page!
+        <br /><br />
+        Here you'll find:
+        <ul class="list-unstyled">
+          <li>📖 Latest book recommendations</li>
+          <li>🌟 Special offers and promotions</li>
+          <li>📅 Event announcements</li>
+          <li>✍️ Author spotlights</li>
+          <li>💫 Reading challenges</li>
+          <li>❤️ Community updates</li>
+        </ul>
+        Don’t forget to follow us for daily literary inspiration!
+
+        <div class="post-quote libre-baskerville">
+          "A room without books is like a body without a soul." - Cicero
+        </div>
+      </div>
+
+      <div class="post-engagement">
+        📚 156 &nbsp;&nbsp;❤️ 243 &nbsp;&nbsp;👍 521 &nbsp;&nbsp;|&nbsp;&nbsp;
+        89 Comments &nbsp;&nbsp; 45 Shares
+      </div>
     </div>
-    
-    <div class="post-content nunito special-offer">
+
+    <!-- Special Offer Post -->
+    <div class="post">
+      <div class="post-header">
+        <div class="post-profile-picture">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
+        </div>
+        <div class="post-meta">
+          <strong>The Literary Loft</strong><br />
+          2 hrs ago
+        </div>
+      </div>
+
+      <div class="post-content nunito special-offer">
         🎉 AUTUMN READING SALE! 🍂
         <div class="offer-card">
-            <h3>30% OFF</h3>
-            <p class="offer-details">All Fiction Books This Week!</p>
-            <div class="offer-timer">Limited Time Offer - Ends Sunday</div>
-            <p class="offer-code">Use code: AUTUMN30</p>
-            <a href="/books/" class="btn btn-primary" onclick="event.preventDefault(); window.location.href='/books/';">Shop Now</a>
+          <h3>30% OFF</h3>
+          <p class="offer-details">All Fiction Books This Week!</p>
+          <div class="offer-timer">Limited Time Offer - Ends Sunday</div>
+          <p class="offer-code">Use code: AUTUMN30</p>
+          <a
+            href="/books/"
+            class="btn btn-primary"
+            onclick="event.preventDefault(); window.location.href='/books/';"
+            >Shop Now</a
+          >
         </div>
-        <p class="terms">*Terms and conditions apply. Cannot be combined with other offers.</p>
-    </div>
-    
-    <div class="post-engagement">
-        🎉 567 &nbsp;&nbsp;❤️ 789 &nbsp;&nbsp;|&nbsp;&nbsp; 145 Comments &nbsp;&nbsp; 89 Shares
-    </div>
-</div>
+        <p class="terms">
+          *Terms and conditions apply. Cannot be combined with other offers.
+        </p>
+      </div>
 
-        <!-- Book of the Week Post -->
-        <div class="post">
-    <div class="post-header">
+      <div class="post-engagement">
+        🎉 567 &nbsp;&nbsp;❤️ 789 &nbsp;&nbsp;|&nbsp;&nbsp; 145 Comments
+        &nbsp;&nbsp; 89 Shares
+      </div>
+    </div>
+
+    <!-- Book of the Week Post -->
+    <div class="post">
+      <div class="post-header">
         <div class="post-profile-picture">
-            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
         </div>
         <div class="post-meta">
-            <strong>The Literary Loft</strong><br>
-            5 hrs ago
+          <strong>The Literary Loft</strong><br />
+          5 hrs ago
         </div>
-    </div>
+      </div>
 
-    <div class="post-content nunito">
+      <div class="post-content nunito">
         📚 Book of the Week: "Tomorrow, and Tomorrow, and Tomorrow"
         <div class="book-recommendation">
-            <div class="book-card">
-                <img src="{% static 'images/facebook_book_covers/tomorrow-tomorrow.jpg' %}" alt="Book Cover" class="book-cover">
-                <div class="book-details">
-                    <h4>Tomorrow, and Tomorrow, and Tomorrow</h4>
-                    <p class="book-author">By Gabrielle Zevin</p>
-                    <p class="book-description">A modern masterpiece about love, friendship, and creativity.</p>
-                    <p class="book-price">17.00 <span class="original-price">£20.99</span></p>
-                    <a href="{% url 'books:book_detail' id=book.id %}" class="btn btn-primary btn-sm">Meet your new friend</a>
-                </div>
+          <div class="book-card">
+            <img
+              src="{% static 'images/facebook_book_covers/tomorrow-tomorrow.jpg' %}"
+              alt="Book Cover"
+              class="book-cover"
+            />
+            <div class="book-details">
+              <h4>Tomorrow, and Tomorrow, and Tomorrow</h4>
+              <p class="book-author">By Gabrielle Zevin</p>
+              <p class="book-description">
+                A modern masterpiece about love, friendship, and creativity.
+              </p>
+              <p class="book-price">
+                £17.00 <span class="original-price">£20.99</span>
+              </p>
+              <a
+                href="{% url 'books:book_detail' id=book.id %}"
+                class="btn btn-primary btn-sm"
+                >Meet your new friend</a
+              >
             </div>
-            <p class="mt-3">"This exhilarating novel weaves together games, storytelling, and love in an unforgettable narrative about the connections that define us."</p>
-            <div class="book-tags">#BookOfTheWeek #MustRead #Fiction #Zevin #Gaming #Friendship</div>
+          </div>
+          <p class="mt-3">
+            "This exhilarating novel weaves together games, storytelling, and
+            love in an unforgettable narrative about the connections that define
+            us."
+          </p>
+          <div class="book-tags">
+            #BookOfTheWeek #MustRead #Fiction #Zevin #Gaming #Friendship
+          </div>
         </div>
+      </div>
+
+      <div class="post-engagement">
+        📚 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments
+        &nbsp;&nbsp; 67 Shares
+      </div>
     </div>
 
-    <div class="post-engagement">
-        📚 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments &nbsp;&nbsp; 67 Shares
-    </div>
-</div>
-
-        <!-- Customer Review Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    8 hrs ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                ⭐️ Customer Review Spotlight ⭐️
-                <div class="review-card">
-                    <div class="review-header">
-                        <h5>Emma W. shares her thoughts:</h5>
-                        <div class="rating">⭐️⭐️⭐️⭐️⭐️</div>
-                    </div>
-                    <p class="review-text">"The Literary Loft is more than just a bookstore - it's a community! Their personalized recommendations are spot-on, and I love their sustainable packaging. The handwritten thank-you note in my last order was such a lovely touch. Definitely my go-to bookshop!"</p>
-                </div>
-                <p class="mt-3">Thank you for your kind words, Emma! We're passionate about creating a special experience for every reader. 📚✨</p>
-            </div>
-            
-            <div class="post-engagement">
-                ❤️ 345 &nbsp;&nbsp;👍 567 &nbsp;&nbsp;|&nbsp;&nbsp; 78 Comments &nbsp;&nbsp; 34 Shares
-            </div>
-        </div>
-
-        <!-- Reading Challenge Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    12 hrs ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                🍂 Autumn Reading Challenge 2024 🍂
-                <div class="challenge-card">
-                    <h4>Join our Cozy Autumn Reading Challenge!</h4>
-                    <ul class="challenge-list list-unstyled">
-                        <li>📚 Read a book with autumn on the cover</li>
-                        <li>📚 Read a mystery or thriller</li>
-                        <li>📚 Read a book featuring a magical element</li>
-                        <li>📚 Read a book that's been on your TBR for over a year</li>
-                        <li>📚 Read a book recommended by our staff</li>
-                    </ul>
-                    <p class="challenge-prize">Complete the challenge by November 30th and receive a special 25% discount on your next purchase!</p>
-                    <a href="#" class="btn btn-primary">Join Challenge</a>
-                </div>
-                <p class="mt-3">Share your progress with #LitLoftAutumnReads 🍁</p>
-            </div>
-            
-            <div class="post-engagement">
-                📚 234 &nbsp;&nbsp;❤️ 456 &nbsp;&nbsp;|&nbsp;&nbsp; 67 Comments &nbsp;&nbsp; 45 Shares
-            </div>
-        </div>
-
-        <!-- Author Spotlight Post -->
-<div class="post">
-    <div class="post-header">
+    <!-- Customer Review Post -->
+    <div class="post">
+      <div class="post-header">
         <div class="post-profile-picture">
-            <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
         </div>
         <div class="post-meta">
-            <strong>The Literary Loft</strong><br>
-            1 day ago
+          <strong>The Literary Loft</strong><br />
+          8 hrs ago
         </div>
+      </div>
+
+      <div class="post-content nunito">
+        ⭐️ Customer Review Spotlight ⭐️
+        <div class="review-card">
+          <div class="review-header">
+            <h5>Emma W. shares her thoughts:</h5>
+            <div class="rating">⭐️⭐️⭐️⭐️⭐️</div>
+          </div>
+          <p class="review-text">
+            "The Literary Loft is more than just a bookstore - it's a community!
+            Their personalized recommendations are spot-on, and I love their
+            sustainable packaging. The handwritten thank-you note in my last
+            order was such a lovely touch. Definitely my go-to bookshop!"
+          </p>
+        </div>
+        <p class="mt-3">
+          Thank you for your kind words, Emma! We're passionate about creating a
+          special experience for every reader. 📚✨
+        </p>
+      </div>
+
+      <div class="post-engagement">
+        ❤️ 345 &nbsp;&nbsp;👍 567 &nbsp;&nbsp;|&nbsp;&nbsp; 78 Comments
+        &nbsp;&nbsp; 34 Shares
+      </div>
     </div>
-    
-    <div class="post-content nunito">
+
+    <!-- Reading Challenge Post -->
+    <div class="post">
+      <div class="post-header">
+        <div class="post-profile-picture">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
+        </div>
+        <div class="post-meta">
+          <strong>The Literary Loft</strong><br />
+          12 hrs ago
+        </div>
+      </div>
+
+      <div class="post-content nunito">
+        🍂 Autumn Reading Challenge 2024 🍂
+        <div class="challenge-card">
+          <h4>Join our Cozy Autumn Reading Challenge!</h4>
+          <ul class="challenge-list list-unstyled">
+            <li>📚 Read a book with autumn on the cover</li>
+            <li>📚 Read a mystery or thriller</li>
+            <li>📚 Read a book featuring a magical element</li>
+            <li>📚 Read a book that's been on your TBR for over a year</li>
+            <li>📚 Read a book recommended by our staff</li>
+          </ul>
+          <p class="challenge-prize">
+            Complete the challenge by November 30th and receive a special 25%
+            discount on your next purchase!
+          </p>
+          <a href="#" class="btn btn-primary">Join Challenge</a>
+        </div>
+        <p class="mt-3">Share your progress with #LitLoftAutumnReads 🍁</p>
+      </div>
+
+      <div class="post-engagement">
+        📚 234 &nbsp;&nbsp;❤️ 456 &nbsp;&nbsp;|&nbsp;&nbsp; 67 Comments
+        &nbsp;&nbsp; 45 Shares
+      </div>
+    </div>
+
+    <!-- Author Spotlight Post -->
+    <div class="post">
+      <div class="post-header">
+        <div class="post-profile-picture">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
+        </div>
+        <div class="post-meta">
+          <strong>The Literary Loft</strong><br />
+          1 day ago
+        </div>
+      </div>
+
+      <div class="post-content nunito">
         ✍️ Author Spotlight: Donna Tartt ✨
         <div class="author-spotlight">
-            <div class="author-card">
-                <img src="{% static 'images/facebook_book_covers/donna-tartt.jpg' %}" alt="Donna Tartt" class="author-image">
-                <div class="author-info">
-                    <h4>Donna Tartt</h4>
-                    <p class="author-bio">Pulitzer Prize-winning author known for her meticulously crafted literary works. Each of her three novels has garnered critical acclaim and a devoted following.</p>
-                    <div class="featured-books">
-                        <h5>Notable Works:</h5>
-                        <div class="book-grid">
-                            <!-- The Secret History -->
-                            <div class="featured-book">
-                                <img src="{% static 'images/facebook_book_covers/the_secret_history.jpg' %}" alt="The Secret History" class="book-cover-small">
-                                <h6>The Secret History (1992)</h6>
-                                <p class="book-brief">A mesmerizing tale of ancient Greek studies and dark academia.</p>
-                                <a href="{% url 'books:book_detail' id=secret_history.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
-                            </div>
-                            
-                            <!-- The Little Friend -->
-                            <div class="featured-book">
-                                <img src="{% static 'images/facebook_book_covers/the_little_friend.jpg' %}" alt="The Little Friend" class="book-cover-small">
-                                <h6>The Little Friend (2002)</h6>
-                                <p class="book-brief">A gripping Southern Gothic mystery of childhood and loss.</p>
-                                <a href="{% url 'books:book_detail' id=little_friend.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
-                            </div>
-                            
-                            <!-- The Goldfinch -->
-                            <div class="featured-book">
-                                <img src="{% static 'images/facebook_book_covers/the_goldfinch.jpg' %}" alt="The Goldfinch" class="book-cover-small">
-                                <h6>The Goldfinch (2013)</h6>
-                                <p class="book-brief">Pulitzer Prize-winning novel about art, love, and identity.</p>
-                                <a href="{% url 'books:book_detail' id=goldfinch.id %}" class="btn btn-outline-primary btn-sm">Learn about this Book</a>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="{% url 'books:book_list' %}?author=Donna Tartt" class="btn btn-primary mt-3">Browse All Books</a>
+          <div class="author-card">
+            <img
+              src="{% static 'images/facebook_book_covers/donna-tartt.jpg' %}"
+              alt="Donna Tartt"
+              class="author-image"
+            />
+            <div class="author-info">
+              <h4>Donna Tartt</h4>
+              <p class="author-bio">
+                Pulitzer Prize-winning author known for her meticulously crafted
+                literary works. Each of her three novels has garnered critical
+                acclaim and a devoted following.
+              </p>
+              <div class="featured-books">
+                <h5>Notable Works:</h5>
+                <div class="book-grid">
+                  <!-- The Secret History -->
+                  <div class="featured-book">
+                    <img
+                      src="{% static 'images/facebook_book_covers/the-secret-history.jpg' %}"
+                      alt="The Secret History"
+                      class="book-cover-small"
+                    />
+                    <h6>The Secret History (1992)</h6>
+                    <p class="book-brief">
+                      A mesmerizing tale of ancient Greek studies and dark
+                      academia.
+                    </p>
+                    <a
+                      href="{% url 'books:book_detail' id=secret_history.id %}"
+                      class="btn btn-outline-primary btn-sm"
+                      >Learn about this Book</a
+                    >
+                  </div>
+
+                  <!-- The Little Friend -->
+                  <div class="featured-book">
+                    <img
+                      src="{% static 'images/facebook_book_covers/the-little-friend.jpg' %}"
+                      alt="The Little Friend"
+                      class="book-cover-small"
+                    />
+                    <h6>The Little Friend (2002)</h6>
+                    <p class="book-brief">
+                      A gripping Southern Gothic mystery of childhood and loss.
+                    </p>
+                    <a
+                      href="{% url 'books:book_detail' id=little_friend.id %}"
+                      class="btn btn-outline-primary btn-sm"
+                      >Learn about this Book</a
+                    >
+                  </div>
+
+                  <!-- The Goldfinch -->
+                  <div class="featured-book">
+                    <img
+                      src="{% static 'images/facebook_book_covers/the-goldfinch.jpg' %}"
+                      alt="The Goldfinch"
+                      class="book-cover-small"
+                    />
+                    <h6>The Goldfinch (2013)</h6>
+                    <p class="book-brief">
+                      Pulitzer Prize-winning novel about art, love, and
+                      identity.
+                    </p>
+                    <a
+                      href="{% url 'books:book_detail' id=goldfinch.id %}"
+                      class="btn btn-outline-primary btn-sm"
+                      >Learn about this Book</a
+                    >
+                  </div>
                 </div>
+              </div>
+              <a
+                href="{% url 'books:book_list' %}?author=Donna Tartt"
+                class="btn btn-primary mt-3"
+                >Browse All Books</a
+              >
             </div>
+          </div>
         </div>
+      </div>
+
+      <div class="post-engagement">
+        ✍️ 678 &nbsp;&nbsp;❤️ 890 &nbsp;&nbsp;|&nbsp;&nbsp; 156 Comments
+        &nbsp;&nbsp; 78 Shares
+      </div>
     </div>
-    
-    <div class="post-engagement">
-        ✍️ 678 &nbsp;&nbsp;❤️ 890 &nbsp;&nbsp;|&nbsp;&nbsp; 156 Comments &nbsp;&nbsp; 78 Shares
+
+    <!-- Event Announcement Post -->
+    <div class="post">
+      <div class="post-header">
+        <div class="post-profile-picture">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
+        </div>
+        <div class="post-meta">
+          <strong>The Literary Loft</strong><br />
+          2 days ago
+        </div>
+      </div>
+
+      <div class="post-content nunito">
+        📅 Upcoming Virtual Book Club Meeting
+        <div class="event-card">
+          <div class="event-details">
+            <h4>November Book Club Discussion</h4>
+            <p class="event-time">📆 November 15th, 2024 | 🕐 7:00 PM GMT</p>
+            <p class="event-location">📍 Online via Zoom</p>
+            <p class="event-description">
+              Join us for an evening of lively discussion about "Cloud Cuckoo
+              Land" by Anthony Doerr. This month's meeting will feature a
+              special Q&A session about the historical elements in the novel.
+            </p>
+            <div class="event-buttons">
+              <a href="#" class="btn btn-primary">Register Now</a>
+              <a href="#" class="btn btn-outline-primary">Add to Calendar</a>
+            </div>
+          </div>
+        </div>
+        <p class="mt-3">
+          Limited spots available - register early to secure your place!
+        </p>
+      </div>
+
+      <div class="post-engagement">
+        📅 345 &nbsp;&nbsp;❤️ 567 &nbsp;&nbsp;|&nbsp;&nbsp; 89 Comments
+        &nbsp;&nbsp; 45 Shares
+      </div>
     </div>
+
+    <!-- Literary Quote Post -->
+    <div class="post">
+      <div class="post-header">
+        <div class="post-profile-picture">
+          <img
+            src="{% static 'images/hand_books_darker.png' %}"
+            class="img-fluid"
+            alt="Profile"
+          />
+        </div>
+        <div class="post-meta">
+          <strong>The Literary Loft</strong><br />
+          3 days ago
+        </div>
+      </div>
+
+      <div class="post-content nunito">
+        <div class="quote-card">
+          <div class="quote-text libre-baskerville">
+            We read to know we're not alone.
+          </div>
+          <div class="quote-author">- C.S. Lewis</div>
+        </div>
+        <p class="mt-3">
+          Share your favorite literary quote in the comments! Which book made
+          you feel less alone? 📚💭
+        </p>
+      </div>
+
+      <div class="post-engagement">
+        📖 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments
+        &nbsp;&nbsp; 67 Shares
+      </div>
+    </div>
+  </div>
 </div>
-
-        <!-- Event Announcement Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    2 days ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                📅 Upcoming Virtual Book Club Meeting
-                <div class="event-card">
-                    <div class="event-details">
-                        <h4>November Book Club Discussion</h4>
-                        <p class="event-time">📆 November 15th, 2024 | 🕐 7:00 PM GMT</p>
-                        <p class="event-location">📍 Online via Zoom</p>
-                        <p class="event-description">Join us for an evening of lively discussion about "Cloud Cuckoo Land" by Anthony Doerr. This month's meeting will feature a special Q&A session about the historical elements in the novel.</p>
-                        <div class="event-buttons">
-                            <a href="#" class="btn btn-primary">Register Now</a>
-                            <a href="#" class="btn btn-outline-primary">Add to Calendar</a>
-                        </div>
-                    </div>
-                </div>
-                <p class="mt-3">Limited spots available - register early to secure your place!</p>
-            </div>
-            
-            <div class="post-engagement">
-                📅 345 &nbsp;&nbsp;❤️ 567 &nbsp;&nbsp;|&nbsp;&nbsp; 89 Comments &nbsp;&nbsp; 45 Shares
-            </div>
-        </div>
-
-        <!-- Literary Quote Post -->
-        <div class="post">
-            <div class="post-header">
-                <div class="post-profile-picture">
-                    <img src="{% static 'images/hand_books_darker.png' %}" class="img-fluid" alt="Profile">
-                </div>
-                <div class="post-meta">
-                    <strong>The Literary Loft</strong><br>
-                    3 days ago
-                </div>
-            </div>
-            
-            <div class="post-content nunito">
-                <div class="quote-card">
-                    <div class="quote-text libre-baskerville">We read to know we're not alone.</div>
-                    <div class="quote-author">- C.S. Lewis</div>
-                </div>
-                <p class="mt-3">Share your favorite literary quote in the comments! Which book made you feel less alone? 📚💭</p>
-            </div>
-            
-            <div class="post-engagement">
-                📖 432 &nbsp;&nbsp;❤️ 678 &nbsp;&nbsp;|&nbsp;&nbsp; 123 Comments &nbsp;&nbsp; 67 Shares
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block extra_js %}
+{% endblock %} {% block extra_js %}
 <script src="{% static 'js/facebook_mockup.js' %}"></script>
 {% endblock %}

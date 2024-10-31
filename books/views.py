@@ -284,7 +284,7 @@ def toggle_favorite(request, book_id):
 
 # MARKETING 
 def facebook_mockup(request):
-    book = Book.objects.get(title="Tomorrow, and Tomorrow, and Tomorrow")
+    book = Book.objects.get(title="Tomorrow, and Tomorrow, and Tomorrow")        
     # Get Donna Tartt's books
     secret_history = Book.objects.get(title="The Secret History")
     little_friend = Book.objects.get(title="The Little Friend")

@@ -31,16 +31,18 @@ const FacebookMockup = {
             });
         });
 
-        // Make buttons interactive
+        // Make buttons interactive with conditional click behavior
         document.querySelectorAll('.post .btn').forEach(button => {
             button.addEventListener('click', (e) => {
-                if (button.classList.contains('btn-primary')) {
+                // Add animation effect to all buttons
+                button.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                }, 100);
+
+                // Only prevent default if the button does not have an `href` attribute
+                if (!button.hasAttribute('href')) {
                     e.preventDefault();
-                    // Add a subtle animation effect
-                    button.style.transform = 'scale(0.98)';
-                    setTimeout(() => {
-                        button.style.transform = 'scale(1)';
-                    }, 100);
                 }
             });
         });
@@ -49,17 +51,17 @@ const FacebookMockup = {
         document.querySelectorAll('.book-card').forEach(card => {
             card.addEventListener('mouseover', () => {
                 card.style.transform = 'translateY(-2px)';
-                card.style.boxShadow = '0 4px 12px rgba(0,0,0,0.1)';
+                card.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
             });
             card.addEventListener('mouseout', () => {
                 card.style.transform = 'translateY(0)';
-                card.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                card.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.1)';
             });
         });
     }
 };
 
 // Initialize when DOM is ready
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     FacebookMockup.init();
 });
