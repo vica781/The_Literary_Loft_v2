@@ -303,3 +303,14 @@ def custom_404_view(request, exception):
 
 def custom_500_view(request):
     return render(request, '500.html', status=500)
+
+# NEWSLETTER SIGNUP
+
+def newsletter_signup(request):
+    if request.method == 'POST':
+        email = request.POST.get('newsletter-email')
+        if not email:
+            messages.error(request, "Please enter an email address.")
+        else:
+            messages.success(request, f"Thanks for signing up! We'll keep you updated at {email}.")
+    return redirect('books:index')

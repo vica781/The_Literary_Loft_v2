@@ -32,4 +32,7 @@ urlpatterns = [
     
     #Marketing URLs
     path('marketing/facebook-mockup/', views.facebook_mockup, name='facebook_mockup'),    
+    
+    # Newsletter
+    path('newsletter/', views.newsletter_signup, name='newsletter'),
 ]
