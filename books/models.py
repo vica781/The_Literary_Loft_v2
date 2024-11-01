@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.text import slugify
 from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
+from django.db import models
 
 # CATEGOTY
 class Category(models.Model):
@@ -43,14 +44,12 @@ class Subcategory(models.Model):
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
         
-    def __str__(self):
-        return f"{self.category.display_name()} - {self.name}"
-        
     def capitalized_name(self):
         return self.name.capitalize()
 
     def __str__(self):
-        return self.capitalized_name()
+        return f"{self.category.display_name()} - {self.name}"
+
 
 # BOOK
 class Book(models.Model):
@@ -81,3 +80,13 @@ class Book(models.Model):
         
     def get_absolute_url(self):
         return reverse('book_detail', args=[str(self.id)])  # Adjust 'book_detail' and args as per URL configuration
+  
+
+# NEWSLETTER SIGNUP MODEL
+class Newsletter(models.Model):
+    email = models.EmailField(unique=True)
+    date_subscribed = models.DateTimeField(auto_now_add=True)
+    is_active = models.BooleanField(default=True)
+    
+    def __str__(self):
+        return self.email    

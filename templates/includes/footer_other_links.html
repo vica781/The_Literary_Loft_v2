@@ -1,5 +1,6 @@
+<!-- footer_other_links.html -->
 <div class="col-md-3 mb-4">
-  <h5>&nbsp;&nbsp; Other Links</h5>
+  <h5>Other Links</h5>
   <ul class="list-unstyled footer-nav">
     <li class="footer-item">
       <a href="{% url 'books:about' %}" class="footer-link">Our Story</a>
@@ -14,4 +15,42 @@
       <a href="{% url 'books:about' %}#frequently-asked-questions" class="footer-link">FAQ</a>
     </li>
   </ul>
+</div>
+
+<!-- footer_help_contact.html -->
+<div class="col-md-3 mb-4">
+  <h5>Help and Contact</h5>
+  <ul class="list-unstyled footer-nav">
+    <li class="footer-item">
+      <a href="#" class="footer-link">Terms of Use</a>
+    </li>
+    <li class="footer-item">
+      <a href="#" class="footer-link">Returns</a>
+    </li>
+    <li class="footer-item">
+      <a href="#" class="footer-link">Privacy</a>
+    </li>
+    <li class="footer-item">
+      <a href="{% url 'books:contact' %}" class="footer-link">Contact Us</a>
+    </li>
+  </ul>
+</div>
+
+<!-- footer_newsletter.html -->
+<div class="col-md-3 mb-4">
+  <h5>Receive News, Updates and Special Offers</h5>
+  <form action="{% url 'books:newsletter' %}" method="post" id="newsletter-form" class="newsletter-form">
+    {% csrf_token %}
+    <div class="form-group">
+      <input 
+        type="email"
+        class="form-control"
+        placeholder="Enter your email address"
+        id="newsletter-email"
+        name="newsletter-email"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-subscribe btn-block">Subscribe</button>
+  </form>
 </div>

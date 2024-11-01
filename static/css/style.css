@@ -598,6 +598,16 @@ body {
   color: white;
   background-color: #626565;
   padding: 1rem 0;
+  width: 100%;
+  margin: 0;
+  position: relative;
+  left: 0;
+  right: 0;
+}
+
+.footer-bottom p {
+  margin: 0;
+  padding: 0.25rem 0;
 }
 
 /* Footer Dropdown Styles */

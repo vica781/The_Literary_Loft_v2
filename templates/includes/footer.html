@@ -1,4 +1,3 @@
-{% load static %}
 <footer class="footer">
   <div class="container">
     <!-- Logo Container -->
@@ -14,33 +13,25 @@
     <hr class="footer-divider" />
 
     <!-- Footer Navigation -->
-    <div class="row">
-      <!-- Shop Navigation -->
+     <div class="row">
       {% include 'includes/footer_shop_nav.html' %}
-
-      <!-- Other Links -->
       {% include 'includes/footer_other_links.html' %}
-
-      <!-- Help and Contact -->
-      {% include 'includes/footer_help_contact.html' %}
-
-      <!-- Newsletter -->
-      {% include 'includes/footer_newsletter.html' %}
     </div>
-
+      
     <!-- Social Media Icons -->
-    {% include 'includes/footer_social.html' %}
-  </div>
-
-  <!-- Copyright Section -->
-  <div class="footer-bottom mt-4">
-    <div class="container">
-      <div class="row">
-        <div class="col text-center">
+     <div class="footer-social">
+      {% include 'includes/footer_social.html' %}
+    </div>
+  </footer>
+  
+    <!-- Copyright Section - Outside the footer container -->
+  <div class="footer-bottom">
+    <div class="container-fluid p-0">
+      <div class="row m-0">
+        <div class="col-12 text-center">
           <p class="mb-0">&copy; {% now "Y" %} The Literary Loft</p>
           <p class="mb-0">All materials used by Victoria Kalenik only for educational purposes.</p>
         </div>
       </div>
     </div>
   </div>
-</footer>

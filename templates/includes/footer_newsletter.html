@@ -1,9 +1,17 @@
+<!-- footer_newsletter.html -->
 <div class="col-md-3 mb-4">
   <h5>Receive News, Updates and Special Offers</h5>
-  <form action= "{% url "books:newsletter"  %}" method="post" id="newsletter-form">
+  <form action="{% url 'books:newsletter' %}" method="post" id="newsletter-form" class="newsletter-form">
     {% csrf_token %}
     <div class="form-group">
-      <input type="email" class="form-control" placeholder="Enter your email address" id="newsletter-email" name="newsletter-email" />
+      <input 
+        type="email"
+        class="form-control"
+        placeholder="Enter your email address"
+        id="newsletter-email"
+        name="newsletter-email"
+        required
+      />
     </div>
     <button type="submit" class="btn btn-subscribe btn-block">Subscribe</button>
   </form>

@@ -10,7 +10,12 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_POST
 from django.contrib.auth import get_user_model
 from .forms import BookForm
-from django.shortcuts import render  
+from django.shortcuts import render
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Newsletter
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError  
 
 # Check if the user is an admin (STAFF)
 def is_admin(user):
@@ -135,6 +140,7 @@ def user_logout(request):
 
 # HOME PAGE / ABOUT / CONTACT
 def index(request):
+    print("Entering index view")
     """ A view that displays the home page """    
     return render(request, 'books/index.html')
 
@@ -304,13 +310,47 @@ def custom_404_view(request, exception):
 def custom_500_view(request):
     return render(request, '500.html', status=500)
 
-# NEWSLETTER SIGNUP
+# NEWSLETTER SIGNUP VIEW
+# books/views.py
 
 def newsletter_signup(request):
     if request.method == 'POST':
         email = request.POST.get('newsletter-email')
+        print(f"Received email: {email}")  # Debug print
+        
         if not email:
-            messages.error(request, "Please enter an email address.")
-        else:
-            messages.success(request, f"Thanks for signing up! We'll keep you updated at {email}.")
-    return redirect('books:index')
+            print("No email provided")  # Debug print
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Please provide an email address.'
+            })
+            
+        try:
+            # Check if email already exists
+            if Newsletter.objects.filter(email=email).exists():
+                print(f"Email {email} already exists")  # Debug print
+                return JsonResponse({
+                    'status': 'error',
+                    'message': 'This email is already subscribed to our newsletter.'
+                })
+            
+            # Create new subscriber
+            Newsletter.objects.create(email=email)
+            print(f"Created new subscription for {email}")  # Debug print
+            
+            return JsonResponse({
+                'status': 'success',
+                'message': 'Successfully subscribed to our newsletter!'
+            })
+            
+        except Exception as e:
+            print(f"Error: {str(e)}")  # Debug print
+            return JsonResponse({
+                'status': 'error',
+                'message': 'An error occurred. Please try again.'
+            })
+    
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Invalid request method.'
+    })
