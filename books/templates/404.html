@@ -1,12 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
-
 {% block title %}Page Not Found - The Literary Loft{% endblock %}
-
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/404.css' %}">
 {% endblock %}
-
 {% block content %}
 <div class="container py-5">
     <div class="row justify-content-center text-center">
@@ -19,7 +16,7 @@
                 </div>
                 <p class="lead mb-4 nunito">Sorry, we couldn't find the page you're looking for. Perhaps you've mistyped the URL or the page has been moved.</p>
                 <div class="mt-4">
-                    <a href="{% url 'home' %}" class="cta-button text-decoration-none">
+                    <a href="{% url 'books:index' %}" class="cta-button text-decoration-none">
                         Return Home
                     </a>
                 </div>
