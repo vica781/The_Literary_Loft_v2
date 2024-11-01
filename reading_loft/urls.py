@@ -25,7 +25,7 @@ urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 
-handler404 = views.custom_404_view
+# handler404 = 'views.custom_404_view'
 
 # Serve static and media files in development
 if settings.DEBUG:
