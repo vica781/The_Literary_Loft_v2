@@ -27,6 +27,7 @@ urlpatterns = [
 ]
 
 handler404 = views.custom_404_view
+handler500 = views.custom_500_view
 
 # Serve static and media files in development
 if settings.DEBUG:
