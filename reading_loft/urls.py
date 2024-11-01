@@ -6,6 +6,7 @@ from django.contrib.sitemaps.views import sitemap
 from books.sitemaps import BookSitemap  
 from django.views.generic import TemplateView
 from books import views
+from django.conf.urls import handler404
 
 # Sitemaps dictionary
 sitemaps = {
@@ -25,7 +26,7 @@ urlpatterns = [
     path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
 ]
 
-# handler404 = 'views.custom_404_view'
+handler404 = views.custom_404_view
 
 # Serve static and media files in development
 if settings.DEBUG:
