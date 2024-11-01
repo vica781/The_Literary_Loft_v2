@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Page Not Found - The Literary Loft{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/404.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+            <div class="error-content libre-baskerville">
+                <h1 class="display-1 text-secondary mb-4">404</h1>
+                <h2 class="mb-4">Page Not Found</h2>
+                <div class="mb-4">
+                    <img src="{% static 'images/no_cover_img.jpg' %}" alt="404 Error" class="img-fluid" style="max-width: 300px;">
+                </div>
+                <p class="lead mb-4 nunito">Sorry, we couldn't find the page you're looking for. Perhaps you've mistyped the URL or the page has been moved.</p>
+                <div class="mt-4">
+                    <a href="{% url 'home' %}" class="cta-button text-decoration-none">
+                        Return Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
