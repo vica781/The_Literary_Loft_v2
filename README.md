@@ -13,24 +13,32 @@ This project was created as part of my final project with Code Institute and is 
 ## Table of Contents
 
 - [Project Purpose and Objectives](#project-purpose-and-objectives)
+- [Disclaimer](#disclaimer)
 - [User Experience (UX)](#user-experience-ux)
   - [Project Goals](#project-goals)
+  - [Strategy](#strategy)
   - [User Stories](#user-stories)
-    - [External User Goals](#epic-1-user-management)
+    - [EPIC 1: User Management](#epic-1-user-management)
+    - [EPIC 2: Product Management](#epic-2-product-management)
+    - [EPIC 3: Checkout Process](#epic-3-checkout-process)
+    - [EPIC 4: SEO and Marketing](#epic-4-seo-and-marketing)
+    - [EPIC 5: Site Management & Security](#epic-5-site-management--security)
+    - [EPIC 6: Testing & Deployment](#epic-6-testing--deployment)
+    - [External User Goals](#external-user-goals)
     - [Admin User Goals](#admin-user-goals)
+- [Scope](#scope)
+- [Design](#design)
+  - [Design Choices](#design-choices)
+  - [Wireframes](#wireframes)
+- [Technologies Used](#technologies-used)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Features to Implement in the Future](#features-to-implement-in-the-future)
-- [Design](#design)
-  - [Wireframes](#wireframes)
-  - [Color Scheme and Typography](#color-scheme-and-typography)
-- [Technologies Used](#technologies-used)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
   - [Validator Testing](#validator-testing)
 - [Deployment](#deployment)
 - [Credits](#credits)
-
 
 ## Project Purpose and Objectives
 
@@ -38,7 +46,7 @@ The primary goal of The Literary Loft is to simulate a real-world e-commerce app
 
 - Browse a catalog of books with details and descriptions.
 - Search and filter books by title, author, genre, or category.
-- Add books to a shopping cart and complete a secure checkout.
+- Add books to a shopping Bag and complete a secure checkout.
 - Purchase books either as a guest or as a registered user. While guest users can make purchases, they are encouraged throughout the process to sign in or register, as only registered users can experience the full benefits of the platform, including:
   - Access to order history for easy reference and reorders.
   - The ability to mark books as favorites for quick access.
@@ -363,7 +371,7 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
 2. **Integration Testing for Checkout**
    - *Description*: As a Developer, I want to perform integration testing for the checkout process, so that I can ensure all components work together seamlessly.
    - *Acceptance Criteria*:
-     - Test covers adding items to the cart, reviewing the cart, and completing payment.
+     - Test covers adding items to the Bag, reviewing the Bag, and completing payment.
      - Edge cases such as empty carts or invalid payment data are tested.
    - *Tasks*:
      - Write integration tests for the checkout process.
@@ -400,14 +408,71 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Implement fixes and test the resolution.
      - Make iterations based on user feedback.
 
+#### External User Goals
+
+- **As a visitor**, I want to easily browse books by genre, title, or author, so that I can find books that interest me without any hassle.
+- **As a shopper**, I want to add books to a shopping Bag and see the total price, so that I can manage my budget before making a purchase.
+- **As a registered user**, I want to save my favorite books for future reference and view my past orders, so that I can easily access books I am interested in and keep track of my purchases.
+- **As a visitor**, I want the option to make a purchase as a guest, so that I can buy books without needing to create an account.
+- **As a visitor**, I want to sign up for a newsletter, so that I can stay informed about new arrivals and promotions.
+- **As a registered user**, I want to be able to manage my account details, so that I can update my information as needed.
+- **As a shopper**, I want to receive an order confirmation email, so that I have a record of my purchase.
+
+#### Admin User Goals
+
+- **As an admin**, I want to add, update, or delete books directly from the platform, so that I can manage the store’s inventory efficiently.
+- **As an admin**, I want to access an overview of the store’s products, so that I can see which books are in stock or need restocking.
+- **As an admin**, I want to be notified when purchases are made, so that I can manage order fulfillment promptly.
+- **As an admin**, I want to manage user accounts, so that I can handle issues or requests efficiently.
+- **As an admin**, I want to monitor and manage newsletter subscriptions, so that I can engage with users effectively.
+- **As an admin**, I want the platform to be secure with role-based access control, so that only authorized users can access sensitive data or make changes.
+
+## DESIGN
+
+### Scope
+
+To meet the goals outlined above, the project will include the following features:
+
+- **User Registration and Account Management**: Users can create an account, log in, log out, and manage their personal details and order history.
+- **Product Browsing and Search Functionality**: Users can browse the book catalog and search for specific books by genre, title, author, or keywords.
+- **Shopping Bag**: Users can add books to a shopping Bag, review their selections, update quantities, and remove items.
+- **Checkout Process**: A secure, streamlined checkout process using Stripe integration for payment.
+- **Guest Checkout**: Users can complete a purchase without creating an account.
+- **Order Confirmation**: Users receive on-site and email confirmation after successful checkout.
+- **Admin Dashboard**: Admins can add, update, or delete books, manage inventory, and access user data as needed.
+- **Newsletter Signup**: Users can subscribe to a newsletter for updates on new books and promotions.
+- **SEO Optimization**: The site will include meta tags, a sitemap, and a robots.txt file to enhance discoverability.
+- **Accessibility Features**: The design and layout will ensure accessibility for all users, following best practices.
+
+### Design Choices
+
+The design of *The Literary Loft* focuses on accessibility, ease of use, and aesthetics that appeal to book lovers. Key design elements include:
+
+- **Color Scheme**: The platform features a warm and cozy color scheme that reflects the ambiance of a home library. Shades of soft beige, light brown, and accents of green and dark gray create an inviting atmosphere for readers. The color palette is chosen to evoke warmth, comfort, and relaxation, enhancing the user's browsing experience.
+
+- **Typography**: The website uses a combination of elegant and readable fonts:
+  - **Headers and Key Elements**: The serif font *Libre Baskerville* is used to give a classic, sophisticated feel, emphasizing the traditional and literary atmosphere.
+  - **Body Text**: The sans-serif font *Nunito* is utilized for body text to ensure clarity and readability, enhancing the modern, user-friendly aspect of the site.
+  - These fonts were chosen for their aesthetic balance between classic literature and contemporary readability, creating a pleasant and harmonious reading experience.
+
+- **Layout**: A clean, grid-based layout is implemented for intuitive navigation and content exploration. The header features a fixed navigation bar with direct links to essential pages, while the footer includes quick access to social media, a newsletter subscription form, and additional informational links.
+
+- **Imagery**: High-resolution images of bookshelves, book covers, and reading spaces are used to reinforce the cozy, bookish theme of the platform. The homepage features an inviting image of a well-lit reading nook with bookshelves full of books, adding to the ambiance and making users feel at home.
+
+- **Responsive Design**: The website is fully responsive, ensuring optimal performance on all devices, from mobile phones to desktop computers. Media queries and flexible grid layouts help maintain a consistent user experience across different screen sizes.
+
+- **Interactive Elements**: Subtle hover effects on buttons and links are implemented for visual feedback and to guide user interaction. Clear call-to-action (CTA) buttons encourage engagement, while interactive elements provide feedback when users add items to their Bag or interact with other features on the site.
+
+These design choices were made to create a welcoming and enjoyable browsing experience, encouraging users to explore the catalog and engage with *The Literary Loft*.
+
 ### Wireframes
 
 Wireframes were created at the start of the project to visualize the structure and layout of the key pages, including:
 
 - **Homepage**: A welcoming page with featured books, new arrivals, and a search bar.
 - **Product Listing Page**: Displays books in a grid layout with filters and sorting options.
-- **Product Detail Page**: Detailed view of each book with options to add to the cart or save as a favorite.
-- **Shopping Cart Page**: An overview of the selected books with options to edit quantities or remove items.
+- **Product Detail Page**: Detailed view of each book with options to add to the Bag or save as a favorite.
+- **Shopping Bag Page**: An overview of the selected books with options to edit quantities or remove items.
 - **Checkout Page**: A form-based page to input delivery and payment details securely.
 - **User Profile Page**: Allows users to view and manage their account information, past orders, and favorite books.
 - **Admin Dashboard**: Provides functionality for adding, updating, and managing products.
