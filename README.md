@@ -58,6 +58,9 @@ The project also aims to give site administrators full control over the inventor
 ## Disclaimer
 
 **Note**: This project was developed solely for educational purposes and is not intended for real-world use.
+The Literary Loft is a fictional e-commerce platform created as part of the Full Stack Web Development course with Code Institute. The project uses placeholder data for books and images, and no real transactions can be made on the site. The payment processing feature is implemented using Stripe's test mode, and no real payments are processed.
+
+[Back to top ⇧](#table-of-contents)
 
 ## User Experience (UX)
 
@@ -74,6 +77,10 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
 - Encouraging users to sign up and log in to benefit from enhanced features, such as viewing their full order history and managing their favorite books.
 - Integrating a newsletter signup feature to keep users informed about new releases and special promotions.
 - Incorporating SEO best practices to improve discoverability and audience reach.
+
+The project aims to create a welcoming and immersive environment for book lovers, offering a curated selection of books and a seamless shopping experience.
+
+[Back to top ⇧](#table-of-contents)
 
 ### User Stories
 
@@ -145,6 +152,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Implement a confirmation prompt for account deletion.
      - Ensure the account is removed from the database upon confirmation.
 
+[Back to top ⇧](#table-of-contents)
+
 #### EPIC 2: Product Management
 
 1. **Add a Product**
@@ -203,6 +212,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Integrate with the product listing page.
      - Implement UI elements for filter and sort options.
 
+[Back to top ⇧](#table-of-contents)
+
 #### EPIC 3: Checkout Process
 
 1. **Add to Bag**
@@ -259,6 +270,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Implement prompts for user registration benefits.
      - Secure guest data during the process.
 
+[Back to top ⇧](#table-of-contents)
+
 #### EPIC 4: SEO and Marketing
 
 1. **Implement Meta Tags**
@@ -312,6 +325,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Add branding elements (logo, cover photo).
      - Include links and business details.
 
+[Back to top ⇧](#table-of-contents)
+
 #### EPIC 5: Site Management & Security
 
 1. **Secure Payment Integration (e.g., Stripe)**
@@ -355,6 +370,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Ensure debug mode is turned off in the production environment.
      - Test error handling.
      - Confirm site functionality without debug mode.
+
+[Back to top ⇧](#table-of-contents)
 
 #### EPIC 6: Testing & Deployment
 
@@ -408,6 +425,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
      - Implement fixes and test the resolution.
      - Make iterations based on user feedback.
 
+[Back to top ⇧](#table-of-contents)
+
 #### External User Goals
 
 - **As a visitor**, I want to easily browse books by genre, title, or author, so that I can find books that interest me without any hassle.
@@ -418,6 +437,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
 - **As a registered user**, I want to be able to manage my account details, so that I can update my information as needed.
 - **As a shopper**, I want to receive an order confirmation email, so that I have a record of my purchase.
 
+[Back to top ⇧](#table-of-contents)
+
 #### Admin User Goals
 
 - **As an admin**, I want to add, update, or delete books directly from the platform, so that I can manage the store’s inventory efficiently.
@@ -426,6 +447,8 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
 - **As an admin**, I want to manage user accounts, so that I can handle issues or requests efficiently.
 - **As an admin**, I want to monitor and manage newsletter subscriptions, so that I can engage with users effectively.
 - **As an admin**, I want the platform to be secure with role-based access control, so that only authorized users can access sensitive data or make changes.
+
+[Back to top ⇧](#table-of-contents)
 
 ## DESIGN
 
@@ -443,6 +466,8 @@ To meet the goals outlined above, the project will include the following feature
 - **Newsletter Signup**: Users can subscribe to a newsletter for updates on new books and promotions.
 - **SEO Optimization**: The site will include meta tags, a sitemap, and a robots.txt file to enhance discoverability.
 - **Accessibility Features**: The design and layout will ensure accessibility for all users, following best practices.
+
+[Back to top ⇧](#table-of-contents)
 
 ### Design Choices
 
@@ -465,6 +490,8 @@ The design of *The Literary Loft* focuses on accessibility, ease of use, and aes
 
 These design choices were made to create a welcoming and enjoyable browsing experience, encouraging users to explore the catalog and engage with *The Literary Loft*.
 
+[Back to top ⇧](#table-of-contents)
+
 ### Wireframes
 
 Wireframes were created at the start of the project to visualize the structure and layout of the key pages, including:
@@ -478,3 +505,5 @@ Wireframes were created at the start of the project to visualize the structure a
 - **Admin Dashboard**: Provides functionality for adding, updating, and managing products.
 
 These wireframes served as a blueprint for the development and ensured that the final design aligned with the project's goals and user needs.
+
+[Back to top ⇧](#table-of-contents)
