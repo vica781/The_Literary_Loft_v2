@@ -640,6 +640,56 @@ These wireframes were essential in mapping out the user journey, ensuring intuit
 
 [Back to top ⬆](#table-of-contents)
 
+## Color Scheme and Typography
+
+### Color Scheme
+
+The color scheme for *The Literary Loft* was chosen with the intention of evoking feelings of happiness, coziness, warmth, and homeliness. This reflects the developer’s deep love for reading and the desire to pass that passion on to users. The choice of soft and warm shades of grey for the navigation bar, footer, buttons, and other elements was made to complement the atmosphere created by the landing image and the favicon.
+
+The following elements illustrate the carefully chosen visual aesthetic:
+
+- **Landing Page Image**: The main landing image sets the tone for the entire site, depicting a welcoming and cozy reading loft. 
+![Landing Page Image](static/images/loft_1.webp)
+
+[Back to top ⬆](#table-of-contents)
+
+- **Favicon**: The favicon is a black-and-white pencil sketch of a hand gently holding a stack of books, symbolizing the warmth and personal touch associated with reading.
+![Favicon](static/images/hand_books_darker.png)
+
+The combination of these elements creates a seamless and visually appealing user experience that emphasizes the comfort and joy of reading.
+
+[Back to top ⬆](#table-of-contents)
+
+### Typography
+
+The fonts used throughout the site were selected to reinforce the theme of classic literature combined with a modern reading experience. The font choices reflect the app's balance between traditional and contemporary elements:
+
+#### Main Title and Branding
+
+- **Font Used**: *Libre Baskerville* (Bold)
+- **Application**: Main title, "THE LITERARY LOFT," in the app's logo.
+- **Characteristics**: *Libre Baskerville* provides an elegant, classic feel that connects to the heritage of printed books. Its serif details and high contrast enhance readability and give the app an authoritative, literary ambiance.
+
+![App Logo](static/images/large_logo.JPG)
+
+#### Subtitles and Body Text
+
+- **Font Used**: *Nunito* (Regular)
+- **Application**: Subtitles, including "There is no friend as loyal as a book," and the body text throughout the site.
+- **Characteristics**: *Nunito* is a sans-serif font with a friendly and modern appearance. Its clean and balanced design ensures high readability, even at smaller sizes. The rounded shapes of *Nunito* add warmth and approachability, aligning well with the overall theme of coziness and comfort.
+
+### Font Pairing Analysis
+
+The combination of *Libre Baskerville* and *Nunito* was not coincidental. These fonts work together to create a harmonious balance of elegance and modernity:
+
+- **Contrast and Hierarchy**: *Libre Baskerville* establishes prominence for the main title, while *Nunito* complements it with clarity for body text and secondary elements.
+- **Visual Balance**: The serif nature of *Libre Baskerville* contrasts with the modern, rounded sans-serif of *Nunito*, adding visual interest without overwhelming the reader.
+- **Theme Reinforcement**: The font pairing supports the literary theme and echoes the feelings of nostalgia associated with physical books.
+
+In summary, the color scheme, typography, and imagery were chosen with the goal of creating an inviting and literary-themed platform that resonates with book lovers, encouraging them to stay and explore.
+
+[Back to top ⬆](#table-of-contents)
+
 ### Database Design
 
 The database design for *The Literary Loft* was carefully structured to ensure data integrity and efficient relationships between different entities. The project uses a relational database schema that captures key elements necessary for a functional e-commerce platform.
