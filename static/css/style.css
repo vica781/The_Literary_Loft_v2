@@ -372,6 +372,10 @@ body {
   margin-right: 5px;
 }
 
+.password-reset-form {
+  margin-bottom: 3.5rem;
+}
+
 /* ---------------------------Category navigation--------------------------- */
 .category-nav {
   background-color: #fff;
