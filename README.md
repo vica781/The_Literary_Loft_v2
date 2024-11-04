@@ -586,3 +586,14 @@ Below is the Entity-Relationship Diagram (ERD) that illustrates the structure of
 This comprehensive database design ensures that user interactions, book management, and order processing are well-integrated and operate smoothly within the application.
 
 [Back to top ⇧](#table-of-contents)
+
+## Technologies Used
+
+- **Languages**: HTML5, CSS3, JavaScript, Python
+- **Frameworks and Libraries**: Django, Bootstrap 4.6, CKEditor 5
+- **Database**: PostgreSQL hosted on Neon.tech
+- **Version Control**: Git and GitHub for code management
+- **Deployment and Hosting**: Heroku for deploying and hosting the web application
+- **Payment Integration**: Stripe for processing secure payments
+
+[Back to top ⇧](#table-of-contents)
