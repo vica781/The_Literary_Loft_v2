@@ -13,27 +13,19 @@ This project was created as part of my final project with Code Institute and is 
 ## Table of Contents
 
 - [Project Purpose and Objectives](#project-purpose-and-objectives)
-- [Disclaimer](#disclaimer)
 - [User Experience (UX)](#user-experience-ux)
   - [Project Goals](#project-goals)
-  - [Strategy](#strategy)
   - [User Stories](#user-stories)
-    - [EPIC 1: User Management](#epic-1-user-management)
-    - [EPIC 2: Product Management](#epic-2-product-management)
-    - [EPIC 3: Checkout Process](#epic-3-checkout-process)
-    - [EPIC 4: SEO and Marketing](#epic-4-seo-and-marketing)
-    - [EPIC 5: Site Management & Security](#epic-5-site-management--security)
-    - [EPIC 6: Testing & Deployment](#epic-6-testing--deployment)
     - [External User Goals](#external-user-goals)
     - [Admin User Goals](#admin-user-goals)
-- [Scope](#scope)
-- [Design](#design)
-  - [Design Choices](#design-choices)
-  - [Wireframes](#wireframes)
-- [Technologies Used](#technologies-used)
 - [Features](#features)
   - [Existing Features](#existing-features)
   - [Features to Implement in the Future](#features-to-implement-in-the-future)
+- [Design](#design)
+  - [Wireframes](#wireframes)
+  - [Color Scheme and Typography](#color-scheme-and-typography)
+- [Database Design](#database-design)
+- [Technologies Used](#technologies-used)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
   - [Validator Testing](#validator-testing)
@@ -551,3 +543,46 @@ This comprehensive layout ensures users feel welcomed, engaged, and are encourag
 These wireframes were essential in mapping out the user journey, ensuring intuitive navigation, and planning interactions across different user roles (e.g., customers, administrators).
 
 [Back to top ⬆](#table-of-contents)
+
+### Database Design
+
+The database design for *The Literary Loft* was carefully structured to ensure data integrity and efficient relationships between different entities. The project uses a relational database schema that captures key elements necessary for a functional e-commerce platform.
+
+#### Entity-Relationship Diagram (ERD)
+
+Below is the Entity-Relationship Diagram (ERD) that illustrates the structure of the database for *The Literary Loft*. This ERD highlights the relationships between users, orders, books, categories, and other key data tables in the application.
+
+![ERD](readme_files/images/the_literary_loft_erd.png)
+
+#### Overview of Database Tables
+
+1. **User**: Stores information about registered users, including their credentials and profile details.
+   - `id`: Primary key, unique identifier for the user.
+   - `username`, `password`, `email`: Essential fields for authentication and communication.
+   - `firstName`, `lastName`: Optional profile fields.
+   - Timestamps for creation and updates (`createdAt`, `updatedAt`).
+
+2. **Order**: Captures the details of orders placed by users.
+   - Linked to the `User` table through a foreign key.
+   - Contains order details such as `order_number`, `full_name`, `email`, and `delivery details`.
+   - `order_total`, `delivery_cost`, and `grand_total` fields for financial tracking.
+
+3. **OrderItem**: Represents individual items within an order.
+   - Connected to both `Order` and `Book` through foreign keys.
+   - Tracks `quantity`, `price`, and `item_total`.
+
+4. **Book**: Stores details about each book available on the platform.
+   - `id`: Primary key, unique identifier for each book.
+   - `title`, `author`, `isbn`, `price`, `stock`, `cover_image`, and detailed descriptions.
+   - Linked to `Subcategory` through a foreign key.
+
+5. **Category** and **Subcategory**: Used to classify books into main genres and sub-genres.
+   - `Category` table includes main classifications (e.g., Fiction, Non-Fiction, Children's Books).
+   - Each `Subcategory` links back to a `Category`, maintaining the hierarchical structure.
+
+6. **Newsletter**: Keeps records of users who have subscribed to receive updates and promotions.
+   - Includes fields like `email`, `date_subscribed`, `is_active`, and `status`.
+
+This comprehensive database design ensures that user interactions, book management, and order processing are well-integrated and operate smoothly within the application.
+
+[Back to top ⇧](#table-of-contents)
