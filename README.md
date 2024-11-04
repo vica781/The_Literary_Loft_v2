@@ -494,16 +494,60 @@ These design choices were made to create a welcoming and enjoyable browsing expe
 
 ### Wireframes
 
-Wireframes were created at the start of the project to visualize the structure and layout of the key pages, including:
+Wireframes were created at the start of the project to visualize the structure and layout of the key pages and elements. These wireframes guided the development process to ensure that the final design aligned with the project's goals, providing a clear user experience and functionality.
 
-- **Homepage**: A welcoming page with featured books, new arrivals, and a search bar.
-- **Product Listing Page**: Displays books in a grid layout with filters and sorting options.
-- **Product Detail Page**: Detailed view of each book with options to add to the Bag or save as a favorite.
-- **Shopping Bag Page**: An overview of the selected books with options to edit quantities or remove items.
-- **Checkout Page**: A form-based page to input delivery and payment details securely.
-- **User Profile Page**: Allows users to view and manage their account information, past orders, and favorite books.
-- **Admin Dashboard**: Provides functionality for adding, updating, and managing products.
+The complete set of wireframes can be found in the following file: [Wireframes File - The Literary Loft](readme_files/wireframes/the_literary_loft.bmpr)
 
-These wireframes served as a blueprint for the development and ensured that the final design aligned with the project's goals and user needs.
+Wireframes include:
 
-[Back to top ⇧](#table-of-contents)
+- **Landing Page**: The landing page is designed to create an inviting atmosphere that aligns with the store’s theme of a cozy literary space. The page prominently features:
+  - **Header**: A clear and structured navigation bar that allows users to explore different book categories (Fiction, Non-Fiction, Children's Books) and access key pages such as 'All Books,' 'Our Story,' and 'Contact Us.' The header also includes a search bar, providing users with an easy way to find specific books by title, ISBN, or keyword.
+  - **Promotional Banner**: A visually appealing, thin banner at the top of the page highlights important information, such as free shipping offers and other promotions.
+  - **Main Hero Section**: A large, high-quality image depicting a well-organized, inviting reading space filled with books. This section sets the tone for the website, evoking the feeling of stepping into a personal library. Overlay text on the image reads, "Step into The Literary Loft and find your companion," creating an engaging introduction.
+  - **Main Call-to-Action**: A prominent 'Shop Now' button below the hero image encourages users to start exploring the store.
+  - **Introductory Information**: Below the hero section, there is a welcoming message that sets the ambiance and presents the core message of the store: "Your sanctuary for loyal literary friends."
+  - **Footer**: The page ends with a well-structured footer that includes:
+    - **Quick Access Links**: Links to important sections such as 'Our Story,' 'Why Your Purchase Matters,' 'Meet the Team,' and FAQs.
+    - **Shop Categories**: Easy navigation to Fiction, Non-Fiction, and Children's book sections.
+    - **Contact Information and Social Media**: Links to social media platforms and options to contact the store.
+    - **Newsletter Subscription**: A field where users can enter their email to subscribe to updates and special offers.
+    - **Legal Information**: A statement clarifying that the content is used solely for educational purposes.
+
+This comprehensive layout ensures users feel welcomed, engaged, and are encouraged to explore further into the website. The design and structure focus on ease of navigation, promoting a seamless experience from the first interaction.
+
+- **Common Elements**: Consistent header (navigation bar) and footer sections designed to appear on all pages, ensuring seamless navigation and quick access to important site areas.
+- **Combined Books Page**:
+  - **All Books Page (Customer View)**: A grid layout displaying all available books with options to filter and sort.
+  - **Admin View**: The same page with added functionalities for CRUD (Create, Read, Update, Delete) operations.
+  - **Individual Book Page**: Detailed view of each book, showing book title, author, price, description, and customer reviews.
+- **'Our Story' Page**:
+  - Sections that detail the journey of the business, including:
+    - *Our Beginnings*: How the store was founded.
+    - *Building the Dream*: The development and growth journey.
+    - *Growing Together*: Collaborations and community involvement.
+    - *Our Mission & Values*: The core principles guiding the business.
+  - Subsections such as:
+    - *Why Your Purchase Matters*: Information on the impact of purchases.
+    - *Meet the Team*: Profiles of key team members.
+    - *Join Our Journey*: Call-to-action for user involvement.
+    - *FAQs*: A section with frequently asked questions.
+- **Contact Us Page**:
+  - Contains detailed shop information, including:
+    - Address and contact numbers.
+    - A map for location guidance.
+    - Instructions for reaching the shop using different transport modes.
+    - A *Send Us a Message* form for user inquiries.
+- **Shopping Bag Page**: An overview of selected books, allowing users to review items, update quantities, or remove items before proceeding to checkout.
+- **Favourite Books Page**: A personalized page where registered users can save and view their favorite books for easy access.
+- **User Pages** (Combined Wireframe):
+  - *Create Account Page*: Form for new users to register.
+  - *Login Page*: User authentication interface.
+  - *My Account Page*: Allows users to view and manage their profile information and past orders.
+- **Order-Related Pages** (Combined Wireframe):
+  - *Checkout Page*: Form-based page for delivery and payment details.
+  - *Order Summary Page*: Provides a final overview of the user's order before submission.
+  - *Orders History Page*: Displays past orders for registered users.
+
+These wireframes were essential in mapping out the user journey, ensuring intuitive navigation, and planning interactions across different user roles (e.g., customers, administrators).
+
+[Back to top ⬆](#table-of-contents)
