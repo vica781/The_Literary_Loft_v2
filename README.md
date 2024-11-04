@@ -496,7 +496,7 @@ These design choices were made to create a welcoming and enjoyable browsing expe
 
 Wireframes were created at the start of the project to visualize the structure and layout of the key pages and elements. These wireframes guided the development process to ensure that the final design aligned with the project's goals, providing a clear user experience and functionality.
 
-The complete set of wireframes can be found in the following file: [Wireframes File - The Literary Loft](readme_files/wireframes/the_literary_loft.bmpr)
+The complete set of wireframes can be found in the following file: [Wireframes File - The Literary Loft](readme_files/wireframes/the_literary_loft.pdf)
 
 Wireframes include:
 
