@@ -442,6 +442,102 @@ The project aims to create a welcoming and immersive environment for book lovers
 
 [Back to top ⇧](#table-of-contents)
 
+## Features
+
+### Existing Features
+
+### 1. User Management
+
+- **User Registration and Login**: Users can create an account and log in to access their personalized experience, including viewing and managing their profiles.
+- **Password Recovery**: Users can recover their password if forgotten via an email recovery process.
+- **Profile Management**: Registered users can update their personal information and manage their order history.
+- **Newsletter Signup**: Users can sign up for newsletters to stay informed about new arrivals and promotions. (Note: Currently, there is no unsubscribe option available.)
+- **Order History Management**: Users can sort their order history in ascending or descending order by date or price for better navigation and management.
+
+[Back to top ⇧](#table-of-contents)
+
+### 2. Product Browsing and Management
+
+- **Browse and Search**: Users can browse books by genre, title, or author using an intuitive search bar and category filters.
+- **Book Details Page**: Each book has a dedicated page showcasing its details, including title, author, description, and price.
+- **Favorites Feature**: Registered users can mark books as favorites for quick access later.
+- **Admin Management**: Admins can add, edit, or delete books, ensuring efficient catalog management. Admins can enter the number of each book in stock, although tracking stock changes after purchases is not currently available.
+
+[Back to top ⇧](#table-of-contents)
+
+### 3. Shopping Experience
+
+- **Add to Bag**: Users can add books to a shopping bag for review before purchase. The "Bag" icon in the navbar displays the count of books added but does not currently show the total cost.
+- **Bag Review and Edit**: The shopping bag page allows users to view selected items, adjust quantities, or remove items before proceeding to checkout.
+- **Checkout Process**: A secure checkout process is in place using Stripe for payment, ensuring user transactions are handled safely.
+- **Guest Checkout**: Visitors can complete their purchases without registering for an account, making the shopping process flexible and user-friendly.
+- **Continue Shopping Button**: A convenient "Continue Shopping" button allows users to return to browsing without disrupting their purchase process.
+
+[Back to top ⇧](#table-of-contents)
+
+#### 4. Additional Pages
+
+- **Homepage**: A welcoming landing page featuring highlighted books, an inviting design, and a search bar to encourage exploration. Multiple currency options (£, $, €) are displayed, though the ability to select a preferred currency during the purchasing process has not been implemented.
+- **Our Story**: A page detailing the journey, mission, and values of *The Literary Loft*, complete with informative sections and team introductions.
+- **Contact Us**: Provides users with contact information, including location details, a map, and a message form for queries.
+- **FAQ Section**: Answers common questions about the store and shopping process.
+
+[Back to top ⇧](#table-of-contents)
+
+### 5. Marketing and Engagement
+
+- **Newsletter Signup**: A feature for users to subscribe to a newsletter and stay updated on new arrivals and promotions.
+- **SEO Optimization**: Implementation of meta tags, a sitemap, and a `robots.txt` file to boost search engine discoverability.
+
+### 6. Accessibility and Responsive Design
+
+- **Responsive Layout**: The entire site is designed to be fully responsive, ensuring usability across all devices, from mobile to desktop.
+- **Accessible Design**: Adheres to accessibility standards for a seamless experience for all users, including screen reader compatibility.
+
+[Back to top ⇧](#table-of-contents)
+
+### Features to Implement in the Future
+
+### 1. Enhanced Review System
+
+- **User Reviews**: Allow users to leave reviews and rate books, adding community feedback to the platform.
+
+### 2. Unsubscribe Option for Newsletters
+
+- **Unsubscribe Feature**: Provide users with the ability to unsubscribe from the newsletter at their convenience.
+
+### 3. Account Deletion
+
+- **User Profile Deletion**: Implement a feature allowing users to permanently delete their account and data from the platform.
+
+#### 4. Enhanced Cart Functionality
+
+- **Total Cost Display**: Update the "Bag" icon to reflect both the number of items and the total cost of the contents for better user experience.
+
+[Back to top ⇧](#table-of-contents)
+
+### 5. Stock Management
+
+- **Inventory Tracking**: Enable automatic tracking of book stock levels, adjusting the available quantity when purchases are made.
+
+#### 6. Personalized Recommendations
+
+- **AI-Powered Suggestions**: Implement a recommendation system that suggests books based on users’ browsing and purchase history.
+
+### 7. Advanced Filtering Options
+
+- **Refined Search Capabilities**: Add additional filtering options such as price range, publication year, and author nationality.
+
+#### 8. Admin Dashboard Enhancements
+
+- **Sales Analytics**: Provide detailed analytics for admins to track sales trends and user engagement.
+
+- **Bulk Uploads**: Enable admins to upload multiple books at once using CSV files for faster catalog management.
+
+These features aim to further enrich the user experience and provide more management tools for the admin side.
+
+[Back to top ⇧](#table-of-contents)
+
 ## DESIGN
 
 ### Scope
