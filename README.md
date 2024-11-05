@@ -3,6 +3,7 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
 The Literary Loft is an e-commerce platform designed for book lovers to explore and purchase a curated selection of books. This platform aims to provide an intuitive, user-friendly experience that allows users to browse, search, and buy books seamlessly. The Literary Loft is designed to serve both casual readers and avid book collectors by offering a variety of genres and popular titles.
+Project is developed using Django framework and Stripe for payment processing, and is deployed on Heroku. The agile method was used to develop the project. [GitHub's Project board](https://github.com/users/vica781/projects/6) was used to implement it.
 
 This project was created as part of my final project with Code Institute and is intended for educational purposes only.
 
