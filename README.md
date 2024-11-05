@@ -26,7 +26,7 @@ This project was created as part of my final project with Code Institute and is 
     - [Additional Pages](#4-additional-pages)
     - [Marketing and Engagement](#5-marketing-and-engagement)
     - [Accessibility and Responsive Design](#6-accessibility-and-responsive-design)
-  - [Features to Implement in the Future](#features-to-implement-in-the-future)
+    - [Additional Features](#7-additional-features)
 - [Design](#design)
   - [Scope](#scope)
   - [Design Choices](#design-choices)
@@ -36,6 +36,8 @@ This project was created as part of my final project with Code Institute and is 
   - [Entity-Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
   - [Overview of Database Tables](#overview-of-database-tables)
 - [Technologies Used](#technologies-used)
+- [Marketing and Social Media Presence](#facebook-mockup-page)
+  - [Facebook Mockup Page](#facebook-mockup-page)
 - [Testing](#testing)
   - [Manual Testing](#manual-testing)
   - [Validator Testing](#validator-testing)
@@ -62,7 +64,7 @@ The project also aims to give site administrators full control over the inventor
 **Note**: This project was developed solely for educational purposes and is not intended for real-world use.
 The Literary Loft is a fictional e-commerce platform created as part of the Full Stack Web Development course with Code Institute. The project uses placeholder data for books and images, and no real transactions can be made on the site. The payment processing feature is implemented using Stripe's test mode, and no real payments are processed.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ## User Experience (UX)
 
@@ -82,7 +84,7 @@ The strategy for *The Literary Loft* focuses on building a user-centric experien
 
 The project aims to create a welcoming and immersive environment for book lovers, offering a curated selection of books and a seamless shopping experience.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### User Stories
 
@@ -154,7 +156,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Implement a confirmation prompt for account deletion.
      - Ensure the account is removed from the database upon confirmation.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### EPIC 2: Product Management
 
@@ -214,7 +216,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Integrate with the product listing page.
      - Implement UI elements for filter and sort options.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### EPIC 3: Checkout Process
 
@@ -272,7 +274,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Implement prompts for user registration benefits.
      - Secure guest data during the process.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### EPIC 4: SEO and Marketing
 
@@ -327,7 +329,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Add branding elements (logo, cover photo).
      - Include links and business details.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### EPIC 5: Site Management & Security
 
@@ -373,7 +375,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Test error handling.
      - Confirm site functionality without debug mode.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### EPIC 6: Testing & Deployment
 
@@ -427,7 +429,7 @@ The project aims to create a welcoming and immersive environment for book lovers
      - Implement fixes and test the resolution.
      - Make iterations based on user feedback.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### External User Goals
 
@@ -439,7 +441,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **As a registered user**, I want to be able to manage my account details, so that I can update my information as needed.
 - **As a shopper**, I want to receive an order confirmation email, so that I have a record of my purchase.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### Admin User Goals
 
@@ -450,7 +452,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **As an admin**, I want to monitor and manage newsletter subscriptions, so that I can engage with users effectively.
 - **As an admin**, I want the platform to be secure with role-based access control, so that only authorized users can access sensitive data or make changes.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ## Features
 
@@ -464,7 +466,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **Newsletter Signup**: Users can sign up for newsletters to stay informed about new arrivals and promotions. (Note: Currently, there is no unsubscribe option available.)
 - **Order History Management**: Users can sort their order history in ascending or descending order by date or price for better navigation and management.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### 2. Product Browsing and Management
 
@@ -473,7 +475,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **Favorites Feature**: Registered users can mark books as favorites for quick access later.
 - **Admin Management**: Admins can add, edit, or delete books, ensuring efficient catalog management. Admins can enter the number of each book in stock, although tracking stock changes after purchases is not currently available.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### 3. Shopping Experience
 
@@ -483,7 +485,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **Guest Checkout**: Visitors can complete their purchases without registering for an account, making the shopping process flexible and user-friendly.
 - **Continue Shopping Button**: A convenient "Continue Shopping" button allows users to return to browsing without disrupting their purchase process.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 #### 4. Additional Pages
 
@@ -492,7 +494,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **Contact Us**: Provides users with contact information, including location details, a map, and a message form for queries.
 - **FAQ Section**: Answers common questions about the store and shopping process.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### 5. Marketing and Engagement
 
@@ -504,7 +506,23 @@ The project aims to create a welcoming and immersive environment for book lovers
 - **Responsive Layout**: The entire site is designed to be fully responsive, ensuring usability across all devices, from mobile to desktop.
 - **Accessible Design**: Adheres to accessibility standards for a seamless experience for all users, including screen reader compatibility.
 
-[Back to top ⇧](#table-of-contents)
+### 7. Additional Features
+
+### Custom 404 and 500 Error Pages
+
+To enhance the user experience, even in cases where errors occur, *The Literary Loft* includes custom error pages for:
+
+- **404 Error Page**: This page is displayed when a user tries to access a page that does not exist. The 404 page maintains the overall design aesthetics of the site, ensuring users are not abruptly faced with a default browser error message. It provides a user-friendly message and suggestions to navigate back to the main pages.
+
+![404 Error Page](readme_files/images/404_error.JPG)
+
+- **500 Error Page**: The 500 error page is shown when there is an internal server error. This custom page helps reassure users that an issue has been detected and is being addressed.
+
+![500 Error Page](readme_files/images/500_error.JPG)
+
+These custom error pages contribute to a consistent and professional user experience, minimizing frustration and guiding users when issues occur.
+
+[Back to top ⬆](#table-of-contents)
 
 ### Features to Implement in the Future
 
@@ -524,7 +542,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 
 - **Total Cost Display**: Update the "Bag" icon to reflect both the number of items and the total cost of the contents for better user experience.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### 5. Stock Management
 
@@ -546,7 +564,7 @@ The project aims to create a welcoming and immersive environment for book lovers
 
 These features aim to further enrich the user experience and provide more management tools for the admin side.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ## DESIGN
 
@@ -565,7 +583,7 @@ To meet the goals outlined above, the project will include the following feature
 - **SEO Optimization**: The site will include meta tags, a sitemap, and a robots.txt file to enhance discoverability.
 - **Accessibility Features**: The design and layout will ensure accessibility for all users, following best practices.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### Design Choices
 
@@ -588,7 +606,7 @@ The design of *The Literary Loft* focuses on accessibility, ease of use, and aes
 
 These design choices were made to create a welcoming and enjoyable browsing experience, encouraging users to explore the catalog and engage with *The Literary Loft*.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ### Wireframes
 
@@ -658,7 +676,7 @@ The color scheme for *The Literary Loft* was chosen with the intention of evokin
 
 The following elements illustrate the carefully chosen visual aesthetic:
 
-- **Landing Page Image**: The main landing image sets the tone for the entire site, depicting a welcoming and cozy reading loft. 
+- **Landing Page Image**: The main landing image sets the tone for the entire site, depicting a welcoming and cozy reading loft.
 ![Landing Page Image](static/images/loft_1.webp)
 
 [Back to top ⬆](#table-of-contents)
@@ -741,7 +759,7 @@ Below is the Entity-Relationship Diagram (ERD) that illustrates the structure of
 
 This comprehensive database design ensures that user interactions, book management, and order processing are well-integrated and operate smoothly within the application.
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
 
 ## Technologies Used
 
@@ -752,4 +770,52 @@ This comprehensive database design ensures that user interactions, book manageme
 - **Deployment and Hosting**: Heroku for deploying and hosting the web application
 - **Payment Integration**: Stripe for processing secure payments
 
-[Back to top ⇧](#table-of-contents)
+[Back to top ⬆](#table-of-contents)
+
+## Facebook Mockup Page
+
+To meet the requirement for digital marketing evidence, a Facebook mockup page for *The Literary Loft* was created. This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings.
+
+The mockup includes:
+
+### 1. **Landing Page Overview**
+
+![Landing Page Overview](readme_files/images/facebook_images/facebook_mockup_page.JPG)
+The main landing page of *The Literary Loft* on Facebook features an inviting cover image that reflects the cozy and welcoming atmosphere of the store, accompanied by the store's logo and slogan: "There is no friend as loyal as a book."
+
+### 2. **Welcome Post**
+
+![Welcome Post](readme_files/images/facebook_images/facebook_1.JPG)
+An introductory post that welcomes users to the official Facebook page, highlighting what they can find on the page such as book recommendations, event announcements, author spotlights, and more.
+
+### 3. **Author Spotlight Post**
+
+![Author Spotlight](readme_files/images/facebook_images/facebook_author_spotlight.JPG)
+A dedicated post featuring an author spotlight with a short biography and notable works. This helps engage users who are interested in discovering new authors or learning more about their favorite writers.
+
+### 4. **Promotional Offer**
+
+![Autumn Reading Sale](readme_files/images/facebook_images/facebook_autumn_reading.JPG)
+A promotional post announcing a limited-time discount for fiction books. This encourages engagement and drives traffic to the website, creating urgency for users to take advantage of the deal.
+
+### 5. **Book of the Week**
+
+![Book of the Week](readme_files/images/facebook_images/facebook_book_of_the_week.JPG)
+A featured post showcasing the "Book of the Week," complete with a brief description and a call-to-action button. This type of post draws attention to specific titles and encourages readers to explore new recommendations.
+
+### 6. **Upcoming Book Club Meeting**
+
+![Book Club Announcement](readme_files/images/facebook_images/facebook_club.JPG)
+A post that announces an upcoming book club meeting, including details about the book to be discussed and how users can register to join. This helps foster a sense of community among readers.
+
+### 7. **Customer Review Spotlight**
+
+![Customer Review](readme_files/images/facebook_images/facebook_costumer_review.JPG)
+Highlighting customer feedback to build trust and credibility. Positive reviews are showcased to create an engaging and authentic connection with potential readers.
+
+### 8. **Literary Quote Post**
+
+![Literary Quote](readme_files/images/facebook_images/facebook_quote.JPG)
+A post featuring an inspiring literary quote to resonate with the audience and encourage interaction through likes, comments, and shares.
+
+These posts reflect a well-rounded content strategy aimed at promoting user interaction, sharing valuable information, and enhancing the brand presence of *The Literary Loft*.
