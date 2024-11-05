@@ -14,17 +14,10 @@
                 <div class="mb-4">
                     <img src="{% static 'images/no_cover_img.jpg' %}" alt="404 Error" class="img-fluid" style="max-width: 300px;">
                 </div>
-                <p class="lead mb-4 nunito">We're sorry, but the page you're looking for doesn't exist or has been moved.</p>
-                <p class="mb-4 nunito">
-                    Try checking the URL for errors or navigate back to our main pages. If you need assistance, please 
-                    <a href="{% url 'contact' %}">contact our support team</a>.
-                </p>
+                <p class="lead mb-4 nunito">Sorry, we couldn't find the page you're looking for. Perhaps you've mistyped the URL or the page has been moved.</p>
                 <div class="mt-4">
                     <a href="{% url 'books:index' %}" class="cta-button text-decoration-none">
                         Return Home
-                    </a>
-                    <a href="{% url 'books:all_books' %}" class="cta-button text-decoration-none ms-3">
-                        Browse All Books
                     </a>
                 </div>
             </div>
