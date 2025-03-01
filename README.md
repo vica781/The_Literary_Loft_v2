@@ -40,9 +40,7 @@ This project was created as part of my final project with Code Institute and is 
 - [Technologies Used](#technologies-used)
 - [Marketing and Social Media Presence](#facebook-mockup-page)
   - [Facebook Mockup Page](#facebook-mockup-page)
-- [Testing](#testing)
-  - [Manual Testing](#manual-testing)
-  - [Validator Testing](#validator-testing)
+- [Testing](#testing)  
 - [Deployment](#deployment)
 - [Credits](#Credits)
 
@@ -883,3 +881,6 @@ A post featuring an inspiring literary quote to resonate with the audience and e
 These posts reflect a well-rounded content strategy aimed at promoting user interaction, sharing valuable information, and enhancing the brand presence of *The Literary Loft*.
 
 [Back to top ⬆](#table-of-contents)
+
+- [Testing](#testing)
+The testing details are provided in a separate file [TESTING.md](TESTING.md). 
