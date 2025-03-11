@@ -1,7 +1,11 @@
 # Testing
-This containes the testing details for the project 'The Literary Loft'.
 
-## User Stories Testing 
+This contains the testing details for the project 'The Literary Loft'.
+
+## Table of Contents
+
+## User Stories Testing
+
 ### User Stories
 
 #### EPIC 1: User Management
@@ -370,11 +374,9 @@ This containes the testing details for the project 'The Literary Loft'.
 
 [Back to top ⬆](#table-of-contents)
 
-
 ## Manual Testing
 
-
-
 ## Validator Testing
-  - [Manual Testing](#manual-testing)
-  - [Validator Testing](#validator-testing)
+
+- [Manual Testing](#manual-testing)
+- [Validator Testing](#validator-testing)

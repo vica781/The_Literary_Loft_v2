@@ -42,7 +42,7 @@ This project was created as part of my final project with Code Institute and is 
   - [Facebook Mockup Page](#facebook-mockup-page)
 - [Testing](#testing)  
 - [Deployment](#deployment)
-- [Credits](#Credits)
+- [Credits](#credits)
 
 ## Project Purpose and Objectives
 
@@ -882,5 +882,16 @@ These posts reflect a well-rounded content strategy aimed at promoting user inte
 
 [Back to top ⬆](#table-of-contents)
 
-- [Testing](#testing)
-The testing details are provided in a separate file [TESTING.md](TESTING.md). 
+## Testing
+
+The testing details are provided in a separate file [TESTING.md](TESTING.md).
+
+[Back to top ⬆](#table-of-contents)
+
+## Deployment
+
+[Back to top ⬆](#table-of-contents)
+
+## Credits
+
+[Back to top ⬆](#table-of-contents)
