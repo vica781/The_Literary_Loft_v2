@@ -1,5 +1,7 @@
 # Testing
 
+To return to main documentation of 'The Literary Loft' project click here [README.md](README.md).
+
 This contains the testing details for the project 'The Literary Loft'.
 
 ## Table of Contents
