@@ -6,11 +6,48 @@ This contains the testing details for the project 'The Literary Loft'.
 
 ## Table of Contents
 
-## User Stories Testing
+- [User Stories Testing](#user-stories-testing)
+  - [EPIC 1: User Management](#epic-1-user-management)
+    - [1. Register for an Account](#1-register-for-an-account)
+    - [2. Login or Logout](#2-login-or-logout)
+    - [3. Password Recovery](#3-password-recovery)
+    - [4. Email Confirmation](#4-email-confirmation)
+    - [5. Manage User Profile](#5-manage-user-profile)
+    - [6. Manage Account Deletion](#6-manage-account-deletion)
+  - [EPIC 2: Product Management](#epic-2-product-management)
+    - [1. Add a Product](#1-add-a-product)
+    - [2. Edit/Update a Product](#2-editupdate-a-product)
+    - [3. Delete a Product](#3-delete-a-product)
+    - [4. View Product Details](#4-view-product-details)
+    - [5. Filter and Sort Products](#5-filter-and-sort-products)
+  - [EPIC 3: Checkout Process](#epic-3-checkout-process)
+    - [1. Add to Bag](#1-add-to-bag)
+    - [2. Review and Edit Bag](#2-review-and-edit-bag)
+    - [3. Complete Checkout with Payment](#3-complete-checkout-with-payment)
+    - [4. Order Confirmation](#4-order-confirmation)
+    - [5. Guest Checkout Option](#5-guest-checkout-option)
+  - [EPIC 4: SEO and Marketing](#epic-4-seo-and-marketing)
+    - [1. Implement Meta Tags](#1-implement-meta-tags)
+    - [2. Create and Add Sitemap.xml](#2-create-and-add-sitemapxml)
+    - [3. Add robots.txt](#3-add-robotstxt)
+    - [4. Newsletter Signup Functionality](#4-newsletter-signup-functionality)
+    - [5. Create Facebook Business Page](#5-create-facebook-business-page)
+  - [EPIC 5: Site Management & Security](#epic-5-site-management--security)
+    - [1. Secure Payment Integration](#1-secure-payment-integration)
+    - [2. Role-Based Access Control](#2-role-based-access-control)
+    - [3. Set Up Environment Variables](#3-set-up-environment-variables)
+    - [4. Debug Mode Off for Deployment](#4-debug-mode-off-for-deployment)
+- [External User Goals](#external-user-goals)
+- [Admin User Goals](#admin-user-goals)
+- [Summary](#summary)
+- [Manual Testing](#manual-testing)
+- [Validator Testing](#validator-testing)
 
 ### Overview
 
 This document details the testing procedures and results for each user story implemented in 'The Literary Loft' project. Each user story has been systematically tested to ensure all acceptance criteria are met and the functionality works as intended.
+
+## User Stories Testing
 
 ## EPIC 1: User Management
 
