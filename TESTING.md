@@ -61,6 +61,8 @@ This document details the testing procedures and results for each user story imp
 | Email confirmation | Check email after registration | Confirmation email received with verification link | Confirmation email received | ✅ PASS |
 | Account verification | Click verification link in email | Account verified and user redirected to login page | Account verified successfully | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 2. Login or Logout
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -70,6 +72,8 @@ This document details the testing procedures and results for each user story imp
 | Failed login | Enter invalid credentials and click "Login" | Error message displayed | Error message shown correctly | ✅ PASS |
 | Logout functionality | Click "Logout" from navigation menu | User logged out and redirected to homepage | Logout successful | ✅ PASS |
 | Session persistence | Login and close/reopen browser | User remains logged in | Session maintained correctly | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 3. Password Recovery
 
@@ -81,6 +85,8 @@ This document details the testing procedures and results for each user story imp
 | Password reset form | Click reset link and enter new password | Form accepts new password | New password saved successfully | ✅ PASS |
 | Login with new password | Attempt login with new password | Login successful | Login with new password worked | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 4. Email Confirmation
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -89,6 +95,8 @@ This document details the testing procedures and results for each user story imp
 | Email content | Open confirmation email | Email contains verification link | Link present and clearly visible | ✅ PASS |
 | Verification process | Click verification link | Account verified with success message | Account verified successfully | ✅ PASS |
 | Attempt login before verification | Try to login before verifying | Message indicating verification needed | Appropriate message displayed | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 5. Manage User Profile
 
@@ -99,6 +107,8 @@ This document details the testing procedures and results for each user story imp
 | Profile image upload | Upload profile image | Image uploaded and displayed | Image uploaded correctly | ✅ PASS |
 | Validation of form fields | Enter invalid data (e.g., invalid phone number) | Form shows validation errors | Validation errors displayed | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 6. Manage Account Deletion
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -107,6 +117,8 @@ This document details the testing procedures and results for each user story imp
 | Cancel deletion | Click "Cancel" on confirmation prompt | Account remains active | Account preserved when canceled | ✅ PASS |
 | Confirm deletion | Click "Confirm" on deletion prompt | Account deleted and session ended | Account successfully deleted | ✅ PASS |
 | Post-deletion login attempt | Attempt to login with deleted credentials | Error message about non-existent account | Appropriate error shown | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## EPIC 2: Product Management
 
@@ -120,6 +132,8 @@ This document details the testing procedures and results for each user story imp
 | Form validation | Submit with missing required fields | Validation errors shown | Form correctly validated | ✅ PASS |
 | Product visibility | Check product appears in store | Product visible to customers | Product displayed in store | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 2. Edit/Update a Product
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -130,6 +144,8 @@ This document details the testing procedures and results for each user story imp
 | Cancel edit | Click "Cancel" during edit | Returns to product without changes | No changes when canceled | ✅ PASS |
 | View updated product | Navigate to product page | Updated information displayed | Changes visible to users | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 3. Delete a Product
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -138,6 +154,8 @@ This document details the testing procedures and results for each user story imp
 | Cancel deletion | Click "Cancel" on prompt | Product remains in store | Product preserved when canceled | ✅ PASS |
 | Confirm deletion | Click "Confirm" on prompt | Product removed with confirmation | Product successfully deleted | ✅ PASS |
 | Product removal | Search for deleted product | Product not found in store | Product no longer available | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 4. View Product Details
 
@@ -149,6 +167,8 @@ This document details the testing procedures and results for each user story imp
 | Stock information | Check availability indicator | Stock status shown accurately | Stock status displayed | ✅ PASS |
 | Related products | Scroll to bottom of page | Related products shown | Related items displayed | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 5. Filter and Sort Products
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -158,6 +178,8 @@ This document details the testing procedures and results for each user story imp
 | Price sorting | Select "Price (low to high)" | Products sorted by ascending price | Price sorting worked | ✅ PASS |
 | Rating sorting | Select "Rating (high to low)" | Products sorted by descending rating | Rating sorting worked | ✅ PASS |
 | Multiple filters | Apply category and sort option | Products filtered and sorted correctly | Multiple filters worked | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## EPIC 3: Checkout Process
 
@@ -171,6 +193,8 @@ This document details the testing procedures and results for each user story imp
 | Bag icon update | Add items to bag | Bag icon updates to show items count | Icon updated correctly | ✅ PASS |
 | Continue shopping | Add item and click "Continue Shopping" | User remains on product page | Shopping continued | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 2. Review and Edit Bag
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -180,6 +204,8 @@ This document details the testing procedures and results for each user story imp
 | Remove item | Click "Remove" on item | Item removed and totals updated | Item removed successfully | ✅ PASS |
 | Empty bag | Remove all items | Empty bag message displayed | Empty state handled correctly | ✅ PASS |
 | Continue shopping | Click "Continue Shopping" | Returns to products page | Returned to products | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 3. Complete Checkout with Payment
 
@@ -191,6 +217,8 @@ This document details the testing procedures and results for each user story imp
 | Payment processing | Submit valid payment details | Payment processed successfully | Payment completed | ✅ PASS |
 | Failed payment | Enter invalid card details | Error message displayed | Payment error handled | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 4. Order Confirmation
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -200,6 +228,8 @@ This document details the testing procedures and results for each user story imp
 | Email content | Open confirmation email | Email contains complete order details | Order details correct | ✅ PASS |
 | Order history | Check order history in profile | New order appears in history | Order added to history | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 5. Guest Checkout Option
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -208,6 +238,8 @@ This document details the testing procedures and results for each user story imp
 | Complete guest checkout | Fill form and process payment | Order completed successfully | Guest order processed | ✅ PASS |
 | Registration prompt | Complete guest checkout | Prompt to register with benefits shown | Registration prompt displayed | ✅ PASS |
 | Email confirmation | Check email after guest purchase | Confirmation email received | Email sent to guest | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## EPIC 4: SEO and Marketing
 
@@ -220,6 +252,8 @@ This document details the testing procedures and results for each user story imp
 | Social media tags | Check for OpenGraph tags | OG tags present for social sharing | OG tags implemented | ✅ PASS |
 | Validator check | Run page through HTML validator | No errors related to meta tags | Validation passed | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 2. Create and Add Sitemap.xml
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -229,6 +263,8 @@ This document details the testing procedures and results for each user story imp
 | Content completeness | Review sitemap content | All pages included with proper URLs | All pages present | ✅ PASS |
 | Google Search Console | Submit to Google Search Console | Sitemap accepted without errors | Sitemap accepted | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 3. Add robots.txt
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -237,6 +273,8 @@ This document details the testing procedures and results for each user story imp
 | Content validity | Check file content | Proper directives for crawlers | Valid directives | ✅ PASS |
 | Sitemap reference | Check for sitemap reference | Sitemap URL included | Sitemap referenced | ✅ PASS |
 | Protected paths | Check that admin/private areas are blocked | Admin paths disallowed | Protected areas blocked | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 4. Newsletter Signup Functionality
 
@@ -248,6 +286,8 @@ This document details the testing procedures and results for each user story imp
 | Duplicate prevention | Submit same email twice | Message about existing subscription | Duplicates prevented | ✅ PASS |
 | Database storage | Check admin panel after signup | Email stored in subscribers list | Data stored correctly | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 5. Create Facebook Business Page
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -257,6 +297,8 @@ This document details the testing procedures and results for each user story imp
 | Website link | Check "About" section | Link to website present | Website linked | ✅ PASS |
 | Business information | Review business details | Contact and business info present | Information complete | ✅ PASS |
 | Social widgets | Check website for Facebook widgets | Social sharing/follow buttons present | Social integration working | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## EPIC 5: Site Management & Security
 
@@ -270,6 +312,8 @@ This document details the testing procedures and results for each user story imp
 | Payment webhooks | Check webhook delivery | Webhooks properly configured | Webhooks functioning | ✅ PASS |
 | Failed payment handling | Use testing card for failure | Error handled gracefully | Failures handled correctly | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 2. Role-Based Access Control
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -279,6 +323,8 @@ This document details the testing procedures and results for each user story imp
 | Unauthenticated restrictions | Logout and attempt protected URLs | Redirected to login page | Authentication required | ✅ PASS |
 | Staff permissions | Login as staff and check permissions | Staff can access appropriate areas | Staff roles working | ✅ PASS |
 | URL manipulation | Try to access protected pages via URL manipulation | Access denied with appropriate response | URL protection working | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ### 3. Set Up Environment Variables
 
@@ -290,6 +336,8 @@ This document details the testing procedures and results for each user story imp
 | Production deployment | Deploy to production | Site functions with production variables | Production variables working | ✅ PASS |
 | Error handling | Temporarily remove a variable | Appropriate error or fallback | Error handling working | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ### 4. Debug Mode Off for Deployment
 
 | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -298,6 +346,8 @@ This document details the testing procedures and results for each user story imp
 | Error page display | Trigger a 404 error | Custom 404 page displayed | Custom error pages working | ✅ PASS |
 | Stack trace hiding | Trigger a 500 error | No detailed error info exposed | Error details hidden | ✅ PASS |
 | Log checking | Check error logs | Errors logged but not displayed | Logging working correctly | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## External User Goals
 
@@ -312,6 +362,8 @@ This document details the testing procedures and results for each user story imp
 | Manage account details | Profile management | Edit account information | Changes saved successfully | Profile management working | ✅ PASS |
 | Receive order confirmation | Email notifications | Complete purchase | Confirmation email received | Order emails working | ✅ PASS |
 
+[Back to top ⬆](#table-of-contents)
+
 ## Admin User Goals
 
 | **User Goal** | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
@@ -322,6 +374,8 @@ This document details the testing procedures and results for each user story imp
 | Manage user accounts | User management | Access user management section | User accounts viewable/editable | User management working | ✅ PASS |
 | Manage newsletter | Subscriber management | View/export subscriber list | List accessible with management tools | Newsletter management working | ✅ PASS |
 | Secure access control | Permission testing | Test different user role access | Appropriate restrictions applied | Access control working | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
 
 ## Summary
 
@@ -344,3 +398,7 @@ This testing process confirms that 'The Literary Loft' meets all the core requir
 
 - [Manual Testing](#manual-testing)
 - [Validator Testing](#validator-testing)
+
+[Back to top ⬆](#table-of-contents)
+
+[README.md](README.md)
