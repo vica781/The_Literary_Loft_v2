@@ -8,371 +8,296 @@ This contains the testing details for the project 'The Literary Loft'.
 
 ## User Stories Testing
 
-### User Stories
+### Overview
 
-#### EPIC 1: User Management
+This document details the testing procedures and results for each user story implemented in 'The Literary Loft' project. Each user story has been systematically tested to ensure all acceptance criteria are met and the functionality works as intended.
 
-1. **Register for an Account**
-   - *Description*: As a Site User, I want to easily register for an account, so that I can have a personal account and be able to view my profile.
-   - *Acceptance Criteria*:
-     - User can access a registration page.
-     - User can fill out a registration form with necessary details.
-     - User receives a confirmation email after successful registration.
-   - *Tasks*:
-     - Create a registration form.
-     - Implement form validation.
-     - Set up email confirmation for new registrations.
+## EPIC 1: User Management
 
-2. **Login or Logout**
-   - *Description*: As a Site User, I want to easily login or logout, so that I can access my personal account information.
-   - *Acceptance Criteria*:
-     - User can access a login page.
-     - User can enter credentials to log in.
-     - User can easily log out from their account.
-   - *Tasks*:
-     - Create a login form.
-     - Implement login and logout functionality.
-     - Ensure session management for logged-in users.
+### 1. Register for an Account
 
-3. **Password Recovery**
-   - *Description*: As a Site User, I want to easily recover my password in case I forget it, so that I can recover access to my account.
-   - *Acceptance Criteria*:
-     - User can request password recovery.
-     - User receives a password recovery email.
-     - User can reset their password using the link provided.
-   - *Tasks*:
-     - Create a password recovery form.
-     - Set up email functionality for password recovery.
-     - Implement password reset functionality.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access registration page | Navigate to homepage and click "Register" | Registration page loads with form | Registration page loaded successfully | ✅ PASS |
+| Complete registration form | Fill in username, email, password and click "Sign Up" | Form submits successfully | Form submitted successfully | ✅ PASS |
+| Form validation | Submit form with invalid data (e.g., mismatched passwords) | Form shows appropriate error messages | Error messages displayed correctly | ✅ PASS |
+| Email confirmation | Check email after registration | Confirmation email received with verification link | Confirmation email received | ✅ PASS |
+| Account verification | Click verification link in email | Account verified and user redirected to login page | Account verified successfully | ✅ PASS |
 
-4. **Email Confirmation**
-   - *Description*: As a Site User, I want to receive an email confirmation after registering, so that I can verify that my account registration was successful.
-   - *Acceptance Criteria*:
-     - User receives an email upon successful registration.
-     - Email contains a link to verify the account.
-     - Verification link confirms the user account.
-   - *Tasks*:
-     - Implement email sending functionality for registration.
-     - Create verification link handling.
-     - Ensure user account activation upon verification.
+### 2. Login or Logout
 
-5. **Manage User Profile**
-   - *Description*: As a Site User, I want to manage my user profile, so that I can update my personal information and preferences.
-   - *Acceptance Criteria*:
-     - User can view their profile page.
-     - User can edit and update personal details.
-     - Changes to user profile are saved and reflected in the database.
-   - *Tasks*:
-     - Create a user profile management interface.
-     - Implement profile editing and saving functionality.
-     - Ensure database updates upon profile changes.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access login page | Click "Login" from navigation menu | Login page loads with form | Login page loaded successfully | ✅ PASS |
+| Successful login | Enter valid credentials and click "Login" | User logged in and redirected to homepage | Login successful | ✅ PASS |
+| Failed login | Enter invalid credentials and click "Login" | Error message displayed | Error message shown correctly | ✅ PASS |
+| Logout functionality | Click "Logout" from navigation menu | User logged out and redirected to homepage | Logout successful | ✅ PASS |
+| Session persistence | Login and close/reopen browser | User remains logged in | Session maintained correctly | ✅ PASS |
 
-6. **Manage Account Deletion**
-   - *Description*: As a Site User, I want to be able to delete my account, so that I can permanently remove my data from the platform.
-   - *Acceptance Criteria*:
-     - User can access an option to delete their account.
-     - User receives a confirmation prompt before deletion.
-     - Account is deleted from the database upon confirmation.
-   - *Tasks*:
-     - Create a delete account option in the user profile.
-     - Implement a confirmation prompt for account deletion.
-     - Ensure the account is removed from the database upon confirmation.
+### 3. Password Recovery
 
-[Back to top ⬆](#table-of-contents)
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access password recovery | Click "Forgot Password" on login page | Password recovery page loads | Recovery page loaded successfully | ✅ PASS |
+| Request password reset | Enter email address and submit | Confirmation message displayed | Confirmation shown | ✅ PASS |
+| Password reset email | Check email for reset link | Password reset email received | Email received with reset link | ✅ PASS |
+| Password reset form | Click reset link and enter new password | Form accepts new password | New password saved successfully | ✅ PASS |
+| Login with new password | Attempt login with new password | Login successful | Login with new password worked | ✅ PASS |
 
-#### EPIC 2: Product Management
+### 4. Email Confirmation
 
-1. **Add a Product**
-   - *Description*: As a Store Owner, I want to add a product, so that I can add new items to my store.
-   - *Acceptance Criteria*:
-     - Admin can access a product addition page.
-     - Admin can fill out a form with product details such as name, price, description, and image.
-     - Admin can submit the form to add the product to the store.
-   - *Tasks*:
-     - Create a product addition form.
-     - Implement form validation.
-     - Ensure the product is added to the database and displayed in the store.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Email delivery | Register new account | Confirmation email delivered | Email delivered promptly | ✅ PASS |
+| Email content | Open confirmation email | Email contains verification link | Link present and clearly visible | ✅ PASS |
+| Verification process | Click verification link | Account verified with success message | Account verified successfully | ✅ PASS |
+| Attempt login before verification | Try to login before verifying | Message indicating verification needed | Appropriate message displayed | ✅ PASS |
 
-2. **Edit/Update a Product**
-   - *Description*: As a Store Owner, I want to edit/update a product, so that I can change product prices, descriptions, images, and other product criteria.
-   - *Acceptance Criteria*:
-     - Admin can access a product editing page.
-     - Admin can edit existing product details.
-     - Admin can submit the form to update the product information.
-   - *Tasks*:
-     - Create a product editing form.
-     - Implement form validation.
-     - Ensure the updated product details are saved in the database.
+### 5. Manage User Profile
 
-3. **Delete a Product**
-   - *Description*: As a Store Owner, I want to delete a product, so that I can remove items that are no longer for sale.
-   - *Acceptance Criteria*:
-     - Admin can access a list of products.
-     - Admin can select a product to delete.
-     - Admin receives a confirmation prompt before deletion.
-     - The product is removed from the store upon confirmation.
-   - *Tasks*:
-     - Create a product deletion interface.
-     - Implement a confirmation prompt for deletions.
-     - Ensure the product is removed from the database and the store.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access profile page | Login and click "My Profile" | Profile page loads with user information | Profile page loaded successfully | ✅ PASS |
+| Update profile information | Edit profile details and save | Changes saved and confirmation shown | Profile updated successfully | ✅ PASS |
+| Profile image upload | Upload profile image | Image uploaded and displayed | Image uploaded correctly | ✅ PASS |
+| Validation of form fields | Enter invalid data (e.g., invalid phone number) | Form shows validation errors | Validation errors displayed | ✅ PASS |
 
-4. **View Product Details**
-   - *Description*: As a Site User, I want to view detailed information about a product, so that I can make informed purchasing decisions.
-   - *Acceptance Criteria*:
-     - User can click on a product to view its details.
-     - Product details page shows name, price, description, and images.
-     - Additional information like stock availability and reviews is displayed.
-   - *Tasks*:
-     - Create a product details page.
-     - Display product information dynamically from the database.
-     - Ensure reviews and ratings are visible (if applicable).
+### 6. Manage Account Deletion
 
-5. **Filter and Sort Products by Category and Subcategory**
-   - *Description*: As a Site User, I want to filter and sort products by category and subcategory, so that I can find items that match my interests and preferences.
-   - *Acceptance Criteria*:
-     - User can filter products based on main categories and subcategories.
-     - User can sort products by price, rating, or popularity.
-     - Filtered and sorted results are displayed dynamically.
-   - *Tasks*:
-     - Create filtering and sorting logic.
-     - Integrate with the product listing page.
-     - Implement UI elements for filter and sort options.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access deletion option | Navigate to profile and click "Delete Account" | Confirmation prompt appears | Prompt displayed correctly | ✅ PASS |
+| Cancel deletion | Click "Cancel" on confirmation prompt | Account remains active | Account preserved when canceled | ✅ PASS |
+| Confirm deletion | Click "Confirm" on deletion prompt | Account deleted and session ended | Account successfully deleted | ✅ PASS |
+| Post-deletion login attempt | Attempt to login with deleted credentials | Error message about non-existent account | Appropriate error shown | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+## EPIC 2: Product Management
 
-#### EPIC 3: Checkout Process
+### 1. Add a Product
 
-1. **Add to Bag**
-   - *Description*: As a Site User, I want to add products to a shopping bag, so that I can purchase them later.
-   - *Acceptance Criteria*:
-     - User can add products to their shopping bag.
-     - Shopping bag displays added items and total cost.
-     - User can continue browsing after adding items to the bag.
-   - *Tasks*:
-     - Create add to bag functionality.
-     - Display bag contents dynamically.
-     - Implement a notification system for successful additions.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access product addition | Login as admin and navigate to "Product Management" | Product addition form loads | Form loaded successfully | ✅ PASS |
+| Complete product form | Fill in all required fields and submit | Product added with confirmation | Product added to database | ✅ PASS |
+| Image upload | Upload product image | Image uploaded and associated with product | Image uploaded correctly | ✅ PASS |
+| Form validation | Submit with missing required fields | Validation errors shown | Form correctly validated | ✅ PASS |
+| Product visibility | Check product appears in store | Product visible to customers | Product displayed in store | ✅ PASS |
 
-2. **Review and Edit Bag**
-   - *Description*: As a Site User, I want to review and edit my shopping bag, so that I can update quantities or remove items before checkout.
-   - *Acceptance Criteria*:
-     - User can view their shopping bag.
-     - User can update item quantities or remove items.
-     - Updated totals are displayed dynamically.
-   - *Tasks*:
-     - Create a shopping bag review page.
-     - Implement editing functionalities for item quantities.
-     - Ensure the bag updates in real-time.
+### 2. Edit/Update a Product
 
-3. **Complete Checkout with Payment**
-   - *Description*: As a Site User, I want to complete a secure checkout process, so that I can purchase the items in my shopping bag.
-   - *Acceptance Criteria*:
-     - User can access a checkout page with items, totals, and payment options.
-     - User can input payment details and submit for payment.
-     - User receives a confirmation of purchase after successful payment.
-   - *Tasks*:
-     - Create a checkout page.
-     - Integrate payment processing (e.g., Stripe).
-     - Ensure the user receives feedback on payment status.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access edit function | Find product and click "Edit" | Edit form loads with current data | Form loaded with product data | ✅ PASS |
+| Update information | Change product details and save | Changes saved with confirmation | Product updated successfully | ✅ PASS |
+| Update product image | Upload new image | New image replaces old one | Image updated correctly | ✅ PASS |
+| Cancel edit | Click "Cancel" during edit | Returns to product without changes | No changes when canceled | ✅ PASS |
+| View updated product | Navigate to product page | Updated information displayed | Changes visible to users | ✅ PASS |
 
-4. **Order Confirmation**
-   - *Description*: As a Site User, I want to receive an order confirmation, so that I know my purchase was successful.
-   - *Acceptance Criteria*:
-     - User receives a confirmation message on the site after checkout.
-     - Confirmation email is sent with order details.
-   - *Tasks*:
-     - Implement on-site confirmation message.
-     - Set up confirmation email template.
-     - Ensure order details are displayed correctly.
+### 3. Delete a Product
 
-5. **Guest Checkout Option**
-   - *Description*: As a Site Visitor, I want to make a purchase without registering, so that I can complete an order quickly.
-   - *Acceptance Criteria*:
-     - Guest users can proceed to checkout without an account.
-     - Guest users are encouraged to register or sign in for benefits (e.g., order history).
-     - Guest user data is handled securely for checkout.
-   - *Tasks*:
-     - Enable guest checkout feature.
-     - Implement prompts for user registration benefits.
-     - Secure guest data during the process.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access delete function | Find product and click "Delete" | Confirmation prompt appears | Prompt displayed correctly | ✅ PASS |
+| Cancel deletion | Click "Cancel" on prompt | Product remains in store | Product preserved when canceled | ✅ PASS |
+| Confirm deletion | Click "Confirm" on prompt | Product removed with confirmation | Product successfully deleted | ✅ PASS |
+| Product removal | Search for deleted product | Product not found in store | Product no longer available | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+### 4. View Product Details
 
-#### EPIC 4: SEO and Marketing
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access product details | Click on product from listing | Product details page loads | Details page loaded correctly | ✅ PASS |
+| Information display | Review product page content | All details displayed correctly | All information visible | ✅ PASS |
+| Image display | Check product images | Images load and can be viewed | Images displayed properly | ✅ PASS |
+| Stock information | Check availability indicator | Stock status shown accurately | Stock status displayed | ✅ PASS |
+| Related products | Scroll to bottom of page | Related products shown | Related items displayed | ✅ PASS |
 
-1. **Implement Meta Tags**
-   - *Description*: As a Site Owner, I want to include meta tags on my website, so that it improves SEO and helps with search engine visibility.
-   - *Acceptance Criteria*:
-     - All pages have meta tags that reflect page content.
-     - Meta tags include descriptions, keywords, and author information.
-   - *Tasks*:
-     - Add meta tags to all main pages.
-     - Ensure descriptions and keywords are relevant.
-     - Test SEO improvements using validation tools.
+### 5. Filter and Sort Products
 
-2. **Create and Add Sitemap.xml**
-   - *Description*: As a Site Owner, I want to create and add a sitemap.xml file, so that search engines can easily crawl my site.
-   - *Acceptance Criteria*:
-     - A valid sitemap.xml file is present.
-     - Sitemap includes links to all pages.
-   - *Tasks*:
-     - Generate sitemap.xml.
-     - Add sitemap.xml to the root directory.
-     - Test sitemap with search engine tools.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Category filtering | Select category from menu | Products filtered by category | Category filter worked | ✅ PASS |
+| Subcategory filtering | Select subcategory from menu | Products filtered by subcategory | Subcategory filter worked | ✅ PASS |
+| Price sorting | Select "Price (low to high)" | Products sorted by ascending price | Price sorting worked | ✅ PASS |
+| Rating sorting | Select "Rating (high to low)" | Products sorted by descending rating | Rating sorting worked | ✅ PASS |
+| Multiple filters | Apply category and sort option | Products filtered and sorted correctly | Multiple filters worked | ✅ PASS |
 
-3. **Add robots.txt**
-   - *Description*: As a Site Owner, I want to add a robots.txt file, so that I can control which pages are crawled by search engines.
-   - *Acceptance Criteria*:
-     - A valid robots.txt file is present.
-     - Instructions in robots.txt prevent unwanted pages from being indexed.
-   - *Tasks*:
-     - Create robots.txt file.
-     - Add specific instructions for search engines.
-     - Test the file using online tools.
+## EPIC 3: Checkout Process
 
-4. **Newsletter Signup Functionality**
-   - *Description*: As a Site Owner, I want to add a newsletter signup form, so that I can collect emails for marketing purposes.
-   - *Acceptance Criteria*:
-     - Users can enter their email to subscribe to the newsletter.
-     - Form validates emails and provides success feedback.
-     - Data is stored securely for future use.
-   - *Tasks*:
-     - Create newsletter signup form.
-     - Implement email validation.
-     - Store email data securely.
+### 1. Add to Bag
 
-5. **Create Facebook Business Page**
-   - *Description*: As a Site Owner, I want to create a Facebook Business Page, so that I can increase brand reach and engage with users on social media.
-   - *Acceptance Criteria*:
-     - Facebook Business Page is set up with appropriate branding.
-     - Page includes links to the site and basic business information.
-   - *Tasks*:
-     - Create Facebook Business Page.
-     - Add branding elements (logo, cover photo).
-     - Include links and business details.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Add single item | Click "Add to Bag" on product | Item added with confirmation message | Item added successfully | ✅ PASS |
+| Add multiple items | Add multiple products to bag | All items added correctly | Multiple items added | ✅ PASS |
+| Add with quantity | Select quantity and add to bag | Correct quantity added | Quantity added correctly | ✅ PASS |
+| Bag icon update | Add items to bag | Bag icon updates to show items count | Icon updated correctly | ✅ PASS |
+| Continue shopping | Add item and click "Continue Shopping" | User remains on product page | Shopping continued | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+### 2. Review and Edit Bag
 
-#### EPIC 5: Site Management & Security
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access bag | Click bag icon in navigation | Bag page loads with items | Bag page loaded correctly | ✅ PASS |
+| Update quantity | Change quantity and click update | Quantity and totals updated | Updates applied correctly | ✅ PASS |
+| Remove item | Click "Remove" on item | Item removed and totals updated | Item removed successfully | ✅ PASS |
+| Empty bag | Remove all items | Empty bag message displayed | Empty state handled correctly | ✅ PASS |
+| Continue shopping | Click "Continue Shopping" | Returns to products page | Returned to products | ✅ PASS |
 
-1. **Secure Payment Integration (e.g., Stripe)**
-   - *Description*: As a Site Owner, I want to securely integrate payment processing, so that users can make payments safely.
-   - *Acceptance Criteria*:
-     - Payment processing is securely integrated using Stripe or another service.
-     - User data is protected during the transaction.
-     - Site shows clear feedback for payment success/failure.
-   - *Tasks*:
-     - Integrate payment service (e.g., Stripe).
-     - Ensure secure data handling.
-     - Test payment process for security and functionality.
+### 3. Complete Checkout with Payment
 
-2. **Role-Based Access Control**
-   - *Description*: As a Site Owner, I want to implement role-based access control, so that only authorized users can access certain parts of the site.
-   - *Acceptance Criteria*:
-     - Admins have access to management pages.
-     - Regular users can only access public content.
-     - Unauthorized access attempts are blocked.
-   - *Tasks*:
-     - Implement role-based access control.
-     - Secure admin routes.
-     - Test user roles for proper access.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Proceed to checkout | Click "Checkout" from bag | Checkout page loads with form | Checkout page loaded | ✅ PASS |
+| Form completion | Fill in delivery and payment details | Form accepts all information | Form completed successfully | ✅ PASS |
+| Form validation | Submit with missing required fields | Validation errors shown | Form correctly validated | ✅ PASS |
+| Payment processing | Submit valid payment details | Payment processed successfully | Payment completed | ✅ PASS |
+| Failed payment | Enter invalid card details | Error message displayed | Payment error handled | ✅ PASS |
 
-3. **Set Up Environment Variables for Security**
-   - *Description*: As a Developer, I want to use environment variables, so that sensitive data is not exposed in the code.
-   - *Acceptance Criteria*:
-     - Environment variables are used for API keys, secret keys, etc.
-     - Variables are properly hidden in the .env file and not pushed to the repository.
-   - *Tasks*:
-     - Set up environment variables in the project.
-     - Hide .env file using .gitignore.
-     - Ensure sensitive data is not exposed.
+### 4. Order Confirmation
 
-4. **Debug Mode Off for Deployment**
-   - *Description*: As a Developer, I want to turn off debug mode for deployment, so that the site is secure and users don’t see detailed error information.
-   - *Acceptance Criteria*:
-     - DEBUG mode is turned off in the deployment settings.
-     - Site handles errors gracefully without revealing details.
-   - *Tasks*:
-     - Ensure debug mode is turned off in the production environment.
-     - Test error handling.
-     - Confirm site functionality without debug mode.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| On-site confirmation | Complete checkout process | Confirmation page with order details | Confirmation displayed | ✅ PASS |
+| Confirmation email | Check email after purchase | Order confirmation email received | Email received promptly | ✅ PASS |
+| Email content | Open confirmation email | Email contains complete order details | Order details correct | ✅ PASS |
+| Order history | Check order history in profile | New order appears in history | Order added to history | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+### 5. Guest Checkout Option
 
-#### EPIC 6: Testing & Deployment
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Access as guest | Add items to bag and checkout without login | Checkout form available to guest | Guest checkout available | ✅ PASS |
+| Complete guest checkout | Fill form and process payment | Order completed successfully | Guest order processed | ✅ PASS |
+| Registration prompt | Complete guest checkout | Prompt to register with benefits shown | Registration prompt displayed | ✅ PASS |
+| Email confirmation | Check email after guest purchase | Confirmation email received | Email sent to guest | ✅ PASS |
 
-1. **Unit Testing for User Forms**
-   - *Description*: As a Developer, I want to perform unit testing for user forms, so that I can ensure the form functionality works as intended.
-   - *Acceptance Criteria*:
-     - User forms are tested for input validation.
-     - Form submission behavior is verified.
-   - *Tasks*:
-     - Write test cases for user forms.
-     - Ensure test coverage includes form validation.
-     - Verify form submissions with test data.
+## EPIC 4: SEO and Marketing
 
-2. **Integration Testing for Checkout**
-   - *Description*: As a Developer, I want to perform integration testing for the checkout process, so that I can ensure all components work together seamlessly.
-   - *Acceptance Criteria*:
-     - Test covers adding items to the Bag, reviewing the Bag, and completing payment.
-     - Edge cases such as empty carts or invalid payment data are tested.
-   - *Tasks*:
-     - Write integration tests for the checkout process.
-     - Test with different scenarios (e.g., guest user, registered user).
-     - Validate successful payment and order confirmation.
+### 1. Implement Meta Tags
 
-3. **Validation Testing (HTML, CSS, JS, Python)**
-   - *Description*: As a Developer, I want to validate my code, so that I can ensure it meets standards and has no critical issues.
-   - *Acceptance Criteria*:
-     - Code passes validation checks for HTML, CSS, JS, and Python.
-     - Code adheres to PEP8 for Python and linting rules for JavaScript.
-   - *Tasks*:
-     - Run code through validation tools.
-     - Fix any issues identified in the validation report.
-     - Re-run validation to confirm issues are resolved.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Meta tags presence | View page source of homepage | Meta tags present in head section | Meta tags implemented | ✅ PASS |
+| Meta tags content | Check meta description and keywords | Tags contain relevant content | Content appropriate | ✅ PASS |
+| Social media tags | Check for OpenGraph tags | OG tags present for social sharing | OG tags implemented | ✅ PASS |
+| Validator check | Run page through HTML validator | No errors related to meta tags | Validation passed | ✅ PASS |
 
-4. **User Acceptance Testing**
-   - *Description*: As a Site Owner, I want to perform user acceptance testing, so that I can ensure the project meets user needs and requirements.
-   - *Acceptance Criteria*:
-     - Users provide feedback after testing.
-     - Any critical issues found during testing are addressed.
-   - *Tasks*:
-     - Create user testing plan.
-     - Collect feedback from test users.
-     - Address any major issues discovered.
+### 2. Create and Add Sitemap.xml
 
-5. **Bug Fixes and Iterations**
-   - *Description*: As a Developer, I want to address bugs and iterate on feedback, so that I can improve the application before final deployment.
-   - *Acceptance Criteria*:
-     - All major bugs are fixed.
-     - Iterations are made based on feedback.
-   - *Tasks*:
-     - Track bugs found during testing.
-     - Implement fixes and test the resolution.
-     - Make iterations based on user feedback.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| File existence | Navigate to sitemap.xml | File loads in browser | Sitemap accessible | ✅ PASS |
+| File validity | Check XML structure | Valid XML with correct schema | Valid sitemap format | ✅ PASS |
+| Content completeness | Review sitemap content | All pages included with proper URLs | All pages present | ✅ PASS |
+| Google Search Console | Submit to Google Search Console | Sitemap accepted without errors | Sitemap accepted | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+### 3. Add robots.txt
 
-#### External User Goals
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| File existence | Navigate to robots.txt | File loads in browser | Robots.txt accessible | ✅ PASS |
+| Content validity | Check file content | Proper directives for crawlers | Valid directives | ✅ PASS |
+| Sitemap reference | Check for sitemap reference | Sitemap URL included | Sitemap referenced | ✅ PASS |
+| Protected paths | Check that admin/private areas are blocked | Admin paths disallowed | Protected areas blocked | ✅ PASS |
 
-- **As a visitor**, I want to easily browse books by genre, title, or author, so that I can find books that interest me without any hassle.
-- **As a shopper**, I want to add books to a shopping Bag and see the total price, so that I can manage my budget before making a purchase.
-- **As a registered user**, I want to save my favorite books for future reference and view my past orders, so that I can easily access books I am interested in and keep track of my purchases.
-- **As a visitor**, I want the option to make a purchase as a guest, so that I can buy books without needing to create an account.
-- **As a visitor**, I want to sign up for a newsletter, so that I can stay informed about new arrivals and promotions.
-- **As a registered user**, I want to be able to manage my account details, so that I can update my information as needed.
-- **As a shopper**, I want to receive an order confirmation email, so that I have a record of my purchase.
+### 4. Newsletter Signup Functionality
 
-[Back to top ⬆](#table-of-contents)
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Form accessibility | Load homepage | Newsletter signup form visible | Form accessible | ✅ PASS |
+| Email validation | Enter invalid email | Error message displayed | Validation worked | ✅ PASS |
+| Successful signup | Enter valid email and submit | Success message displayed | Signup successful | ✅ PASS |
+| Duplicate prevention | Submit same email twice | Message about existing subscription | Duplicates prevented | ✅ PASS |
+| Database storage | Check admin panel after signup | Email stored in subscribers list | Data stored correctly | ✅ PASS |
 
-#### Admin User Goals
+### 5. Create Facebook Business Page
 
-- **As an admin**, I want to add, update, or delete books directly from the platform, so that I can manage the store’s inventory efficiently.
-- **As an admin**, I want to access an overview of the store’s products, so that I can see which books are in stock or need restocking.
-- **As an admin**, I want to be notified when purchases are made, so that I can manage order fulfillment promptly.
-- **As an admin**, I want to manage user accounts, so that I can handle issues or requests efficiently.
-- **As an admin**, I want to monitor and manage newsletter subscriptions, so that I can engage with users effectively.
-- **As an admin**, I want the platform to be secure with role-based access control, so that only authorized users can access sensitive data or make changes.
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Page existence | Navigate to Facebook page link | Facebook page loads | Page accessible | ✅ PASS |
+| Branding elements | Check logo and cover photo | Branding consistent with website | Branding consistent | ✅ PASS |
+| Website link | Check "About" section | Link to website present | Website linked | ✅ PASS |
+| Business information | Review business details | Contact and business info present | Information complete | ✅ PASS |
+| Social widgets | Check website for Facebook widgets | Social sharing/follow buttons present | Social integration working | ✅ PASS |
+
+## EPIC 5: Site Management & Security
+
+### 1. Secure Payment Integration
+
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Stripe integration | Check checkout page source | Stripe scripts loaded securely | Stripe integrated correctly | ✅ PASS |
+| HTTPS connection | Check URL during checkout | Secure connection (HTTPS) used | HTTPS implemented | ✅ PASS |
+| Test payment | Complete test purchase with Stripe test card | Payment processed in test mode | Test payment successful | ✅ PASS |
+| Payment webhooks | Check webhook delivery | Webhooks properly configured | Webhooks functioning | ✅ PASS |
+| Failed payment handling | Use testing card for failure | Error handled gracefully | Failures handled correctly | ✅ PASS |
+
+### 2. Role-Based Access Control
+
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Admin access | Login as admin and access admin areas | Admin can access all areas | Admin access working | ✅ PASS |
+| User restrictions | Login as regular user and attempt admin URLs | Access denied with message | User restrictions working | ✅ PASS |
+| Unauthenticated restrictions | Logout and attempt protected URLs | Redirected to login page | Authentication required | ✅ PASS |
+| Staff permissions | Login as staff and check permissions | Staff can access appropriate areas | Staff roles working | ✅ PASS |
+| URL manipulation | Try to access protected pages via URL manipulation | Access denied with appropriate response | URL protection working | ✅ PASS |
+
+### 3. Set Up Environment Variables
+
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Environment file | Check project files | .env file not in repository | File properly excluded | ✅ PASS |
+| Settings configuration | Review Django settings | Sensitive data loaded from env variables | Settings configured correctly | ✅ PASS |
+| Local development | Run site locally | Site functions with local env variables | Local environment working | ✅ PASS |
+| Production deployment | Deploy to production | Site functions with production variables | Production variables working | ✅ PASS |
+| Error handling | Temporarily remove a variable | Appropriate error or fallback | Error handling working | ✅ PASS |
+
+### 4. Debug Mode Off for Deployment
+
+| **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|-----------|---------------------|-------------------|------------|
+| Settings configuration | Check production settings | DEBUG set to False | Debug mode disabled | ✅ PASS |
+| Error page display | Trigger a 404 error | Custom 404 page displayed | Custom error pages working | ✅ PASS |
+| Stack trace hiding | Trigger a 500 error | No detailed error info exposed | Error details hidden | ✅ PASS |
+| Log checking | Check error logs | Errors logged but not displayed | Logging working correctly | ✅ PASS |
+
+## External User Goals
+
+| **User Goal** | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|---------------|-----------|---------------------|-------------------|------------|
+| Browse books by genre/title/author | Category navigation | Use navigation menu and filters | Books filtered by selection | Filtering worked correctly | ✅ PASS |
+| Add books to bag and see total | Shopping bag functionality | Add multiple books to bag | Items added with running total | Bag worked as expected | ✅ PASS |
+| Save favorite books | Wishlist functionality | Add book to wishlist | Book saved to wishlist | Wishlist feature working | ✅ PASS |
+| View past orders | Order history | Login and view order history | Past orders displayed | History accessible | ✅ PASS |
+| Guest purchase | Guest checkout | Complete purchase without account | Checkout completed successfully | Guest checkout working | ✅ PASS |
+| Newsletter signup | Newsletter form | Submit email to newsletter | Confirmation of signup | Newsletter signup working | ✅ PASS |
+| Manage account details | Profile management | Edit account information | Changes saved successfully | Profile management working | ✅ PASS |
+| Receive order confirmation | Email notifications | Complete purchase | Confirmation email received | Order emails working | ✅ PASS |
+
+## Admin User Goals
+
+| **User Goal** | **Test Case** | **Steps** | **Expected Result** | **Actual Result** | **Status** |
+|---------------|---------------|-----------|---------------------|-------------------|------------|
+| Manage inventory | Product management | Add, edit, delete products | Changes applied successfully | Inventory management working | ✅ PASS |
+| Access store overview | Admin dashboard | Login to admin area | Dashboard with store stats visible | Dashboard accessible | ✅ PASS |
+| Purchase notifications | Order alerts | Complete a purchase | Admin notification received | Order alerts working | ✅ PASS |
+| Manage user accounts | User management | Access user management section | User accounts viewable/editable | User management working | ✅ PASS |
+| Manage newsletter | Subscriber management | View/export subscriber list | List accessible with management tools | Newsletter management working | ✅ PASS |
+| Secure access control | Permission testing | Test different user role access | Appropriate restrictions applied | Access control working | ✅ PASS |
+
+## Summary
+
+All user stories have been thoroughly tested against their acceptance criteria, with all tests passing successfully. The implemented features meet the requirements defined in the user stories, providing a comprehensive and functional e-commerce platform for both customers and administrators.
+
+Areas of particularly strong performance include:
+
+- User account management
+- Product browsing and filtering
+- Secure checkout process
+- Admin inventory management
+
+This testing process confirms that 'The Literary Loft' meets all the core requirements outlined in the user stories documentation and provides a solid foundation for future enhancements.
 
 [Back to top ⬆](#table-of-contents)
 
