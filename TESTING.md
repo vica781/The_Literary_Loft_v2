@@ -428,13 +428,27 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### User Authentication Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| AUTH-01 | User Registration | 1. Click "Register" link<br>2. Complete form with valid data<br>3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
-| AUTH-02 | Login Functionality | 1. Click "Login" link<br>2. Enter valid credentials<br>3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
-| AUTH-03 | Logout Process | 1. Click user icon<br>2. Select "Logout" option<br>3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
-| AUTH-04 | Password Reset | 1. Click "Forgot Password"<br>2. Enter email address<br>3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
-| AUTH-05 | Form Validation | 1. Submit registration with invalid data<br>2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
+| ID     | Test Description     | Steps                                                          | Expected Result                                  | Actual Result                     | Status   | Evidence                                               |
+|--------|----------------------|----------------------------------------------------------------|--------------------------------------------------|-----------------------------------|----------|--------------------------------------------------------|
+
+| AUTH-01 | User Registration    | 1. Click "Register" link  2. Complete form with valid data  3. Submit form                                          | Account created, verification email sent         | Registration completed successfully | ✅ PASS  | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
+
+| AUTH-02 | Login Functionality  | 1. Click "Login" link  2. Enter valid credentials  3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
+
+| AUTH-03 | Logout Process | 1. Click user icon  
+2. Select "Logout" option  
+3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
+
+| AUTH-04 | Password Reset | 1. Click "Forgot Password"  
+2. Enter email address  
+3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
+
+| AUTH-05 | Form Validation | 1. Submit registration with invalid data  
+2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
+2. Enter email address  
+3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
+| AUTH-05 | Form Validation | 1. Submit registration with invalid data  
+2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
 
 [Back to top ⬆](#table-of-contents)
 
