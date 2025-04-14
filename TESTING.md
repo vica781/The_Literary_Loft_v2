@@ -456,47 +456,22 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-
-| BAG-01 | View Shopping Bag | 1. Add items to bag  
-
-1. Click bag icon | Bag page opens with correct items | Bag displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_View_20250414.png) |
-
-| BAG-02 | Update Quantity | 1. View bag  
-
-1. Change item quantity  
-
-2. Click "Update" | Quantity and totals update correctly | Update functionality worked | ✅ PASS | [Recording](./testing_evidence/Bag_UpdateQuantity_20250414.gif) |
-
-| BAG-03 | Remove Item | 1. View bag  
-
-1. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_RemoveItem_20250414.png) |
-| BAG-04 | Bag Persistence | 1. Add items to bag  
-2. Close browser  
-3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Persistence_20250414.png) |
-| BAG-05 | Empty Bag Message | 1. Remove all items from bag
-4. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Empty_20250414.png) |
+| BAG-01 | View Shopping Bag | 1. Add items to bag  2. Click bag icon | Bag page opens with correct items | Bag displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_View_20250414.png) |
+| BAG-02 | Update Quantity | 1. View bag  2. Change item quantity  3. Click "Update" | Quantity and totals update correctly | Update functionality worked | ✅ PASS | [Recording](./testing_evidence/Bag_UpdateQuantity_20250414.gif) |
+| BAG-03 | Remove Item | 1. View bag  2. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_RemoveItem_20250414.png) |
+| BAG-04 | Bag Persistence | 1. Add items to bag  2. Close browser  3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Persistence_20250414.png) |
+| BAG-05 | Empty Bag Message | 1. Remove all items from bag  2. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Empty_20250414.png) |
 
 ### Checkout Testing
 
-| ID     | Test Description   | Steps                                                      | Expected Result                          | Actual Result               | Status   | Evidence                                                   |
-|--------|--------------------|------------------------------------------------------------|------------------------------------------|-----------------------------|----------|------------------------------------------------------------|
-| CHKT-01| Checkout Form      | 1. Add items to bag                                       | Form displays with all required fields   | Form loaded correctly       | ✅ PASS  | [Screenshot](./testing_evidence/Checkout_Form_20250414.png)|
-|        |                    | 2. Proceed to checkout                                    |                                          |                             |          |                                                            |
-|        |                    | 1. View checkout form                                     |                                          |                             |          |                                                            |
-| CHKT-02| Form Validation    | 1. Submit checkout form with missing fields               | Appropriate error messages shown         | Validation worked as expected| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_Validation_20250414.png) |
-|        |                    | 2. Observe validation messages                            |                                          |                             |          |                                                            |
-
-| CHKT-03| Save Information   | 1. Check "Save this information" box                      | Information saved to user profile        | Save function worked correctly| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
-|        |                    | 2. Complete checkout                                      |                                          |                             |          |                                                            |
-|        |                    | 3. Check profile for saved info                           | Information saved to user profile        | Save function worked correctly| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
-
-| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)  
-  2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS | [Recording](./testing_evidence/Checkout_Payment_20250414.gif) |
-| CHKT-05 | Order Confirmation | 1. Complete checkout  
-  2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.png) |
-| CHKT-06 | Confirmation Email | 1. Complete checkout  
-  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
-  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| CHKT-01 | Checkout Form | 1. Add items to bag  2. Proceed to checkout  3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Form_20250414.png) |
+| CHKT-02 | Form Validation | 1. Submit checkout form with missing fields  2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Validation_20250414.png) |
+| CHKT-03 | Save Information | 1. Check "Save this information" box  2. Complete checkout  3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
+| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)  2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS | [Recording](./testing_evidence/Checkout_Payment_20250414.gif) |
+| CHKT-05 | Order Confirmation | 1. Complete checkout  2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.png) |
+| CHKT-06 | Confirmation Email | 1. Complete checkout  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
 
 ### User Profile Testing
 
