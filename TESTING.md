@@ -430,11 +430,11 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| AUTH-01 | User Registration | 1. Click "Register" link \n2. Complete form with valid data  \n3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
-| AUTH-02 | Login Functionality | 1. Click "Login" link \n2. Enter valid credentials  \n3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
-| AUTH-03 | Logout Process | 1. Click user icon \n2. Select "Logout" option \n3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
-| AUTH-04 | Password Reset | 1. Click "Forgot Password"  \n2. Enter email address  \n3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
-| AUTH-05 | Form Validation | 1. Submit registration with invalid data \n2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
+| AUTH-01 | User Registration | 1. Click "Register" link.  2. Complete form with valid data.  3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
+| AUTH-02 | Login Functionality | 1. Click "Login" link.  2. Enter valid credentials.  3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
+| AUTH-03 | Logout Process | 1. Click user icon.  2. Select "Logout" option.  3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
+| AUTH-04 | Password Reset | 1. Click "Forgot Password".  2. Enter email address.  3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
+| AUTH-05 | Form Validation | 1. Submit registration with invalid data.  2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
 
 [Back to top ⬆](#table-of-contents)
 
@@ -442,11 +442,11 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| PROD-01 | Book Listing Display | 1. Navigate to "Books" page  \n2. Verify book display format | Books displayed with cover, title, author, price | Listing displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_Listing_20250414.png) |
-| PROD-02 | Category Filtering | 1. Click category filter \n2. Select specific category  \n3. View filtered results | Only books from selected category shown | Category filter worked | ✅ PASS | [Recording](./testing_evidence/Product_CategoryFilter_20250414.gif) |
-| PROD-03 | Price Filtering | 1. Adjust price range slider \n2. Apply filter | Books within price range displayed | Price filter functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_PriceFilter_20250414.png) |
-| PROD-04 | Sorting Options | 1. Click sort dropdown  \n2. Select various sort options | Products sort according to selection | Sorting worked as expected | ✅ PASS | [Recording](./testing_evidence/Product_Sorting_20250414.gif) |
-| PROD-05 | Pagination | 1. Navigate to book listings  \n2. Scroll to bottom \n3. Click pagination controls | Pagination controls work correctly | Page navigation functioned properly | ✅ PASS | [Screenshot](./testing_evidence/Product_Pagination_20250414.png) |
+| PROD-01 | Book Listing Display | 1. Navigate to "Books" page. Verify book display format | Books displayed with cover, title, author, price | Listing displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_Listing_20250414.png) |
+| PROD-02 | Category Filtering | 1. Click category filter. Select specific category. View filtered results | Only books from selected category shown | Category filter worked | ✅ PASS | [Recording](./testing_evidence/Product_CategoryFilter_20250414.gif) |
+| PROD-03 | Price Filtering | 1. Adjust price range slider. Apply filter | Books within price range displayed | Price filter functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_PriceFilter_20250414.png) |
+| PROD-04 | Sorting Options | 1. Click sort dropdown. Select various sort options | Products sort according to selection | Sorting worked as expected | ✅ PASS | [Recording](./testing_evidence/Product_Sorting_20250414.gif) |
+| PROD-05 | Pagination | 1. Navigate to book listings. Scroll to bottom. Click pagination controls | Pagination controls work correctly | Page navigation functioned properly | ✅ PASS | [Screenshot](./testing_evidence/Product_Pagination_20250414.png) |
 
 [Back to top ⬆](#table-of-contents)
 
@@ -454,11 +454,11 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID     | Test Description    | Steps                                              | Expected Result                               | Actual Result                   | Status   | Evidence                                                       |
 |--------|---------------------|----------------------------------------------------|-----------------------------------------------|---------------------------------|----------|----------------------------------------------------------------|
-| PDET-01 | Product Information | 1. Click on a book from listings  \n2. View product detail page | All book details displayed correctly           | Information displayed as expected | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Info_20250414.png) |
-| PDET-02 | Image Gallery      | 1. View product images  \n2. Click to enlarge  \n3. Navigate between images | Image gallery functions correctly               | Gallery worked as expected     | ✅ PASS  | [Recording](./testing_evidence/ProductDetail_Gallery_20250414.gif) |
-| PDET-03 | Quantity Selector  | 1. Adjust quantity using controls  \n2. Verify min/max limitations | Quantity adjusts correctly within limits       | Quantity selector worked       | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Quantity_20250414.png) |
-| PDET-04 | Add to Bag | 1. Select quantity  \n2. Click "Add to Bag"  \n3. Verify success message | Product added to bag with confirmation | Add to bag function worked | ✅ PASS | [Recording](./testing_evidence/ProductDetail_AddToBag_20250414.gif) |
-| PDET-05 | Related Products | 1. Scroll to bottom of product page  \n2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS | [Screenshot](./testing_evidence/ProductDetail_RelatedProducts_20250414.png) |
+| PDET-01 | Product Information | 1. Click on a book from listings. View product detail page | All book details displayed correctly           | Information displayed as expected | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Info_20250414.png) |
+| PDET-02 | Image Gallery      | 1. View product images. Click to enlarge. Navigate between images | Image gallery functions correctly               | Gallery worked as expected     | ✅ PASS  | [Recording](./testing_evidence/ProductDetail_Gallery_20250414.gif) |
+| PDET-03 | Quantity Selector  | 1. Adjust quantity using controls. Verify min/max limitations | Quantity adjusts correctly within limits       | Quantity selector worked       | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Quantity_20250414.png) |
+| PDET-04 | Add to Bag | 1. Select quantity. Click "Add to Bag". Verify success message | Product added to bag with confirmation | Add to bag function worked | ✅ PASS | [Recording](./testing_evidence/ProductDetail_AddToBag_20250414.gif) |
+| PDET-05 | Related Products | 1. Scroll to bottom of product page. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS | [Screenshot](./testing_evidence/ProductDetail_RelatedProducts_20250414.png) |
 
 [Back to top ⬆](#table-of-contents)
 
