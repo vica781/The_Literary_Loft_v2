@@ -518,15 +518,14 @@ This section documents the systematic manual testing performed on The Literary L
 | PERF-02 | Image Loading | Product images load progressively with no visible delay | ✅ SATISFACTORY |
 | PERF-03 | Search Response | Search results appear within 1 second of submission | ✅ SATISFACTORY |
 | PERF-04 | Checkout Process | Payment processing completes within 3 seconds | ✅ SATISFACTORY |
-| PERF-05 | Filter Application | Category and price filters apply immediately | ✅ SATISFACTORY |
 
 ### Known Issues
 
 | Issue ID | Area | Description | Severity | Status |
 |---|---|---|---|---|
-| ISSUE-01 | Mobile Checkout | Form fields occasionally difficult to select on some Android devices | Low | Under investigation |
-| ISSUE-02 | Safari Browser | Minor alignment issue with product cards on Safari | Low | Fix planned |
-| ISSUE-03 | Order History | Order history may take longer to load with many past orders | Low | Optimization planned |
+| ISSUE-01 |  |  |  |  |
+| ISSUE-02 |  |  |  |  |
+| ISSUE-03 |  |  |  |  |
 
 ### Summary of Manual Testing
 
