@@ -392,11 +392,184 @@ This testing process confirms that 'The Literary Loft' meets all the core requir
 
 [Back to top ⬆](#table-of-contents)
 
-## Manual Testing
+## MANUAL TESTING
+
+### Testing Overview
+
+This section documents the systematic manual testing performed on The Literary Loft to verify functionality across all features. Each test has been executed methodically and recorded with appropriate evidence.
+
+### Testing Environment
+
+- **Operating System**: Windows 10
+- **Primary Browser**: Chrome 121.0.6167.140
+- **Additional Browsers**: Firefox 123.0, Edge 121.0.2277.112
+- **Mobile Testing**: Pixel 6 (Chrom)
+- **Screen Resolutions**: 1920x1080, 1366x768, 375x667 (mobile)
+
+### Evidence Collection Methodology
+
+- Screenshots captured using Windows Snipping Tool (Win+Shift+S)
+- Screen recordings created using LICEcap/Peek
+- All evidence files stored in the `/testing_evidence` directory
+- File naming convention: `Feature_TestID_Date.extension`
+
+### Navigation & Header Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| NAV-01 | Main Navigation Links | 1. Navigate to homepage  2. Click each main navigation link | Each link leads to correct page | All links worked as expected | ✅ PASS | [Screenshot](./testing_evidence/Nav_MainLinks_20250414.png) |
+| NAV-02 | Logo Navigation | 1. Navigate to any page  2. Click the site logo | Returns to homepage | Logo navigation worked | ✅ PASS | [Screenshot](./testing_evidence/Nav_Logo_20250414.png) |
+| NAV-03 | Mobile Navigation Menu | 1. View site on mobile width  2. Click hamburger icon  3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./testing_evidence/Nav_Mobile_20250414.gif) |
+| NAV-04 | Search Bar Functionality | 1. Click search icon  2. Enter search term  3. Submit search | Relevant results displayed | Search returned appropriate results | ✅ PASS | [Recording](./testing_evidence/Nav_Search_20250414.gif) |
+
+### User Authentication Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| AUTH-01 | User Registration | 1. Click "Register" link \n2. Complete form with valid data  \n3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
+| AUTH-02 | Login Functionality | 1. Click "Login" link \n2. Enter valid credentials  \n3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
+| AUTH-03 | Logout Process | 1. Click user icon \n2. Select "Logout" option \n3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
+| AUTH-04 | Password Reset | 1. Click "Forgot Password"  \n2. Enter email address  \n3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
+| AUTH-05 | Form Validation | 1. Submit registration with invalid data \n2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
+
+### Product Browsing Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| PROD-01 | Book Listing Display | 1. Navigate to "Books" page  \n2. Verify book display format | Books displayed with cover, title, author, price | Listing displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_Listing_20250414.png) |
+| PROD-02 | Category Filtering | 1. Click category filter \n2. Select specific category  \n3. View filtered results | Only books from selected category shown | Category filter worked | ✅ PASS | [Recording](./testing_evidence/Product_CategoryFilter_20250414.gif) |
+| PROD-03 | Price Filtering | 1. Adjust price range slider \n2. Apply filter | Books within price range displayed | Price filter functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_PriceFilter_20250414.png) |
+| PROD-04 | Sorting Options | 1. Click sort dropdown  \n2. Select various sort options | Products sort according to selection | Sorting worked as expected | ✅ PASS | [Recording](./testing_evidence/Product_Sorting_20250414.gif) |
+| PROD-05 | Pagination | 1. Navigate to book listings  \n2. Scroll to bottom \n3. Click pagination controls | Pagination controls work correctly | Page navigation functioned properly | ✅ PASS | [Screenshot](./testing_evidence/Product_Pagination_20250414.png) |
+
+### Product Detail Testing
+
+| ID     | Test Description    | Steps                                              | Expected Result                               | Actual Result                   | Status   | Evidence                                                       |
+|--------|---------------------|----------------------------------------------------|-----------------------------------------------|---------------------------------|----------|----------------------------------------------------------------|
+| PDET-01 | Product Information | 1. Click on a book from listings  \n2. View product detail page | All book details displayed correctly           | Information displayed as expected | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Info_20250414.png) |
+| PDET-02 | Image Gallery      | 1. View product images  \n2. Click to enlarge  \n3. Navigate between images | Image gallery functions correctly               | Gallery worked as expected     | ✅ PASS  | [Recording](./testing_evidence/ProductDetail_Gallery_20250414.gif) |
+| PDET-03 | Quantity Selector  | 1. Adjust quantity using controls  \n2. Verify min/max limitations | Quantity adjusts correctly within limits       | Quantity selector worked       | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Quantity_20250414.png) |
+| PDET-04 | Add to Bag | 1. Select quantity  \n2. Click "Add to Bag"  \n3. Verify success message | Product added to bag with confirmation | Add to bag function worked | ✅ PASS | [Recording](./testing_evidence/ProductDetail_AddToBag_20250414.gif) |
+| PDET-05 | Related Products | 1. Scroll to bottom of product page  \n2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS | [Screenshot](./testing_evidence/ProductDetail_RelatedProducts_20250414.png) |
+
+### Shopping Bag Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+
+| BAG-01 | View Shopping Bag | 1. Add items to bag  
+
+1. Click bag icon | Bag page opens with correct items | Bag displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_View_20250414.png) |
+
+| BAG-02 | Update Quantity | 1. View bag  
+
+1. Change item quantity  
+
+2. Click "Update" | Quantity and totals update correctly | Update functionality worked | ✅ PASS | [Recording](./testing_evidence/Bag_UpdateQuantity_20250414.gif) |
+
+| BAG-03 | Remove Item | 1. View bag  
+
+1. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_RemoveItem_20250414.png) |
+| BAG-04 | Bag Persistence | 1. Add items to bag  
+2. Close browser  
+3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Persistence_20250414.png) |
+| BAG-05 | Empty Bag Message | 1. Remove all items from bag
+4. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Empty_20250414.png) |
+
+### Checkout Testing
+
+| ID     | Test Description   | Steps                                                      | Expected Result                          | Actual Result               | Status   | Evidence                                                   |
+|--------|--------------------|------------------------------------------------------------|------------------------------------------|-----------------------------|----------|------------------------------------------------------------|
+| CHKT-01| Checkout Form      | 1. Add items to bag                                       | Form displays with all required fields   | Form loaded correctly       | ✅ PASS  | [Screenshot](./testing_evidence/Checkout_Form_20250414.png)|
+|        |                    | 2. Proceed to checkout                                    |                                          |                             |          |                                                            |
+|        |                    | 1. View checkout form                                     |                                          |                             |          |                                                            |
+| CHKT-02| Form Validation    | 1. Submit checkout form with missing fields               | Appropriate error messages shown         | Validation worked as expected| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_Validation_20250414.png) |
+|        |                    | 2. Observe validation messages                            |                                          |                             |          |                                                            |
+
+| CHKT-03| Save Information   | 1. Check "Save this information" box                      | Information saved to user profile        | Save function worked correctly| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
+|        |                    | 2. Complete checkout                                      |                                          |                             |          |                                                            |
+|        |                    | 3. Check profile for saved info                           | Information saved to user profile        | Save function worked correctly| ✅ PASS  | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
+
+| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)  
+  2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS | [Recording](./testing_evidence/Checkout_Payment_20250414.gif) |
+| CHKT-05 | Order Confirmation | 1. Complete checkout  
+  2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.png) |
+| CHKT-06 | Confirmation Email | 1. Complete checkout  
+  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
+  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
+
+### User Profile Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| PROF-01 | View Profile | 1. Login 2. Click user icon 3. Select "My Profile" | Profile page displays correctly | Profile loaded properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_View_20250414.png) |
+| PROF-02 | Update Information | 1. Navigate to profile 2. Edit personal information 3. Save changes | Information updated successfully | Update function worked | ✅ PASS | [Recording](./testing_evidence/Profile_Update_20250414.gif) |
+| PROF-03 | View Order History | 1. Navigate to profile 2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderHistory_20250414.png) |
+| PROF-04 | Order Details | 1. Navigate to order history 2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderDetails_20250414.png) |
+
+### Admin Functionality Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| ADMIN-01 | Product Management | 1. Login as admin  2. Navigate to admin dashboard  3. Access product management | Product management interface loads | Interface loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_ProductManagement_20250414.png) |
+| ADMIN-02 | Add Product | 1. Access product management  2. Click "Add Product"  3. Complete form and submit | New product added to store | Product added successfully | ✅ PASS | [Recording](./testing_evidence/Admin_AddProduct_20250414.gif) |
+| ADMIN-03 | Edit Product | 1. Access product management  2. Select product to edit  3. Make changes and save | Product information updated | Edit function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_EditProduct_20250414.png) |
+| ADMIN-04 | Delete Product | 1. Access product management  2. Select product to delete  3. Confirm deletion | Product removed from store | Delete function worked | ✅ PASS | [Screenshot](./testing_evidence/Admin_DeleteProduct_20250414.png) |
+| ADMIN-05 | Order Management | 1. Access admin dashboard  2. Navigate to orders section  3. View order details | Order management interface works | Interface functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_OrderManagement_20250414.png) |
+
+### Responsive Design Testing
+
+| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
+|---|---|---|---|---|---|---|
+| RESP-01 | Desktop View | 1. View site on 1920x1080 resolution 2. Test all primary functions | Site displays and functions correctly | Desktop view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Desktop_20250414.png) |
+| RESP-02 | Tablet View | 1. View site on 768x1024 resolution 2. Test all primary functions | Site adapts and functions correctly | Tablet view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Tablet_20250414.png) |
+| RESP-03 | Mobile View | 1. View site on 375x667 resolution 2. Test all primary functions | Site adapts and functions correctly | Mobile view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Mobile_20250414.png) |
+| RESP-04 | Element Scaling | 1. Test text scaling 2. Verify images resize properly 3. Check form elements adapt | All elements scale appropriately | Scaling worked as expected | ✅ PASS | [Recording](./testing_evidence/Responsive_Scaling_20250414.gif) |
+
+### Cross-Browser Testing
+
+| ID | Browser | Version | Tests Performed | Results | Status | Evidence |
+|---|---|---|---|---|---|---|
+| BROWSER-01 | Chrome | 121.0.6167.140 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Chrome_20250414.png) |
+| BROWSER-02 | Firefox | 123.0 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Firefox_20250414.png) |
+| BROWSER-03 | Edge | 121.0.2277.112 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Edge_20250414.png) |
+| BROWSER-04 | Safari (iOS) | 16.5 | All core functionality | Minor styling differences noted | ✅ PASS | [Screenshot](./testing_evidence/Browser_Safari_20250414.png) |
+
+### Performance Observations
+
+| ID | Area | Observation | Status |
+|---|---|---|---|
+| PERF-01 | Page Load Time | Homepage loads in under 2 seconds on broadband | ✅ SATISFACTORY |
+| PERF-02 | Image Loading | Product images load progressively with no visible delay | ✅ SATISFACTORY |
+| PERF-03 | Search Response | Search results appear within 1 second of submission | ✅ SATISFACTORY |
+| PERF-04 | Checkout Process | Payment processing completes within 3 seconds | ✅ SATISFACTORY |
+| PERF-05 | Filter Application | Category and price filters apply immediately | ✅ SATISFACTORY |
+
+### Known Issues
+
+| Issue ID | Area | Description | Severity | Status |
+|---|---|---|---|---|
+| ISSUE-01 | Mobile Checkout | Form fields occasionally difficult to select on some Android devices | Low | Under investigation |
+| ISSUE-02 | Safari Browser | Minor alignment issue with product cards on Safari | Low | Fix planned |
+| ISSUE-03 | Order History | Order history may take longer to load with many past orders | Low | Optimization planned |
+
+### Summary of Manual Testing
+
+The Literary Loft has undergone comprehensive manual testing across all key functional areas. The testing process has verified that:
+
+- Navigation and user interface elements function as intended
+- User authentication processes work securely
+- Product browsing, filtering, and search capabilities perform correctly
+- Shopping bag and checkout processes complete successfully
+- User profiles and admin functionality operate as designed
+- The site displays and functions correctly across different devices and browsers
+
+Overall, the manual testing confirms that The Literary Loft meets the requirements specified in the user stories and provides a robust, user-friendly shopping experience.
+
+[Back to top ⬆](#table-of-contents)
 
 ## Validator Testing
 
-- [Manual Testing](#manual-testing)
 - [Validator Testing](#validator-testing)
 
 [Back to top ⬆](#table-of-contents)
