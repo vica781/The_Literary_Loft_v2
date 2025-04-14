@@ -413,6 +413,8 @@ This section documents the systematic manual testing performed on The Literary L
 - All evidence files stored in the `/testing_evidence` directory
 - File naming convention: `Feature_TestID_Date.extension`
 
+[Back to top ⬆](#table-of-contents)
+
 ### Navigation & Header Testing
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
@@ -421,6 +423,8 @@ This section documents the systematic manual testing performed on The Literary L
 | NAV-02 | Logo Navigation | 1. Navigate to any page  2. Click the site logo | Returns to homepage | Logo navigation worked | ✅ PASS | [Screenshot](./testing_evidence/Nav_Logo_20250414.png) |
 | NAV-03 | Mobile Navigation Menu | 1. View site on mobile width  2. Click hamburger icon  3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./testing_evidence/Nav_Mobile_20250414.gif) |
 | NAV-04 | Search Bar Functionality | 1. Click search icon  2. Enter search term  3. Submit search | Relevant results displayed | Search returned appropriate results | ✅ PASS | [Recording](./testing_evidence/Nav_Search_20250414.gif) |
+
+[Back to top ⬆](#table-of-contents)
 
 ### User Authentication Testing
 
@@ -432,6 +436,8 @@ This section documents the systematic manual testing performed on The Literary L
 | AUTH-04 | Password Reset | 1. Click "Forgot Password"  \n2. Enter email address  \n3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
 | AUTH-05 | Form Validation | 1. Submit registration with invalid data \n2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
 
+[Back to top ⬆](#table-of-contents)
+
 ### Product Browsing Testing
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
@@ -441,6 +447,8 @@ This section documents the systematic manual testing performed on The Literary L
 | PROD-03 | Price Filtering | 1. Adjust price range slider \n2. Apply filter | Books within price range displayed | Price filter functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_PriceFilter_20250414.png) |
 | PROD-04 | Sorting Options | 1. Click sort dropdown  \n2. Select various sort options | Products sort according to selection | Sorting worked as expected | ✅ PASS | [Recording](./testing_evidence/Product_Sorting_20250414.gif) |
 | PROD-05 | Pagination | 1. Navigate to book listings  \n2. Scroll to bottom \n3. Click pagination controls | Pagination controls work correctly | Page navigation functioned properly | ✅ PASS | [Screenshot](./testing_evidence/Product_Pagination_20250414.png) |
+
+[Back to top ⬆](#table-of-contents)
 
 ### Product Detail Testing
 
@@ -452,6 +460,8 @@ This section documents the systematic manual testing performed on The Literary L
 | PDET-04 | Add to Bag | 1. Select quantity  \n2. Click "Add to Bag"  \n3. Verify success message | Product added to bag with confirmation | Add to bag function worked | ✅ PASS | [Recording](./testing_evidence/ProductDetail_AddToBag_20250414.gif) |
 | PDET-05 | Related Products | 1. Scroll to bottom of product page  \n2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS | [Screenshot](./testing_evidence/ProductDetail_RelatedProducts_20250414.png) |
 
+[Back to top ⬆](#table-of-contents)
+
 ### Shopping Bag Testing
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
@@ -461,6 +471,8 @@ This section documents the systematic manual testing performed on The Literary L
 | BAG-03 | Remove Item | 1. View bag  2. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_RemoveItem_20250414.png) |
 | BAG-04 | Bag Persistence | 1. Add items to bag  2. Close browser  3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Persistence_20250414.png) |
 | BAG-05 | Empty Bag Message | 1. Remove all items from bag  2. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Empty_20250414.png) |
+
+[Back to top ⬆](#table-of-contents)
 
 ### Checkout Testing
 
@@ -473,6 +485,8 @@ This section documents the systematic manual testing performed on The Literary L
 | CHKT-05 | Order Confirmation | 1. Complete checkout  2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.png) |
 | CHKT-06 | Confirmation Email | 1. Complete checkout  2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
 
+[Back to top ⬆](#table-of-contents)
+
 ### User Profile Testing
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
@@ -481,6 +495,8 @@ This section documents the systematic manual testing performed on The Literary L
 | PROF-02 | Update Information | 1. Navigate to profile 2. Edit personal information 3. Save changes | Information updated successfully | Update function worked | ✅ PASS | [Recording](./testing_evidence/Profile_Update_20250414.gif) |
 | PROF-03 | View Order History | 1. Navigate to profile 2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderHistory_20250414.png) |
 | PROF-04 | Order Details | 1. Navigate to order history 2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderDetails_20250414.png) |
+
+[Back to top ⬆](#table-of-contents)
 
 ### Admin Functionality Testing
 
@@ -492,6 +508,8 @@ This section documents the systematic manual testing performed on The Literary L
 | ADMIN-04 | Delete Product | 1. Access product management  2. Select product to delete  3. Confirm deletion | Product removed from store | Delete function worked | ✅ PASS | [Screenshot](./testing_evidence/Admin_DeleteProduct_20250414.png) |
 | ADMIN-05 | Order Management | 1. Access admin dashboard  2. Navigate to orders section  3. View order details | Order management interface works | Interface functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_OrderManagement_20250414.png) |
 
+[Back to top ⬆](#table-of-contents)
+
 ### Responsive Design Testing
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
@@ -500,6 +518,8 @@ This section documents the systematic manual testing performed on The Literary L
 | RESP-02 | Tablet View | 1. View site on 768x1024 resolution 2. Test all primary functions | Site adapts and functions correctly | Tablet view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Tablet_20250414.png) |
 | RESP-03 | Mobile View | 1. View site on 375x667 resolution 2. Test all primary functions | Site adapts and functions correctly | Mobile view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Mobile_20250414.png) |
 | RESP-04 | Element Scaling | 1. Test text scaling 2. Verify images resize properly 3. Check form elements adapt | All elements scale appropriately | Scaling worked as expected | ✅ PASS | [Recording](./testing_evidence/Responsive_Scaling_20250414.gif) |
+
+[Back to top ⬆](#table-of-contents)
 
 ### Cross-Browser Testing
 
@@ -510,6 +530,8 @@ This section documents the systematic manual testing performed on The Literary L
 | BROWSER-03 | Edge | 121.0.2277.112 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Edge_20250414.png) |
 | BROWSER-04 | Safari (iOS) | 16.5 | All core functionality | Minor styling differences noted | ✅ PASS | [Screenshot](./testing_evidence/Browser_Safari_20250414.png) |
 
+[Back to top ⬆](#table-of-contents)
+
 ### Performance Observations
 
 | ID | Area | Observation | Status |
@@ -519,6 +541,8 @@ This section documents the systematic manual testing performed on The Literary L
 | PERF-03 | Search Response | Search results appear within 1 second of submission | ✅ SATISFACTORY |
 | PERF-04 | Checkout Process | Payment processing completes within 3 seconds | ✅ SATISFACTORY |
 
+[Back to top ⬆](#table-of-contents)
+
 ### Known Issues
 
 | Issue ID | Area | Description | Severity | Status |
@@ -526,6 +550,8 @@ This section documents the systematic manual testing performed on The Literary L
 | ISSUE-01 |  |  |  |  |
 | ISSUE-02 |  |  |  |  |
 | ISSUE-03 |  |  |  |  |
+
+[Back to top ⬆](#table-of-contents)
 
 ### Summary of Manual Testing
 
