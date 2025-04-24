@@ -421,7 +421,7 @@ This section documents the systematic manual testing performed on The Literary L
 |---|---|---|---|---|---|---|
 | NAV-01 | Main Navigation Links | 1. Navigate to homepage<br>2. Click each main navigation link | Each link leads to correct page | All links worked as expected | ✅ PASS | [Recording](./testing_evidence/Nav_MainLinks_20250414.png) |
 | NAV-02 | Logo Navigation | 1. Navigate to any page<br>2. Click the site logo | Returns to homepage | Logo navigation worked | ✅ PASS | [Recording](./testing_evidence/Nav_Logo_20250414.png) |
-| NAV-03 | Mobile Navigation Menu | 1. View site on mobile width<br>2. Click hamburger icon<br>3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./testing_evidence/Nav_Mobile_20250414.gif) |
+| NAV-03 | Mobile Navigation Menu | 1. View site on mobile width<br>2. Click hamburger icon<br>3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./testing_evidence/navigation/Nav_Mobile_20250414.gif) |
 | NAV-04 | Search Bar Functionality | 1. Click search icon<br>2. Enter search term<br>3. Submit search | Relevant results displayed | Search returned appropriate results | ✅ PASS | [Recording](./testing_evidence/Nav_Search_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
