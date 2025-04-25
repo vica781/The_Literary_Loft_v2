@@ -114,6 +114,9 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')  # Your Gmail address
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # Your app password
 
+# Default email settings
+DEFAULT_FROM_EMAIL = 'theliteraryloft.books@gmail.com'
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
@@ -220,8 +223,7 @@ STRIPE_CURRENCY = 'gbp'
 FREE_DELIVERY_THRESHOLD = 20  # In GBP
 STANDARD_DELIVERY_COST = 10  # Delivery charge percentage for orders under the threshold
 
-# Default email settings
-DEFAULT_FROM_EMAIL = 'theliteraryloft@example.com'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
