@@ -460,13 +460,13 @@ This section documents the systematic manual testing performed on The Literary L
 ![User Registration Testing](./readme_files/testing_evidence/authentication/Auth_Register_25042025.gif)
 
 **AUTH-02: Login Functionality**  
-![Login Functionality Testing](./readme_files/testing_evidence/authentication/Auth_Login_25042025.png)
+![Login Functionality Testing](./readme_files/testing_evidence/authentication/Auth_Login_25042025.gif)
 
 **AUTH-04: Password Reset**  
 ![Password Reset Testing](./readme_files/testing_evidence/authentication/Auth_PasswordReset_25042025.gif)
 
 **AUTH-05: Form Validation**  
-![Form Validation Testing](./readme_files/testing_evidence/authentication/Auth_Validation_25042025.png)
+![Form Validation Testing](./readme_files/testing_evidence/authentication/Auth_Validation_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
