@@ -419,9 +419,9 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| NAV-01 | Main Navigation Links | 1. Navigate to homepage<br>2. Click each main navigation link | Each link leads to correct page | All links worked as expected | ✅ PASS | [Recording](./testing_evidence/navigation/Nav_MainLinks_24042025.png) |
-| NAV-02 | Logo Navigation | 1. Navigate to any page<br>2. Click the site logo | Returns to homepage | Logo navigation worked | ✅ PASS | [Recording](./testing_evidence/navigation/Nav_Logo_24042025.png) |
-| NAV-03 | Mobile Navigation Menu | 1. View site on mobile width<br>2. Click hamburger icon<br>3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./testing_evidence/navigation/Nav_Mobile_24042025.gif) |
+| NAV-01 | Main Navigation Links | 1. Navigate to homepage<br>2. Click each main navigation link | Each link leads to correct page | All links worked as expected | ✅ PASS | [Recording](./readme_files/testing_evidence/navigation/Nav_MainLinks_24042025.png) |
+| NAV-02 | Logo Navigation | 1. Navigate to any page<br>2. Click the site logo | Returns to homepage | Logo navigation worked | ✅ PASS | [Recording](./readme_files/testing_evidence/navigation/Nav_Logo_24042025.png) |
+| NAV-03 | Mobile Navigation Menu | 1. View site on mobile width<br>2. Click hamburger icon<br>3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS | [Recording](./readme_files/testing_evidence/navigation/Nav_Mobile_24042025.gif) |
 | NAV-04 | Search Bar Functionality | 1. Click search icon<br>2. Enter search term<br>3. Submit search | Relevant results displayed | Search returned appropriate results | ✅ PASS | [Recording](./readme_files/testing_evidence/navigation/Nav_Search_24042025.gif) |
 
 [Back to top ⬆](#table-of-contents)
