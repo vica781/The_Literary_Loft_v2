@@ -417,8 +417,6 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Navigation & Header Testing
 
-## Navigation Testing
-
 | ID | Test Description | Steps | Expected Result | Actual Result | Status |
 |---|---|---|---|---|---|
 | NAV-01 | Main Navigation Links | 1. Navigate to homepage<br>2. Click each main navigation link | Each link leads to correct page | All links worked as expected | ✅ PASS |
@@ -426,7 +424,9 @@ This section documents the systematic manual testing performed on The Literary L
 | NAV-03 | Mobile Navigation Menu | 1. View site on mobile width<br>2. Click hamburger icon<br>3. Test mobile menu links | Menu opens and all links work | Mobile menu functioned correctly | ✅ PASS |
 | NAV-04 | Search Bar Functionality | 1. Click search icon<br>2. Enter search term<br>3. Submit search | Relevant results displayed | Search returned appropriate results | ✅ PASS |
 
-### Test Evidence
+[Back to top ⬆](#table-of-contents)
+
+## Test Evidence (Navigation & Header)
 
 **NAV-01: Main Navigation Links**  
 ![Main Navigation Links Testing](./readme_files/testing_evidence/navigation/Nav_MainLinks_24042025.gif)
@@ -444,13 +444,29 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### User Authentication Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| AUTH-01 | User Registration | 1. Click "Register" link<br>2. Complete form with valid data<br>3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS | [Recording](./testing_evidence/Auth_Register_20250414.gif) |
-| AUTH-02 | Login Functionality | 1. Click "Login" link<br>2. Enter valid credentials<br>3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS | [Screenshot](./testing_evidence/Auth_Login_20250414.png) |
-| AUTH-03 | Logout Process | 1. Click user icon<br>2. Select "Logout" option<br>3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Logout_20250414.png) |
-| AUTH-04 | Password Reset | 1. Click "Forgot Password"<br>2. Enter email address<br>3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS | [Recording](./testing_evidence/Auth_PasswordReset_20250414.gif) |
-| AUTH-05 | Form Validation | 1. Submit registration with invalid data<br>2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Auth_Validation_20250414.png) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| AUTH-01 | User Registration | 1. Click "Register" link<br>2. Complete form with valid data<br>3. Submit form | Account created, verification email sent | Registration completed successfully | ✅ PASS |
+| AUTH-02 | Login Functionality | 1. Click "Login" link<br>2. Enter valid credentials<br>3. Submit form | User logged in, redirected to home page | Login successful | ✅ PASS |
+| AUTH-03 | Logout Process | 1. Click user icon<br>2. Select "Logout" option<br>3. Confirm logout | User logged out, session ended | Logout functioned correctly | ✅ PASS |
+| AUTH-04 | Password Reset | 1. Click "Forgot Password"<br>2. Enter email address<br>3. Follow reset process | Password reset email sent, password changed | Reset process worked as expected | ✅ PASS |
+| AUTH-05 | Form Validation | 1. Submit registration with invalid data<br>2. Note error messages | Appropriate error messages displayed | Validation worked correctly | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
+
+## Test Evidence (User Authentication)
+
+**AUTH-01: User Registration**  
+![User Registration Testing](./readme_files/testing_evidence/authentication/Auth_Register_25042025.gif)
+
+**AUTH-02: Login Functionality**  
+![Login Functionality Testing](./readme_files/testing_evidence/authentication/Auth_Login_25042025.png)
+
+**AUTH-04: Password Reset**  
+![Password Reset Testing](./readme_files/testing_evidence/authentication/Auth_PasswordReset_25042025.gif)
+
+**AUTH-05: Form Validation**  
+![Form Validation Testing](./readme_files/testing_evidence/authentication/Auth_Validation_25042025.png)
 
 [Back to top ⬆](#table-of-contents)
 
