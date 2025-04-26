@@ -426,7 +426,7 @@ This section documents the systematic manual testing performed on The Literary L
 
 [Back to top ⬆](#table-of-contents)
 
-## Test Evidence (Navigation & Header)
+### Test Evidence (Navigation & Header)
 
 **NAV-01: Main Navigation Links**  
 ![Main Navigation Links Testing](./readme_files/testing_evidence/navigation/Nav_MainLinks_24042025.gif)
@@ -454,7 +454,7 @@ This section documents the systematic manual testing performed on The Literary L
 
 [Back to top ⬆](#table-of-contents)
 
-## Test Evidence (User Authentication)
+### Test Evidence (User Authentication)
 
 **AUTH-01: User Registration**  
 ![User Registration Testing](./readme_files/testing_evidence/authentication/Auth_Register_25042025.gif)
@@ -472,13 +472,20 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Product Browsing Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| PROD-01 | Book Listing Display | 1. Navigate to "Books" page<br>2. Verify book display format | Books displayed with cover, title, author, price | Listing displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_Listing_20250414.png) |
-| PROD-02 | Category Filtering | 1. Click category filter<br>2. Select specific category<br>3. View filtered results | Only books from selected category shown | Category filter worked | ✅ PASS | [Recording](./testing_evidence/Product_CategoryFilter_20250414.gif) |
-| PROD-03 | Price Filtering | 1. Adjust price range slider<br>2. Apply filter | Books within price range displayed | Price filter functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Product_PriceFilter_20250414.png) |
-| PROD-04 | Sorting Options | 1. Click sort dropdown<br>2. Select various sort options | Products sort according to selection | Sorting worked as expected | ✅ PASS | [Recording](./testing_evidence/Product_Sorting_20250414.gif) |
-| PROD-05 | Pagination | 1. Navigate to book listings<br>2. Scroll to bottom<br>3. Click pagination controls | Pagination controls work correctly | Page navigation functioned properly | ✅ PASS | [Screenshot](./testing_evidence/Product_Pagination_20250414.png) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| PROD-01 | Book Listing Display | 1. Navigate to "Books" page<br>2. Verify book display format | Books displayed with cover, title, author, price | Listing displayed correctly | ✅ PASS |
+| PROD-02 | Category Filtering | 1. Click category filter<br>2. Select specific category<br>3. View filtered results | Only books from selected category shown | Category filter worked | ✅ PASS |
+
+[Back to top ⬆](#table-of-contents)
+
+### Test Evidence
+
+**PROD-01: Book Listing Display**  
+![Book Listing Display](./readme_files/testing_evidence/product_browsing/Product_Listing_25042025.gif)
+
+**PROD-02: Category Filtering**  
+![Category Filtering](./readme_files/testing_evidence/product_browsing/Product_CategoryFilter_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
