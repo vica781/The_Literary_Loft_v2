@@ -491,15 +491,22 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Product Details Testing
 
-| ID     | Test Description    | Steps                                              | Expected Result                               | Actual Result                   | Status   | Evidence                                                       |
-|--------|---------------------|----------------------------------------------------|-----------------------------------------------|---------------------------------|----------|----------------------------------------------------------------|
-| PDET-01 | Product Information | 1. Click on a book from listings<br>2. View product detail page | All book details displayed correctly           | Information displayed as expected | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Info_20250414.gif) |
-| PDET-02 | Quantity Selector & Add to Bag | 1. Adjust quantity using controls<br>2. Verify min/max limitations<br>3. Select quantity<br>4. Click "Add to Bag"<br>5. Verify success message | Quantity adjusts correctly within limits<br>Product added to bag with confirmation       | Quantity selector worked<br>Add to bag function worked       | ✅ PASS  | [Screenshot](./testing_evidence/ProductDetail_Quantity_AddToBag25042025.gif) |
-| PDET-03 | Related Products | 1. Scroll to bottom of product page<br>2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS | [Screenshot](./testing_evidence/ProductDetail_RelatedProducts_25042025.gif) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| PDET-01 | Product Information | 1. Click on a book from listings<br>2. View product detail page | All book details displayed correctly | Information displayed as expected | ✅ PASS |
+| PDET-02 | Quantity Selector & Add to Bag | 1. Adjust quantity using controls<br>2. Verify min/max limitations<br>3. Select quantity<br>4. Click "Add to Bag"<br>5. Verify success message | Quantity adjusts correctly within limits<br>Product added to bag with confirmation | Quantity selector worked<br>Add to bag function worked | ✅ PASS |
+| PDET-03 | Related Products | 1. Scroll to bottom of product page<br>2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS |
 
-[Back to top ⬆](#table-of-contents)
+### Test Evidence
 
-### Test Evidence (Product Details)
+**PDET-01: Product Information**  
+![Product Information](./testing_evidence/ProductDetail_Info_20250414.gif)
+
+**PDET-02: Quantity Selector & Add to Bag**  
+![Quantity Selector and Add to Bag](./testing_evidence/ProductDetail_Quantity_AddToBag25042025.gif)
+
+**PDET-03: Related Products**  
+![Related Products](./testing_evidence/ProductDetail_RelatedProducts_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
