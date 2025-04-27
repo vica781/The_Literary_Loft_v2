@@ -500,13 +500,13 @@ This section documents the systematic manual testing performed on The Literary L
 ### Test Evidence
 
 **PDET-01: Product Information**  
-![Product Information](./testing_evidence/ProductDetail_Info_20250414.gif)
+![Product Information](./readme_files/testing_evidence/product_details/ProductDetail_Info_20250414.gif)
 
 **PDET-02: Quantity Selector & Add to Bag**  
-![Quantity Selector and Add to Bag](./testing_evidence/ProductDetail_Quantity_AddToBag25042025.gif)
+![Quantity Selector and Add to Bag](./readme_files/testing_evidence/product_details/ProductDetail_Quantity_AddToBag25042025.gif)
 
 **PDET-03: Related Products**  
-![Related Products](./testing_evidence/ProductDetail_RelatedProducts_25042025.gif)
+![Related Products](./readme_files/testing_evidence/product_details/ProductDetail_RelatedProducts_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
