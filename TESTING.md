@@ -515,7 +515,7 @@ This section documents the systematic manual testing performed on The Literary L
 | BAG-04 | Bag Persistence | 1. Add items to bag<br>2. Close browser<br>3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS |
 | BAG-05 | Empty Bag Message | 1. Remove all items from bag<br>2. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS |
 
-### Test Evidence
+### Test Evidence (Shopping Bag)
 
 **BAG-01: View Shopping Bag**  
 ![View Shopping Bag](./readme_files/testing_evidence/shopping_bag/Bag_View_25042025.gif)
