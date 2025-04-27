@@ -492,7 +492,7 @@ This section documents the systematic manual testing performed on The Literary L
 | PDET-02 | Quantity Selector & Add to Bag | 1. Adjust quantity using controls<br>2. Verify min/max limitations<br>3. Select quantity<br>4. Click "Add to Bag"<br>5. Verify success message | Quantity adjusts correctly within limits<br>Product added to bag with confirmation | Quantity selector worked<br>Add to bag function worked | ✅ PASS |
 | PDET-03 | Related Products | 1. Scroll to bottom of product page<br>2. View related products section | Related books displayed relevantly | Related products showed correctly | ✅ PASS |
 
-### Test Evidence
+### Test Evidence (Product Details)
 
 **PDET-01: Product Information**  
 ![Product Information](./readme_files/testing_evidence/product_details/ProductDetail_Info_20250414.gif)
@@ -507,13 +507,30 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Shopping Bag Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| BAG-01 | View Shopping Bag | 1. Add items to bag<br>2. Click bag icon | Bag page opens with correct items | Bag displayed correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_View_20250414.png) |
-| BAG-02 | Update Quantity | 1. View bag<br>2. Change item quantity<br>3. Click "Update" | Quantity and totals update correctly | Update functionality worked | ✅ PASS | [Recording](./testing_evidence/Bag_UpdateQuantity_20250414.gif) |
-| BAG-03 | Remove Item | 1. View bag<br>2. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_RemoveItem_20250414.png) |
-| BAG-04 | Bag Persistence | 1. Add items to bag<br>2. Close browser<br>3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Persistence_20250414.png) |
-| BAG-05 | Empty Bag Message | 1. Remove all items from bag<br>2. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS | [Screenshot](./testing_evidence/Bag_Empty_20250414.png) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| BAG-01 | View Shopping Bag | 1. Add items to bag<br>2. Click bag icon | Bag page opens with correct items | Bag displayed correctly | ✅ PASS |
+| BAG-02 | Update Quantity | 1. View bag<br>2. Change item quantity<br>3. Click "Update" | Quantity and totals update correctly | Update functionality worked | ✅ PASS |
+| BAG-03 | Remove Item | 1. View bag<br>2. Click "Remove" on an item | Item removed, totals recalculated | Remove function worked correctly | ✅ PASS |
+| BAG-04 | Bag Persistence | 1. Add items to bag<br>2. Close browser<br>3. Reopen site | Bag contents maintained | Items persisted correctly | ✅ PASS |
+| BAG-05 | Empty Bag Message | 1. Remove all items from bag<br>2. View empty bag | "Your bag is empty" message displayed | Empty state handled correctly | ✅ PASS |
+
+### Test Evidence
+
+**BAG-01: View Shopping Bag**  
+![View Shopping Bag](./readme_files/testing_evidence/shopping_bag/Bag_View_25042025.gif)
+
+**BAG-02: Update Quantity**  
+![Update Quantity](./readme_files/testing_evidence/shopping_bag/Bag_UpdateQuantity_25042025.gif)
+
+**BAG-03: Remove Item**  
+![Remove Item](./readme_files/testing_evidence/shopping_bag/Bag_RemoveItem_25042025.gif)
+
+**BAG-04: Bag Persistence**  
+![Bag Persistence](./readme_files/testing_evidence/shopping_bag/Bag_Persistence_25042025.gif)
+
+**BAG-05: Empty Bag Message**  
+![Empty Bag Message](./readme_files/testing_evidence/shopping_bag/Bag_Empty_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
@@ -521,12 +538,12 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| CHKT-01 | Checkout Form | 1. Add items to bag<br>2. Proceed to checkout<br>3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Form_20250414.png) |
-| CHKT-02 | Form Validation | 1. Submit checkout form with missing fields<br>2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Validation_20250414.png) |
-| CHKT-03 | Save Information | 1. Check "Save this information" box<br>2. Complete checkout<br>3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.png) |
+| CHKT-01 | Checkout Form | 1. Add items to bag<br>2. Proceed to checkout<br>3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Form_20250414.gif) |
+| CHKT-02 | Form Validation | 1. Submit checkout form with missing fields<br>2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Validation_20250414.gif) |
+| CHKT-03 | Save Information | 1. Check "Save this information" box<br>2. Complete checkout<br>3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.gif) |
 | CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)<br>2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS | [Recording](./testing_evidence/Checkout_Payment_20250414.gif) |
-| CHKT-05 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.png) |
-| CHKT-06 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.png) |
+| CHKT-05 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.gif) |
+| CHKT-06 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
 
@@ -534,10 +551,10 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| PROF-01 | View Profile | 1. Login<br>2. Click user icon<br>3. Select "My Profile" | Profile page displays correctly | Profile loaded properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_View_20250414.png) |
+| PROF-01 | View Profile | 1. Login<br>2. Click user icon<br>3. Select "My Profile" | Profile page displays correctly | Profile loaded properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_View_20250414.gif) |
 | PROF-02 | Update Information | 1. Navigate to profile<br>2. Edit personal information<br>3. Save changes | Information updated successfully | Update function worked | ✅ PASS | [Recording](./testing_evidence/Profile_Update_20250414.gif) |
-| PROF-03 | View Order History | 1. Navigate to profile<br>2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderHistory_20250414.png) |
-| PROF-04 | Order Details | 1. Navigate to order history<br>2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderDetails_20250414.png) |
+| PROF-03 | View Order History | 1. Navigate to profile<br>2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderHistory_20250414.gif) |
+| PROF-04 | Order Details | 1. Navigate to order history<br>2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderDetails_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
 
@@ -545,11 +562,11 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| ADMIN-01 | Product Management | 1. Login as admin<br>2. Navigate to admin dashboard<br>3. Access product management | Product management interface loads | Interface loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_ProductManagement_20250414.png) |
+| ADMIN-01 | Product Management | 1. Login as admin<br>2. Navigate to admin dashboard<br>3. Access product management | Product management interface loads | Interface loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_ProductManagement_20250414.gif) |
 | ADMIN-02 | Add Product | 1. Access product management<br>2. Click "Add Product"<br>3. Complete form and submit | New product added to store | Product added successfully | ✅ PASS | [Recording](./testing_evidence/Admin_AddProduct_20250414.gif) |
-| ADMIN-03 | Edit Product | 1. Access product management<br>2. Select product to edit<br>3. Make changes and save | Product information updated | Edit function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_EditProduct_20250414.png) |
-| ADMIN-04 | Delete Product | 1. Access product management<br>2. Select product to delete<br>3. Confirm deletion | Product removed from store | Delete function worked | ✅ PASS | [Screenshot](./testing_evidence/Admin_DeleteProduct_20250414.png) |
-| ADMIN-05 | Order Management | 1. Access admin dashboard<br>2. Navigate to orders section<br>3. View order details | Order management interface works | Interface functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_OrderManagement_20250414.png) |
+| ADMIN-03 | Edit Product | 1. Access product management<br>2. Select product to edit<br>3. Make changes and save | Product information updated | Edit function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_EditProduct_20250414.gif) |
+| ADMIN-04 | Delete Product | 1. Access product management<br>2. Select product to delete<br>3. Confirm deletion | Product removed from store | Delete function worked | ✅ PASS | [Screenshot](./testing_evidence/Admin_DeleteProduct_20250414.gif) |
+| ADMIN-05 | Order Management | 1. Access admin dashboard<br>2. Navigate to orders section<br>3. View order details | Order management interface works | Interface functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_OrderManagement_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
 
@@ -559,9 +576,9 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
 |---|---|---|---|---|---|---|
-| RESP-01 | Desktop View | 1. View site on 1920x1080 resolution<br>2. Test all primary functions | Site displays and functions correctly | Desktop view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Desktop_20250414.png) |
-| RESP-02 | Tablet View | 1. View site on 768x1024 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Tablet view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Tablet_20250414.png) |
-| RESP-03 | Mobile View | 1. View site on 375x667 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Mobile view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Mobile_20250414.png) |
+| RESP-01 | Desktop View | 1. View site on 1920x1080 resolution<br>2. Test all primary functions | Site displays and functions correctly | Desktop view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Desktop_20250414.gif) |
+| RESP-02 | Tablet View | 1. View site on 768x1024 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Tablet view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Tablet_20250414.gif) |
+| RESP-03 | Mobile View | 1. View site on 375x667 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Mobile view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Mobile_20250414.gif) |
 | RESP-04 | Element Scaling | 1. Test text scaling<br>2. Verify images resize properly<br>3. Check form elements adapt | All elements scale appropriately | Scaling worked as expected | ✅ PASS | [Recording](./testing_evidence/Responsive_Scaling_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
@@ -570,10 +587,10 @@ This section documents the systematic manual testing performed on The Literary L
 
 | ID | Browser | Version | Tests Performed | Results | Status | Evidence |
 |---|---|---|---|---|---|---|
-| BROWSER-01 | Chrome | 121.0.6167.140 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Chrome_20250414.png) |
-| BROWSER-02 | Firefox | 123.0 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Firefox_20250414.png) |
-| BROWSER-03 | Edge | 121.0.2277.112 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Edge_20250414.png) |
-| BROWSER-04 | Safari (iOS) | 16.5 | All core functionality | Minor styling differences noted | ✅ PASS | [Screenshot](./testing_evidence/Browser_Safari_20250414.png) |
+| BROWSER-01 | Chrome | 121.0.6167.140 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Chrome_20250414.gif) |
+| BROWSER-02 | Firefox | 123.0 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Firefox_20250414.gif) |
+| BROWSER-03 | Edge | 121.0.2277.112 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Edge_20250414.gif) |
+| BROWSER-04 | Safari (iOS) | 16.5 | All core functionality | Minor styling differences noted | ✅ PASS | [Screenshot](./testing_evidence/Browser_Safari_20250414.gif) |
 
 [Back to top ⬆](#table-of-contents)
 
