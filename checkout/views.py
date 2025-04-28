@@ -10,7 +10,7 @@ import uuid
 
 from .models import Order, OrderItem
 from books.models import Book
-from .forms import OrderForm, CustomUserChangeForm
+from .forms import OrderForm
 
 # Helper Functions
 def calculate_order_amount(request):
@@ -30,59 +30,78 @@ def checkout(request):
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            try:
-                order = form.save(commit=False)
-                if request.user.is_authenticated:
-                    order.user = request.user
-                else:
-                    order.guest_email = form.cleaned_data['email']
-                
-                total = calculate_order_amount(request) / 100
-                order.order_total = total
+            order = form.save(commit=False)
+            if request.user.is_authenticated:
+                order.user = request.user
 
-                if total < settings.FREE_DELIVERY_THRESHOLD:
-                    delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
-                else:
-                    delivery_cost = 0
+                save_info = request.POST.get('save_info')
+                set_default_info = request.POST.get('set_default_info')
 
-                order.delivery_cost = delivery_cost
-                order.grand_total = total + delivery_cost
-                order.order_number = str(uuid.uuid4())
-                order.save()
+                if set_default_info == 'on':
+                    profile = request.user.profile
+                    profile.default_full_name = form.cleaned_data['full_name']
+                    profile.default_phone_number = form.cleaned_data['phone_number']
+                    profile.default_country = form.cleaned_data['country']
+                    profile.default_postcode = form.cleaned_data['postcode']
+                    profile.default_town_or_city = form.cleaned_data['town_or_city']
+                    profile.default_street_address1 = form.cleaned_data['street_address1']
+                    profile.default_street_address2 = form.cleaned_data['street_address2']
+                    profile.default_county = form.cleaned_data['county']
+                    profile.save()
+                    messages.success(request, "Your address has been saved for future purchases!")
+            else:
+                order.guest_email = form.cleaned_data['email']
 
-                for book_id, item in cart.items():
-                    book = get_object_or_404(Book, id=int(book_id))
-                    OrderItem.objects.create(
-                        order=order,
-                        book=book,
-                        quantity=item['quantity'],
-                        price=item['price']
-                    )
+            total = calculate_order_amount(request) / 100
+            order.order_total = total
+            order.delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100 if total < settings.FREE_DELIVERY_THRESHOLD else 0
+            order.grand_total = order.order_total + order.delivery_cost
+            order.order_number = str(uuid.uuid4())
+            order.save()
 
-                if not request.user.is_authenticated:
-                    request.session['guest_order_number'] = order.order_number
+            for book_id, item in cart.items():
+                book = get_object_or_404(Book, id=int(book_id))
+                OrderItem.objects.create(
+                    order=order,
+                    book=book,
+                    quantity=item['quantity'],
+                    price=item['price']
+                )
 
-                request.session['cart'] = {}
-                messages.success(request, "Order placed successfully!")
-                return redirect('checkout:order_success', order_number=order.order_number)
-            
-            except Exception as e:
-                messages.error(request, f"An error occurred: {str(e)}")
-                return redirect('checkout:checkout')
+            if not request.user.is_authenticated:
+                request.session['guest_order_number'] = order.order_number
+
+            request.session['cart'] = {}
+            messages.success(request, "Order placed successfully!")
+            return redirect('checkout:order_success', order_number=order.order_number)
         else:
-            # Handle form errors with TOAST messages
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{form.fields[field].label or field}: {error}")
-    
-    # GET request or form invalid
-    form = OrderForm()
+
+    # GET request
+    if request.user.is_authenticated:
+        try:
+            profile = request.user.profile
+            initial_data = {
+                'full_name': profile.default_full_name,
+                'phone_number': profile.default_phone_number,
+                'country': profile.default_country,
+                'postcode': profile.default_postcode,
+                'town_or_city': profile.default_town_or_city,
+                'street_address1': profile.default_street_address1,
+                'street_address2': profile.default_street_address2,
+                'county': profile.default_county,
+                'email': request.user.email,
+            }
+            form = OrderForm(initial=initial_data)
+        except Exception:
+            form = OrderForm()
+    else:
+        form = OrderForm()
+
     total = calculate_order_amount(request) / 100
-    delivery_cost = 0
-
-    if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
-
+    delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100 if total < settings.FREE_DELIVERY_THRESHOLD else 0
     grand_total = total + delivery_cost
 
     try:
@@ -98,9 +117,9 @@ def checkout(request):
     context = {
         'order_form': form,
         'cart_items': [{
-            'book': get_object_or_404(Book, id=int(book_id)), 
-            'quantity': item['quantity'], 
-            'price': item['price'], 
+            'book': get_object_or_404(Book, id=int(book_id)),
+            'quantity': item['quantity'],
+            'price': item['price'],
             'total': item['quantity'] * float(item['price'])
         } for book_id, item in cart.items()],
         'total': total,
@@ -111,6 +130,7 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
+
 
 @require_POST
 @csrf_exempt

@@ -81,6 +81,37 @@
     border: 1px solid #000;
 }
 
+/* -------------------------------Reset Button------------------------------ */
+.reset-btn {
+    color: #4d5252;
+    background-color: #f5f5f5;
+    border: 1px solid #4d5252;
+    font-weight: bolder;
+    margin-top: 1.5rem;
+}
+
+.reset-btn:hover {
+    background-color: #d1d1d1;
+    border-color: #4d5252;
+}
+
+/* Toggle Switches for Save Info */
+.form-check.form-switch .form-check-input {
+    width: 2.5em;
+    height: 1.3em;
+    background-color: #ddd;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.form-check.form-switch .form-check-input:checked {
+    background-color: #4d5252;
+}
+
+.form-check.form-switch .form-check-input:focus {
+    box-shadow: none;
+}
+
 /* ------------------------------Responsivness------------------------------ */
 @media (max-width: 768px) {
 .checkout-heading {
