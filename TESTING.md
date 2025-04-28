@@ -536,14 +536,34 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Checkout Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| CHKT-01 | Checkout Form | 1. Add items to bag<br>2. Proceed to checkout<br>3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Form_20250414.gif) |
-| CHKT-02 | Form Validation | 1. Submit checkout form with missing fields<br>2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Validation_20250414.gif) |
-| CHKT-03 | Save Information | 1. Check "Save this information" box<br>2. Complete checkout<br>3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_SaveInfo_20250414.gif) |
-| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)<br>2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS | [Recording](./testing_evidence/Checkout_Payment_20250414.gif) |
-| CHKT-05 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Confirmation_20250414.gif) |
-| CHKT-06 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS | [Screenshot](./testing_evidence/Checkout_Email_20250414.gif) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| CHKT-01 | Checkout Form | 1. Add items to bag<br>2. Proceed to checkout<br>3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS |
+| CHKT-02 | Form Validation | 1. Submit checkout form with missing fields<br>2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS |
+| CHKT-03 | Save Information | 1. Check "Save this information" box<br>2. Complete checkout<br>3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS |
+| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)<br>2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS |
+| CHKT-05 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS |
+| CHKT-06 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS |
+
+### Test Evidence (Checkout)
+
+**CHKT-01: Checkout Form**  
+![Checkout Form](./readme_files/testing_evidence/checkout/Checkout_Form_25042025.gif)
+
+**CHKT-02: Form Validation**  
+![Form Validation](./readme_files/testing_evidence/checkout/Checkout_Validation_25042025.gif)
+
+**CHKT-03: Save Information**  
+![Save Information](./readme_files/testing_evidence/checkout/Checkout_SaveInfo_25042025.gif)
+
+**CHKT-04: Payment Processing**  
+![Payment Processing](./readme_files/testing_evidence/Checkout_Payment_20250414.gif)
+
+**CHKT-05: Order Confirmation**  
+![Order Confirmation](./readme_files/testing_evidence/checkout/Checkout_Confirmation_25042025.gif)
+
+**CHKT-06: Confirmation Email**  
+![Confirmation Email](./readme_files/testing_evidence/checkout/Checkout_Email_25042025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
