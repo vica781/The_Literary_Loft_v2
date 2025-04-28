@@ -1,0 +1,231 @@
+[33ma4cfae9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Feature: add 'Clear form' & 'Save address' to btns to checkout
+[33mdf29600[m Update: add form validation with TOAST error messages for checkout process
+[33m5f9d7e9[m Doc: restructure Checkout manual testing
+[33me79522d[m Doc: amend heading
+[33m787c7d6[m Doc: restructure and add evidence to Shopping Bag manual testing
+[33m7a16779[m Doc: update table of Contents for TESTING.md
+[33m606e687[m Doc: fix path to gifs
+[33m492a809[m Doc: add evidence gifs to Prod Det manual testing
+[33mf0e23c7[m Doc: amend Product Details manual testing table
+[33m816b106[m Doc: addamend & add evidence to Product Browsing manual testing
+[33m1ebadca[m Doc: change suffix
+[33m7f7d566[m Doc: amend & add evidence to User Authentication manual testing
+[33mba646a0[m Doc: restyle manual testing table & evidence for NAV
+[33mb78b27b[m Fix: correct default email address in settings.py
+[33ma17f9d2[m Doc: fix name of the files
+[33ma44f30d[m Doc: correct path and reduce size of gifs for NAV manual testing
+[33m2da4cf2[m Doc: fix path to Nav_Search gif
+[33mbe26b5e[m Doc: remove large files
+[33m0252432[m Doc: rename manual testing nav files & update links
+[33m153b384[m Doc: correct path to the file
+[33md5c18df[m Doc: add Navigation manual testing
+[33mc943abe[m Doc: disable MD033 and amend manual tasting tables
+[33m573cf0e[m Doc: remove inline HTML from the manual tecting table
+[33med7d939[m Doc: fix new line issue in cells the manual testing table
+[33m9386aa5[m Doc: fix numeration of planned manual testing steps inside cells.
+[33m3c85aad[m Doc: add 'back to top' links to the manual testing section of TESTING.md
+[33m98139d7[m Doc: edit Known Issues table in manual testing
+[33m505f067[m Doc: fix structural issues of testing table's for Shopping Bad and Checkout
+[33ma2ad704[m Doc: add table for manual testing evidence
+[33md5c9d99[m Doc: add links 'back to top' to TESTING.md
+[33m7799747[m Doc: add Table of Contents to TESTING.md
+[33m7e035c9[m Doc: add User Stories tesring
+[33mb7941c3[m Doc: add link to README.md to TESTING.md
+[33m31cba02[m Doc: fix md problems within README and TESTING
+[33mc7da2c3[m Docs: add user stories to testing
+[33me11cd69[m Docs: add Testing section to README
+[33m53c4846[m Docs: added link to GitHub Project
+[33m254d81d[m Feat (README): add back-to-top link
+[33mcc0f76b[m Feat (README): add E-commerce Business Model
+[33ma11a77c[m Feat (README): add Facebook Mockup page section
+[33m469e358[m Fix issue with error pages stopped displaying
+[33madb74af[m Fix error pages
+[33m9162045[m Feat: improve messages on error pages
+[33m38c9e01[m Feat (README): update Table of Contents
+[33maa8d7a6[m Feat (README): Color Scheme and Typography
+[33m833929d[m Feat (README): add Features section
+[33mda4bbc5[m Feat (README): add Technologies Used section
+[33ma49824d[m Feat (README): add Database Design
+[33m53d41bc[m Fix: remove Favourite section from My Account page
+[33m87a7789[m Fix (README): amend wireframes' pdf
+[33m65928e0[m Feat (README): add Wireframes section
+[33m01f3287[m Feat(README): add back-to-top linked to Table of Contents
+[33m770c691[m Feat(README): add to README
+[33m75bcd75[m Merge branch 'main' of https://github.com/vica781/The_Literary_Loft
+[33m141f6b4[m Feat(README): add to README
+[33mf3332fc[m Update issue templates
+[33m23bd870[m Feat(README): add Prject Purpose and Objectives
+[33m641d24c[m feat: implement newsletter signup and fix footer layout
+[33m9b2d80e[m Feat: add newsletter signup
+[33m06b3537[m Feat: add 500 error page
+[33m7be4797[m Fix: relocate 404.html
+[33m4ad4970[m Fix: add 404 handler import
+[33mefb477e[m Fix: attempt to render 404 page
+[33m667893f[m Fix: update 404 view
+[33me1e370a[m Feat: add 404 view
+[33m833c6ce[m Feat: add and style 404 error page
+[33m5b7b4b6[m Fix meta description on about.html
+[33m4db2ee0[m Collectstatic
+[33mbd51c90[m Fix/Refactor: Correct button behavior and optimize CSS for Facebook mockup page
+[33m401f41d[m Restructure templates and add Contact page
+[33m843f32a[m Rename images for Facebook mockup page
+[33mb6356aa[m Collectstatic
+[33m37ece25[m Fix: correct browser tabs' signidge
+[33mc59d229[m style: Update Facebook mockup color scheme and fix Shop Now button
+[33m7139755[m fix: remove unused elements and add Facebook mockup interactions
+[33m0286177[m feat(marketing): enhance Author Spotlight section with book covers and details
+[33m30c98e2[m Feat: add and link book mentioned in mockup Facebook page
+[33m9c6cdeb[m Feat: Add Facebook Mockup Page for The Literary Loft Marketing
+[33mf01d2a7[m Feat: update keywords selection to improve SEO rating
+[33mb0cbda6[m feat(seo): Enhance SEO by adding a comprehensive list of keywords to base.html meta tags
+[33m9da082a[m Merge branch 'main' of https://github.com/vica781/The_Literary_Loft
+[33m15f289d[m Fix: Configure Django Site framework and sitemap generation
+[33mb924cf9[m Update issue templates
+[33m094e29d[m Update models in books app for category and subcategory validation
+[33m076e344[m Fix sitemap configuration for static and book sitemaps
+[33m26f47eb[m Fix import for StaticViewSitemap in sitemap configuration
+[33m83ba25b[m Fix sitemap pagination issue by ordering BookSitemap items by updated_at
+[33m9aefc99[m fix: place robots.txt in static and serve it correctly
+[33m24390dc[m Feat:add sitemap and robots.txt for improved SEO
+[33me9884e4[m chore: update Python version to 3.12.7 for security
+[33m02c64f6[m feat: add SEO optimization across site templates
+[33m9820be5[m Fix: remove toast obstraction
+[33m2ec43b8[m Fix: remove toast notification for regestered users
+[33m2c4dc4b[m Feat: add toast notification for a visitor who wishes to favorite a book
+[33mdcf2a1a[m Feat: add CRUD functionality for staff/superuser
+[33m702f111[m Fix: change favicon ratio
+[33m7f25dfb[m Fix: resolve issue with dropdown menue on favorite page
+[33m5b0f800[m Feat: improve favorite books functionality and style
+[33m8628a20[m Feat: add favorite book functionality
+[33m8b1c716[m Style: resize book-title and book-author
+[33m3b8da80[m Feat: add book-grid, improve books' cover display
+[33m77ebbe0[m Style: add media queries to about.html
+[33mc58f86b[m Add runtime.txt to specify Python 3.12.6
+[33ma0b3315[m Fix toggle menue for about.html
+[33m9d0aca6[m Fix: delete image src from about.css
+[33ma75958e[m Collect static
+[33m955cbfc[m Style about.html elements
+[33m029c255[m Feat: add extra sections to about.html
+[33mafa9f8e[m Feat: add content to about.html
+[33mffdd0a5[m Style: add links and style to shop column
+[33ma5bc19f[m Feat: add basic footer structure
+[33ma4735eb[m Fix: correct views to improve guest checkout functionality
+[33m6e6bf11[m Feat: add guest checkout functionality
+[33mc96c611[m Feat: reaply updated sorting to order's history table
+[33mfb72387[m Feat: add password reset functionality
+[33mffee593[m Feat: add My Account page
+[33m4261fbc[m Feat: change stricture & functionality of login/register btn
+[33m65d383c[m Fix: correct spelling error in books/views.py
+[33m05ab84e[m Feat: add user name to login/logout btn
+[33macd26ed[m Fix: add orders history functionality
+[33m3e048b4[m Feat: add Order Summary to order_success.html
+[33md7e1218[m Feat: display and style order number
+[33md9b89a5[m Fix: login/logout redirect urls
+[33md1d4980[m Fix: add contries dropdown to checkout to fix input field error msg
+[33md0d0232[m Fix: resolve issue with order_success
+[33mc0316dc[m Fix: fix jQuery link
+[33maa6c622[m Feat: remove category-nav / navbar-toggle from cart.html and checkout.html
+[33mbfc8988[m Feat: add a listener to the payment forms submit event
+[33m7e9fd50[m Feat: add to the cart instance & real-time error validation
+[33me6f9cd9[m Fix: return style to buttons on cart.css
+[33m2591c41[m Feat: remove redundant class from checkout-btn
+[33mbd8405a[m Feat: add and style Stripe elements
+[33mf20c371[m Feat: add 'Continue Shopping' to cart.html
+[33mf53b65a[m Fix: amend checkout template and views to display delivery, total & card charges
+[33m7c62a32[m Feat: add checkout views and templates
+[33mee0175c[m Feat: add forms, admin and signals
+[33m152724e[m Create checkout app and models
+[33m445480d[m Start setting checkout functionality
+[33m63cc547[m Feat: update shopping bag with update and remove functionality
+[33m90476ce[m Feat: implement 'add to bag' functionality
+[33m851c9d4[m Fix: able quantity up to 10
+[33m6701f8d[m Feat: add navbar-toggle functionality to category-nav for small screens
+[33m4bdc7d1[m Style: reposition logo for small screens
+[33m64f2083[m Style: resize logo's content for small screens
+[33m8006c0b[m Style: change structure of navbar for small screens
+[33m2631e8d[m Style: adapt top-bar classes for small displays layout
+[33mbf21267[m Fix: align and center elements of header-main
+[33m10ef2a8[m Fix issue with flags display
+[33m3599825[m Fix issue with js
+[33m0a05997[m Delete extra image
+[33mdf992c7[m Feat: add books' search functionality
+[33md049b8f[m Remove book_covers from static & staticfiles
+[33mc918e96[m Collect static files
+[33m476833e[m Copy book_covers to static/images
+[33m01e2e94[m Remove duplicate images
+[33m244ed30[m Feat: add books
+[33md3e7265[m Correct subcategories for part of the books trough admin
+[33m2cbaf81[m Update requirements.txt
+[33mf543b03[m Feat: set stripe
+[33m4552aeb[m Remove sqlite3.exe
+[33m46d2515[m Copy database to PostgresSql
+[33m9ee09a0[m Fix custom_storages location
+[33m4c3d73e[m Fix custom_storages
+[33m562c78b[m Fix file structure
+[33m6341540[m Remove venv/
+[33m7239dfa[m Reinstall boto3 and chenge settings.py
+[33m90d9565[m Fix: loading env vars
+[33m0f8560b[m Change ALLOWED_HOST IN SETTINGS
+[33m0ddd5d7[m Update ALLOWED_HOSTS setting
+[33m7939305[m Update load_dotenv in settings.py
+[33m4c10435[m Add python-dotenv to requirements
+[33m823cad1[m Merge branch 'main' of https://github.com/vica781/The_Literary_Loft
+[33m454b886[m Reinstall packages without secrets
+[33m44b412b[m Reinstall packages without secrets
+[33mc76c2b8[m Collect statics
+[33mf12b84d[m Update gitignore
+[33m3a221de[m Trigger deployment on Heroku-24 stack
+[33mb07c4d7[m Remov secret key and set debug
+[33mf1f3c09[m Updated ALLOWED_HOSTS setting
+[33mcb6d043[m First attempt to deploy to Heroku
+[33m4a3afc2[m Feat: add shorter summary & 'Read more' link to book description
+[33md4f52e9[m Feat: link dropdown menu subcategories to relevant books
+[33m4b68572[m Feat: add 'Shop Now' btn to top-bar, link all 'Shop Now' btns to book_list
+[33md908f76[m Feat: add dropdown functionality to page heading/book's category
+[33m3f0f287[m Feat: fix issue with categories display in breadcrumb nav
+[33m80aee96[m Feat: add breadcrumbs to an individual book's page
+[33mfb94ea9[m Feat: add more items to non-fiction books category
+[33m9f58813[m Feat: add books to some subcategories
+[33mb5053e3[m Resolve: fix issue with underscore & hyphen in Non-Fiction category display
+[33md25e54f[m Feat: add breadcrumb navigation
+[33m47ca428[m Feat: organise books in books_list.html by categories
+[33mf29cd4b[m Style: add grid and style to book_list.html
+[33ma513f94[m Style: install CKeditor-5 to style book infor text
+[33me587053[m Fix: resolve issue with book cover img displaying in book_details.html
+[33me27f7b2[m Update: change Book model add extra fields
+[33mb2fff53[m Install Pillow set up bases for shop and book details
+[33m76740a9[m Admin: register Category, Subcategory and Book models in admin.py
+[33m30c8118[m Cleanup: update views.py reorganize code and improve structure
+[33m0302a07[m Feat: add models for Category, Subcategory, Book
+[33m7a1ccbb[m Relocate folders in directory
+[33mcca0604[m Update structure of directory
+[33m4123df4[m Feat: add images
+[33m595c5d7[m Feat: add flag images to currency-select
+[33m123d71f[m Feat: add logout functionality & user notifications
+[33m629ede3[m Feat: check functionality of register form & add redirect to login page
+[33m17427fc[m Style: add style to register page
+[33mac905aa[m Feat: create basic template for register page
+[33mcbc4278[m Feat: add tab titles to existing pages
+[33m0351287[m Feat: add favicon
+[33mcabde97[m Style: add style to login page
+[33m4f43be4[m Feat: add draft login page
+[33ma699f4a[m Feat: add page name to browser tab
+[33mef03b95[m Style: change hero image
+[33m349223b[m Feat: add cart count functionality
+[33maa65482[m Feat: restructure categories nav, add dropdown items
+[33m1b0113d[m Feat: link logo and titles to index.html
+[33m97d9a5f[m Fix: align elements in collapse menue
+[33me04491a[m Style: add classes to make top-bar responsive
+[33m067d838[m Feat: Add images to the project, change html entity for scroll-bar
+[33m896396c[m Feat: change hero-section add banner with scroll-indicator to improve UI
+[33mdfeda38[m Feat: restyle hero_section
+[33m30172e5[m Feat: add hero_section to index.html
+[33mf5c120b[m Feat: add header to base.html
+[33md5b120b[m Feat: add books app and templates
+[33m90a27ef[m Feat: add blocks to project's base.html
+[33m978d2cb[m Feat: add allauth and base templates
+[33mbdcbd0d[m Merge branch 'main' of https://github.com/vica781/The_Literary_Loft
+[33m2cd4a4e[m Feat: setup allauth
+[33mbca30e4[m Update issue templates
+[33mf1aca70[m Initial commit with Django setup
+[33m8b00e6c[m Initial commit
