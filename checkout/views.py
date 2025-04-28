@@ -5,8 +5,6 @@ from django.http import JsonResponse, HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
-# from django.contrib.auth.forms import UserChangeForm
-
 import stripe
 import uuid
 
@@ -21,87 +19,93 @@ def calculate_order_amount(request):
     return int(total * 100)  # Convert GBP to pence
 
 def handle_successful_payment_intent(payment_intent):
-    # Placeholder for processing logic when a payment is successful
     print(f"PaymentIntent {payment_intent['id']} was successful!")
-    # Implement additional logic like updating order status, sending confirmation emails, etc.
 
 def checkout(request):
     cart = request.session.get('cart', {})
     if not cart:
-        messages.error(request, "There is nothing in your bag at the moment. Please, add items to your bag before checking out.")
+        messages.error(request, "Your cart is empty. Please add items before checkout.")
         return redirect('books:book_list')
 
     if request.method == 'POST':
         form = OrderForm(request.POST)
         if form.is_valid():
-            order = form.save(commit=False)
-            # handle both authenticated and guest users
-            if request.user.is_authenticated:
-                order.user = request.user
-            else:
-                order.guest_email = form.cleaned_data['email']
+            try:
+                order = form.save(commit=False)
+                if request.user.is_authenticated:
+                    order.user = request.user
+                else:
+                    order.guest_email = form.cleaned_data['email']
                 
-        if not request.user.is_authenticated:
-            request.session['guest_order_number'] = str(order.order_number)
-                
-        total = calculate_order_amount(request) / 100  # Convert back to pounds
-        order.order_total = total
+                total = calculate_order_amount(request) / 100
+                order.order_total = total
 
-        # Calculate delivery cost as a percentage of the order total
-        if total < settings.FREE_DELIVERY_THRESHOLD:
-            delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
+                if total < settings.FREE_DELIVERY_THRESHOLD:
+                    delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
+                else:
+                    delivery_cost = 0
+
+                order.delivery_cost = delivery_cost
+                order.grand_total = total + delivery_cost
+                order.order_number = str(uuid.uuid4())
+                order.save()
+
+                for book_id, item in cart.items():
+                    book = get_object_or_404(Book, id=int(book_id))
+                    OrderItem.objects.create(
+                        order=order,
+                        book=book,
+                        quantity=item['quantity'],
+                        price=item['price']
+                    )
+
+                if not request.user.is_authenticated:
+                    request.session['guest_order_number'] = order.order_number
+
+                request.session['cart'] = {}
+                messages.success(request, "Order placed successfully!")
+                return redirect('checkout:order_success', order_number=order.order_number)
+            
+            except Exception as e:
+                messages.error(request, f"An error occurred: {str(e)}")
+                return redirect('checkout:checkout')
         else:
-            delivery_cost = 0
-
-        order.delivery_cost = delivery_cost
-        order.grand_total = total + delivery_cost
-        order.order_number = str(uuid.uuid4())
-        order.save()
-
-        for book_id, item in cart.items():
-            book = get_object_or_404(Book, id=int(book_id))
-            OrderItem.objects.create(
-                order=order,
-                book=book,
-                quantity=item['quantity'],
-                price=item['price']
-            )
-
-        # Clear the cart after a successful order
-        request.session['cart'] = {}
-        messages.success(request, "Order placed successfully.")
-
-        # Redirect to the order success page with the order number
-        return redirect('checkout:order_success', order_number=order.order_number)
+            # Handle form errors with TOAST messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{form.fields[field].label or field}: {error}")
     
+    # GET request or form invalid
     form = OrderForm()
+    total = calculate_order_amount(request) / 100
+    delivery_cost = 0
 
-    # Calculate total and create PaymentIntent
-    total = calculate_order_amount(request) / 100  # Convert back to pounds
-    delivery_cost = 0  # Default to 0 unless conditions require otherwise
-
-    # If the total is less than the free delivery threshold, calculate the delivery cost as a percentage
     if total < settings.FREE_DELIVERY_THRESHOLD:
-        delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100  # Calculate as percentage
+        delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
 
     grand_total = total + delivery_cost
 
     try:
         stripe.api_key = settings.STRIPE_SECRET_KEY
         intent = stripe.PaymentIntent.create(
-            amount=int(grand_total * 100),  # Convert back to pence for Stripe
+            amount=int(grand_total * 100),
             currency=settings.STRIPE_CURRENCY,
         )
-    except stripe.error.StripeError:
-        messages.error(request, "An error occurred while creating the payment intent.")
+    except stripe.error.StripeError as e:
+        messages.error(request, f"Payment processing error: {str(e)}")
         return redirect('checkout:checkout')
 
     context = {
         'order_form': form,
-        'cart_items': [{'book': get_object_or_404(Book, id=int(book_id)), 'quantity': item['quantity'], 'price': item['price'], 'total': item['quantity'] * float(item['price'])} for book_id, item in cart.items()],
+        'cart_items': [{
+            'book': get_object_or_404(Book, id=int(book_id)), 
+            'quantity': item['quantity'], 
+            'price': item['price'], 
+            'total': item['quantity'] * float(item['price'])
+        } for book_id, item in cart.items()],
         'total': total,
-        'delivery': delivery_cost,  # Already in pounds
-        'grand_total': grand_total,  # Already in pounds
+        'delivery': delivery_cost,
+        'grand_total': grand_total,
         'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
         'client_secret': intent.client_secret,
     }
@@ -119,12 +123,11 @@ def cache_checkout_data(request):
         stripe.PaymentIntent.modify(
             payment_intent_id,
             metadata={
-                'user': request.user.id,
+                'user': request.user.id if request.user.is_authenticated else 'guest',
                 'save_info': save_info,
                 'cart': str(request.session.get('cart', {}))
             }
         )
-
         return JsonResponse({'success': True})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
@@ -140,92 +143,95 @@ def stripe_webhook(request):
             payload, sig_header, settings.STRIPE_WH_SECRET
         )
     except ValueError:
-        return HttpResponse(status=400)  # Invalid payload
+        return HttpResponse(status=400)
     except stripe.error.SignatureVerificationError:
-        return HttpResponse(status=400)  # Invalid signature
+        return HttpResponse(status=400)
 
-    # Handle the event
     if event['type'] == 'payment_intent.succeeded':
         payment_intent = event['data']['object']
         handle_successful_payment_intent(payment_intent)
 
     return HttpResponse(status=200)
 
-# ORDER-RELATED VIEWS
 def order_success(request, order_number):
-    order = get_object_or_404(Order, order_number=order_number)
-    
-    if request.user.is_authenticated:
-        if order.user != request.user:
-            messages.error(request, "You don't have permission to view this order.")
-            return redirect('books:index')  
-    else:
-        # For guest users, check if the order number is in the session
-        if not order_number:  
-            messages.error(request, "You don't have permission to view this order.")
-            return redirect('books:index')  
-    
-    # Clear the cart
-    if 'cart' in request.session:
-        del request.session['cart']
-    
-    template = 'checkout/order_success.html'
-    context = {
-        'order': order,
-    }
-    
-    return render(request, template, context)
+    try:
+        order = get_object_or_404(Order, order_number=order_number)
+        
+        if request.user.is_authenticated:
+            if order.user != request.user:
+                messages.error(request, "You don't have permission to view this order.")
+                return redirect('books:index')
+        else:
+            if 'guest_order_number' not in request.session or request.session['guest_order_number'] != order_number:
+                messages.error(request, "You don't have permission to view this order.")
+                return redirect('books:index')
+        
+        if 'cart' in request.session:
+            del request.session['cart']
+        
+        return render(request, 'checkout/order_success.html', {'order': order})
+    except Exception as e:
+        messages.error(request, f"Error retrieving order: {str(e)}")
+        return redirect('books:index')
 
 @login_required
 def order_history(request):
-    sort_by = request.GET.get('sort_by', 'date')
-    sort_order = request.GET.get('sort_order', 'desc')
-    
-    if request.user.is_authenticated:
-        orders = Order.objects.filter(user=request.user)
-    else:
-        # For guest users, retrieve orders based on the stored order number
-        guest_order_number = request.session.get('guest_order_number')
-        orders = Order.objects.filter(order_number=guest_order_number) if guest_order_number else Order.objects.none()
+    try:
+        sort_by = request.GET.get('sort_by', 'date')
+        sort_order = request.GET.get('sort_order', 'desc')
         
-    if sort_order == 'asc':
-        orders = Order.objects.filter(user=request.user).order_by(sort_by)
-    else:
-        orders = Order.objects.filter(user=request.user).order_by(f'-{sort_by}')
+        if sort_order == 'asc':
+            orders = Order.objects.filter(user=request.user).order_by(sort_by)
+        else:
+            orders = Order.objects.filter(user=request.user).order_by(f'-{sort_by}')
 
-    context = {
-        'orders': orders,
-        'sort_by': sort_by,
-        'sort_order': sort_order,
-    }
-
-    return render(request, 'checkout/order_history.html', context)
+        return render(request, 'checkout/order_history.html', {
+            'orders': orders,
+            'sort_by': sort_by,
+            'sort_order': sort_order,
+        })
+    except Exception as e:
+        messages.error(request, f"Error retrieving order history: {str(e)}")
+        return redirect('checkout:my_account')
 
 @login_required
 def my_account(request):
-    orders = Order.objects.filter(user=request.user).order_by('-date')
-    form = CustomUserChangeForm(instance=request.user)
-    context = {
-        'orders': orders,
-        'form': form,
-    }
-    return render(request, 'checkout/my_account.html', context)
+    try:
+        orders = Order.objects.filter(user=request.user).order_by('-date')[:5]
+        form = CustomUserChangeForm(instance=request.user)
+        return render(request, 'checkout/my_account.html', {
+            'orders': orders,
+            'form': form,
+        })
+    except Exception as e:
+        messages.error(request, f"Error loading account page: {str(e)}")
+        return redirect('books:index')
 
 @login_required
 def edit_profile(request):
-    if request.method == 'POST':
-        form = CustomUserChangeForm(request.POST, instance=request.user)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Your profile has been updated successfully.')
-            return redirect('checkout:my_account')
-    else:
-        form = CustomUserChangeForm(instance=request.user)
+    try:
+        if request.method == 'POST':
+            form = CustomUserChangeForm(request.POST, instance=request.user)
+            if form.is_valid():
+                form.save()
+                messages.success(request, 'Profile updated successfully!')
+                return redirect('checkout:my_account')
+            else:
+                for field, errors in form.errors.items():
+                    for error in errors:
+                        messages.error(request, f"{form.fields[field].label or field}: {error}")
+        else:
+            form = CustomUserChangeForm(instance=request.user)
 
-    orders = Order.objects.filter(user=request.user).order_by('-date')
-    return render(request, 'checkout/my_account.html', {'form': form, 'orders': orders})
+        orders = Order.objects.filter(user=request.user).order_by('-date')[:5]
+        return render(request, 'checkout/my_account.html', {
+            'form': form,
+            'orders': orders,
+        })
+    except Exception as e:
+        messages.error(request, f"Error updating profile: {str(e)}")
+        return redirect('checkout:my_account')
 
-# Add a new view for guest order lookup
 def guest_order_lookup(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -236,5 +242,7 @@ def guest_order_lookup(request):
             return render(request, 'checkout/guest_order_detail.html', {'order': order})
         except Order.DoesNotExist:
             messages.error(request, "No order found with the provided details.")
+        except Exception as e:
+            messages.error(request, f"Error retrieving order: {str(e)}")
     
     return render(request, 'checkout/guest_order_lookup.html')
