@@ -31,7 +31,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEVELOPMENT' in os.environ
 
-ALLOWED_HOSTS = ['the-literary-loft-a4b6116b3a17.herokuapp.com', 'literary-loft-v2-app-6d53aaeb39dd.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'the-literary-loft-a4b6116b3a17.herokuapp.com', 
+    'literary-loft-v2-app-6d53aaeb39dd.herokuapp.com', 
+    'localhost', 
+    '127.0.0.1'
+    ]
 
 # Application definition
 INSTALLED_APPS = [
@@ -116,6 +121,11 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # Your app password
 
 # Default email settings
 DEFAULT_FROM_EMAIL = 'theliteraryloft.books@gmail.com'
+
+# Account settings
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_SSL_REDIRECT = True
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
