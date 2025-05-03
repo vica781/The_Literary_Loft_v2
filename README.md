@@ -888,6 +888,12 @@ The testing details are provided in a separate file [TESTING.md](TESTING.md).
 
 [Back to top ⬆](#table-of-contents)
 
+## Bugs and known issues
+
+After careful and detailed testing and implemented bugfixes, there are no bugs in the code. However, the following known issues were identified during testing:
+
+- Because of using the Gmail API as a backend for sending emails, hotmail users may experience issues with receiving emails.
+
 ## Deployment
 
 [Back to top ⬆](#table-of-contents)
@@ -895,3 +901,4 @@ The testing details are provided in a separate file [TESTING.md](TESTING.md).
 ## Credits
 
 [Back to top ⬆](#table-of-contents)
+
