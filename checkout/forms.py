@@ -4,6 +4,8 @@ import json
 import os
 from django.conf import settings
 import re
+from django.contrib.auth.models import User
+
 
 class OrderForm(forms.ModelForm):
     country = forms.ChoiceField(
@@ -65,3 +67,52 @@ class OrderForm(forms.ModelForm):
                 self.fields[field].widget.attrs['placeholder'] = placeholder
                 self.fields[field].widget.attrs['class'] = 'stripe-style-input'
                 self.fields[field].label = False
+                
+                
+class ReadOnlyEmailWidget(forms.TextInput):
+    def __init__(self, attrs=None):
+        default_attrs = {'readonly': 'readonly'}
+        if attrs:
+            default_attrs.update(attrs)
+        super().__init__(default_attrs)
+        
+        
+class CustomUserChangeForm(forms.ModelForm):
+    email = forms.EmailField(widget=ReadOnlyEmailWidget())
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+        widgets = {
+            'first_name': forms.TextInput(attrs={'class': 'form-control'}),
+            'last_name': forms.TextInput(attrs={'class': 'form-control'}),
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['first_name'].widget.attrs.update({
+            'placeholder': 'First Name',
+            'autofocus': True,
+        })
+        self.fields['last_name'].widget.attrs.update({
+            'placeholder': 'Last Name',
+        })
+        self.fields['email'].widget.attrs.update({
+            'class': 'form-control',
+        })
+        self.fields['email'].help_text = 'If you need to change your email address, please contact support.'
+
+    # Validators
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        if first_name and len(first_name.strip()) < 2:
+            raise forms.ValidationError('First name must be at least 2 characters long.')
+        return first_name
+
+    def clean_last_name(self):
+        last_name = self.cleaned_data.get('last_name')
+        if last_name and len(last_name.strip()) < 2:
+            raise forms.ValidationError('Last name must be at least 2 characters long.')
+        return last_name   
+
+
