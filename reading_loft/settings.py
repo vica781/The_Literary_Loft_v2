@@ -122,11 +122,6 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')  # Your app password
 # Default email settings
 DEFAULT_FROM_EMAIL = 'theliteraryloft.books@gmail.com'
 
-# Account settings
-ACCOUNT_DEFAULT_HTTP_PROTOCOL = 'https'
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-SECURE_SSL_REDIRECT = True
-
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
