@@ -901,4 +901,3 @@ After careful and detailed testing and implemented bugfixes, there are no bugs i
 ## Credits
 
 [Back to top ⬆](#table-of-contents)
-
