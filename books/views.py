@@ -1,29 +1,33 @@
+# Standard Library Imports
+
+# Django Imports
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, get_user_model
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.decorators.http import require_POST
+from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
 from django.db.models import Q
-from .models import Book, Category, Subcategory
-from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
-from django.contrib.auth import get_user_model
-from .forms import BookForm
-from django.shortcuts import render
 from django.core.mail import send_mail
-from django.conf import settings
-from .models import Newsletter
 from django.core.validators import validate_email
-from django.core.exceptions import ValidationError  
-from django.http import HttpResponse
+from django.core.exceptions import ValidationError
+from django.conf import settings
+
+# Local App Imports
+from .models import Book, Category, Subcategory, Newsletter
+from .forms import BookForm
 
 
-# Check if the user is an admin (STAFF)
+User = get_user_model()
+
+# Check if the user is a staff admin
 def is_admin(user):
     return user.is_staff
 
-# ADD BOOK view
+
+# ==================== Admin Book Management ====================
+
 @user_passes_test(is_admin)
 def add_book(request):
     categories = Category.objects.all()
@@ -34,65 +38,51 @@ def add_book(request):
             form.save()
             messages.success(request, "Book added successfully!")
             return redirect('books:book_list')
-        else:
-            messages.error(request, "There was an error adding the book. Please check the form.")
+        messages.error(request, "There was an error adding the book. Please check the form.")
     else:
         form = BookForm()
-    
-    context = {
+    return render(request, 'books/add_book.html', {
         'form': form,
         'categories': categories,
         'subcategories': subcategories,
-    }
-    return render(request, 'books/add_book.html', context)
+    })
 
-# EDIT BOOK view
+
 @user_passes_test(is_admin)
 def edit_book(request, id):
     book = get_object_or_404(Book, id=id)
-    categories = Category.objects.all()
-    subcategories = Subcategory.objects.all()
     if request.method == 'POST':
         form = BookForm(request.POST, request.FILES, instance=book)
         if form.is_valid():
             form.save()
             messages.success(request, "Book updated successfully!")
             return redirect('books:book_list')
-        else:
-            messages.error(request, "There was an error updating the book. Please check the form.")
+        messages.error(request, "There was an error updating the book.")
     else:
         form = BookForm(instance=book)
-
-    context = {
+    return render(request, 'books/edit_book.html', {
         'form': form,
         'book': book,
-        'categories': categories,
-        'subcategories': subcategories,
-    }
-    return render(request, 'books/edit_book.html', context)
+        'categories': Category.objects.all(),
+        'subcategories': Subcategory.objects.all(),
+    })
 
-# DELETE BOOK view
+
 @user_passes_test(is_admin)
 def delete_book(request, id):
     book = get_object_or_404(Book, id=id)
     if request.method == 'POST':
-        confirmation = request.POST.get('confirmation', '').strip()  # Strip whitespace
+        confirmation = request.POST.get('confirmation', '').strip()
         if confirmation == book.title:
             book.delete()
-            messages.success(request, f"Book '{book.title}' has been deleted successfully.")
-            return redirect('books:book_list')  # Redirect to the book list page after deletion
-        else:
-            messages.error(request, "Confirmation failed. The book title entered did not match.")
-
-    context = {
-        'book': book
-    }
-    return render(request, 'books/delete_book.html', context)
+            messages.success(request, f"Book '{book.title}' has been deleted.")
+            return redirect('books:book_list')
+        messages.error(request, "Confirmation failed. Title did not match.")
+    return render(request, 'books/delete_book.html', {'book': book})
 
 
-User = get_user_model()
+# ==================== User Authentication ====================
 
-# USER REGISTRATION / LOGIN / LOGOUT
 def register(request):
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
@@ -100,152 +90,138 @@ def register(request):
         email = request.POST.get('email')
         password = request.POST.get('password')
         confirm_password = request.POST.get('confirm_password')
-        
+
         if password != confirm_password:
-            messages.error(request, "Passwords do not match")
+            messages.error(request, "Passwords do not match.")
             return render(request, 'accounts/register.html')
-        
+
         if User.objects.filter(email=email).exists():
-            messages.error(request, "Email already registered")
+            messages.error(request, "Email is already registered.")
             return render(request, 'accounts/register.html')
-        
+
         user = User.objects.create_user(username=email, email=email, password=password)
         user.first_name = first_name
         user.last_name = last_name
         user.save()
-        
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
+
         login(request, user)
-        
-        messages.success(request, f"Account created successfully! You are logged in as {user.username}")
+        messages.success(request, f"Account created! Logged in as {user.username}")
         return redirect('books:index')
-    
+
     return render(request, 'accounts/register.html')
+
 
 def user_login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
         user = authenticate(request, username=email, password=password)
-        if user is not None:
+        if user:
             login(request, user)
-            messages.success(request, f"Logged in successfully as {user.first_name}")
-            return redirect(reverse('books:index'))
-        else:
-            messages.error(request, "Invalid email or password")
+            messages.success(request, f"Welcome back, {user.first_name}!")
+            return redirect('books:index')
+        messages.error(request, "Invalid email or password.")
     return render(request, 'accounts/login.html')
+
 
 def user_logout(request):
     logout(request)
-    messages.success(request, "You have been logged out successfully.")
+    messages.success(request, "You have been logged out.")
     return redirect('books:index')
 
-# HOME PAGE / ABOUT / CONTACT
+
+# ==================== Static Pages ====================
+
 def index(request):
-    print("Entering index view")
-    """ A view that displays the home page """    
     return render(request, 'books/index.html')
 
 def about(request):
-    """ A view that displays the about page """
     return render(request, 'books/about.html')
 
 def contact(request):
-    """ A view that displays the contact page """
     return render(request, 'books/contact.html')
 
-# BOOK LIST / BOOK DETAIL
+
+# ==================== Book Views ====================
+
 def book_list(request, category_slug=None, subcategory_slug=None):
     books = Book.objects.all()
-    categories = Category.objects.all()
-    category = None
-    subcategory = None
+    category = subcategory = None
 
     if subcategory_slug:
         subcategory = get_object_or_404(Subcategory, slug=subcategory_slug)
         books = books.filter(subcategory=subcategory)
-    
     elif category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         books = books.filter(subcategory__category=category)
 
-    context = {
+    return render(request, 'books/book_list.html', {
         'books': books,
-        'categories': categories,
+        'categories': Category.objects.all(),
         'category': category,
         'subcategory': subcategory,
-    }
-    return render(request, 'books/book_list.html', context)
+    })
+
 
 @login_required
 def favorites_list(request):
-    favorite_books = request.user.favorite_books.all()
-    return render(request, 'books/favorites.html', {'favorite_books': favorite_books})
+    return render(request, 'books/favorites.html', {
+        'favorite_books': request.user.favorite_books.all()
+    })
 
-# SEARCH BOOKS
+
+def book_detail(request, id):
+    book = get_object_or_404(Book, id=id)
+    return render(request, 'books/book_details.html', {'book': book})
+
+
+# ==================== Search ====================
+
 def search_suggestions(request):
     query = request.GET.get('q', '')
-    if query:
-        books = Book.objects.filter(
-            Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query) | 
-            Q(subcategory__name__icontains=query)
-        )[:15]  # Limit to 15 suggestions
-        suggestions = [{'id': book.id, 'title': book.title, 'author': book.author} for book in books]
-        return JsonResponse(suggestions, safe=False)
-    return JsonResponse([], safe=False)
+    books = Book.objects.filter(
+        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query) | Q(subcategory__name__icontains=query)
+    )[:15]
+    suggestions = [{'id': b.id, 'title': b.title, 'author': b.author} for b in books]
+    return JsonResponse(suggestions, safe=False)
+
 
 def search_books(request):
     query = request.GET.get('q', '')
     books = Book.objects.filter(
         Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
     ) if query else Book.objects.all()
-    
-    context = {
-        'books': books,
-        'query': query
-    }
-    return render(request, 'books/search_results.html', context)
-       
-def book_detail(request, id):
-    book = get_object_or_404(Book, id=id)
-    return render(request, 'books/book_details.html', {'book': book})
+    return render(request, 'books/search_results.html', {'books': books, 'query': query})
 
-# CART FUNCTIONALITY
+
+# ==================== Cart ====================
+
 def add_to_cart(request, book_id):
-    # Ensure session exists
     if not request.session.session_key:
         request.session.create()
-    
+
     book = get_object_or_404(Book, id=book_id)
-    bag = request.session.get('bag', {})
     quantity = int(request.POST.get('quantity', 1))
-    
-    print(f"Adding book ID {book_id} to bag")
-    print(f"Initial bag contents: {bag}")
-    
+    bag = request.session.get('bag', {})
+
     if str(book_id) in bag:
         bag[str(book_id)]['quantity'] += quantity
     else:
         bag[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}
-    
-    # Save to session and force save
+
     request.session['bag'] = bag
     request.session.modified = True
-    
-    print(f"Added to bag - Session ID: {request.session.session_key}")
-    print(f"Updated bag contents: {request.session.get('bag', {})}")
-    
-    messages.success(request, f'Added {book.title} to your bag')
+
+    messages.success(request, f'Added {book.title} to your bag.')
     return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
 
 
 def view_cart(request):
-    print(f"View cart - Session ID: {request.session.session_key}")
-    print(f"Current bag contents: {request.session.get('bag', {})}")
-    bag = request.session.get('bag', {})  
+    bag = request.session.get('bag', {})
     cart_items = []
     total = 0
-    for book_id, item in bag.items():  
+
+    for book_id, item in bag.items():
         book = Book.objects.get(id=int(book_id))
         item_total = item['quantity'] * float(item['price'])
         total += item_total
@@ -255,40 +231,40 @@ def view_cart(request):
             'price': item['price'],
             'total': item_total
         })
+
     return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total': total})
+
 
 def update_cart(request):
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
         quantity = int(request.POST.get('quantity'))
-        
-        bag = request.session.get('bag', {})  
-        
-        if book_id in bag:  
+        bag = request.session.get('bag', {})
+
+        if book_id in bag:
             if quantity > 0:
-                bag[book_id]['quantity'] = quantity  
-                messages.success(request, "Cart updated successfully.")
+                bag[book_id]['quantity'] = quantity
+                messages.success(request, "Cart updated.")
             else:
-                del bag[book_id]  
-                messages.success(request, "Item removed from cart.")
-        
-        request.session['bag'] = bag  
+                del bag[book_id]
+                messages.success(request, "Item removed.")
+        request.session['bag'] = bag
     return redirect('books:view_cart')
+
 
 def remove_from_cart(request):
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
-        
-        bag = request.session.get('bag', {})  
-        
-        if book_id in bag:  
-            del bag[book_id]  
+        bag = request.session.get('bag', {})
+        if book_id in bag:
+            del bag[book_id]
             messages.success(request, "Item removed from cart.")
-        
-        request.session['bag'] = bag  
+        request.session['bag'] = bag
     return redirect('books:view_cart')
 
-# FAVORITE BOOKS
+
+# ==================== Favorites ====================
+
 @require_POST
 @login_required
 def toggle_favorite(request, book_id):
@@ -300,27 +276,29 @@ def toggle_favorite(request, book_id):
     else:
         book.favorited_by.add(user)
         is_favorite = True
-    
-    # Get the new favorite count for the user
-    favorite_count = user.favorite_books.count()
-    
-    return JsonResponse({'is_favorite': is_favorite, 'favorite_count': favorite_count})
+    return JsonResponse({
+        'is_favorite': is_favorite,
+        'favorite_count': user.favorite_books.count()
+    })
 
-# MARKETING 
+
+# ==================== Marketing Page ====================
+
 def facebook_mockup(request):
-    book = Book.objects.get(title="Tomorrow, and Tomorrow, and Tomorrow")        
-    # Get Donna Tartt's books
-    secret_history = Book.objects.get(title="The Secret History")
-    little_friend = Book.objects.get(title="The Little Friend")
-    goldfinch = Book.objects.get(title="The Goldfinch")
-    
-    context = {
+    book = get_object_or_404(Book, title="Tomorrow, and Tomorrow, and Tomorrow")
+    secret_history = get_object_or_404(Book, title="The Secret History")
+    little_friend = get_object_or_404(Book, title="The Little Friend")
+    goldfinch = get_object_or_404(Book, title="The Goldfinch")
+
+    return render(request, 'marketing/facebook_mockup_page.html', {
         'book': book,
         'secret_history': secret_history,
         'little_friend': little_friend,
         'goldfinch': goldfinch,
-    }
-    return render(request, 'marketing/facebook_mockup_page.html', context)
+    })
+
+
+# ==================== Error Pages ====================
 
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
@@ -328,62 +306,39 @@ def custom_404_view(request, exception):
 def custom_500_view(request):
     return render(request, '500.html', status=500)
 
-# NEWSLETTER SIGNUP VIEW
+
+# ==================== Newsletter Signup ====================
+
 def newsletter_signup(request):
     if request.method == 'POST':
         email = request.POST.get('newsletter-email')
-        print(f"Received email: {email}")  # Debug print
-        
+
         if not email:
-            print("No email provided")  # Debug print
-            return JsonResponse({
-                'status': 'error',
-                'message': 'Please provide an email address.'
-            })
-            
+            return JsonResponse({'status': 'error', 'message': 'Please provide an email address.'})
+
         try:
-            # Check if email already exists
-            if Newsletter.objects.filter(email=email).exists():
-                print(f"Email {email} already exists")  # Debug print
-                return JsonResponse({
-                    'status': 'error',
-                    'message': 'This email is already subscribed to our newsletter.'
-                })
-            
-            # Create new subscriber
-            Newsletter.objects.create(email=email)
-            print(f"Created new subscription for {email}")  # Debug print
-            
-            return JsonResponse({
-                'status': 'success',
-                'message': 'Successfully subscribed to our newsletter!'
-            })
-            
-        except Exception as e:
-            print(f"Error: {str(e)}")  # Debug print
-            return JsonResponse({
-                'status': 'error',
-                'message': 'An error occurred. Please try again.'
-            })
-    
-    return JsonResponse({
-        'status': 'error',
-        'message': 'Invalid request method.'
-    })
-    
+            validate_email(email)
+        except ValidationError:
+            return JsonResponse({'status': 'error', 'message': 'Invalid email address.'})
+
+        if Newsletter.objects.filter(email=email).exists():
+            return JsonResponse({'status': 'error', 'message': 'This email is already subscribed.'})
+
+        Newsletter.objects.create(email=email)
+        return JsonResponse({'status': 'success', 'message': 'Successfully subscribed to the newsletter!'})
+
+    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+
+
+# ==================== Debug ====================
+
+@user_passes_test(is_admin)
 def debug_session(request):
-    """A debug view to examine the session data"""
+    """Debug view to inspect session data (admin only)"""
     if not request.session.session_key:
         request.session.create()
-        
-    session_data = dict(request.session)
-    
-    output = "<h1>Session Debug</h1>"
-    output += f"<p><strong>Session ID:</strong> {request.session.session_key}</p>"
-    output += "<h2>All Session Data:</h2>"
-    output += "<ul>"
-    for key, value in session_data.items():
+    output = f"<h1>Session ID: {request.session.session_key}</h1><ul>"
+    for key, value in dict(request.session).items():
         output += f"<li><strong>{key}:</strong> {value}</li>"
     output += "</ul>"
-    
     return HttpResponse(output)
