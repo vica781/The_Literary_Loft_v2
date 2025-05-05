@@ -73,7 +73,6 @@ def checkout(request):
                     price=item['price']
                 )
 
-            # ✅ Send confirmation email to guest or logged-in user
             recipient_email = order.email
             send_order_confirmation_email(order, recipient_email)
 
@@ -87,6 +86,62 @@ def checkout(request):
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{form.fields[field].label or field}: {error}")
+
+    # ✅ GET request handling added below
+    if request.user.is_authenticated:
+        try:
+            if hasattr(request.user, 'profile'):
+                profile = request.user.profile
+                initial_data = {
+                    'full_name': profile.default_full_name,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'county': profile.default_county,
+                    'email': request.user.email,
+                }
+                form = OrderForm(initial=initial_data)
+            else:
+                form = OrderForm(initial={'email': request.user.email})
+        except Exception:
+            form = OrderForm(initial={'email': request.user.email})
+    else:
+        form = OrderForm()
+
+    total = calculate_order_amount(request) / 100
+    delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100 if total < settings.FREE_DELIVERY_THRESHOLD else 0
+    grand_total = total + delivery_cost
+
+    try:
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        intent = stripe.PaymentIntent.create(
+            amount=int(grand_total * 100),
+            currency=settings.STRIPE_CURRENCY,
+        )
+    except stripe.error.StripeError as e:
+        messages.error(request, f"Payment processing error: {str(e)}")
+        return redirect('checkout:checkout')
+
+    context = {
+        'order_form': form,
+        'cart_items': [{
+            'book': get_object_or_404(Book, id=int(book_id)),
+            'quantity': item['quantity'],
+            'price': item['price'],
+            'total': item['quantity'] * float(item['price'])
+        } for book_id, item in cart.items()],
+        'total': total,
+        'delivery': delivery_cost,
+        'grand_total': grand_total,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': intent.client_secret,
+    }
+
+    return render(request, 'checkout/checkout.html', context)
+
 
 @require_POST
 @csrf_exempt
@@ -107,6 +162,7 @@ def cache_checkout_data(request):
         return JsonResponse({'success': True})
     except Exception as e:
         return JsonResponse({'error': str(e)}, status=400)
+
 
 @csrf_exempt
 def stripe_webhook(request):
@@ -129,6 +185,7 @@ def stripe_webhook(request):
 
     return HttpResponse(status=200)
 
+
 def order_success(request, order_number):
     try:
         order = get_object_or_404(Order, order_number=order_number)
@@ -150,6 +207,7 @@ def order_success(request, order_number):
         messages.error(request, f"Error retrieving order: {str(e)}")
         return redirect('books:index')
 
+
 @login_required
 def order_history(request):
     try:
@@ -170,6 +228,7 @@ def order_history(request):
         messages.error(request, f"Error retrieving order history: {str(e)}")
         return redirect('checkout:my_account')
 
+
 @login_required
 def my_account(request):
     try:
@@ -182,6 +241,7 @@ def my_account(request):
     except Exception as e:
         messages.error(request, f"Error loading account page: {str(e)}")
         return redirect('books:index')
+
 
 @login_required
 def edit_profile(request):
@@ -207,6 +267,7 @@ def edit_profile(request):
     except Exception as e:
         messages.error(request, f"Error updating profile: {str(e)}")
         return redirect('checkout:my_account')
+
 
 def guest_order_lookup(request):
     if request.method == 'POST':
