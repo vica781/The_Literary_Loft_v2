@@ -1,0 +1,11 @@
+Thank you for your order, {{ order.full_name }}!
+Your order number is: {{ order.order_number }}
+
+Items:
+{% for item in order.items.all %}
+- {{ item.quantity }} x {{ item.book.title }} - £{{ item.price }}
+{% endfor %}
+
+Total: £{{ order.grand_total }}
+
+If you have any questions, reply to this email or contact us at {{ contact_email }}.

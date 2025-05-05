@@ -1,0 +1,12 @@
+<h2>Thank you for your order, {{ order.full_name }}!</h2>
+<p>Your order number is: <strong>{{ order.order_number }}</strong></p>
+
+<ul>
+{% for item in order.items.all %}
+    <li>{{ item.quantity }} x {{ item.book.title }} - £{{ item.price }}</li>
+{% endfor %}
+</ul>
+
+<p><strong>Total:</strong> £{{ order.grand_total }}</p>
+
+<p>If you have any questions, reply to this email or contact us at {{ contact_email }}.</p>
