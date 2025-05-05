@@ -211,7 +211,7 @@ def book_detail(request, id):
 # CART FUNCTIONALITY
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    bag = request.session.get('bag', {})  
+    bag = request.session.get('bag', {})  # Changed from 'cart' to 'bag'
     quantity = int(request.POST.get('quantity', 1))
 
     if str(book_id) in bag:  
@@ -219,11 +219,15 @@ def add_to_cart(request, book_id):
     else:
         bag[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}  
 
-    request.session['bag'] = bag  
+    request.session['bag'] = bag
+    print(f"Added to bag - Session ID: {request.session.session_key}")
+    print(f"Current bag contents: {request.session.get('bag', {})}")
     messages.success(request, f'Added {book.title} to your bag')
     return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
 
 def view_cart(request):
+    print(f"View cart - Session ID: {request.session.session_key}")
+    print(f"Current bag contents: {request.session.get('bag', {})}")
     bag = request.session.get('bag', {})  
     cart_items = []
     total = 0
@@ -311,8 +315,6 @@ def custom_500_view(request):
     return render(request, '500.html', status=500)
 
 # NEWSLETTER SIGNUP VIEW
-# books/views.py
-
 def newsletter_signup(request):
     if request.method == 'POST':
         email = request.POST.get('newsletter-email')
