@@ -38,18 +38,22 @@ def checkout(request):
                 save_info = request.POST.get('save_info')
                 set_default_info = request.POST.get('set_default_info')
 
-                if set_default_info == 'on':
-                    profile = request.user.profile
-                    profile.default_full_name = form.cleaned_data['full_name']
-                    profile.default_phone_number = form.cleaned_data['phone_number']
-                    profile.default_country = form.cleaned_data['country']
-                    profile.default_postcode = form.cleaned_data['postcode']
-                    profile.default_town_or_city = form.cleaned_data['town_or_city']
-                    profile.default_street_address1 = form.cleaned_data['street_address1']
-                    profile.default_street_address2 = form.cleaned_data['street_address2']
-                    profile.default_county = form.cleaned_data['county']
-                    profile.save()
-                    messages.success(request, "Your address has been saved for future purchases!")
+                # Check if profile exists before accessing it
+                if set_default_info == 'on' and hasattr(request.user, 'profile'):
+                    try:
+                        profile = request.user.profile
+                        profile.default_full_name = form.cleaned_data['full_name']
+                        profile.default_phone_number = form.cleaned_data['phone_number']
+                        profile.default_country = form.cleaned_data['country']
+                        profile.default_postcode = form.cleaned_data['postcode']
+                        profile.default_town_or_city = form.cleaned_data['town_or_city']
+                        profile.default_street_address1 = form.cleaned_data['street_address1']
+                        profile.default_street_address2 = form.cleaned_data['street_address2']
+                        profile.default_county = form.cleaned_data['county']
+                        profile.save()
+                        messages.success(request, "Your address has been saved for future purchases!")
+                    except Exception as e:
+                        messages.error(request, f"Error saving profile: {str(e)}")
             else:
                 order.guest_email = form.cleaned_data['email']
 
@@ -83,21 +87,26 @@ def checkout(request):
     # GET request
     if request.user.is_authenticated:
         try:
-            profile = request.user.profile
-            initial_data = {
-                'full_name': profile.default_full_name,
-                'phone_number': profile.default_phone_number,
-                'country': profile.default_country,
-                'postcode': profile.default_postcode,
-                'town_or_city': profile.default_town_or_city,
-                'street_address1': profile.default_street_address1,
-                'street_address2': profile.default_street_address2,
-                'county': profile.default_county,
-                'email': request.user.email,
-            }
-            form = OrderForm(initial=initial_data)
+            # Check if profile exists before accessing it
+            if hasattr(request.user, 'profile'):
+                profile = request.user.profile
+                initial_data = {
+                    'full_name': profile.default_full_name,
+                    'phone_number': profile.default_phone_number,
+                    'country': profile.default_country,
+                    'postcode': profile.default_postcode,
+                    'town_or_city': profile.default_town_or_city,
+                    'street_address1': profile.default_street_address1,
+                    'street_address2': profile.default_street_address2,
+                    'county': profile.default_county,
+                    'email': request.user.email,
+                }
+                form = OrderForm(initial=initial_data)
+            else:
+                # If no profile, just initialize with email
+                form = OrderForm(initial={'email': request.user.email})
         except Exception:
-            form = OrderForm()
+            form = OrderForm(initial={'email': request.user.email})
     else:
         form = OrderForm()
 
