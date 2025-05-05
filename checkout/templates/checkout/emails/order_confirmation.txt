@@ -6,6 +6,6 @@ Items:
 - {{ item.quantity }} x {{ item.book.title }} - £{{ item.price }}
 {% endfor %}
 
-Total: £{{ order.grand_total }}
+Total: £{{ order.grand_total |floatformat:2 }}
 
 If you have any questions, reply to this email or contact us at {{ contact_email }}.
