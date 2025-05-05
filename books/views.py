@@ -16,6 +16,8 @@ from django.conf import settings
 from .models import Newsletter
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError  
+from django.http import HttpResponse
+
 
 # Check if the user is an admin (STAFF)
 def is_admin(user):
@@ -210,20 +212,32 @@ def book_detail(request, id):
 
 # CART FUNCTIONALITY
 def add_to_cart(request, book_id):
+    # Ensure session exists
+    if not request.session.session_key:
+        request.session.create()
+    
     book = get_object_or_404(Book, id=book_id)
-    bag = request.session.get('bag', {})  # Changed from 'cart' to 'bag'
+    bag = request.session.get('bag', {})
     quantity = int(request.POST.get('quantity', 1))
-
-    if str(book_id) in bag:  
-        bag[str(book_id)]['quantity'] += quantity  
+    
+    print(f"Adding book ID {book_id} to bag")
+    print(f"Initial bag contents: {bag}")
+    
+    if str(book_id) in bag:
+        bag[str(book_id)]['quantity'] += quantity
     else:
-        bag[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}  
-
+        bag[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}
+    
+    # Save to session and force save
     request.session['bag'] = bag
+    request.session.modified = True
+    
     print(f"Added to bag - Session ID: {request.session.session_key}")
-    print(f"Current bag contents: {request.session.get('bag', {})}")
+    print(f"Updated bag contents: {request.session.get('bag', {})}")
+    
     messages.success(request, f'Added {book.title} to your bag')
     return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
+
 
 def view_cart(request):
     print(f"View cart - Session ID: {request.session.session_key}")
@@ -356,3 +370,20 @@ def newsletter_signup(request):
         'status': 'error',
         'message': 'Invalid request method.'
     })
+    
+def debug_session(request):
+    """A debug view to examine the session data"""
+    if not request.session.session_key:
+        request.session.create()
+        
+    session_data = dict(request.session)
+    
+    output = "<h1>Session Debug</h1>"
+    output += f"<p><strong>Session ID:</strong> {request.session.session_key}</p>"
+    output += "<h2>All Session Data:</h2>"
+    output += "<ul>"
+    for key, value in session_data.items():
+        output += f"<li><strong>{key}:</strong> {value}</li>"
+    output += "</ul>"
+    
+    return HttpResponse(output)

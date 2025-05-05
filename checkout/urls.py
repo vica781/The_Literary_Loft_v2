@@ -13,7 +13,7 @@ urlpatterns = [
     path('my-account/', views.my_account, name='my_account'),  # My Account page
     path('edit-profile/', views.edit_profile, name='edit_profile'),
     path('guest-order-lookup/', views.guest_order_lookup, name='guest_order_lookup'),
-    path('debug/', views.debug_checkout, name='debug_checkout'),
+    path('debug/', views.debug_checkout, name='debug_checkout'),    
     
      # Password reset URLs
     path('password_reset/', auth_views.PasswordResetView.as_view(
