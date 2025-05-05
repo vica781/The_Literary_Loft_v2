@@ -6,6 +6,9 @@ from .models import Order, OrderItem
 from books.models import Book
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+import stripe
 
 # Main checkout view
 def checkout(request):
@@ -34,7 +37,7 @@ def checkout(request):
                 try:
                     book = Book.objects.get(id=book_id)
                     quantity = item_data['quantity']
-                    order_line_item = OrderLineItem(
+                    order_line_item = OrderItem(
                         order=order,
                         book=book,
                         quantity=quantity,
@@ -111,6 +114,45 @@ def checkout_success(request, order_number):
     }
     
     return render(request, 'checkout/checkout_success.html', context)
+
+
+def handle_successful_payment(payment_intent):
+    """
+    Handle successful Stripe payments
+    """
+    # For now, just a placeholder that logs the payment ID
+    print(f"Payment succeeded! Payment ID: {payment_intent.id}")
+    # Implement actual payment handling logic later
+    return
+
+
+def cache_checkout_data(request):
+    """Temporary placeholder for cache checkout data handler"""
+    return HttpResponse(status=200)
+
+
+@csrf_exempt
+def stripe_webhook(request):
+    payload = request.body
+    sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
+    event = None
+
+    try:
+        event = stripe.Webhook.construct_event(
+            payload, sig_header, settings.STRIPE_WH_SECRET
+        )
+    except ValueError:
+        return HttpResponse(status=400)  # Invalid payload
+    except stripe.error.SignatureVerificationError:
+        return HttpResponse(status=400)  # Invalid signature
+
+    # Handle the event
+    if event['type'] == 'payment_intent.succeeded':
+        payment_intent = event['data']['object']
+        handle_successful_payment(payment_intent)
+
+    return HttpResponse(status=200)
+
 
 def debug_checkout(request):
     """Temporary view to debug and fix checkout issues"""
