@@ -211,23 +211,23 @@ def book_detail(request, id):
 # CART FUNCTIONALITY
 def add_to_cart(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    cart = request.session.get('cart', {})
+    bag = request.session.get('bag', {})  
     quantity = int(request.POST.get('quantity', 1))
 
-    if str(book_id) in cart:
-        cart[str(book_id)]['quantity'] += quantity
+    if str(book_id) in bag:  
+        bag[str(book_id)]['quantity'] += quantity  
     else:
-        cart[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}
+        bag[str(book_id)] = {'quantity': quantity, 'price': float(book.price)}  
 
-    request.session['cart'] = cart
+    request.session['bag'] = bag  
     messages.success(request, f'Added {book.title} to your bag')
     return redirect(request.META.get('HTTP_REFERER', 'books:book_list'))
 
 def view_cart(request):
-    cart = request.session.get('cart', {})
+    bag = request.session.get('bag', {})  
     cart_items = []
     total = 0
-    for book_id, item in cart.items():
+    for book_id, item in bag.items():  
         book = Book.objects.get(id=int(book_id))
         item_total = item['quantity'] * float(item['price'])
         total += item_total
@@ -244,30 +244,30 @@ def update_cart(request):
         book_id = request.POST.get('book_id')
         quantity = int(request.POST.get('quantity'))
         
-        cart = request.session.get('cart', {})
+        bag = request.session.get('bag', {})  
         
-        if book_id in cart:
+        if book_id in bag:  
             if quantity > 0:
-                cart[book_id]['quantity'] = quantity
+                bag[book_id]['quantity'] = quantity  
                 messages.success(request, "Cart updated successfully.")
             else:
-                del cart[book_id]
+                del bag[book_id]  
                 messages.success(request, "Item removed from cart.")
         
-        request.session['cart'] = cart
+        request.session['bag'] = bag  
     return redirect('books:view_cart')
 
 def remove_from_cart(request):
     if request.method == 'POST':
         book_id = request.POST.get('book_id')
         
-        cart = request.session.get('cart', {})
+        bag = request.session.get('bag', {})  
         
-        if book_id in cart:
-            del cart[book_id]
+        if book_id in bag:  
+            del bag[book_id]  
             messages.success(request, "Item removed from cart.")
         
-        request.session['cart'] = cart
+        request.session['bag'] = bag  
     return redirect('books:view_cart')
 
 # FAVORITE BOOKS

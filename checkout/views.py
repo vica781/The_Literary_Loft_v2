@@ -36,6 +36,8 @@ def checkout(request):
             order = form.save(commit=False)
             if request.user.is_authenticated:
                 order.user = request.user
+                # Make sure email is set for authenticated users
+                order.email = form.cleaned_data['email']
 
                 save_info = request.POST.get('save_info')
                 set_default_info = request.POST.get('set_default_info')
@@ -56,7 +58,9 @@ def checkout(request):
                     except Exception as e:
                         messages.error(request, f"Error saving profile: {str(e)}")
             else:
+                # For guest users, set both guest_email and email
                 order.guest_email = form.cleaned_data['email']
+                order.email = form.cleaned_data['email']  # Ensure email is set for guests too
 
             total = calculate_order_amount(request) / 100
             order.order_total = total
@@ -74,6 +78,7 @@ def checkout(request):
                     price=item['price']
                 )
 
+            # Make sure we have an email to send confirmation to
             recipient_email = order.email
             send_order_confirmation_email(order, recipient_email)
 
@@ -125,12 +130,13 @@ def checkout(request):
         messages.error(request, f"Payment processing error: {str(e)}")
         return redirect('checkout:checkout')
 
-    bag = request.session.get('bag', {})
+    # Important consistency check - confirm we're using 'bag'
+    print(f"Bag contents: {request.session.get('bag', {})}")
     request.session.modified = True
 
     context = {
         'order_form': form,
-        'cart_items': [{
+        'cart_items': [{  # Keep as cart_items to match your template
             'book': get_object_or_404(Book, id=int(book_id)),
             'quantity': item['quantity'],
             'price': item['price'],
@@ -144,7 +150,6 @@ def checkout(request):
     }
 
     return render(request, 'checkout/checkout.html', context)
-
 
 @require_POST
 @csrf_exempt
