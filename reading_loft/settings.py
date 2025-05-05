@@ -75,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
-    'books.middleware.SessionDebugMiddleware',
+    # 'books.middleware.SessionDebugMiddleware',
 ]
 
 ROOT_URLCONF = 'reading_loft.urls'

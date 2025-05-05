@@ -333,12 +333,16 @@ def newsletter_signup(request):
 # ==================== Debug ====================
 
 @user_passes_test(is_admin)
+# def debug_session(request):
+#     """Debug view to inspect session data (admin only)"""
+#     if not request.session.session_key:
+#         request.session.create()
+#     output = f"<h1>Session ID: {request.session.session_key}</h1><ul>"
+#     for key, value in dict(request.session).items():
+#         output += f"<li><strong>{key}:</strong> {value}</li>"
+#     output += "</ul>"
+#     return HttpResponse(output)
+
 def debug_session(request):
-    """Debug view to inspect session data (admin only)"""
-    if not request.session.session_key:
-        request.session.create()
-    output = f"<h1>Session ID: {request.session.session_key}</h1><ul>"
-    for key, value in dict(request.session).items():
-        output += f"<li><strong>{key}:</strong> {value}</li>"
-    output += "</ul>"
-    return HttpResponse(output)
+    """Debug view - minimal version to test functionality"""
+    return HttpResponse("Session debug test - if you see this, the view is working")
