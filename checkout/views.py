@@ -101,7 +101,7 @@ def checkout(request):
     
     return render(request, 'checkout/checkout.html', context)
 
-def checkout_success(request, order_number):
+def order_success(request, order_number):
     """Handle successful checkouts"""
     order = get_object_or_404(Order, order_number=order_number)
     
@@ -121,7 +121,7 @@ def handle_successful_payment(payment_intent):
     Handle successful Stripe payments
     """
     # For now, just a placeholder that logs the payment ID
-    print(f"Payment succeeded! Payment ID: {payment_intent.id}")
+    print(f"Payment succeeded! Payment ID: {payment_intent['id']}")
     # Implement actual payment handling logic later
     return
 
