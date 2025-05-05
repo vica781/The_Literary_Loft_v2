@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from .forms import OrderForm
-from .models import Order, OrderLineItem
+from .models import Order, OrderItem
 from books.models import Book
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
