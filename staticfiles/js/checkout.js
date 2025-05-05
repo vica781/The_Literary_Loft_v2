@@ -1,5 +1,3 @@
-// checkout.js
-
 const stripePublicKey = document.getElementById('id_stripe_public_key').textContent.slice(1, -1);
 const clientSecret = document.getElementById('id_client_secret').textContent.slice(1, -1);
 
@@ -23,9 +21,16 @@ const paymentForm = document.getElementById('payment-form');
 if (paymentForm) {
     paymentForm.addEventListener('submit', function(ev) {
         ev.preventDefault();
+        // Disable the card element and submit button to prevent multiple submissions
         card.update({ 'disabled': true });
         document.getElementById('submit-button').disabled = true;
 
+        // Get form data
+        const form = document.getElementById('payment-form');
+        const fullName = form.querySelector('#id_full_name').value;
+        const email = form.querySelector('#id_email').value;
+
+        // Handle save info checkbox
         const saveInfo = Boolean(document.getElementById('id-save-info')?.checked);
         const setDefaultInfo = Boolean(document.getElementById('id-set-default-info')?.checked);
 
@@ -39,6 +44,7 @@ if (paymentForm) {
 
         const url = '/checkout/cache_checkout_data/';
 
+        // First cache the checkout data
         fetch(url, {
             method: 'POST',
             headers: {
@@ -50,27 +56,43 @@ if (paymentForm) {
             if (!response.ok) {
                 throw new Error('Network response was not OK.');
             }
+            
+            // Then confirm the card payment with Stripe
             return stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card,
+                    billing_details: {
+                        name: fullName,
+                        email: email,
+                    }
                 }
             });
         })
         .then(function(result) {
             if (result.error) {
+                // Show error to customer
                 const errorDiv = document.getElementById('card-errors');
                 errorDiv.textContent = result.error.message;
+                
+                // Re-enable the form elements
                 card.update({ 'disabled': false });
                 document.getElementById('submit-button').disabled = false;
             } else {
                 if (result.paymentIntent.status === 'succeeded') {
-                    paymentForm.submit();
+                    // Payment succeeded, submit the form
+                    form.submit();
                 }
             }
         })
         .catch(function(error) {
+            // Better error handling
             console.error('Error:', error);
-            window.location.reload();
+            const errorDiv = document.getElementById('card-errors');
+            errorDiv.textContent = 'There was a problem processing your payment. Please try again.';
+            
+            // Re-enable the form elements
+            card.update({ 'disabled': false });
+            document.getElementById('submit-button').disabled = false;
         });
     });
 }
