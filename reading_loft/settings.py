@@ -30,9 +30,9 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = 'DEVELOPMENT' in os.environ
+# DEBUG = 'DEVELOPMENT' in os.environ
 
-# DEBUG = True
+DEBUG = True
 
 ALLOWED_HOSTS = [
     'the-literary-loft-a4b6116b3a17.herokuapp.com', 
