@@ -14,14 +14,15 @@ from .forms import OrderForm, CustomUserChangeForm
 from .utils import send_order_confirmation_email
 
 
-# Helper Functions
 def calculate_order_amount(request):
     bag = request.session.get('bag', {})
     total = sum(item['price'] * item['quantity'] for item in bag.values())
     return int(total * 100)  # Convert GBP to pence
 
+
 def handle_successful_payment_intent(payment_intent):
     print(f"PaymentIntent {payment_intent['id']} was successful!")
+
 
 def checkout(request):
     bag = request.session.get('bag', {})
@@ -86,30 +87,29 @@ def checkout(request):
             for field, errors in form.errors.items():
                 for error in errors:
                     messages.error(request, f"{form.fields[field].label or field}: {error}")
-
-    # GET request or fallback after invalid POST
-    if request.user.is_authenticated:
-        try:
-            if hasattr(request.user, 'profile'):
-                profile = request.user.profile
-                initial_data = {
-                    'full_name': profile.default_full_name,
-                    'phone_number': profile.default_phone_number,
-                    'country': profile.default_country,
-                    'postcode': profile.default_postcode,
-                    'town_or_city': profile.default_town_or_city,
-                    'street_address1': profile.default_street_address1,
-                    'street_address2': profile.default_street_address2,
-                    'county': profile.default_county,
-                    'email': request.user.email,
-                }
-                form = OrderForm(initial=initial_data)
-            else:
-                form = OrderForm(initial={'email': request.user.email})
-        except Exception:
-            form = OrderForm(initial={'email': request.user.email})
     else:
-        form = OrderForm()
+        if request.user.is_authenticated:
+            try:
+                if hasattr(request.user, 'profile'):
+                    profile = request.user.profile
+                    initial_data = {
+                        'full_name': profile.default_full_name,
+                        'phone_number': profile.default_phone_number,
+                        'country': profile.default_country,
+                        'postcode': profile.default_postcode,
+                        'town_or_city': profile.default_town_or_city,
+                        'street_address1': profile.default_street_address1,
+                        'street_address2': profile.default_street_address2,
+                        'county': profile.default_county,
+                        'email': request.user.email,
+                    }
+                    form = OrderForm(initial=initial_data)
+                else:
+                    form = OrderForm(initial={'email': request.user.email})
+            except Exception:
+                form = OrderForm(initial={'email': request.user.email})
+        else:
+            form = OrderForm()
 
     total = calculate_order_amount(request) / 100
     delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100 if total < settings.FREE_DELIVERY_THRESHOLD else 0
@@ -124,6 +124,9 @@ def checkout(request):
     except stripe.error.StripeError as e:
         messages.error(request, f"Payment processing error: {str(e)}")
         return redirect('checkout:checkout')
+
+    bag = request.session.get('bag', {})
+    request.session.modified = True
 
     context = {
         'order_form': form,
