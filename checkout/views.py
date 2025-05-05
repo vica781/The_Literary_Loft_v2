@@ -16,17 +16,17 @@ from .utils import send_order_confirmation_email
 
 # Helper Functions
 def calculate_order_amount(request):
-    cart = request.session.get('cart', {})
-    total = sum(item['price'] * item['quantity'] for item in cart.values())
+    bag = request.session.get('bag', {})
+    total = sum(item['price'] * item['quantity'] for item in bag.values())
     return int(total * 100)  # Convert GBP to pence
 
 def handle_successful_payment_intent(payment_intent):
     print(f"PaymentIntent {payment_intent['id']} was successful!")
 
 def checkout(request):
-    cart = request.session.get('cart', {})
-    if not cart:
-        messages.error(request, "Your cart is empty. Please add items before checkout.")
+    bag = request.session.get('bag', {})
+    if not bag:
+        messages.error(request, "Your bag is empty. Please add items before checkout.")
         return redirect('books:book_list')
 
     if request.method == 'POST':
@@ -64,7 +64,7 @@ def checkout(request):
             order.order_number = str(uuid.uuid4())
             order.save()
 
-            for book_id, item in cart.items():
+            for book_id, item in bag.items():
                 book = get_object_or_404(Book, id=int(book_id))
                 OrderItem.objects.create(
                     order=order,
@@ -79,7 +79,7 @@ def checkout(request):
             if not request.user.is_authenticated:
                 request.session['guest_order_number'] = order.order_number
 
-            request.session['cart'] = {}
+            request.session['bag'] = {}
             messages.success(request, "Order placed successfully!")
             return redirect('checkout:order_success', order_number=order.order_number)
         else:
@@ -87,7 +87,7 @@ def checkout(request):
                 for error in errors:
                     messages.error(request, f"{form.fields[field].label or field}: {error}")
 
-    # ✅ GET request handling added below
+    # GET request or fallback after invalid POST
     if request.user.is_authenticated:
         try:
             if hasattr(request.user, 'profile'):
@@ -132,7 +132,7 @@ def checkout(request):
             'quantity': item['quantity'],
             'price': item['price'],
             'total': item['quantity'] * float(item['price'])
-        } for book_id, item in cart.items()],
+        } for book_id, item in bag.items()],
         'total': total,
         'delivery': delivery_cost,
         'grand_total': grand_total,
@@ -156,7 +156,7 @@ def cache_checkout_data(request):
             metadata={
                 'user': request.user.id if request.user.is_authenticated else 'guest',
                 'save_info': save_info,
-                'cart': str(request.session.get('cart', {}))
+                'bag': str(request.session.get('bag', {}))
             }
         )
         return JsonResponse({'success': True})
@@ -199,8 +199,8 @@ def order_success(request, order_number):
                 messages.error(request, "You don't have permission to view this order.")
                 return redirect('books:index')
         
-        if 'cart' in request.session:
-            del request.session['cart']
+        if 'bag' in request.session:
+            del request.session['bag']
         
         return render(request, 'checkout/order_success.html', {'order': order})
     except Exception as e:
@@ -245,28 +245,24 @@ def my_account(request):
 
 @login_required
 def edit_profile(request):
-    try:
-        if request.method == 'POST':
-            form = CustomUserChangeForm(request.POST, instance=request.user)
-            if form.is_valid():
-                form.save()
-                messages.success(request, 'Profile updated successfully!')
-                return redirect('checkout:my_account')
-            else:
-                for field, errors in form.errors.items():
-                    for error in errors:
-                        messages.error(request, f"{form.fields[field].label or field}: {error}")
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully!')
+            return redirect('checkout:my_account')
         else:
-            form = CustomUserChangeForm(instance=request.user)
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{form.fields[field].label or field}: {error}")
+    else:
+        form = CustomUserChangeForm(instance=request.user)
 
-        orders = Order.objects.filter(user=request.user).order_by('-date')[:5]
-        return render(request, 'checkout/my_account.html', {
-            'form': form,
-            'orders': orders,
-        })
-    except Exception as e:
-        messages.error(request, f"Error updating profile: {str(e)}")
-        return redirect('checkout:my_account')
+    orders = Order.objects.filter(user=request.user).order_by('-date')[:5]
+    return render(request, 'checkout/my_account.html', {
+        'form': form,
+        'orders': orders,
+    })
 
 
 def guest_order_lookup(request):
