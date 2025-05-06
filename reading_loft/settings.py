@@ -73,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'allauth.account.middleware.AccountMiddleware',
+    # 'books.middleware.SessionDebugMiddleware',
 ]
 
 ROOT_URLCONF = 'reading_loft.urls'
@@ -131,6 +132,11 @@ ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login/'
+
+# Session settings
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_AGE = 86400  # 1 day in seconds
+SESSION_SAVE_EVERY_REQUEST = True  # Save the session to the database on every request
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-debug',
