@@ -116,6 +116,32 @@ def order_success(request, order_number):
     return render(request, 'checkout/checkout_success.html', context)
 
 
+@login_required
+def order_history(request):
+    sort_by = request.GET.get('sort_by', 'date')
+    sort_order = request.GET.get('sort_order', 'desc')
+    
+    if request.user.is_authenticated:
+        orders = Order.objects.filter(user=request.user)
+    else:
+        # For guest users, retrieve orders based on the stored order number
+        guest_order_number = request.session.get('guest_order_number')
+        orders = Order.objects.filter(order_number=guest_order_number) if guest_order_number else Order.objects.none()
+        
+    if sort_order == 'asc':
+        orders = Order.objects.filter(user=request.user).order_by(sort_by)
+    else:
+        orders = Order.objects.filter(user=request.user).order_by(f'-{sort_by}')
+
+    context = {
+        'orders': orders,
+        'sort_by': sort_by,
+        'sort_order': sort_order,
+    }
+
+    return render(request, 'checkout/order_history.html', context)
+
+
 def handle_successful_payment(payment_intent):
     """
     Handle successful Stripe payments
