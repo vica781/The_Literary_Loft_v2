@@ -39,7 +39,9 @@ DEBUG = 'DEVELOPMENT' in os.environ
 #     '127.0.0.1'
 # ]
 
-ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(',')
+# Update the ALLOWED_HOSTS setting if it's in the environment
+if os.environ.get('ALLOWED_HOSTS'):
+    ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS').split(',')
 
 # Application definition
 INSTALLED_APPS = [
