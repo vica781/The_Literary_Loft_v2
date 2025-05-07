@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
-from .forms import OrderForm
+from .forms import OrderForm, CustomUserChangeForm
 from .models import Order, OrderItem
 from books.models import Book
 from django.contrib.auth.decorators import login_required
@@ -28,11 +28,36 @@ def checkout(request):
             # If user is authenticated, associate the order with their account
             if request.user.is_authenticated:
                 order.user = request.user
+            else:
+                order.guest_email = form.cleaned_data['email']
+                # Store order number in session for guest users
+                request.session['guest_order_number'] = str(order.order_number)
             
+            # Calculate totals
+            total = 0
+            for book_id, item_data in bag.items():
+                try:
+                    book = Book.objects.get(id=book_id)
+                    quantity = item_data['quantity']
+                    total += quantity * float(item_data['price'])
+                except Book.DoesNotExist:
+                    messages.error(request, f"Book with ID {book_id} was not found in our database.")
+                    order.delete()
+                    return redirect('books:view_cart')
+            
+            # Calculate delivery cost as a percentage of the order total
+            if total < settings.FREE_DELIVERY_THRESHOLD:
+                delivery_cost = total * settings.STANDARD_DELIVERY_COST / 100
+            else:
+                delivery_cost = 0
+                
+            # Update order totals
+            order.order_total = total
+            order.delivery_cost = delivery_cost
+            order.grand_total = total + delivery_cost
             order.save()
             
             # Create order line items
-            total = 0
             for book_id, item_data in bag.items():
                 try:
                     book = Book.objects.get(id=book_id)
@@ -41,17 +66,13 @@ def checkout(request):
                         order=order,
                         book=book,
                         quantity=quantity,
+                        price=item_data['price']
                     )
                     order_line_item.save()
-                    total += item_data['quantity'] * float(item_data['price'])
                 except Book.DoesNotExist:
                     messages.error(request, f"Book with ID {book_id} was not found in our database.")
                     order.delete()
                     return redirect('books:view_cart')
-            
-            # Update order total
-            order.order_total = total
-            order.save()
             
             # Clear the shopping bag
             request.session['bag'] = {}
@@ -93,10 +114,35 @@ def checkout(request):
             messages.error(request, f"A book in your bag was not found in our database.")
             return redirect('books:view_cart')
     
+    # Calculate delivery cost
+    if total < settings.FREE_DELIVERY_THRESHOLD:
+        delivery = total * settings.STANDARD_DELIVERY_COST / 100
+    else:
+        delivery = 0
+    
+    grand_total = total + delivery
+    
+    # Create Stripe payment intent
+    stripe.api_key = settings.STRIPE_SECRET_KEY
+    try:
+        intent = stripe.PaymentIntent.create(
+            amount=int(grand_total * 100),  # Convert to pence for Stripe
+            currency=settings.STRIPE_CURRENCY,
+        )
+        client_secret = intent.client_secret
+    except Exception as e:
+        messages.error(request, f"Payment processing error: {str(e)}")
+        return redirect('books:view_cart')
+    
+    # Create context with ALL needed variables
     context = {
-        'form': form,
+        'order_form': form,  # Use the existing form variable
         'cart_items': cart_items,
         'total': total,
+        'delivery': delivery,
+        'grand_total': grand_total,
+        'stripe_public_key': settings.STRIPE_PUBLIC_KEY,
+        'client_secret': client_secret,
     }
     
     return render(request, 'checkout/checkout.html', context)
@@ -140,6 +186,46 @@ def order_history(request):
     }
 
     return render(request, 'checkout/order_history.html', context)
+
+@login_required
+def my_account(request):
+    orders = Order.objects.filter(user=request.user).order_by('-date')
+    form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'orders': orders,
+        'form': form,
+    }
+    return render(request, 'checkout/my_account.html', context)
+
+
+@login_required
+def edit_profile(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Your profile has been updated successfully.')
+            return redirect('checkout:my_account')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+
+    orders = Order.objects.filter(user=request.user).order_by('-date')
+    return render(request, 'checkout/my_account.html', {'form': form, 'orders': orders})
+
+
+# Add a new view for guest order lookup
+def guest_order_lookup(request):
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        order_number = request.POST.get('order_number')
+        
+        try:
+            order = Order.objects.get(guest_email=email, order_number=order_number)
+            return render(request, 'checkout/guest_order_detail.html', {'order': order})
+        except Order.DoesNotExist:
+            messages.error(request, "No order found with the provided details.")
+    
+    return render(request, 'checkout/guest_order_lookup.html')
 
 
 def handle_successful_payment(payment_intent):
