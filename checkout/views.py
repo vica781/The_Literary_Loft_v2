@@ -79,7 +79,7 @@ def checkout(request):
             
             # Success message and redirect to thank you page
             messages.success(request, f"Order successfully placed! Your order number is {order.order_number}")
-            return redirect('checkout:order_success', order_number=order.order_number)
+            return redirect('checkout:checkout_success', order_number=order.order_number)
         else:
             messages.error(request, "There was an error with your form. Please check your information.")
     else:
