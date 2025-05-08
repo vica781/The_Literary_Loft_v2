@@ -16,7 +16,7 @@ from django.contrib.messages import constants as messages
 from dotenv import load_dotenv
 from django.conf import settings
 
-load_dotenv()
+load_dotenv(override=True)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

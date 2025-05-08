@@ -1,9 +1,9 @@
 # books/context_processors.py
 def cart_contents(request):
     try:
-        cart = request.session.get('cart', {})
-        cart_count = sum(item.get('quantity', 0) for item in cart.values())
-        cart_total = sum(item.get('quantity', 0) * float(item.get('price', 0)) for item in cart.values())
+        bag = request.session.get('bag', {})
+        cart_count = sum(item.get('quantity', 0) for item in bag.values())
+        cart_total = sum(item.get('quantity', 0) * float(item.get('price', 0)) for item in bag.values())
         return {
             'cart_count': cart_count,
             'cart_total': round(cart_total, 2)
