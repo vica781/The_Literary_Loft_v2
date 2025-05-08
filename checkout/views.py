@@ -159,7 +159,7 @@ def order_success(request, order_number):
         'order': order,
     }
     
-    return render(request, 'checkout/checkout_success.html', context)
+    return render(request, 'checkout/order_success.html', context)
 
 
 @login_required
