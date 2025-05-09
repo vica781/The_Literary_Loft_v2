@@ -40,6 +40,29 @@
   border-color: #c8ccd2;
 }
 
+/* Add spacing between the buttons */
+.save-changes-btn + .save-changes-btn,
+form + .save-changes-btn {
+    margin-top: 10px;
+    margin-left: 0;
+}
+
+/* Make the secondary action buttons slightly less prominent */
+a.save-changes-btn {
+    opacity: 0.9;
+}
+
+a.save-changes-btn:hover {
+    opacity: 1;
+}
+
+/* Ensure consistent size and spacing */
+.profile-section .save-changes-btn {
+    display: block;
+    width: fit-content;
+    margin-bottom: 5px;
+}
+
 /* Remove the default blue outline and add a custom border on focus */
 .form-control:focus {
     outline: none; 
@@ -90,6 +113,10 @@
 
     .save-changes-btn {
         margin-top: .5rem;
+        font-size: 0.9rem;
     }
     
+    .profile-section .save-changes-btn {
+        margin-top: 0.5rem;
+    }
 }

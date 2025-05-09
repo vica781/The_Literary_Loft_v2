@@ -100,7 +100,7 @@
                     <button type="submit" class="btn save-changes-btn">Update Default Address</button>
                     
                     {% if user.profile.default_street_address1 %}
-                    <a href="{% url 'checkout:clear_default_address' %}" class="btn btn-outline-secondary mt-2">
+                    <a href="{% url 'checkout:clear_default_address' %}" class="btn save-changes-btn mt-2">
                         Clear Default Address
                     </a>
                     {% endif %}
@@ -115,7 +115,7 @@
                 {% if 'delivery_info' in request.session %}
                 <div class="mt-3">
                     <p>You have temporarily saved delivery information for your next checkout.</p>
-                    <a href="{% url 'checkout:clear_saved_info' %}" class="btn btn-outline-secondary">
+                    <a href="{% url 'checkout:clear_saved_info' %}" class="btn save-changes-btn">
                         Clear Saved Checkout Info
                     </a>
                 </div>
