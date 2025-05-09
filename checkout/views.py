@@ -2,10 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.conf import settings
 from .forms import OrderForm, CustomUserChangeForm
-from .models import Order, OrderItem
+from .models import Order, OrderItem, UserProfile
 from books.models import Book
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse 
 from django.views.decorators.csrf import csrf_exempt
 from django.core.mail import send_mail
 
@@ -227,6 +227,55 @@ def my_account(request):
         'form': form,
     }
     return render(request, 'checkout/my_account.html', context)
+
+
+@login_required
+def update_default_address(request):
+    if request.method == 'POST':
+        # Get user profile
+        profile = UserProfile.objects.get(user=request.user)
+        
+        # Update profile with form data
+        profile.default_phone_number = request.POST.get('default_phone_number', '')
+        profile.default_street_address1 = request.POST.get('default_street_address1', '')
+        profile.default_street_address2 = request.POST.get('default_street_address2', '')
+        profile.default_town_or_city = request.POST.get('default_town_or_city', '')
+        profile.default_county = request.POST.get('default_county', '')
+        profile.default_postcode = request.POST.get('default_postcode', '')
+        profile.default_country = request.POST.get('default_country', '')
+        
+        profile.save()
+        
+        messages.success(request, 'Default delivery address updated successfully')
+        return redirect('checkout:my_account')
+    
+    return redirect('checkout:my_account')
+
+@login_required
+def clear_default_address(request):
+    profile = UserProfile.objects.get(user=request.user)
+    
+    # Clear all default address fields
+    profile.default_phone_number = ''
+    profile.default_street_address1 = ''
+    profile.default_street_address2 = ''
+    profile.default_town_or_city = ''
+    profile.default_county = ''
+    profile.default_postcode = ''
+    profile.default_country = ''
+    
+    profile.save()
+    
+    messages.success(request, 'Default delivery address has been cleared')
+    return redirect('checkout:my_account')
+
+@login_required
+def clear_saved_info(request):
+    if 'delivery_info' in request.session:
+        del request.session['delivery_info']
+        messages.success(request, 'Temporarily saved delivery information has been cleared')
+    
+    return redirect('checkout:my_account')
 
 
 @login_required

@@ -17,6 +17,11 @@ urlpatterns = [
     path('guest-order-lookup/', views.guest_order_lookup, name='guest_order_lookup'),
     path('debug/', views.debug_checkout, name='debug_checkout'),    
     
+    # New URL patterns for address management
+    path('update-default-address/', views.update_default_address, name='update_default_address'),
+    path('clear-default-address/', views.clear_default_address, name='clear_default_address'),
+    path('clear-saved-info/', views.clear_saved_info, name='clear_saved_info'),
+    
      # Password reset URLs
     path('password_reset/', auth_views.PasswordResetView.as_view(
         template_name='checkout/password_reset.html',
