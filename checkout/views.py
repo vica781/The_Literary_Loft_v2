@@ -26,6 +26,50 @@ def checkout(request):
             # If user is authenticated, associate the order with their account
             if request.user.is_authenticated:
                 order.user = request.user
+                
+                # Handle the checkboxes for saving delivery information
+                save_info = 'save_info' in request.POST
+                set_default_info = 'set_default_info' in request.POST
+                
+                # Save form data to session if 'save_info' is checked
+                if save_info:
+                    request.session['delivery_info'] = {
+                        'full_name': form.cleaned_data['full_name'],
+                        'phone_number': form.cleaned_data['phone_number'],
+                        'country': form.cleaned_data['country'],
+                        'postcode': form.cleaned_data['postcode'],
+                        'town_or_city': form.cleaned_data['town_or_city'],
+                        'street_address1': form.cleaned_data['street_address1'],
+                        'street_address2': form.cleaned_data['street_address2'],
+                        'county': form.cleaned_data['county'],
+                    }
+                
+                # Update user profile with default address if 'set_default_info' is checked
+                if set_default_info:
+                    try:
+                        profile = UserProfile.objects.get(user=request.user)
+                        profile.default_full_name = form.cleaned_data['full_name']
+                        profile.default_phone_number = form.cleaned_data['phone_number']
+                        profile.default_country = form.cleaned_data['country']
+                        profile.default_postcode = form.cleaned_data['postcode']
+                        profile.default_town_or_city = form.cleaned_data['town_or_city']
+                        profile.default_street_address1 = form.cleaned_data['street_address1']
+                        profile.default_street_address2 = form.cleaned_data['street_address2']
+                        profile.default_county = form.cleaned_data['county']
+                        profile.save()
+                    except UserProfile.DoesNotExist:
+                        # Create a new profile if it doesn't exist
+                        UserProfile.objects.create(
+                            user=request.user,
+                            default_full_name=form.cleaned_data['full_name'],
+                            default_phone_number=form.cleaned_data['phone_number'],
+                            default_country=form.cleaned_data['country'],
+                            default_postcode=form.cleaned_data['postcode'],
+                            default_town_or_city=form.cleaned_data['town_or_city'],
+                            default_street_address1=form.cleaned_data['street_address1'],
+                            default_street_address2=form.cleaned_data['street_address2'],
+                            default_county=form.cleaned_data['county'],
+                        )
             else:
                 order.guest_email = form.cleaned_data['email']
                 # Store order number in session for guest users
@@ -85,14 +129,58 @@ def checkout(request):
         form = OrderForm()
         
         if request.user.is_authenticated:
-            # Pre-fill the form with user information if available
+            # Try to pre-fill the form with user information
             try:
+                # First check if there's saved information in the session
+                delivery_info = request.session.get('delivery_info', {})
+                
+                # Then try to get the user profile
+                try:
+                    profile = UserProfile.objects.get(user=request.user)
+                    
+                    # Create initial data dictionary with user info
+                    initial_data = {
+                        'full_name': delivery_info.get('full_name') or profile.default_full_name or request.user.get_full_name(),
+                        'email': request.user.email,
+                        'phone_number': delivery_info.get('phone_number') or profile.default_phone_number or '',
+                        'country': delivery_info.get('country') or profile.default_country or '',
+                        'postcode': delivery_info.get('postcode') or profile.default_postcode or '',
+                        'town_or_city': delivery_info.get('town_or_city') or profile.default_town_or_city or '',
+                        'street_address1': delivery_info.get('street_address1') or profile.default_street_address1 or '',
+                        'street_address2': delivery_info.get('street_address2') or profile.default_street_address2 or '',
+                        'county': delivery_info.get('county') or profile.default_county or '',
+                    }
+                    
+                    # Use only non-empty values
+                    form = OrderForm(initial={k: v for k, v in initial_data.items() if v})
+                    
+                except UserProfile.DoesNotExist:
+                    # If no profile exists, try to use session data
+                    if delivery_info:
+                        form = OrderForm(initial={
+                            'full_name': delivery_info.get('full_name', request.user.get_full_name()),
+                            'email': request.user.email,
+                            'phone_number': delivery_info.get('phone_number', ''),
+                            'country': delivery_info.get('country', ''),
+                            'postcode': delivery_info.get('postcode', ''),
+                            'town_or_city': delivery_info.get('town_or_city', ''),
+                            'street_address1': delivery_info.get('street_address1', ''),
+                            'street_address2': delivery_info.get('street_address2', ''),
+                            'county': delivery_info.get('county', ''),
+                        })
+                    else:
+                        # Fallback to basic user info
+                        form = OrderForm(initial={
+                            'full_name': request.user.get_full_name(),
+                            'email': request.user.email,
+                        })
+            except Exception as e:
+                # If any errors occur, just use basic user info
+                print(f"Error pre-filling form: {e}")
                 form = OrderForm(initial={
                     'full_name': request.user.get_full_name(),
                     'email': request.user.email,
                 })
-            except:
-                pass
     
     # Get items from bag
     cart_items = []
@@ -253,20 +341,24 @@ def update_default_address(request):
 
 @login_required
 def clear_default_address(request):
-    profile = UserProfile.objects.get(user=request.user)
+    try:
+        profile = UserProfile.objects.get(user=request.user)
+        
+        # Clear all default address fields
+        profile.default_phone_number = ''
+        profile.default_street_address1 = ''
+        profile.default_street_address2 = ''
+        profile.default_town_or_city = ''
+        profile.default_county = ''
+        profile.default_postcode = ''
+        profile.default_country = ''
+        
+        profile.save()
+        
+        messages.success(request, 'Default delivery address has been cleared')
+    except UserProfile.DoesNotExist:
+        messages.error(request, 'User profile not found')
     
-    # Clear all default address fields
-    profile.default_phone_number = ''
-    profile.default_street_address1 = ''
-    profile.default_street_address2 = ''
-    profile.default_town_or_city = ''
-    profile.default_county = ''
-    profile.default_postcode = ''
-    profile.default_country = ''
-    
-    profile.save()
-    
-    messages.success(request, 'Default delivery address has been cleared')
     return redirect('checkout:my_account')
 
 @login_required
@@ -274,6 +366,8 @@ def clear_saved_info(request):
     if 'delivery_info' in request.session:
         del request.session['delivery_info']
         messages.success(request, 'Temporarily saved delivery information has been cleared')
+    else:
+        messages.info(request, 'No saved delivery information found')
     
     return redirect('checkout:my_account')
 
