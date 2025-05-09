@@ -7,13 +7,14 @@ from books.models import Book
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.core.mail import send_mail
 
 import stripe
 
 # Main checkout view
 def checkout(request):
-    print(f"Checkout - Session ID: {request.session.session_key}")
-    print(f"Bag contents at checkout: {request.session.get('bag', {})}")
+    # print(f"Checkout - Session ID: {request.session.session_key}")
+    # print(f"Bag contents at checkout: {request.session.get('bag', {})}")      
     
     bag = request.session.get('bag', {})
     if not bag:
@@ -147,13 +148,60 @@ def checkout(request):
     
     return render(request, 'checkout/checkout.html', context)
 
+# def order_success(request, order_number):
+#     """Handle successful checkouts"""
+#     order = get_object_or_404(Order, order_number=order_number)
+    
+#     messages.success(request, f"Order successfully processed! \
+#         Your order number is {order_number}. A confirmation \
+#         email will be sent to {order.email}.")
+    
+#     context = {
+#         'order': order,
+#     }
+    
+#     return render(request, 'checkout/order_success.html', context)
+
+
 def order_success(request, order_number):
     """Handle successful checkouts"""
     order = get_object_or_404(Order, order_number=order_number)
     
+    print(f"Processing successful order: {order_number}")
+    
+    # Send the order confirmation email
+    try:
+        from django.template.loader import render_to_string
+        from django.conf import settings
+        
+        subject = f"Your Order Confirmation - {order.order_number}"
+        context = {
+            'order': order,
+            'contact_email': settings.DEFAULT_FROM_EMAIL,
+        }
+        
+        body = render_to_string('checkout/emails/order_confirmation.txt', context)
+        html_body = render_to_string('checkout/emails/order_confirmation.html', context)
+        
+        print(f"Attempting to send email to: {order.email}")
+        
+        send_mail(
+            subject,
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [order.email],
+            html_message=html_body,
+            fail_silently=False,
+        )
+        
+        print(f"Email sent successfully to: {order.email}")
+    except Exception as e:
+        # Log the error but don't disrupt the user experience
+        print(f"Email sending failed: {e}")
+    
     messages.success(request, f"Order successfully processed! \
         Your order number is {order_number}. A confirmation \
-        email will be sent to {order.email}.")
+        email has been sent to {order.email}.")
     
     context = {
         'order': order,
