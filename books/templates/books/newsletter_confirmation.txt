@@ -1,0 +1,9 @@
+The Literary Loft Newsletter
+
+
+Thank you for signing up for our newsletter!
+You will occasionally receive an email with the latest news and updates from The Literary Loft.
+
+
+
+Copyright {%  now "Y" %} The Literary Loft: https://the-literary-loft-a4b6116b3a17.herokuapp.com/

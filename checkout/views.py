@@ -12,9 +12,7 @@ from django.core.mail import send_mail
 import stripe
 
 # Main checkout view
-def checkout(request):
-    # print(f"Checkout - Session ID: {request.session.session_key}")
-    # print(f"Bag contents at checkout: {request.session.get('bag', {})}")      
+def checkout(request):    
     
     bag = request.session.get('bag', {})
     if not bag:

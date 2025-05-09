@@ -13,7 +13,8 @@ from django.core.mail import send_mail
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.conf import settings
-
+from django.template.loader import render_to_string
+from django.conf import settings
 # Local App Imports
 from .models import Book, Category, Subcategory, Newsletter
 from .forms import BookForm
@@ -325,6 +326,21 @@ def newsletter_signup(request):
             return JsonResponse({'status': 'error', 'message': 'This email is already subscribed.'})
 
         Newsletter.objects.create(email=email)
+        
+        # TODO: Send newsletter signup confirmation email
+        context = {
+            'email': email,
+        }
+        body = render_to_string('books/newsletter_confirmation.txt', context)
+        html_body = render_to_string('books/newsletter_confirmation.html', context)
+        send_mail(
+            'The Literary Loft Newsletter',
+            body,
+            settings.DEFAULT_FROM_EMAIL,
+            [email],
+            html_message=html_body,
+            fail_silently=False,
+        )
         return JsonResponse({'status': 'success', 'message': 'Successfully subscribed to the newsletter!'})
 
     return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
