@@ -10,16 +10,7 @@
   <a href="{% url 'books:favorites' %}" class="favorites-icon">
     <i class="fas fa-heart"></i>
     <span class="favorites-count" id="favorite-count">{{ request.user.favorite_books.count }}</span>
-  </a>
-
-  <!-- Currency Selector -->
-  <div class="currency-select-wrapper">
-    <select class="currency-select" id="currencySelect">
-      <option value="GBP" data-image-url="{% static 'images/flags/uk_flag.png' %}">£</option>
-      <option value="USD" data-image-url="{% static 'images/flags/us_flag.png' %}">$</option>
-      <option value="EUR" data-image-url="{% static 'images/flags/eu_flag.png' %}">€</option>
-    </select>
-  </div>
+  </a> 
 
   <!-- User Dropdown -->
   <div class="dropdown">

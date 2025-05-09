@@ -352,15 +352,6 @@ body {
   text-decoration: none;
 }
 
-.currency-select {
-  padding: 5px;
-  border: 1px solid #4d5252;
-  border-radius: 5px;
-  background-color: white;
-  color: #4d5252;
-  cursor: pointer;
-}
-
 #user-icon {
   color: #e8d14d !important;
   font-size: 1.2em;

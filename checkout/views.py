@@ -13,7 +13,6 @@ import stripe
 
 # Main checkout view
 def checkout(request):    
-    
     bag = request.session.get('bag', {})
     if not bag:
         messages.error(request, "Your bag is empty. Please add items before checkout.")
@@ -145,20 +144,6 @@ def checkout(request):
     }
     
     return render(request, 'checkout/checkout.html', context)
-
-# def order_success(request, order_number):
-#     """Handle successful checkouts"""
-#     order = get_object_or_404(Order, order_number=order_number)
-    
-#     messages.success(request, f"Order successfully processed! \
-#         Your order number is {order_number}. A confirmation \
-#         email will be sent to {order.email}.")
-    
-#     context = {
-#         'order': order,
-#     }
-    
-#     return render(request, 'checkout/order_success.html', context)
 
 
 def order_success(request, order_number):
