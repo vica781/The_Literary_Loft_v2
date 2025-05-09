@@ -93,6 +93,20 @@ a.save-changes-btn:hover {
     margin-bottom: 15px; 
 }
 
+/* To align the buttons */
+.address-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 1rem;
+}
+
+/* To fit within the container */
+.address-buttons .save-changes-btn {
+    margin-top: 0;
+    flex: 0 0 auto;
+}
+
 /* -------------------------------Responsive design------------------------- */
 /* -------------------------------MEDIUM DISPLAYS--------------------------- */  
 @media (max-width: 768px) {  
@@ -118,5 +132,15 @@ a.save-changes-btn:hover {
     
     .profile-section .save-changes-btn {
         margin-top: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .address-buttons {
+        flex-direction: column;
+    }
+    
+    .address-buttons .save-changes-btn {
+        width: 100%;
     }
 }

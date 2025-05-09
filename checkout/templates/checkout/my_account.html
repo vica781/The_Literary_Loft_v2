@@ -97,12 +97,16 @@
                                value="{{ user.profile.default_country|default:'' }}">
                     </div>
                     
-                    <button type="submit" class="btn save-changes-btn">Update Default Address</button>
+                    <div class="address-buttons">
+                        <button type="submit" class="btn save-changes-btn">Update Default Address</button>
+                        
+                        {% if user.profile.default_street_address1 %}
+                        <a href="{% url 'checkout:clear_default_address' %}" class="btn save-changes-btn">
+                            Clear Default Address
+                        </a>
+                        {% endif %}
+                    </div>
                     
-                    {% if user.profile.default_street_address1 %}
-                    <a href="{% url 'checkout:clear_default_address' %}" class="btn save-changes-btn mt-2">
-                        Clear Default Address
-                    </a>
                     {% endif %}
                 </form>
             </div>
