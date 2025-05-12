@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
-from books.sitemaps import BookSitemap  
+from books.sitemaps import BookSitemap
 from django.views.generic import TemplateView
 from books import views
 from django.conf.urls import handler404
@@ -20,10 +20,15 @@ urlpatterns = [
     path('ckeditor5/', include('django_ckeditor_5.urls')),
     path('checkout/', include('checkout.urls')),  # the checkout app URLs
     path('book/<int:id>/', views.book_detail, name='book_detail'),
-    
     # Sitemap and robots.txt
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps, }),
-    path('robots.txt', TemplateView.as_view(template_name="robots.txt", content_type="text/plain")),
+    path(
+        'robots.txt',
+        TemplateView.as_view(
+            template_name="robots.txt",
+            content_type="text/plain"
+            )
+        ),
 ]
 
 handler404 = views.custom_404_view
@@ -31,4 +36,7 @@ handler500 = views.custom_500_view
 
 # Serve static and media files in development
 if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(
+        settings.MEDIA_URL,
+        document_root=settings.MEDIA_ROOT
+        )
