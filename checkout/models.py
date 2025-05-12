@@ -9,8 +9,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 # ORDER INFORMATION
-
-
 class Order(models.Model):
     user = models.ForeignKey(
         User,
@@ -19,7 +17,7 @@ class Order(models.Model):
         null=True,
         blank=True,
         related_name='orders'
-        )
+    )
     guest_email = models.EmailField(max_length=254, null=True, blank=True)
     order_number = models.CharField(max_length=36, null=False, editable=False)
     full_name = models.CharField(max_length=50, null=False, blank=False)
@@ -37,22 +35,27 @@ class Order(models.Model):
         decimal_places=2,
         null=False,
         default=0
-        )
+    )
     order_total = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         null=False,
         default=0
-        )
+    )
     grand_total = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         null=False,
         default=0
-        )
+    )
 
     def _generate_order_number(self):
         return uuid.uuid4().hex.upper()
+
+    def save(self, *args, **kwargs):
+        if not self.order_number:
+            self.order_number = self._generate_order_number()
+        super().save(*args, **kwargs)
 
     def update_total(self: Self) -> None:
         """Update order totals."""
@@ -80,25 +83,25 @@ class OrderItem(models.Model):
         blank=False,
         related_name='items',
         on_delete=models.CASCADE
-        )
+    )
     book = models.ForeignKey(
         Book,
         null=False,
         blank=False,
         on_delete=models.CASCADE
-        )
+    )
     quantity = models.PositiveIntegerField(
         null=False,
         blank=False,
         default=0
-        )
+    )
     price = models.DecimalField(
         max_digits=10,
         decimal_places=2,
         null=False,
         blank=False,
         editable=False
-        )
+    )
     item_total = models.DecimalField(
         max_digits=10,
         decimal_places=2,
@@ -106,7 +109,7 @@ class OrderItem(models.Model):
         blank=False,
         default=0,
         editable=False
-        )
+    )
 
     def save(self, *args, **kwargs):
         self.item_total = self.book.price * self.quantity
@@ -122,47 +125,47 @@ class UserProfile(models.Model):
         User,
         on_delete=models.CASCADE,
         related_name='profile'
-        )
+    )
     default_full_name = models.CharField(
         max_length=50,
         null=True,
         blank=True
-        )
+    )
     default_phone_number = models.CharField(
         max_length=20,
         null=True,
         blank=True
-        )
+    )
     default_country = models.CharField(
         max_length=40,
         null=True,
         blank=True
-        )
+    )
     default_postcode = models.CharField(
         max_length=20,
         null=True,
         blank=True
-        )
+    )
     default_town_or_city = models.CharField(
         max_length=40,
         null=True,
         blank=True
-        )
+    )
     default_street_address1 = models.CharField(
         max_length=80,
         null=True,
         blank=True
-        )
+    )
     default_street_address2 = models.CharField(
         max_length=80,
         null=True,
         blank=True
-        )
+    )
     default_county = models.CharField(
         max_length=80,
         null=True,
         blank=True
-        )
+    )
 
     def __str__(self):
         return self.user.username
