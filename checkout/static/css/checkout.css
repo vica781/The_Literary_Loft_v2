@@ -28,7 +28,8 @@
 }
 
 .continue-shopping-btn,
-.checkout-btn {
+.checkout-btn,
+.reset-btn {
     color: #fff;
     background-color: #4d5252;
     border-color: #4d5252;
