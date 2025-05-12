@@ -1,0 +1,9 @@
+[MASTER]
+load-plugins=pylint_django
+
+[TYPECHECK]
+ignored-classes=Order,Model,models.Model
+generated-members=objects,DoesNotExist,id,pk,*_set,self
+
+[FORMAT]
+max-line-length=120

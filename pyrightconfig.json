@@ -1,0 +1,13 @@
+{
+    "typeCheckingMode": "off",
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "pythonVersion": "3.10",
+    "ignore": [
+        "**/migrations",
+        "**/__pycache__"
+    ],
+    "defineConstant": {
+        "DEBUG": true
+    }
+}
