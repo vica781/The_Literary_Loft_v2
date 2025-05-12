@@ -150,7 +150,7 @@ def checkout(request):
 
             # Clear the shopping bag
             request.session['bag'] = {}
-            
+
             return redirect(
                 'checkout:checkout_success',
                 order_number=order.order_number
