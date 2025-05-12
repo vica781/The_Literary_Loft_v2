@@ -1,5 +1,6 @@
 /* Base styles */
-body, html {
+body,
+html {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -81,7 +82,7 @@ h2.section-title {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%; 
+    width: 100%;
     text-align: center;
     font-weight: 600;
     color: black;
@@ -210,13 +211,26 @@ h2.section-title {
 
 /* ------------------------Tablet Responsive Design----------------------- */
 @media (max-width: 768px) {
-    .mt-1, .mt-2, .mt-3, .mt-4, .mt-5,
-    .mb-1, .mb-2, .mb-3, .mb-4, .mb-5,
-    .my-1, .my-2, .my-3, .my-4, .my-5 {
+
+    .mt-1,
+    .mt-2,
+    .mt-3,
+    .mt-4,
+    .mt-5,
+    .mb-1,
+    .mb-2,
+    .mb-3,
+    .mb-4,
+    .mb-5,
+    .my-1,
+    .my-2,
+    .my-3,
+    .my-4,
+    .my-5 {
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
     }
-    
+
     .our-story {
         font-size: 1.8rem;
         margin-top: 1rem;
@@ -229,7 +243,7 @@ h2.section-title {
     .section-title.toggleable[data-target="#values"] {
         font-size: 1.2rem;
     }
-    
+
     h2.section-title {
         font-size: 1.5rem;
     }
@@ -267,9 +281,22 @@ h2.section-title {
 
 /* ------------------------Mobile Responsive Design----------------------- */
 @media (max-width: 480px) {
-    .mt-1, .mt-2, .mt-3, .mt-4, .mt-5,
-    .mb-1, .mb-2, .mb-3, .mb-4, .mb-5,
-    .my-1, .my-2, .my-3, .my-4, .my-5 {
+
+    .mt-1,
+    .mt-2,
+    .mt-3,
+    .mt-4,
+    .mt-5,
+    .mb-1,
+    .mb-2,
+    .mb-3,
+    .mb-4,
+    .mb-5,
+    .my-1,
+    .my-2,
+    .my-3,
+    .my-4,
+    .my-5 {
         margin-top: 0.5rem !important;
         margin-bottom: 0.5rem !important;
     }
@@ -283,8 +310,8 @@ h2.section-title {
     }
 
     .section-title.toggleable.faq-question {
-    font-size: .9rem;
-}
+        font-size: .9rem;
+    }
 
     .section-title.toggleable.faq-question::after {
         font-size: .9rem;

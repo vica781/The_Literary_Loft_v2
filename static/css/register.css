@@ -6,29 +6,35 @@
     background-color: #e0dcd3;
     padding-top: 70px;
 }
+
 .register-form {
     background-color: #fff;
     padding: 2rem;
     border-radius: 0.5rem;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);    
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
+
 .register-form h2 {
     font-family: "Libre Baskerville", serif;
     font-size: 2rem;
     font-weight: 400;
     color: #4d5252;
 }
+
 .btn-create {
     background-color: #4d5252;
     border-color: #4d5252;
 }
+
 .btn-create:hover {
     background-color: #3a3f3f;
     border-color: #3a3f3f;
 }
+
 .form-check-label {
     color: #4d5252;
 }
+
 .password-toggle {
     cursor: pointer;
     position: absolute;
@@ -37,9 +43,11 @@
     transform: translateY(-50%);
     color: #4d5252;
 }
+
 .form-control {
     border-color: #4d5252;
 }
+
 .form-control:focus {
     border-color: #3a3f3f;
     box-shadow: 0 0 0 0.2rem rgba(74, 82, 82, 0.25);
@@ -47,12 +55,12 @@
 
 /* Remove the default blue outline and add a custom border on focus */
 .form-control:focus {
-    outline: none; 
-    box-shadow: none; 
-    border-color: #4d5252; 
+    outline: none;
+    box-shadow: none;
+    border-color: #4d5252;
 }
 
 /* Add a subtle background color on focus */
 .form-control:focus {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }

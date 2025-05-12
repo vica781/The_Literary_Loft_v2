@@ -140,7 +140,7 @@
     .book-item {
         padding-bottom: 50px;
     }
-    
+
     .add-to-cart {
         position: absolute;
         bottom: 15px;
@@ -174,7 +174,7 @@
         height: 2rem;
         font-size: 1rem;
     }
-    
+
     .book-cover {
         padding-bottom: 100%;
     }
@@ -186,7 +186,7 @@
 
     .book-author {
         font-size: .85rem;
-        line-height: 1; 
+        line-height: 1;
     }
 
     .add-to-cart {

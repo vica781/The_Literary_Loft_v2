@@ -90,7 +90,7 @@
     background-color: #f8f9fa;
     padding: 2rem;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 100%;
 }
 
@@ -142,7 +142,7 @@
     margin-top: 2rem;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Responsive Styles */
@@ -150,15 +150,15 @@
     .contact-heading {
         font-size: 2rem;
     }
-    
+
     .contact-subtitle {
         font-size: 1.1rem;
     }
-    
+
     .info-block h3 {
         font-size: 1.3rem;
     }
-    
+
     .contact-form,
     .contact-info {
         margin-bottom: 2rem;
@@ -169,15 +169,15 @@
     .contact-section {
         padding: 2rem 0;
     }
-    
+
     .contact-heading {
         font-size: 1.8rem;
     }
-    
+
     .map-container {
         height: 300px;
     }
-    
+
     .contact-form,
     .contact-info {
         padding: 1.5rem;
@@ -188,15 +188,15 @@
     .contact-heading {
         font-size: 1.5rem;
     }
-    
+
     .contact-subtitle {
         font-size: 1rem;
     }
-    
+
     .info-block h3 {
         font-size: 1.2rem;
     }
-    
+
     .map-container {
         height: 250px;
     }

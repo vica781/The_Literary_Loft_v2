@@ -1,9 +1,11 @@
 .btn-warning {
-    color: #000; /* Set the text color to black for readability */
+    color: #000;
+    /* Set the text color to black for readability */
     font-weight: normal;
 }
 
 .btn-danger {
-    color: #fff; /* Set the text color to white for contrast */
+    color: #fff;
+    /* Set the text color to white for contrast */
     font-weight: bold;
 }

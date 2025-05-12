@@ -88,7 +88,7 @@
   margin-bottom: 1rem;
 }
 
-.breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item+.breadcrumb-item::before {
   content: ">";
 }
 
@@ -118,17 +118,17 @@
   font-weight: bold;
 }
 
-/* ------------------------------ Responsiveness ---------------------------- */ 
+/* ------------------------------ Responsiveness ---------------------------- */
 @media (max-width: 768px) {
   .book-cover img {
-    max-width: 70%;
+      max-width: 70%;
   }
 
   .book-info h1 {
-    font-size: 1.5rem;
+      font-size: 1.5rem;
   }
 
   .book-tabs .nav-link {
-    padding: 0.5rem 0.6rem;
+      padding: 0.5rem 0.6rem;
   }
 }

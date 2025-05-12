@@ -5,13 +5,12 @@
 
 .nunito {
   font-family: "Nunito", sans-serif;
-  font-optical-sizing: auto;
 }
 
 /* --------------------------------Global----------------------------------- */
 .main-nav-separator {
-    border-bottom: 1px solid #ddd; 
-    margin-bottom: 20px; 
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
 }
 
 .bag-heading {
@@ -92,6 +91,7 @@
   color: #fff;
   text-decoration: none;
 }
+
 /*==================================spinner==================================*/
 .quantity-form {
   display: flex;
@@ -132,75 +132,75 @@
 /* -------------------------------Responsive styles------------------------- */
 @media (max-width: 768px) {
   .table {
-    width: 100%;
-    display: block;
-    overflow-x: auto;
+      width: 100%;
+      display: block;
+      overflow-x: auto;
   }
 
   .table thead {
-    display: none;
+      display: none;
   }
 
   .table tr {
-    display: block;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
+      display: block;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #ddd;
   }
 
   .table td {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.9rem;
-    padding: 0.5rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
   }
 
   .table td:before {
-    content: attr(data-label);
-    font-weight: bold;
-    text-transform: capitalize;
-    margin-right: 0.5rem;
+      content: attr(data-label);
+      font-weight: bold;
+      text-transform: capitalize;
+      margin-right: 0.5rem;
   }
 
   .quantity-form {
-    flex-wrap: nowrap;
-    width: auto;
+      flex-wrap: nowrap;
+      width: auto;
   }
 
   .quantity-input {
-    width: 40px;
-    margin-right: 0.25rem;
+      width: 40px;
+      margin-right: 0.25rem;
   }
 
   .table td:last-child {
-    justify-content: flex-end;
+      justify-content: flex-end;
   }
 
   .remove-btn {
-    width: auto;
+      width: auto;
   }
 
   .cart-hero-content .hero-title {
-    font-size: 1.5rem;
+      font-size: 1.5rem;
   }
 
   .cart-hero-content .cta-button {
-    padding: 8px 16px;
-    font-size: 1rem;
+      padding: 8px 16px;
+      font-size: 1rem;
   }
 
   .bag-heading {
-    font-size: 1.5rem;
-    margin-top: 10px;
+      font-size: 1.5rem;
+      margin-top: 10px;
   }
 
   .bag-empty {
-    font-size: 1rem;
+      font-size: 1rem;
   }
 
   .quantity-input {
-    width: 50px;
-    margin-right: 0.25rem;
+      width: 50px;
+      margin-right: 0.25rem;
   }
 
 }

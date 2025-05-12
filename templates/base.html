@@ -72,7 +72,6 @@
     {% block extra_js %}
     <!-- Site-specific JavaScript -->
     <script src="{% static 'js/csrf.js' %}"></script>
-    {% comment %} <script src="{% static 'js/flags.js' %}"></script> {% endcomment %}
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/category_nav.js' %}"></script>
     <script src="{% static 'js/favorites.js' %}"></script>
@@ -84,7 +83,7 @@
     {% csrf_token %}
   </head>
 
-  <body class="{% block body_class %}{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}{% endblock %}">
+  <body class="{% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}">
     {% block notifications %}
         {% include 'includes/notifications.html' %}
     {% endblock %}

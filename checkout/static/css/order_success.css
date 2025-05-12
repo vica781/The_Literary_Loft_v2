@@ -17,9 +17,9 @@
 
 .order-number {
     font-weight: bold;
-    color: #388E3C; 
-    font-size: 1.2rem; 
-    background-color: #f0f0f0; 
+    color: #388E3C;
+    font-size: 1.2rem;
+    background-color: #f0f0f0;
     padding: 2px 5px;
     border-radius: 3px;
 }
@@ -32,19 +32,22 @@
 }
 
 /* -------------------------------Responsive design------------------------- */
-/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */
 @media (max-width: 768px) {
-  .successful-order {
-    font-size: 1.5rem;
-  }
+    .successful-order {
+        font-size: 1.5rem;
+    }
+
     .order-number {
         font-size: .9rem;
     }
+
     .order-summary {
         font-size: 1.5rem;
     }
+
     .table-responsive {
-    margin-top: 20px;
-    font-size: .75rem;
-}
+        margin-top: 20px;
+        font-size: .75rem;
+    }
 }

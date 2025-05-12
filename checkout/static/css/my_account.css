@@ -20,69 +20,70 @@
 }
 
 #change-password-msg {
-    font-family: "Nunito", sans-serif;    
+    font-family: "Nunito", sans-serif;
     margin-top: 3rem;
 }
 
 .save-changes-btn,
 .change-password-btn {
-  color: #fff;
-  font-weight: bold;
-  background-color: #4d5252;
-  border-color: #4d5252;
-  margin-top: 1rem;
+    color: #fff;
+    font-weight: bold;
+    background-color: #4d5252;
+    border-color: #4d5252;
+    margin-top: 1rem;
 }
 
 .save-changes-btn:hover,
 .change-password-btn:hover {
-  color: #4d5252;
-  background-color: #c8ccd2;
-  border-color: #c8ccd2;
+    color: #4d5252;
+    background-color: #c8ccd2;
+    border-color: #c8ccd2;
 }
 
 /* Remove the default blue outline and add a custom border on focus */
 .form-control:focus {
-    outline: none; 
-    box-shadow: none; 
-    border-color: #4d5252; 
+    outline: none;
+    box-shadow: none;
+    border-color: #4d5252;
 }
 
 /* Add a subtle background color on focus */
 .form-control:focus {
-    background-color: #f7f7f7; 
+    background-color: #f7f7f7;
 }
 
 /* Style for the email address */
 .user-email {
     font-family: "Nunito", sans-serif;
-    font-size: 1.2rem; 
-    font-weight: 700; 
-    color: #333333; 
-    margin: 0; 
-    display: block; 
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #333333;
+    margin: 0;
+    display: block;
 }
 
 /* Style for the email container */
 .user-email-container {
     padding: 10px;
-    background-color: #f5f5f5; 
-    border-radius: 5px; 
-    margin-bottom: 15px; 
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    margin-bottom: 15px;
 }
 
 /* -------------------------------Responsive design------------------------- */
-/* -------------------------------MEDIUM DISPLAYS--------------------------- */  
-@media (max-width: 768px) {  
+/* -------------------------------MEDIUM DISPLAYS--------------------------- */
+@media (max-width: 768px) {
     .my-account {
         font-size: 1.5rem;
         margin-top: 1.5rem;
-        margin-bottom: 0;        
+        margin-bottom: 0;
     }
+
     .profile-info {
         font-size: 1.2rem;
         margin-top: 1rem;
     }
-    
+
     .order-history {
         font-size: 1.2rem;
         margin-top: 2rem;
@@ -91,5 +92,5 @@
     .save-changes-btn {
         margin-top: .5rem;
     }
-    
+
 }
