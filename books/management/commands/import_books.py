@@ -2,6 +2,7 @@ import json
 from django.core.management.base import BaseCommand
 from books.models import Book
 
+
 class Command(BaseCommand):
     help = 'Load books from JSON file into the database'
 
@@ -25,4 +26,6 @@ class Command(BaseCommand):
                     about_author=item['about_author'],
                     review=item['review']
                 )
-        self.stdout.write(self.style.SUCCESS('Successfully imported books data'))
+        self.stdout.write(
+            self.style.SUCCESS('Successfully imported books data')
+            )

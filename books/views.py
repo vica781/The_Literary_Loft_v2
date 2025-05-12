@@ -22,6 +22,7 @@ from .forms import BookForm
 
 User = get_user_model()
 
+
 # Check if the user is a staff admin
 def is_admin(user):
     return user.is_staff
@@ -39,7 +40,10 @@ def add_book(request):
             form.save()
             messages.success(request, "Book added successfully!")
             return redirect('books:book_list')
-        messages.error(request, "There was an error adding the book. Please check the form.")
+        messages.error(
+            request,
+            "There was an error adding the book. Please check the form."
+            )
     else:
         form = BookForm()
     return render(request, 'books/add_book.html', {
@@ -100,13 +104,20 @@ def register(request):
             messages.error(request, "Email is already registered.")
             return render(request, 'accounts/register.html')
 
-        user = User.objects.create_user(username=email, email=email, password=password)
+        user = User.objects.create_user(
+            username=email,
+            email=email,
+            password=password
+            )
         user.first_name = first_name
         user.last_name = last_name
         user.save()
 
         login(request, user)
-        messages.success(request, f"Account created! Logged in as {user.username}")
+        messages.success(
+            request,
+            f"Account created! Logged in as {user.username}"
+            )
         return redirect('books:index')
 
     return render(request, 'accounts/register.html')
@@ -136,8 +147,10 @@ def user_logout(request):
 def index(request):
     return render(request, 'books/index.html')
 
+
 def about(request):
     return render(request, 'books/about.html')
+
 
 def contact(request):
     return render(request, 'books/contact.html')
@@ -181,18 +194,26 @@ def book_detail(request, id):
 def search_suggestions(request):
     query = request.GET.get('q', '')
     books = Book.objects.filter(
-        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query) | Q(subcategory__name__icontains=query)
+        Q(title__icontains=query) | Q(author__icontains=query) |
+        Q(isbn__icontains=query) | Q(subcategory__name__icontains=query)
     )[:15]
-    suggestions = [{'id': b.id, 'title': b.title, 'author': b.author} for b in books]
+    suggestions = [
+        {'id': b.id, 'title': b.title, 'author': b.author} for b in books
+        ]
     return JsonResponse(suggestions, safe=False)
 
 
 def search_books(request):
     query = request.GET.get('q', '')
     books = Book.objects.filter(
-        Q(title__icontains=query) | Q(author__icontains=query) | Q(isbn__icontains=query)
+        Q(title__icontains=query) |
+        Q(author__icontains=query) | Q(isbn__icontains=query)
     ) if query else Book.objects.all()
-    return render(request, 'books/search_results.html', {'books': books, 'query': query})
+    return render(
+        request,
+        'books/search_results.html',
+        {'books': books, 'query': query}
+        )
 
 
 # ==================== Cart ====================
@@ -233,7 +254,11 @@ def view_cart(request):
             'total': item_total
         })
 
-    return render(request, 'cart/cart.html', {'cart_items': cart_items, 'total': total})
+    return render(
+        request,
+        'cart/cart.html',
+        {'cart_items': cart_items, 'total': total}
+        )
 
 
 def update_cart(request):
@@ -286,7 +311,10 @@ def toggle_favorite(request, book_id):
 # ==================== Marketing Page ====================
 
 def facebook_mockup(request):
-    book = get_object_or_404(Book, title="Tomorrow, and Tomorrow, and Tomorrow")
+    book = get_object_or_404(
+        Book,
+        title="Tomorrow, and Tomorrow, and Tomorrow"
+        )
     secret_history = get_object_or_404(Book, title="The Secret History")
     little_friend = get_object_or_404(Book, title="The Little Friend")
     goldfinch = get_object_or_404(Book, title="The Goldfinch")
@@ -304,6 +332,7 @@ def facebook_mockup(request):
 def custom_404_view(request, exception):
     return render(request, '404.html', status=404)
 
+
 def custom_500_view(request):
     return render(request, '500.html', status=500)
 
@@ -315,24 +344,42 @@ def newsletter_signup(request):
         email = request.POST.get('newsletter-email')
 
         if not email:
-            return JsonResponse({'status': 'error', 'message': 'Please provide an email address.'})
+            return JsonResponse(
+                {
+                    'status': 'error',
+                    'message': 'Please provide an email address.'
+                    }
+                )
 
         try:
             validate_email(email)
         except ValidationError:
-            return JsonResponse({'status': 'error', 'message': 'Invalid email address.'})
+            return JsonResponse(
+                {
+                    'status': 'error',
+                    'message': 'Invalid email address.'
+                    }
+                )
 
         if Newsletter.objects.filter(email=email).exists():
-            return JsonResponse({'status': 'error', 'message': 'This email is already subscribed.'})
+            return JsonResponse(
+                {
+                    'status': 'error',
+                    'message': 'This email is already subscribed.'
+                    }
+                )
 
         Newsletter.objects.create(email=email)
-        
-        # TODO: Send newsletter signup confirmation email
         context = {
             'email': email,
         }
+
+        # Send newsletter signup confirmation email
         body = render_to_string('books/newsletter_confirmation.txt', context)
-        html_body = render_to_string('books/newsletter_confirmation.html', context)
+        html_body = render_to_string(
+            'books/newsletter_confirmation.html',
+            context
+            )
         send_mail(
             'The Literary Loft Newsletter',
             body,
@@ -341,24 +388,23 @@ def newsletter_signup(request):
             html_message=html_body,
             fail_silently=False,
         )
-        return JsonResponse({'status': 'success', 'message': 'Successfully subscribed to the newsletter!'})
+        return JsonResponse(
+            {
+                'status': 'success',
+                'message': 'Successfully subscribed to the newsletter!'
+                }
+            )
 
-    return JsonResponse({'status': 'error', 'message': 'Invalid request method.'})
+    return JsonResponse(
+        {
+            'status': 'error',
+            'message': 'Invalid request method.'
+            }
+        )
 
-
-# ==================== Debug ====================
-
-@user_passes_test(is_admin)
-# def debug_session(request):
-#     """Debug view to inspect session data (admin only)"""
-#     if not request.session.session_key:
-#         request.session.create()
-#     output = f"<h1>Session ID: {request.session.session_key}</h1><ul>"
-#     for key, value in dict(request.session).items():
-#         output += f"<li><strong>{key}:</strong> {value}</li>"
-#     output += "</ul>"
-#     return HttpResponse(output)
 
 def debug_session(request):
     """Debug view - minimal version to test functionality"""
-    return HttpResponse("Session debug test - if you see this, the view is working")
+    return HttpResponse(
+        "Session debug test - if you see this, the view is working"
+        )

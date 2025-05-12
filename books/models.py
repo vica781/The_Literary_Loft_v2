@@ -4,6 +4,7 @@ from django.urls import reverse
 from django_ckeditor_5.fields import CKEditor5Field
 from django.db import models
 
+
 # CATEGOTY
 class Category(models.Model):
     CATEGORY_CHOICES = [
@@ -11,39 +12,44 @@ class Category(models.Model):
         ('non-fiction', 'Non-Fiction Books'),  # Change this line
         ('children', "Children's Books"),
     ]
-    
+
     name = models.CharField(max_length=100, choices=CATEGORY_CHOICES)
     slug = models.SlugField(max_length=100, unique=True)
-    
+
     class Meta:
         verbose_name_plural = "Categories"
-    
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.get_name_display())
         super().save(*args, **kwargs)
-    
+
     def display_name(self):
         return self.get_name_display()
 
     def __str__(self):
         return self.display_name()
 
+
 # SUBCATEGORY
 class Subcategory(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100, unique=True)
-    category = models.ForeignKey(Category, related_name='subcategories', on_delete=models.CASCADE)
-    
+    category = models.ForeignKey(
+        Category,
+        related_name='subcategories',
+        on_delete=models.CASCADE
+        )
+
     class Meta:
         verbose_name_plural = "Subcategories"
-    
+
     def save(self, *args, **kwargs):
         self.name = self.name.replace('_', '-')
         if not self.slug:
             self.slug = slugify(self.name)
         super().save(*args, **kwargs)
-        
+
     def capitalized_name(self):
         return self.name.capitalize()
 
@@ -61,32 +67,49 @@ class Book(models.Model):
     review = CKEditor5Field(blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     stock = models.PositiveIntegerField(default=0)
-    subcategory = models.ForeignKey(Subcategory, related_name='books', on_delete=models.SET_NULL, null=True)
+    subcategory = models.ForeignKey(
+        Subcategory,
+        related_name='books',
+        on_delete=models.SET_NULL,
+        null=True
+        )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    cover_image = models.ImageField(upload_to='book_covers/', blank=True, null=True)
+    cover_image = models.ImageField(
+        upload_to='book_covers/',
+        blank=True,
+        null=True
+        )
     pages = models.PositiveIntegerField(blank=True, null=True)
     publication_date = models.DateField(blank=True, null=True)
-    favorited_by = models.ManyToManyField('auth.User', related_name='favorite_books', blank=True)
+    favorited_by = models.ManyToManyField(
+        'auth.User',
+        related_name='favorite_books',
+        blank=True
+        )
 
     def __str__(self):
         return self.title
-    
+
     def save(self, *args, **kwargs):
         # Ensure that the book's subcategory matches the selected category
-        if self.subcategory and self.subcategory.category != Category.objects.get(name=self.subcategory.category.name):
-            raise ValueError("Subcategory does not match the selected Category.")
+        if self.subcategory and self.subcategory.category !=\
+                Category.objects.get(name=self.subcategory.category.name):
+            raise ValueError(
+                "Subcategory does not match the selected Category."
+                )
         super().save(*args, **kwargs)
-        
+
     def get_absolute_url(self):
-        return reverse('book_detail', args=[str(self.id)])  # Adjust 'book_detail' and args as per URL configuration
-  
+        # Adjust 'book_detail' and args as per URL configuration
+        return reverse('book_detail', args=[str(self.id)])
+
 
 # NEWSLETTER SIGNUP MODEL
 class Newsletter(models.Model):
     email = models.EmailField(unique=True)
     date_subscribed = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
-    
+
     def __str__(self):
-        return self.email    
+        return self.email
