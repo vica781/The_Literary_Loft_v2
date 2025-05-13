@@ -17,66 +17,117 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" name="title" value="">
+                    <input type="text" class="form-control" 
+                    id="title" 
+                    name="title" 
+                    value="">
                     {% if form.title.errors %}
-                    <small class="form-text text-danger">{{ form.title.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.title.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="author">Author</label>
-                    <input type="text" class="form-control" id="author" name="author" value="">
+                    <input type="text" 
+                    class="form-control" 
+                    id="author" 
+                    name="author" 
+                    value="">
                     {% if form.author.errors %}
-                    <small class="form-text text-danger">{{ form.author.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.author.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for = "about_author">About Author</label>
-                    <textarea class="form-control" id="about_author" name="about_author" rows="3"></textarea>
+                    <textarea class="form-control" 
+                    id="about_author" 
+                    name="about_author" 
+                    rows="3"></textarea>
                     {% if form.about_author.errors %}
-                    <small class="form-text text-danger">{{ form.about_author.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.about_author.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="isbn">ISBN</label>
-                    <input type="text" class="form-control" id="isbn" name="isbn" value="">
+                    <input type="text" 
+                    class="form-control" 
+                    id="isbn" 
+                    name="isbn" 
+                    value="">
                     {% if form.isbn.errors %}
-                    <small class="form-text text-danger">{{ form.isbn.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.isbn.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea class="form-control" 
+                    id="description" 
+                    name="description" 
+                    rows="3"></textarea>
                     {% if form.description.errors %}
-                    <small class="form-text text-danger">{{ form.description.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.description.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="review">Review</label>
-                    <textarea class="form-control" id="review" name="review" rows="3"></textarea>
+                    <textarea class="form-control" 
+                    id="review" 
+                    name="review" 
+                    rows="3"></textarea>
                     {% if form.review.errors %}
-                    <small class="form-text text-danger">{{ form.review.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.review.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="number" class="form-control" id="price" name="price" value="">
+                    <input type="number" step="0.01" 
+                    class="form-control" 
+                    id="price" 
+                    name="price" 
+                    value="">
                     {% if form.price.errors %}
-                    <small class="form-text text-danger">{{ form.price.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.price.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="stock">Stock</label>
-                    <input type="number" class="form-control" id="stock" name="stock" value="{{ form.stock.value }}">
+                    <input type="number" 
+                    class="form-control" 
+                    id="stock" 
+                    name="stock" 
+                    value="{{ form.stock.value }}">
                     {% if form.stock.errors %}
-                    <small class="form-text text-danger">{{ form.stock.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.stock.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="category">Category</label>
-                    <select class="form-control" id="category" name="category">
+                    <select 
+                    class="form-control" 
+                    id="category" 
+                    name="category">
                         <option value="">Select a category</option>
                         {% for category in categories %}
-                        <option value="{{ category.id }}" {% if form.category.value == category.id %}selected{% endif %}>
+                        <option 
+                        value="{{ category.id }}" 
+                        {% if form.category.value == category.id %}
+                        selected
+                        {% endif %}>
                             {{ category.display_name }}
                         </option>
                         {% endfor %}
@@ -90,34 +141,55 @@
                     <select class="form-control" id="subcategory" name="subcategory">
                         <option value="">Select a subcategory</option>
                         {% for subcategory in subcategories %}
-                        <option value="{{ subcategory.id }}" {% if form.subcategory.value == subcategory.id %}selected{% endif %}>
+                        <option 
+                        value="{{ subcategory.id }}" {% if form.subcategory.value == subcategory.id %}
+                        selected
+                        {% endif %}>
                             {{ subcategory.name }}
                         </option>
                         {% endfor %}
                     </select>
                     {% if form.subcategory.errors %}
-                    <small class="form-text text-danger">{{ form.subcategory.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.subcategory.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="cover_image">Cover Image</label>
-                    <input type="file" class="form-control-file" id="cover_image" name="cover_image">
+                    <input type="file" 
+                    class="form-control-file" 
+                    id="cover_image" name="cover_image">
                     {% if form.cover_image.errors %}
-                    <small class="form-text text-danger">{{ form.cover_image.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.cover_image.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="pages">Pages</label>
-                    <input type="number" class="form-control" id="pages" name="pages" value="">
+                    <input type="number" 
+                    class="form-control" 
+                    id="pages" 
+                    name="pages" 
+                    value="">
                     {% if form.pages.errors %}
-                    <small class="form-text text-danger">{{ form.pages.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.pages.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <div class="form-group">
                     <label for="publication_date">Publication Date</label>
-                    <input type="date" class="form-control" id="publication_date" name="publication_date" value="">
+                    <input type="date" 
+                    class="form-control" 
+                    id="publication_date" 
+                    name="publication_date" 
+                    value="">
                     {% if form.publication_date.errors %}
-                    <small class="form-text text-danger">{{ form.publication_date.errors.0 }}</small>
+                    <small class="form-text text-danger">
+                        {{ form.publication_date.errors.0 }}
+                    </small>
                     {% endif %}
                 </div>
                 <button type="submit" class="btn btn-primary">Add Book</button>
