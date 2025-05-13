@@ -16,6 +16,10 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
+.coding {
+    margin: 0;
+}
+
 .cart-page .category-nav,
 .cart-page .navbar-toggler,
 .checkout-page .category-nav,
