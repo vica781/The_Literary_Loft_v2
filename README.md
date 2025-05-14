@@ -896,8 +896,20 @@ After careful and detailed testing and implemented bugfixes, there are no bugs i
 
 ## Deployment
 
+The project was deployed on Heroku, a cloud platform that provides a secure and scalable environment for hosting web applications. The deployment process involved setting up the necessary environment variables, configuring the database, and deploying the application to Heroku.
+
+Deployed link: [https://the-literary-loft-a4b6116b3a17.herokuapp.com/](https://the-literary-loft-a4b6116b3a17.herokuapp.com/)
+
 [Back to top ⬆](#table-of-contents)
 
 ## Credits
 
+Images used in the project were mostly sourced from [Unsplash](https://unsplash.com/) and [Pexels](https://www.pexels.com/). The images for the books coveres were sourced from the different e-commerce platforms such as [Amazon](https://www.amazon.com/), [Barnes & Noble](https://www.barnesandnoble.com/), and [Book Depository](https://www.bookdepository.co.uk/).
+
+I wish to thank all who have helped me with this project, especially my mentor Brian Macharia, my dearest friend Tomislav Dukez, and my dear colleagues at Code Institute. A special thanks to my precious sons Ilya and Tim, who have been my constant support and encouragement throughout the project.
+
 [Back to top ⬆](#table-of-contents)
+
+## Copyright
+
+&copy; 2025 Victoria Kalenik
