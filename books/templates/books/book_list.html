@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+resen{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}All books - The Literary Loft{% endblock %}
@@ -8,11 +8,14 @@
 {% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Discover a wide range of {% if category %}{{ category.display_name }}{% elif subcategory %}{{ subcategory.name }}{% else %}books{% endif %} at The Literary Loft. Browse our collection and enjoy free UK shipping on orders over £20." />
+<meta name="description" 
+content="Discover a wide range of {% if category %}{{ category.display_name }}
+{% elif subcategory %}{{ subcategory.name }}{% else %}books{% endif %} at The Literary Loft.
+Browse our collection and enjoy free UK shipping on orders over £20." />
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/book_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/book_list.css' %}" aria-label="all books list">
 {% endblock %}
 
 {% block content %}
@@ -20,12 +23,17 @@
     <!-- Breadcrumb navigation -->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">All Books</a></li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'books:book_list' %}"
+                aria-label="all books list">All Books</a></li>
             {% if category %}
             <li class="breadcrumb-item active" aria-current="page">{{ category.display_name }}</li>
             {% endif %}
             {% if subcategory %}
-            <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}">{{ subcategory.category.display_name }}</a></li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'books:book_list_by_category' category_slug=subcategory.category.slug %}"
+                aria-label="category">{{ subcategory.category.display_name }}</a>
+            </li>
             <li class="breadcrumb-item active" aria-current="page">{{ subcategory.name|title }}</li>
             {% endif %}
         </ol>
@@ -43,11 +51,18 @@
         <h2 class="category-name text-center mb-3">
             {{ main_category.display_name }}
             <div class="dropdown d-inline-block">
-                <button class="btn btn-link dropdown-toggle" type="button" id="{{ main_category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-link dropdown-toggle" type="button"
+                id="{{ main_category.slug }}Dropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="category dropdown">
                 </button>
                 <div class="dropdown-menu" aria-labelledby="{{ main_category.slug }}Dropdown">
                     {% for subcategory in main_category.subcategories.all %}
-                    <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">{{ subcategory.name|title }}</a>
+                    <a class="dropdown-item"
+                    href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}"
+                    aria-label="subcategory">{{ subcategory.name|title }}</a>
                     {% endfor %}
                 </div>
             </div>
@@ -66,11 +81,18 @@
         {% if category %}
             {{ category.display_name }}
             <div class="dropdown d-inline-block">
-                <button class="btn btn-link dropdown-toggle" type="button" id="{{ category.slug }}Dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-link dropdown-toggle"
+                type="button" id="{{ category.slug }}Dropdown"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+                aria-label="category dropdown">
                 </button>
                 <div class="dropdown-menu" aria-labelledby="{{ category.slug }}Dropdown">
                     {% for subcategory in category.subcategories.all %}
-                    <a class="dropdown-item" href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}">{{ subcategory.name|title }}</a>
+                    <a class="dropdown-item"
+                    href="{% url 'books:book_list_by_subcategory' subcategory_slug=subcategory.slug %}"
+                    aria-label="subcategory">{{ subcategory.name|title }}</a>
                     {% endfor %}
                 </div>
             </div>

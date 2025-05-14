@@ -4,8 +4,8 @@
 {% block title %}Register - The Literary Loft{% endblock %} 
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link rel="stylesheet" href="{% static 'css/register.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% endblock %} 
 
 {% block content %}
@@ -83,15 +83,16 @@
         />
         <label class="form-check-label" for="remember">Remember me</label>
       </div>
-      <button type="submit" class="btn btn-primary btn-block btn-create">
-        Create
-      </button>
+      <button 
+      type="submit"
+      class="btn btn-primary btn-block btn-create"
+      aria-label="create account">Create</button>
     </form>
     <div class="mt-3 text-center">
       <p class="mb-1">
-        Already have an account? <a href="{% url 'books:login' %}">Login</a>
+        Already have an account? <a href="{% url 'books:login' %}"
+        aria-label="login">Login</a>
       </p>
-      <a href="#">Resend activation email</a>
     </div>
   </div>
 </div>

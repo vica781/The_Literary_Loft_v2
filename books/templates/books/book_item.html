@@ -2,16 +2,26 @@
 
 <div class="col-6 col-md-3 mb-4">
     <div class="book-item">
-        <a href="{% url 'books:book_detail' book.id %}" class="book-link">
+        <a href="{% url 'books:book_detail' book.id %}" 
+        aria-label="book details page" class="book-link">
             <!-- Display book cover or fallback image -->
-            <div class="book-cover" style="background-image: url('{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static "images/no_cover_img.jpg" %}{% endif %}');">
+            <div class="book-cover" 
+            style="background-image: url('{% if book.cover_image %}{{ book.cover_image.url }}
+            {% else %}{% static "images/no_cover_img.jpg" %}
+            {% endif %}');">
                 <!-- Hide the favorite button for staff users -->
                 {% if user.is_authenticated and not user.is_staff %}
-                <button class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}">
+                <button
+                class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}"
+                data-book-id="{{ book.id }}"
+                aria-label="favorite book for registered user">
                     <i class="fas fa-heart"></i>
                 </button>
                 {% else %}
-                <button class="favorite-btn guest" data-book-id="{{ book.id }}">
+                <button
+                class="favorite-btn guest"
+                data-book-id="{{ book.id }}"
+                aria-label="favorite book for guest user">
                     <i class="fas fa-heart"></i>
                 </button>
                 {% endif %}
@@ -28,13 +38,19 @@
         <form method="post" action="{% url 'books:add_to_cart' book.id %}">
             {% csrf_token %}
             <input type="hidden" name="quantity" value="1">
-            <button type="submit" class="btn add-to-cart">ADD TO BAG</button>
+            <button type="submit"
+            class="btn add-to-cart"
+            aria-label="add to bag button">ADD TO BAG</button>
         </form>
         {% endif %}
         {% if user.is_staff %}
         <div class="admin-controls mt-2">
-            <a href="{% url 'books:edit_book' book.id %}" class="btn btn-sm btn-warning btn-edit">Edit</a>
-            <a href="{% url 'books:delete_book' book.id %}" class="btn btn-sm btn-danger">Delete</a>
+            <a href="{% url 'books:edit_book' book.id %}"
+            class="btn btn-sm btn-warning btn-edit"
+            aria-label="edit book details">Edit</a>
+            <a href="{% url 'books:delete_book' book.id %}"
+            class="btn btn-sm btn-danger"
+            aria-label="delete book">Delete</a>
         </div>
         {% endif %}
     </div>

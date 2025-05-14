@@ -1,20 +1,26 @@
 {% load static %}
 <div class="user-actions dropdown">
   <!-- Cart Icon -->
-  <a href="{% url 'books:view_cart' %}" class="cart-icon">
+  <a href="{% url 'books:view_cart' %}" class="cart-icon" aria-label="shopping bag icon">
     <i class="fas fa-shopping-bag"></i>
     <span class="cart-count" id="cart-count">{{ cart_count }}</span>
   </a>
 
   <!-- Favorite Books -->
-  <a href="{% url 'books:favorites' %}" class="favorites-icon">
+  <a href="{% url 'books:favorites' %}" class="favorites-icon" aria-label="favorite books icon">
     <i class="fas fa-heart"></i>
     <span class="favorites-count" id="favorite-count">{{ request.user.favorite_books.count }}</span>
   </a> 
 
   <!-- User Dropdown -->
   <div class="dropdown">
-    <a href="#" class="btn btn-secondary dropdown-toggle" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a href="#" class="btn btn-secondary dropdown-toggle" 
+    id="userDropdown"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    aria-label="user dropdown"
+    >
       <i class="fas fa-user" id="user-icon"></i>
       {% if user.is_authenticated %}
         <span>&nbsp; {{ user.first_name }}</span>
@@ -24,11 +30,19 @@
     </a>
     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
       {% if user.is_authenticated %}
-        <a href="{% url 'checkout:my_account' %}" class="dropdown-item">My Account</a>
-        <a href="{% url 'books:logout' %}" class="dropdown-item">Logout</a>
+        <a href="{% url 'checkout:my_account' %}"
+        class="dropdown-item"
+        aria-label="My Account">My Account</a>
+        <a href="{% url 'books:logout' %}"
+        class="dropdown-item"
+        aria-label="Logout">Logout</a>
       {% else %}
-        <a href="{% url 'books:login' %}" class="dropdown-item">Login</a>
-        <a href="{% url 'books:register' %}" class="dropdown-item">Register</a>
+        <a href="{% url 'books:login' %}"
+        class="dropdown-item"
+        aria-label="Login">Login</a>
+        <a href="{% url 'books:register' %}"
+        class="dropdown-item"
+        aria-label="Register">Register</a>
       {% endif %}
     </div>
   </div>

@@ -8,11 +8,13 @@
 {% endblock %}
 
 {% block meta_description %}
-<meta Buy {{ book.title }} by {{ book.author }} at The Literary Loft. Read more about this book and enjoy free UK shipping on orders over £20./>
+<meta Buy {{ book.title }} by {{ book.author }} at The Literary Loft.
+Read more about this book and enjoy free UK shipping on orders over £20./>
 {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'css/book_details.css' %}" />
+<link rel="stylesheet" href="{% static 'css/book_details.css' %}" 
+aria-label="book details styling" />
 {% endblock %}
 
 {% block content %}
@@ -20,9 +22,16 @@
   <!-- Breadcrumb navigation -->
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}">All Books</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_category' category_slug=book.subcategory.category.slug %}">{{ book.subcategory.category.display_name }}</a></li>
-      <li class="breadcrumb-item"><a href="{% url 'books:book_list_by_subcategory' subcategory_slug=book.subcategory.slug %}">{{ book.subcategory.name|title }}</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'books:book_list' %}" 
+        aria-label="all books list">All Books</a></li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'books:book_list_by_category' category_slug=book.subcategory.category.slug %}" 
+        aria-label="category list"> {{ book.subcategory.category.display_name }}</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a href="{% url 'books:book_list_by_subcategory' subcategory_slug=book.subcategory.slug %}" 
+        aria-label="subcategory list">
+          {{ book.subcategory.name|title }}</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ book.title }}</li>
     </ol>
   </nav>
@@ -48,13 +57,15 @@
         {% csrf_token %}
         <div class="form-group">
           <label for="quantity">Quantity:</label>
-          <select class="form-control" name="quantity" id="quantity" style="width: auto; display: inline-block;">
+          <select class="form-control" name="quantity" id="quantity" 
+          style="width: auto; display: inline-block;">
             {% for i in "1234567890"|make_list %}
             <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
             {% endfor %}
           </select>
         </div>
-        <button type="submit" class="btn add_to_cart mt-3">ADD TO BAG</button>
+        <button type="submit" class="btn add_to_cart mt-3" 
+        aria-label="add to bag button" >ADD TO BAG</button>
       </form>
       {% endif %}
       
@@ -69,40 +80,56 @@
     <div class="col-md-4 book-summary">
       <h2>Summary</h2>
       <p>{{ book.description|truncatewords:70|safe }}</p>
-      <p><a href="#summary" class="btn btn-link">Read more</a></p>
+      <p><a href="#summary" class="btn btn-link" aria-label="read more link">Read more</a></p>
     </div>
   </div>
   <div class="row book-tabs mt-4">
     <div class="col-12">
       <ul class="nav nav-tabs" id="bookTabs" role="tablist">
         <li class="nav-item">
-          <a class="nav-link active" id="summary-tab" data-toggle="tab" href="#summary" role="tab">Summary</a>
+          <a class="nav-link active" 
+          id="summary-tab" data-toggle="tab"
+          href="#summary" role="tab" aria-label="summary tab">Summary</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="author-tab" data-toggle="tab" href="#author" role="tab">Author</a>
+          <a class="nav-link"
+          id="author-tab" data-toggle="tab"
+          href="#author" role="tab" aria-label="author tab">Author</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="details-tab" data-toggle="tab" href="#details" role="tab">Product Details</a>
+          <a class="nav-link"
+          id="details-tab" data-toggle="tab"
+          href="#details" role="tab">Product Details</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab">Review</a>
+          <a class="nav-link"
+          id="review-tab" data-toggle="tab"
+          href="#review" role="tab" aria-label="book's review tab">Review</a>
         </li>
       </ul>
       <div class="tab-content" id="bookTabsContent">
-        <div class="tab-pane fade show active" id="summary" role="tabpanel" aria-labelledby="summary-tab">
+        <div class="tab-pane fade show active"
+        id="summary" role="tabpanel"
+        aria-labelledby="summary-tab" aria-label="book summary tab">
           <p>{{ book.description|safe }}</p>
         </div>
-        <div class="tab-pane fade" id="author" role="tabpanel" aria-labelledby="author-tab">
+        <div class="tab-pane fade"
+        id="author" role="tabpanel"
+        aria-labelledby="author-tab" aria-label="book author tab">
           <p>{{ book.about_author|safe }}</p>
         </div>
-        <div class="tab-pane fade" id="details" role="tabpanel" aria-labelledby="details-tab">
+        <div class="tab-pane fade"
+        id="details" role="tabpanel"
+        aria-labelledby="details-tab" aria-label="book details tab">
           <p>ISBN: {{ book.isbn }}</p>
           <p>Pages: {{ book.pages }}</p>
           <p>Published: {{ book.publication_date }}</p>
           <p>Category: {{ book.subcategory.category }}</p>
           <p>Subcategory: {{ book.subcategory }}</p>
         </div>
-        <div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+        <div class="tab-pane fade"
+        id="review" role="tabpanel"
+        aria-labelledby="review-tab">
           <p>{{ book.review|safe }}</p>
         </div>
       </div>

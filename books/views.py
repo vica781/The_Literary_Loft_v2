@@ -113,10 +113,9 @@ def register(request):
         user.last_name = last_name
         user.save()
 
-        login(request, user)
         messages.success(
             request,
-            f"Account created! Logged in as {user.username}"
+            f"Account created! You are registered as {user.username}. Please, login"
             )
         return redirect('books:index')
 
