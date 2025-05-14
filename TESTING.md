@@ -648,11 +648,31 @@ The Literary Loft has undergone comprehensive manual testing across all key func
 
 Overall, the manual testing confirms that The Literary Loft meets the requirements specified in the user stories and provides a robust, user-friendly shopping experience.
 
+<details>
+<summary>Accessibility Results</summary>
+
+![Home Page](./readme_files/testing_evidence/home_page_accessibility.png)
+![All Books](./readme_files/testing_evidence/allBooks_page_accessibility.png)
+![Contact Page](./readme_files/testing_evidence/contact_page_accessibility.png)
+![About Us Page](./readme_files/testing_evidence/aboutUs_page_accessibility.png)
+![Bag](./readme_files/testing_evidence/bag_page_accessibility.png)
+![404 Page](./readme_files/testing_evidence/404_page_accessibility.png)
+
+</details>
+
+- The site displays and functions correctly across different devices and browsers.
+
 [Back to top ⬆](#table-of-contents)
 
 ## Validator Testing
 
-- [Validator Testing](#validator-testing)
+All code was validated and tested using the following tools:
+
+- [HTML Validator](https://validator.w3.org/)
+- [CSS Validator](https://jigsaw.w3.org/css-validator/)
+- [JSHint](https://jshint.com/) to check the JavaScript code.
+- [CI Python Linter](https://pep8ci.herokuapp.com/) to check the Python code.
+- [Lighthouse](https://developers.google.com/web/tools/lighthouse/)
 
 [Back to top ⬆](#table-of-contents)
 
