@@ -6,24 +6,17 @@
         aria-label="book details page" class="book-link">
             <!-- Display book cover or fallback image -->
             <div class="book-cover" 
-            style="background-image: url('{% if book.cover_image %}{{ book.cover_image.url }}
-            {% else %}{% static "images/no_cover_img.jpg" %}
-            {% endif %}');">
+            style="background-image: url('{% if book.cover_image %}{{ book.cover_image.url }}{% else %}{% static "images/no_cover_img.jpg" %}{% endif %}');">
                 <!-- Hide the favorite button for staff users -->
                 {% if user.is_authenticated and not user.is_staff %}
                 <button
-                class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}"
-                data-book-id="{{ book.id }}"
-                aria-label="favorite book for registered user">
-                    <i class="fas fa-heart"></i>
-                </button>
+                class="favorite-btn {% if request.user in book.favorited_by.all %}active{% endif %}" data-book-id="{{ book.id }}"
+                aria-label="favorite book for registered user"><i class="fas fa-heart"></i></button>
                 {% else %}
                 <button
                 class="favorite-btn guest"
                 data-book-id="{{ book.id }}"
-                aria-label="favorite book for guest user">
-                    <i class="fas fa-heart"></i>
-                </button>
+                aria-label="favorite book for guest user"><i class="fas fa-heart"></i></button>
                 {% endif %}
             </div>
             {% if not book.cover_image %}

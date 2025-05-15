@@ -1,4 +1,4 @@
-resen{% extends 'base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block title %}All books - The Literary Loft{% endblock %}
@@ -25,7 +25,8 @@ Browse our collection and enjoy free UK shipping on orders over £20." />
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{% url 'books:book_list' %}"
-                aria-label="all books list">All Books</a></li>
+                aria-label="all books list">All Books</a>
+            </li>
             {% if category %}
             <li class="breadcrumb-item active" aria-current="page">{{ category.display_name }}</li>
             {% endif %}
@@ -56,8 +57,7 @@ Browse our collection and enjoy free UK shipping on orders over £20." />
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                aria-label="category dropdown">
-                </button>
+                aria-label="category dropdown"></button>
                 <div class="dropdown-menu" aria-labelledby="{{ main_category.slug }}Dropdown">
                     {% for subcategory in main_category.subcategories.all %}
                     <a class="dropdown-item"
@@ -86,8 +86,7 @@ Browse our collection and enjoy free UK shipping on orders over £20." />
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                aria-label="category dropdown">
-                </button>
+                aria-label="category dropdown"></button>
                 <div class="dropdown-menu" aria-labelledby="{{ category.slug }}Dropdown">
                     {% for subcategory in category.subcategories.all %}
                     <a class="dropdown-item"
