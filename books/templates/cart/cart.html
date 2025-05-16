@@ -78,9 +78,12 @@
                 Proceed to Checkout
             </button>
             <div class="dropdown-menu" aria-labelledby="checkoutDropdown">
-                <a class="dropdown-item" href="{% url 'account_login' %}?next={% url 'checkout:checkout' %}">Login & Checkout</a>
-                <a class="dropdown-item" href="{% url 'account_signup' %}?next={% url 'checkout:checkout' %}">Sign Up & Checkout</a>
-                <a class="dropdown-item" href="{% url 'checkout:checkout' %}">Guest Checkout</a>
+                <a class="dropdown-item" href="{% url 'account_login' %}?next={% url 'checkout:checkout' %}"
+                aria-label="login and checkout for a guest user">Login & Checkout</a>
+                <a class="dropdown-item" href="{% url 'account_signup' %}?next={% url 'checkout:checkout' %}"
+                aria-label="sign up and checkout for a guest user">Sign Up & Checkout</a>
+                <a class="dropdown-item" href="{% url 'checkout:checkout' %}"
+                aria-label="checkout for a guest user">Guest Checkout</a>
             </div>
         </div>
     {% endif %}
@@ -91,7 +94,8 @@
   </p>
   <div class="hero-content cart-hero-content">
     <h2 class="hero-title">Your sanctuary for loyal literary friends</h2>
-    <a href="{% url 'books:book_list' %}" class="cta-button cart-cta-btn">
+    <a href="{% url 'books:book_list' %}" class="cta-button cart-cta-btn"
+    aria-label="shop now">
       Shop Now
     </a>
   </div>

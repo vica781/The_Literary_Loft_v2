@@ -42,7 +42,7 @@ Browse our collection and enjoy free UK shipping on orders over £20." />
 
     {% if user.is_staff %}
     <div class="text-right mb-3">
-        <a href="{% url 'books:add_book' %}" class="btn btn-primary">Add New Book</a>
+        <a href="{% url 'books:add_book' %}" class="btn btn-primary" aria-label="add new book">Add New Book</a>
     </div>
     {% endif %}
 

@@ -72,8 +72,8 @@ aria-label="book details styling" />
       <!-- Show Edit and Delete buttons only for staff -->
       {% if user.is_staff %}
       <div class="admin-controls mt-4">
-        <a href="{% url 'books:edit_book' book.id %}" class="btn btn-warning mr-2">Edit</a>
-        <a href="{% url 'books:delete_book' book.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'books:edit_book' book.id %}" class="btn btn-warning mr-2" aria-label="edit book">Edit</a>
+        <a href="{% url 'books:delete_book' book.id %}" class="btn btn-danger" aria-label="delete book">Delete</a>
       </div>
       {% endif %}
     </div>
@@ -99,7 +99,7 @@ aria-label="book details styling" />
         <li class="nav-item">
           <a class="nav-link"
           id="details-tab" data-toggle="tab"
-          href="#details" role="tab">Product Details</a>
+          href="#details" role="tab" aria-label="book's details tab">Product Details</a>
         </li>
         <li class="nav-item">
           <a class="nav-link"

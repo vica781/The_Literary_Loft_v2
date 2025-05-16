@@ -15,7 +15,7 @@
             {% for book in favorite_books %}
                 <div class="col-6 col-md-3 mb-4 favorite-book-item" data-book-id="{{ book.id }}">
                     <div class="book-item">
-                        <a href="{% url 'books:book_detail' book.id %}" class="book-link">
+                        <a href="{% url 'books:book_detail' book.id %}" class="book-link" aria-label="book details page">
                             {% if book.cover_image %}
                                 <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');">
                                     <button class="favorite-btn active" data-book-id="{{ book.id }}">
