@@ -60,12 +60,12 @@
 
     <!-- Facebook Navigation -->
     <div class="fb-nav">
-      <a href="#" class="fb-nav-link active">Home</a>
-      <a href="#" class="fb-nav-link">About</a>
-      <a href="#" class="fb-nav-link">Reviews</a>
-      <a href="#" class="fb-nav-link">Events</a>
-      <a href="#" class="fb-nav-link">Community</a>
-      <a href="#" class="fb-nav-link">More</a>
+      <a href="#" class="fb-nav-link active" aria-label="navigation to home page">Home</a>
+      <a href="#" class="fb-nav-link" aria-label="navigation to about page">About</a>
+      <a href="#" class="fb-nav-link" aria-label="navigation to reviews page">Reviews</a>
+      <a href="#" class="fb-nav-link" aria-label="navigation to events page">Events</a>
+      <a href="#" class="fb-nav-link" aria-label="navigation to community page">Community</a>
+      <a href="#" class="fb-nav-link" aria-label="navigation to more page">More</a>
     </div>
   </div>
 
@@ -139,8 +139,7 @@
             href="/books/"
             class="btn btn-primary"
             onclick="event.preventDefault(); window.location.href='/books/';"
-            >Shop Now</a
-          >
+            aria-label="brows all books">Shop Now</a>
         </div>
         <p class="terms">
           *Terms and conditions apply. Cannot be combined with other offers.
@@ -189,9 +188,7 @@
               </p>
               <a
                 href="{% url 'books:book_detail' id=book.id %}"
-                class="btn btn-primary btn-sm"
-                >Meet your new friend</a
-              >
+                class="btn btn-primary btn-sm" aria-label="book's datails">Meet your new friend</a>
             </div>
           </div>
           <p class="mt-3">
@@ -284,7 +281,7 @@
             Complete the challenge by November 30th and receive a special 25%
             discount on your next purchase!
           </p>
-          <a href="#" class="btn btn-primary">Join Challenge</a>
+          <a href="#" class="btn btn-primary" aria-label="join the challenge">Join Challenge</a>
         </div>
         <p class="mt-3">Share your progress with #LitLoftAutumnReads 🍁</p>
       </div>
@@ -345,8 +342,7 @@
                     <a
                       href="{% url 'books:book_detail' id=secret_history.id %}"
                       class="btn btn-outline-primary btn-sm"
-                      >Learn about this Book</a
-                    >
+                      aria-label="learn about the book">Learn about this Book</a>
                   </div>
 
                   <!-- The Little Friend -->
@@ -363,8 +359,7 @@
                     <a
                       href="{% url 'books:book_detail' id=little_friend.id %}"
                       class="btn btn-outline-primary btn-sm"
-                      >Learn about this Book</a
-                    >
+                      aria-label="learn about the book">Learn about this Book</a>
                   </div>
 
                   <!-- The Goldfinch -->
@@ -382,16 +377,14 @@
                     <a
                       href="{% url 'books:book_detail' id=goldfinch.id %}"
                       class="btn btn-outline-primary btn-sm"
-                      >Learn about this Book</a
-                    >
+                      aria-label="learn about the book">Learn about this Book</a>
                   </div>
                 </div>
               </div>
               <a
                 href="{% url 'books:book_list' %}?author=Donna Tartt"
                 class="btn btn-primary mt-3"
-                >Browse All Books</a
-              >
+                aria-label="browse all books">Browse All Books</a>
             </div>
           </div>
         </div>
@@ -432,8 +425,8 @@
               special Q&A session about the historical elements in the novel.
             </p>
             <div class="event-buttons">
-              <a href="#" class="btn btn-primary">Register Now</a>
-              <a href="#" class="btn btn-outline-primary">Add to Calendar</a>
+              <a href="#" class="btn btn-primary" aria-label="register for the event">Register Now</a>
+              <a href="#" class="btn btn-outline-primary" aria-label="add to calendar">Add to Calendar</a>
             </div>
           </div>
         </div>

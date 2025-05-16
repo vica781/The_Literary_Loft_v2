@@ -834,48 +834,56 @@ This comprehensive database design ensures that user interactions, book manageme
 
 ## Facebook Mockup Page
 
-To meet the requirement for digital marketing evidence, a Facebook mockup page for *The Literary Loft* was created. This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings.
+To meet the requirement for digital marketing evidence, a Facebook mockup page for *The Literary Loft* was created ![Facebook Mockup Page](https://the-literary-loft-a4b6116b3a17.herokuapp.com/marketing/facebook-mockup/). This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings.
 
 The mockup includes:
 
 ### 1. **Landing Page Overview**
 
 ![Landing Page Overview](readme_files/images/facebook_images/facebook_mockup_page.JPG)
+
 The main landing page of *The Literary Loft* on Facebook features an inviting cover image that reflects the cozy and welcoming atmosphere of the store, accompanied by the store's logo and slogan: "There is no friend as loyal as a book."
 
 ### 2. **Welcome Post**
 
 ![Welcome Post](readme_files/images/facebook_images/facebook_1.JPG)
+
 An introductory post that welcomes users to the official Facebook page, highlighting what they can find on the page such as book recommendations, event announcements, author spotlights, and more.
 
 ### 3. **Author Spotlight Post**
 
 ![Author Spotlight](readme_files/images/facebook_images/facebook_author_spotlight.JPG)
+
 A dedicated post featuring an author spotlight with a short biography and notable works. This helps engage users who are interested in discovering new authors or learning more about their favorite writers.
 
 ### 4. **Promotional Offer**
 
 ![Autumn Reading Sale](readme_files/images/facebook_images/facebook_autumn_reading.JPG)
+
 A promotional post announcing a limited-time discount for fiction books. This encourages engagement and drives traffic to the website, creating urgency for users to take advantage of the deal.
 
 ### 5. **Book of the Week**
 
 ![Book of the Week](readme_files/images/facebook_images/facebook_book_of_the_week.JPG)
+
 A featured post showcasing the "Book of the Week," complete with a brief description and a call-to-action button. This type of post draws attention to specific titles and encourages readers to explore new recommendations.
 
 ### 6. **Upcoming Book Club Meeting**
 
 ![Book Club Announcement](readme_files/images/facebook_images/facebook_club.JPG)
+
 A post that announces an upcoming book club meeting, including details about the book to be discussed and how users can register to join. This helps foster a sense of community among readers.
 
 ### 7. **Customer Review Spotlight**
 
 ![Customer Review](readme_files/images/facebook_images/facebook_costumer_review.JPG)
+
 Highlighting customer feedback to build trust and credibility. Positive reviews are showcased to create an engaging and authentic connection with potential readers.
 
 ### 8. **Literary Quote Post**
 
 ![Literary Quote](readme_files/images/facebook_images/facebook_quote.JPG)
+
 A post featuring an inspiring literary quote to resonate with the audience and encourage interaction through likes, comments, and shares.
 
 These posts reflect a well-rounded content strategy aimed at promoting user interaction, sharing valuable information, and enhancing the brand presence of *The Literary Loft*.
