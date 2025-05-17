@@ -836,7 +836,7 @@ This comprehensive database design ensures that user interactions, book manageme
 
 <!-- To meet the requirement for digital marketing evidence, a [Facebook Mockup Page](https://the-literary-loft-a4b6116b3a17.herokuapp.com/marketing/facebook-mockup/) for *The Literary Loft* was created. This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings. -->
 
-To meet the requirement for digital marketing evidence, a <a href="https://the-literary-loft-a4b6116b3a17.herokuapp.com/marketing/facebook-mockup/" target="_blank" rel="noopener noreferrer">Facebook Mockup Page</a> for *The Literary Loft* was created <sup>[opens in new tab if pressed with 'ctrl']</sup>. This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings.
+To meet the requirement for digital marketing evidence, a <a href="https://the-literary-loft-a4b6116b3a17.herokuapp.com/marketing/facebook-mockup/" target="_blank" rel="noopener noreferrer">Facebook Mockup Page</a><sup>[opens in new tab if pressed with 'ctrl']</sup> for *The Literary Loft* was created . This mockup simulates the social media presence of the bookstore and demonstrates how various types of content would be shared to engage users and promote the platform's offerings.
 
 The mockup includes:
 

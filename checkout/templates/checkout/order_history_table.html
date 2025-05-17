@@ -17,7 +17,7 @@
                 <td>#{{ order.order_number }}</td>
                 <td data-date="{{ order.date|date:'Y-m-d H:i' }}">{{ order.date|date:"d M Y H:i" }}</td>
                 <td data-total="{{ order.grand_total }}">£{{ order.grand_total }}</td>
-                <td><a href="{% url 'checkout:order_success' order.order_number %}">View Details</a></td>
+                <td><a href="{% url 'checkout:order_success' order.order_number %}" aria-label="order details">View Details</a></td>
             </tr>
             {% endfor %}
         </tbody>

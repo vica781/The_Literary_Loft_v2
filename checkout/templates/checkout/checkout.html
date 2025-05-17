@@ -44,7 +44,8 @@
                 </ul>
                 <hr>
                 <p class="mb-0">
-                    <a href="{% url 'books:register' %}?next={{ request.path }}" class="btn btn-primary">Create Account</a>
+                    <a href="{% url 'books:register' %}?next={{ request.path }}" class="btn btn-primary"
+                    aria-label="create account">Create Account</a>
                     <button class="btn btn-secondary" id="guest-checkout-btn">Continue as Guest</button>
                 </p>
             </div>
@@ -67,7 +68,7 @@
             {% for item in cart_items %}
             <div class="row">
                 <div class="col-2 mb-1">
-                    <a href="{% url 'books:book_detail' item.book.id %}">
+                    <a href="{% url 'books:book_detail' item.book.id %}" aria-label="book details">
                         {% if item.book.cover_image %}
                         <img class="w-100" src="{{ item.book.cover_image.url }}" alt="{{ item.book.title }}">
                         {% else %}
@@ -137,8 +138,10 @@
                     </div>
                     {% else %}
                     <div class="form-check-label">
-                        <a class="text-info" href="{% url 'books:login' %}?next={{ request.path }}">Login</a> or
-                        <a class="text-info" href="{% url 'books:register' %}?next={{ request.path }}">Register</a> to save this information
+                        <a class="text-info" href="{% url 'books:login' %}?next={{ request.path }}"
+                        aria-label="login">Login</a> or
+                        <a class="text-info" href="{% url 'books:register' %}?next={{ request.path }}"
+                        aria-label="register">Register</a> to save this information
                     </div>
                     {% endif %}
                 </fieldset>
@@ -151,21 +154,21 @@
                 </fieldset>
 
                 <div class="submit-button text-right mt-5 mb-2">
-                    <a href="{% url 'books:view_cart' %}" class="btn continue-shopping-btn">
+                    <a href="{% url 'books:view_cart' %}" class="btn continue-shopping-btn"
+                    arial-label="continue shopping">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
                         <span class="font-weight-bold">Edit your bag</span>
                     </a>
-                    {% comment %} <button type="reset" class="btn reset-btn mr-2">
-                        Clear Form
-                    </button> {% endcomment %}
+
                     <button id="submit-button" class="btn checkout-btn">
                         <span class="font-weight-bold">Complete Order</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
                         </span>
                     </button>
+                    
                     <p class="small text-danger my-0">
                         <span class="icon">
                             <i class="fas fa-exclamation-circle"></i>
