@@ -1,6 +1,6 @@
 <!-- footer_other_links.html -->
 <div class="col-md-3 mb-4">
-  <h4 class="footer-heading ml-3">Other Links</h4>
+  <p class="footer-heading ml-3">Other Links</p>
   <ul class="list-unstyled footer-nav">
     <li class="footer-item">
       <a href="{% url 'books:about' %}" class="footer-link">Our Story</a>
@@ -19,7 +19,7 @@
 
 <!-- footer_help_contact.html -->
 <div class="col-md-3 mb-4">
-  <h4 class="footer-heading ml-3">Help and Contact</h4>
+  <p class="footer-heading ml-3">Help and Contact</p>
   <ul class="list-unstyled footer-nav">
     <li class="footer-item">
       <a href="#" class="footer-link">Terms of Use</a>
@@ -38,7 +38,7 @@
 
 <!-- footer_newsletter.html -->
 <div class="col-md-3 mb-4">
-  <h4 class="footer-heading">Receive News, Updates and Special Offers</h4>
+  <p class="footer-heading">Receive News, Updates and Special Offers</p>
   <form action="{% url 'books:newsletter' %}" method="post" id="newsletter-form" class="newsletter-form">
     {% csrf_token %}
     <div class="form-group">
