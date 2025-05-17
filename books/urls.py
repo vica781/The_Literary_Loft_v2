@@ -1,7 +1,9 @@
+'''Books App URLs'''
+
 from django.urls import path
 from . import views
 
-app_name = 'books'  
+app_name = 'books'
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -9,14 +11,14 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
-    
+
     # Book-related URLs
     path('books/', views.book_list, name='book_list'),
     path(
         'books/subcategory/<slug:subcategory_slug>/',
-         views.book_list,
-         name='book_list_by_subcategory'
-         ),  # Subcategory-specific
+        views.book_list,
+        name='book_list_by_subcategory'
+        ),  # Subcategory-specific
     path(
         'books/category/<slug:category_slug>/',
         views.book_list,
@@ -32,29 +34,29 @@ urlpatterns = [
         ),
     path('cart/', views.view_cart, name='view_cart'),
     path('cart/update/', views.update_cart, name='update_cart'),
-    path('cart/remove/',views.remove_from_cart, name='remove_from_cart'),
+    path('cart/remove/', views.remove_from_cart, name='remove_from_cart'),
     path(
         'books/toggle-favorite/<int:book_id>/',
         views.toggle_favorite,
         name='toggle_favorite'
         ),
     path('favorites/', views.favorites_list, name='favorites'),
-    
+
     # Staff/Owner restricted URLs
     path('books/add/', views.add_book, name='add_book'),
     path('books/edit/<int:id>/', views.edit_book, name='edit_book'),
     path('books/delete/<int:id>/', views.delete_book, name='delete_book'),
-    
-    #Marketing URLs
+
+    # Marketing URLs
     path(
         'marketing/facebook-mockup/',
         views.facebook_mockup,
         name='facebook_mockup'
-        ),    
-    
+        ),
+
     # Newsletter
     path('newsletter/', views.newsletter_signup, name='newsletter'),
-    
+
     # Contact Us
     path('contact/', views.contact, name='contact'),
 ]

@@ -1,4 +1,4 @@
-# Standard Library Imports
+'''Books App Views'''
 
 # Django Imports
 from django.shortcuts import render, redirect, get_object_or_404
@@ -14,7 +14,6 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.conf import settings
 from django.template.loader import render_to_string
-from django.conf import settings
 # Local App Imports
 from .models import Book, Category, Subcategory, Newsletter
 from .forms import BookForm, ContactForm
@@ -23,8 +22,8 @@ from .forms import BookForm, ContactForm
 User = get_user_model()
 
 
-# Check if the user is a staff admin
 def is_admin(user):
+    '''Check if the user is a staff admin'''
     return user.is_staff
 
 
