@@ -4,46 +4,30 @@
 {% block title %}Search Results for "{{ query }}"{% endblock %}
 
 {% block meta_description %}
-<meta name="description" content="Browse the search results for "{{ query }}" at The Literary Loft. Discover books that match your interests and enjoy free UK shipping on orders over £20." />
+<meta name="description" content="Browse the search results for '{{ query }}' at The Literary Loft. Discover books that match your interests and enjoy free UK shipping on orders over £20." />
 {% endblock %}
-
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/book_list.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container">
-  <h1>Search Results</h1>
+  <h2 class="text-center my-4">Search Results</h2>
 
   {% if query %}
-  <p>Search term: <strong>{{ query }}</strong></p>
-  {% endif %} {% if books %}
-  <div class="row">
-    {% for book in books %}
-    <div class="col-md-4 col-sm-6 mb-4">
-      <div class="book-item">
-        <a href="{% url 'books:book_detail' book.id %}">
-          {% if book.cover_image %}
-          <img
-            src="{{ book.cover_image.url }}"
-            alt="{{ book.title }}"
-            class="img-fluid book-cover"
-            aria-label="book cover image"
-          />
-          {% else %}
-          <div class="no-image">No Image</div>
-          {% endif %}
-          <h3 class="book-title">{{ book.title }}</h3>
-          <p class="book-author">{{ book.author }}</p>
-          <p class="book-price">£{{ book.price }}</p>
-        </a>
-      </div>
+    <p class="text-center">Search term: <strong>{{ query }}</strong></p>
+  {% endif %}
+
+  {% if books %}
+    <div class="row book-grid">
+      {% for book in books %}
+        {% include 'books/book_item.html' with book=book %}
+      {% endfor %}
     </div>
-    {% endfor %}
-  </div>
   {% else %}
-  <p>No books found matching your search.</p>
+    <p class="text-center mt-4">No books found matching your search.</p>
   {% endif %}
 </div>
 {% endblock %}
