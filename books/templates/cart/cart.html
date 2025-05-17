@@ -44,7 +44,7 @@
               max="99"
               class="quantity-input"
             />
-            <button type="submit" class="btn btn-sm btn-secondary">
+            <button type="submit" class="btn btn-sm btn-secondary" aria-label="update quantity">
               Update
             </button>
           </form>
@@ -59,9 +59,7 @@
             data-target="#removeModal"
             data-book-id="{{ item.book.id }}"
             data-book-title="{{ item.book.title }}"
-          >
-            Remove
-          </button>
+            aria-label="remove from bag">Remove</button>
         </td>
       </tr>
       {% endfor %}
@@ -74,9 +72,14 @@
         <a href="{% url 'checkout:checkout' %}" class="btn checkout-btn">Proceed to Checkout</a>
     {% else %}
         <div class="dropdown">
-            <button class="btn checkout-btn dropdown-toggle" type="button" id="checkoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Proceed to Checkout
-            </button>
+            <button class="btn checkout-btn dropdown-toggle"
+            type="button"
+            id="checkoutDropdown"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="checkout">Proceed to Checkout</button>
+
             <div class="dropdown-menu" aria-labelledby="checkoutDropdown">
                 <a class="dropdown-item" href="{% url 'account_login' %}?next={% url 'checkout:checkout' %}"
                 aria-label="login and checkout for a guest user">Login & Checkout</a>
@@ -128,17 +131,21 @@
         cart?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Cancel
-        </button>
+        <button type="button"
+        class="btn btn-secondary"
+        data-dismiss="modal"
+        aria-label="cancel">Cancel</button>
         <form
           method="post"
           action="{% url 'books:remove_from_cart' %}"
-          id="removeForm"
-        >
+          id="removeForm">
+
           {% csrf_token %}
+
           <input type="hidden" name="book_id" id="removeBookId" />
-          <button type="submit" class="btn btn-danger">Remove</button>
+          <button type="submit"
+          class="btn btn-danger"
+          aria-label="remove from bag">Remove</button>
         </form>
       </div>
     </div>

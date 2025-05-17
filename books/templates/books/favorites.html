@@ -18,14 +18,14 @@
                         <a href="{% url 'books:book_detail' book.id %}" class="book-link" aria-label="book details page">
                             {% if book.cover_image %}
                                 <div class="book-cover" style="background-image: url('{{ book.cover_image.url }}');">
-                                    <button class="favorite-btn active" data-book-id="{{ book.id }}">
+                                    <button class="favorite-btn active" data-book-id="{{ book.id }}" aria-label="favorite book">
                                         <i class="fas fa-heart"></i>
                                     </button>
                                 </div>
                             {% else %}
                                 <div class="no-image">
                                     No Image
-                                    <button class="favorite-btn active" data-book-id="{{ book.id }}">
+                                    <button class="favorite-btn active" data-book-id="{{ book.id }}" aria-label="favorite book">
                                         <i class="fas fa-heart"></i>
                                     </button>
                                 </div>
@@ -37,7 +37,7 @@
                         <form method="post" action="{% url 'books:add_to_cart' book.id %}">
                             {% csrf_token %}
                             <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="btn add-to-cart">ADD TO BAG</button>
+                            <button type="submit" class="btn add-to-cart" aria-label="add to bag">ADD TO BAG</button>
                         </form>
                     </div>
                 </div>

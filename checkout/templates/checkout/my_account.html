@@ -46,7 +46,10 @@
                         <small class="form-text text-muted">{{ form.email.help_text }}</small>
                     </div>
                     
-                    <button type="submit" class="btn save-changes-btn">Save Changes</button>
+                    <button
+                    type="submit"
+                    class="btn save-changes-btn"
+                    aria-label="save changes">Save Changes</button>
                 </form>
             </div>
             
@@ -98,7 +101,10 @@
                     </div>
                     
                     <div class="address-buttons">
-                        <button type="submit" class="btn save-changes-btn">Update Default Address</button>
+                        <button
+                        type="submit"
+                        class="btn save-changes-btn"
+                        aria-label="update default address">Update Default Address</button>
                         
                         {% if user.profile.default_street_address1 %}
                         <a href="{% url 'checkout:clear_default_address' %}"

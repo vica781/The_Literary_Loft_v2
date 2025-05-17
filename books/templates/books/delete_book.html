@@ -21,7 +21,7 @@
             <input type="text" class="form-control" id="confirmation" name="confirmation" placeholder="Enter book title" required>
         </div>
         <div class="buttons my-4">
-        <button type="submit" class="btn btn-danger btn-delete">Delete</button>
+        <button type="submit" class="btn btn-danger btn-delete" aria-label="delete book">Delete</button>
         <a href="{% url 'books:book_list' %}" class="btn btn-secondary" aria-label="cancel delete">Cancel</a>
         </div>
     </form>

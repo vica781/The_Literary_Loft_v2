@@ -46,7 +46,10 @@
                 <p class="mb-0">
                     <a href="{% url 'books:register' %}?next={{ request.path }}" class="btn btn-primary"
                     aria-label="create account">Create Account</a>
-                    <button class="btn btn-secondary" id="guest-checkout-btn">Continue as Guest</button>
+                    <button
+                    class="btn btn-secondary"
+                    id="guest-checkout-btn"
+                    aria-label="continue as guest">Continue as Guest</button>
                 </p>
             </div>
         </div>
@@ -162,7 +165,7 @@
                         <span class="font-weight-bold">Edit your bag</span>
                     </a>
 
-                    <button id="submit-button" class="btn checkout-btn">
+                    <button id="submit-button" class="btn checkout-btn" aria-label="complete order">
                         <span class="font-weight-bold">Complete Order</span>
                         <span class="icon">
                             <i class="fas fa-lock"></i>
