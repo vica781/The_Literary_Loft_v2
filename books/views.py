@@ -9,7 +9,7 @@ from django.views.decorators.http import require_POST
 from django.http import JsonResponse, HttpResponse
 from django.urls import reverse
 from django.db.models import Q
-from django.core.mail import send_mail
+from django.core.mail import send_mail, EmailMultiAlternatives
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.conf import settings
@@ -17,7 +17,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 # Local App Imports
 from .models import Book, Category, Subcategory, Newsletter
-from .forms import BookForm
+from .forms import BookForm, ContactForm
 
 
 User = get_user_model()
@@ -115,7 +115,8 @@ def register(request):
 
         messages.success(
             request,
-            f"Account created! You are registered as {user.username}. Please, login"
+            f"Account created! You are registered as "
+            f"{user.username}. Please, login"
             )
         return redirect('books:index')
 
@@ -149,10 +150,6 @@ def index(request):
 
 def about(request):
     return render(request, 'books/about.html')
-
-
-def contact(request):
-    return render(request, 'books/contact.html')
 
 
 # ==================== Book Views ====================
@@ -305,6 +302,65 @@ def toggle_favorite(request, book_id):
         'is_favorite': is_favorite,
         'favorite_count': user.favorite_books.count()
     })
+
+
+# ==================== Contact Us Page ====================
+
+
+def contact(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            subject = form.cleaned_data['subject']
+            message = form.cleaned_data['message']
+
+            context = {
+                'name': name,
+                'email': email,
+                'subject': subject,
+                'message': message,
+                'contact_email': settings.DEFAULT_FROM_EMAIL,
+            }
+
+            text_body = render_to_string(
+                'books/emails/contact_email.txt',
+                context
+                )
+            html_body = render_to_string(
+                'books/emails/contact_email.html',
+                context
+                )
+
+            try:
+                email_msg = EmailMultiAlternatives(
+                    subject=f"[Contact] {subject}",
+                    body=text_body,
+                    from_email=settings.DEFAULT_FROM_EMAIL,
+                    to=[settings.DEFAULT_FROM_EMAIL],
+                    reply_to=[email],
+                )
+                email_msg.attach_alternative(html_body, "text/html")
+                email_msg.send()
+
+                messages.success(
+                    request,
+                    "Your message was sent successfully. "
+                    "We'll get back to you soon!"
+                    )
+                return redirect('books:contact')
+            except Exception as e:
+                messages.error(
+                    request,
+                    f"Failed to send your message. Error: {e}"
+                    )
+        else:
+            messages.error(request, "Please correct the errors in the form.")
+    else:
+        form = ContactForm()
+
+    return render(request, 'books/contact.html', {'form': form})
 
 
 # ==================== Marketing Page ====================
