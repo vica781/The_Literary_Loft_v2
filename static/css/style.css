@@ -570,10 +570,12 @@ body {
     font-family: "Nunito", sans-serif;
 }
 
-.footer h5 {
+.footer-heading {
     font-family: "Libre Baskerville", serif;
     color: #4d5252;
     font-weight: 700;
+    font-size: 1.2rem; 
+    margin-bottom: 1rem; 
 }
 
 .footer-logo {
