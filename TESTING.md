@@ -637,7 +637,7 @@ This section documents the systematic manual testing performed on The Literary L
 ![Access Admin Dashboard](./readme_files/testing_evidence/admin_functionality/Admin_Dashboard_AddBook_EditBook_18052025.gif)
 
 **ADMIN-04: Delete Book**  
-![Delete Book](./readme_files/testing_evidence/admin_functionality/Admin_DeleteBook_18052025.gif)
+![Delete Book](./readme_files/testing_evidence/admin_functionality/Admin_DeleteBook_18052025%20.gif)
 
 [Back to top ⬆](#table-of-contents)
 
