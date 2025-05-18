@@ -563,13 +563,13 @@ This section documents the systematic manual testing performed on The Literary L
 ![Save Information](./readme_files/testing_evidence/checkout/Checkout_SaveInfo_18052025.gif)
 
 **CHKT-05: Payment Processing (Declined Card)**  
-![Payment Processing (Declined Card)](./readme_files/testing_evidence/Checkout_Declined_18052025.gif)
+![Payment Processing (Declined Card)](./readme_files/checkout/testing_evidence/Checkout_Declined_18052025.gif)
 
 **CHKT-06: Payment Processing (Authentication Required)**  
-![Payment Processing (Authentication Required)](./readme_files/testing_evidence/Checkout_AuthError_18052025.gif)
+![Payment Processing (Authentication Required)](./readme_files/testing_evidence/checkout/Checkout_AuthError_18052025.gif)
 
 **CHKT-07: Payment Processing (Processing Error)**  
-![Payment Processing (Processing Error)](./readme_files/testing_evidence/Checkout_ProcessingError_18052025.gif)
+![Payment Processing (Processing Error)](./readme_files/testing_evidence/checkout/Checkout_ProcessingError_18052025.gif)
 
 **CHKT-08: Order Confirmation** and **CHKT-09: Confirmation Email**  
 ![Order Confirmation](./readme_files/testing_evidence/checkout/Checkout_Confirmation_Email_18052025.gif)  
