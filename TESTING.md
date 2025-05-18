@@ -8,10 +8,35 @@ This contains the testing details for the project 'The Literary Loft'.
 
 - [User Stories Testing](#user-stories-testing)
   - [EPIC 1: User Management](#epic-1-user-management)
+    - [1. Register for an Account](#1-register-for-an-account)
+    - [2. Login or Logout](#2-login-or-logout)
+    - [3. Password Recovery](#3-password-recovery)
+    - [4. Email Confirmation](#4-email-confirmation)
+    - [5. Manage User Profile](#5-manage-user-profile)
+    - [6. Manage Account Deletion](#6-manage-account-deletion)
   - [EPIC 2: Product Management](#epic-2-product-management)
+    - [1. Add a Product](#1-add-a-product)
+    - [2. Edit/Update a Product](#2-editupdate-a-product)
+    - [3. Delete a Product](#3-delete-a-product)
+    - [4. View Product Details](#4-view-product-details)
+    - [5. Filter and Sort Products](#5-filter-and-sort-products)
   - [EPIC 3: Checkout Process](#epic-3-checkout-process)
+    - [1. Add to Bag](#1-add-to-bag)
+    - [2. Review and Edit Bag](#2-review-and-edit-bag)
+    - [3. Complete Checkout with Payment](#3-complete-checkout-with-payment)
+    - [4. Order Confirmation](#4-order-confirmation)
+    - [5. Guest Checkout Option](#5-guest-checkout-option)
   - [EPIC 4: SEO and Marketing](#epic-4-seo-and-marketing)
+    - [1. Implement Meta Tags](#1-implement-meta-tags)
+    - [2. Create and Add Sitemap.xml](#2-create-and-add-sitemapxml)
+    - [3. Add robots.txt](#3-add-robotstxt)
+    - [4. Newsletter Signup Functionality](#4-newsletter-signup-functionality)
+    - [5. Create Facebook Business Page](#5-create-facebook-business-page)
   - [EPIC 5: Site Management & Security](#epic-5-site-management--security)
+    - [1. Secure Payment Integration](#1-secure-payment-integration)
+    - [2. Role-Based Access Control](#2-role-based-access-control)
+    - [3. Set Up Environment Variables](#3-set-up-environment-variables)
+    - [4. Debug Mode Off for Deployment](#4-debug-mode-off-for-deployment)
 - [External User Goals](#external-user-goals)
 - [Admin User Goals](#admin-user-goals)
 - [Summary](#summary)
@@ -20,19 +45,18 @@ This contains the testing details for the project 'The Literary Loft'.
   - [Testing Environment](#testing-environment)
   - [Evidence Collection Methodology](#evidence-collection-methodology)
   - [Functional Testing](#functional-testing)
-    - [Navigation & Header](#navigation--header-testing)
-    - [User Authentication](#user-authentication-testing)
-    - [Product Browsing](#product-browsing-testing)
-    - [Product Details](#product-details-testing)
-    - [Shopping Bag](#shopping-bag-testing)
-    - [Checkout](#checkout-testing)
-    - [User Profile](#user-profile-testing)
-    - [Admin Functionality](#admin-functionality-testing)
+    - [Navigation & Header Testing](#navigation--header-testing)
+    - [User Authentication Testing](#user-authentication-testing)
+    - [Product Browsing Testing](#product-browsing-testing)
+    - [Product Details Testing](#product-details-testing)
+    - [Shopping Bag Testing](#shopping-bag-testing)
+    - [Checkout Testing](#checkout-testing)
+    - [User Profile Testing](#user-profile-testing)
+    - [Admin Functionality Testing](#admin-functionality-testing)
   - [Compatibility Testing](#compatibility-testing)
-    - [Responsive Design](#responsive-design-testing)
-    - [Cross-Browser](#cross-browser-testing)
+    - [Browser Compatibility Testing](#browser-compatibility-testing)
+    - [Responsive Design Testing](#responsive-design-testing)
   - [Performance Observations](#performance-observations)
-  - [Known Issues](#known-issues)
   - [Summary of Manual Testing](#summary-of-manual-testing)
 - [Validator Testing](#validator-testing)
 
@@ -601,26 +625,30 @@ This section documents the systematic manual testing performed on The Literary L
 
 ## Compatibility Testing
 
+This section outlines the testing done to ensure the application works seamlessly across different devices, browsers, and screen sizes.
+
+### Browser Compatibility Testing
+
+The application has been tested across multiple web browsers to ensure consistent behavior and appearance.
+
+- **Google Chrome** (latest version): Functionality and layout tested to ensure everything works as expected.
+- **Mozilla Firefox** (latest version): Verified for correct rendering and interactions.
+- **Microsoft Edge**: Tested for consistent performance and styling.
+- **Safari** (macOS and mobile): Checked for compatibility and responsive layout.
+- **Opera and Brave**: Additional testing to ensure compatibility with other popular browsers.
+
+No major issues were found during browser compatibility testing.
+
 ### Responsive Design Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| RESP-01 | Desktop View | 1. View site on 1920x1080 resolution<br>2. Test all primary functions | Site displays and functions correctly | Desktop view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Desktop_20250414.gif) |
-| RESP-02 | Tablet View | 1. View site on 768x1024 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Tablet view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Tablet_20250414.gif) |
-| RESP-03 | Mobile View | 1. View site on 375x667 resolution<br>2. Test all primary functions | Site adapts and functions correctly | Mobile view worked properly | ✅ PASS | [Screenshot](./testing_evidence/Responsive_Mobile_20250414.gif) |
-| RESP-04 | Element Scaling | 1. Test text scaling<br>2. Verify images resize properly<br>3. Check form elements adapt | All elements scale appropriately | Scaling worked as expected | ✅ PASS | [Recording](./testing_evidence/Responsive_Scaling_20250414.gif) |
+This section covers testing for the responsiveness of the website across various devices and screen sizes.
 
-[Back to top ⬆](#table-of-contents)
+- **Mobile Devices (Smartphones)**: The app’s layout, fonts, and images were tested to ensure proper scaling.
+- **Tablets**: Checked for proper display of elements and readability on medium-sized screens.
+- **Desktops**: Ensured that the layout adapts smoothly on larger screens, with proper alignment and visibility of content.
+- **Landscape and Portrait Modes**: Tested to ensure elements adjust correctly when switching between orientations.
 
-### Cross-Browser Testing
-
-| ID | Browser | Version | Tests Performed | Results | Status | Evidence |
-|---|---|---|---|---|---|---|
-| BROWSER-01 | Chrome | 121.0.6167.140 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Chrome_20250414.gif) |
-| BROWSER-02 | Firefox | 123.0 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Firefox_20250414.gif) |
-| BROWSER-03 | Edge | 121.0.2277.112 | All core functionality | All features work as expected | ✅ PASS | [Screenshot](./testing_evidence/Browser_Edge_20250414.gif) |
-| BROWSER-04 | Safari (iOS) | 16.5 | All core functionality | Minor styling differences noted | ✅ PASS | [Screenshot](./testing_evidence/Browser_Safari_20250414.gif) |
-
+All major breakpoints were verified, and the app maintains a consistent, user-friendly interface across devices.
 [Back to top ⬆](#table-of-contents)
 
 ### Performance Observations
@@ -631,16 +659,6 @@ This section documents the systematic manual testing performed on The Literary L
 | PERF-02 | Image Loading | Product images load progressively with no visible delay | ✅ SATISFACTORY |
 | PERF-03 | Search Response | Search results appear within 1 second of submission | ✅ SATISFACTORY |
 | PERF-04 | Checkout Process | Payment processing completes within 3 seconds | ✅ SATISFACTORY |
-
-[Back to top ⬆](#table-of-contents)
-
-### Known Issues
-
-| Issue ID | Area | Description | Severity | Status |
-|---|---|---|---|---|
-| ISSUE-01 |  |  |  |  |
-| ISSUE-02 |  |  |  |  |
-| ISSUE-03 |  |  |  |  |
 
 [Back to top ⬆](#table-of-contents)
 
