@@ -14,35 +14,67 @@ This project was created as part of my final project with Code Institute and is 
 ## Table of Contents
 
 - [Project Purpose and Objectives](#project-purpose-and-objectives)
+- [Disclaimer](#disclaimer)
 - [E-commerce Business Model and Marketing Strategies](#e-commerce-business-model-and-marketing-strategies)
+  - [E-commerce Business Model](#e-commerce-business-model)
+  - [Marketing Strategies](#marketing-strategies)
+    - [1. Social Media Engagement](#1-social-media-engagement)
+    - [2. Email Marketing](#2-email-marketing)
+    - [3. SEO (Search Engine Optimization)](#3-seo-search-engine-optimization)
+    - [4. Seasonal Promotions and Discounts](#4-seasonal-promotions-and-discounts)
+    - [5. Community Engagement](#5-community-engagement)
+    - [Future Marketing Strategies](#future-marketing-strategies)
 - [User Experience (UX)](#user-experience-ux)
   - [Project Goals](#project-goals)
+  - [Strategy](#strategy)
   - [User Stories](#user-stories)
+    - [EPIC 1: User Management](#epic-1-user-management)
+    - [EPIC 2: Product Management](#epic-2-product-management)
+    - [EPIC 3: Checkout Process](#epic-3-checkout-process)
+    - [EPIC 4: SEO and Marketing](#epic-4-seo-and-marketing)
+    - [EPIC 5: Site Management & Security](#epic-5-site-management--security)
+    - [EPIC 6: Testing & Deployment](#epic-6-testing--deployment)
     - [External User Goals](#external-user-goals)
     - [Admin User Goals](#admin-user-goals)
 - [Features](#features)
   - [Existing Features](#existing-features)
-    - [User Management](#1-user-management)
-    - [Product Browsing and Management](#2-product-browsing-and-management)
-    - [Shopping Experience](#3-shopping-experience)
-    - [Additional Pages](#4-additional-pages)
-    - [Marketing and Engagement](#5-marketing-and-engagement)
-    - [Accessibility and Responsive Design](#6-accessibility-and-responsive-design)
-    - [Additional Features](#7-additional-features)
+    - [1. User Management](#1-user-management)
+    - [2. Product Browsing and Management](#2-product-browsing-and-management)
+    - [3. Shopping Experience](#3-shopping-experience)
+    - [4. Additional Pages](#4-additional-pages)
+    - [5. Marketing and Engagement](#5-marketing-and-engagement)
+    - [6. Accessibility and Responsive Design](#6-accessibility-and-responsive-design)
+    - [7. Additional Features](#7-additional-features)
+  - [Features to Implement in the Future](#features-to-implement-in-the-future)
+    - [1. Enhanced Review System](#1-enhanced-review-system)
+    - [2. Unsubscribe Option for Newsletters](#2-unsubscribe-option-for-newsletters)
+    - [3. Account Deletion](#3-account-deletion)
+    - [4. Enhanced Cart Functionality](#4-enhanced-cart-functionality)
+    - [5. Stock Management](#5-stock-management)
+    - [6. Personalized Recommendations](#6-personalized-recommendations)
+    - [7. Advanced Filtering Options](#7-advanced-filtering-options)
+    - [8. Admin Dashboard Enhancements](#8-admin-dashboard-enhancements)
 - [Design](#design)
   - [Scope](#scope)
   - [Design Choices](#design-choices)
   - [Wireframes](#wireframes)
 - [Color Scheme and Typography](#color-scheme-and-typography)
+  - [Color Scheme](#color-scheme)
+  - [Typography](#typography)
 - [Database Design](#database-design)
   - [Entity-Relationship Diagram (ERD)](#entity-relationship-diagram-erd)
   - [Overview of Database Tables](#overview-of-database-tables)
 - [Technologies Used](#technologies-used)
-- [Marketing and Social Media Presence](#facebook-mockup-page)
-  - [Facebook Mockup Page](#facebook-mockup-page)
-- [Testing](#testing)  
+- [Facebook Mockup Page](#facebook-mockup-page)
+- [Testing](#testing)
+- [Bugs and known issues](#bugs-and-known-issues)
 - [Deployment](#deployment)
+  - [Local Deployment](#local-deployment)
+  - [Heroku Deployment](#heroku-deployment)
+  - [Forking the GitHub Repository](#forking-the-github-repository)
+  - [Live deployment](#live-deployment)
 - [Credits](#credits)
+- [Copyright](#copyright)
 
 ## Project Purpose and Objectives
 
@@ -906,9 +938,139 @@ After careful and detailed testing and implemented bugfixes, there are no bugs i
 
 ## Deployment
 
-The project was deployed on Heroku, a cloud platform that provides a secure and scalable environment for hosting web applications. The deployment process involved setting up the necessary environment variables, configuring the database, and deploying the application to Heroku.
+### Local Deployment
 
-Deployed link: [https://the-literary-loft-a4b6116b3a17.herokuapp.com/](https://the-literary-loft-a4b6116b3a17.herokuapp.com/)
+In order to make a local copy of this project, you can clone it. In your IDE Terminal, type the following command to clone the repository:
+
+- `git clone https://github.com/vica781/The_Literary_Loft_v2.git`
+
+The virtual environment needs to be created and activated. To do so, in your IDE Terminal, type the following commands:
+```
+python3 -m venv venv
+```
+
+If on Linux/MacOS, type the following command for activation:
+```
+source venv/bin/activate
+```
+On Windows type the following command for activation:
+```
+venv\Scripts\activate
+```
+
+***
+
+After cloning the repository, you will need to:
+
+1. Create your own `.env` file in the root level of the project:
+
+```
+# Django
+SECRET_KEY='secret_key'
+
+# Database 
+DATABASE_URL='postgres://link-to-Postgres'
+
+# AWS - New Credentials
+AWS_STORAGE_BUCKET_NAME='bucket_name'
+AWS_S3_REGION_NAME='region_name'
+AWS_ACCESS_KEY_ID='access_key'
+AWS_SECRET_ACCESS_KEY='secret_key'
+
+# Stripe - New Keys
+STRIPE_PUBLIC_KEY='stripe_public_key'
+STRIPE_SECRET_KEY='stripe_secret_key'
+STRIPE_WH_SECRET='stripe_wh_secret'
+
+# Gmail - New Credentials
+EMAIL_HOST_USER='email@gmail.com'
+EMAIL_HOST_PASSWORD='password'
+
+DEVELOPMENT=True
+
+PYTHONPATH=${workspaceFolder}
+DJANGO_SETTINGS_MODULE=reading_loft.settings
+```
+
+**Ensure the `.env` file is added to your `.gitignore` file so it doesn't get pushed to a public repository.
+
+2. Run `pip3 install -r requirements.txt` to install required Python packages.
+
+3. Migrate the database models using:
+`python3 manage.py migrate`
+
+4. Create a superuser with your own credentials:
+`python3 manage.py migrate`
+
+5. Run the Django sever:
+`python manage.py runserver`
+The address of the server will appear in the terminal window.
+Add /admin to the address to access the Django admin panel using your superuser credentials.
+
+### Heroku Deployment
+
+Sign up to [Heroku](https://heroku.com/) for free if you don't already have an account.
+
+1. Create a new app in Heroku.
+
+2. In the Resources tab of your app in the Heroku dashboard, click Add-Ons and select Heroku Postgres. Select Hobby Dev - Free as your plan.
+
+3. When Heroku Postgres is installed, click the Settings tab in the Heroku Dashboard.
+Click Reveal Config Vars, and add the same variables from your `.env` file here, except for `DEBUG`, as you don't want debug mode on the deployed project.
+
+4. Migrate the database models using:
+`python3 manage.py migrate`
+
+5. Create a superuser with your own credentials:
+`python3 manage.py migrate`
+
+6. Create a file called `Procfile` (no extension) containing the following:
+```
+web: gunicorn core.wsgi
+```
+
+7. Run `pip3 install -r requirements.txt` to install required Python packages.
+
+8. Add the url of your Heroku app ('https://the-literary-loft-a4b6116b3a17.herokuapp.com/') to your `settings.py` file:
+
+```
+ALLOWED_HOSTS = [
+    'the-literary-loft-a4b6116b3a17.herokuapp.com',...
+]
+```
+
+9. Disable collect static so that Heroku doesn't try to collect static files when you deploy by adding the following to your Heroku Config Vars in the Settings tab of Heroku dashboard:
+
+```
+DISABLE_COLLECTSTATIC=1
+```
+
+The same variable has to be removed from Heroku Config Vars when you want to collect static files (for the testing and final deployment).
+
+10. Stage and commit your files to GitHub
+```
+git add . 
+git commit -m "Commit message"
+git push
+```
+
+11. In the Heroku dashboard for your App, select Deploy.
+Under Deployment Method, choose GitHub and search for your repository and click Connect.
+
+12. Select Enable Automatic Deployments, and then Deploy Branch. Heroku will build the App from the branch you selected.
+
+13. Now whenever you push your commits to GitHub, Heroku will rebuild the application.
+
+### Forking the GitHub Repository
+The project can be forked in order to make a copy of the original repository and propose changes to the project owner using Pull Requests.
+That can be done by following these steps:
+First, log in to GitHub and locate the [Project's Repository](https://github.com/vica781/The_Literary_Loft_v2).
+At the top of the Repository, on the right side of the page, locate the "Fork" button.
+A copy of the Repository should now be in your GitHub account.
+You can now propose changes to the Repository by creating a Pull Request.
+
+### Live deployment
+The web site is deployed on Heroku and can be found here: [https://the-literary-loft-a4b6116b3a17.herokuapp.com/](https://the-literary-loft-a4b6116b3a17.herokuapp.com/)
 
 [Back to top ⬆](#table-of-contents)
 
