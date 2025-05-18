@@ -612,13 +612,13 @@ This section documents the systematic manual testing performed on The Literary L
 ### Test Evidence (User Profile)
 
 **PROF-01: View Profile**  
-![View Profile](./testing_evidence/user_profile/Profile_View_18052025.gif)
+![View Profile](./readme_files/testing_evidence/user_profile/Profile_View_18052025.gif)
 
 **PROF-02: Update Information**  
-![Update Information](./testing_evidence/user_profile/Profile_Update_18052025.gif)
+![Update Information](./readme_files/testing_evidence/user_profile/Profile_Update_18052025.gif)
 
 **PROF-03: View Order History** and **PROF-04: Order Details**
-![View Order History](./testing_evidence/user_profile/Profile_OrderHistory_Details_18052025.gif)
+![View Order History](./readme_files/testing_evidence/user_profile/Profile_OrderHistory_Details_18052025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
