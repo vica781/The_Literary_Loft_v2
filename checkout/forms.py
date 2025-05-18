@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 class OrderForm(forms.ModelForm):
     country = forms.ChoiceField(
         choices=[],
-        widget=forms.Select(attrs={'id': 'country', 'name': 'country'})
+        widget=forms.Select(attrs={'id': 'country',})
     )
     save_info = forms.BooleanField(
         required=False,
@@ -32,48 +32,40 @@ class OrderForm(forms.ModelForm):
             'full_name': forms.TextInput(
                 attrs={
                     'id': 'full_name',
-                    'name': 'full_name'
                     }
                 ),
             'email': forms.EmailInput(
                 attrs={
                     'id': 'email',
-                    'name': 'email'
                     }
                 ),
             'phone_number': forms.TextInput(
                 attrs={
                     'id': 'phone_number',
-                    'name': 'phone_number'
                     }
                 ),
             'postcode': forms.TextInput(
                 attrs={
                     'id': 'postcode',
-                    'name': 'postcode'
                     }
                 ),
             'town_or_city': forms.TextInput(
                 attrs={
                     'id': 'town_or_city',
-                    'name': 'town_or_city'
                     }
                 ),
             'street_address1': forms.TextInput(
                 attrs={
                     'id': 'street_address1',
-                    'name': 'street_address1'
                     }
                 ),
             'street_address2': forms.TextInput(
                 attrs={
                     'id': 'street_address2',
-                    'name': 'street_address2'
                     }
                 ),
             'county': forms.TextInput(
                 attrs={'id': 'county',
-                       'name': 'county'
                        }
                 ),
             }
@@ -98,7 +90,7 @@ class OrderForm(forms.ModelForm):
             'full_name': 'Full Name',
             'email': 'Email',
             'phone_number': 'Phone Number',
-            'country': 'Country',
+            # 'country': 'Country',
             'postcode': 'Postcode',
             'town_or_city': 'Town or City',
             'street_address1': 'Street Address 1',
