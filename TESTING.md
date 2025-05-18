@@ -544,9 +544,12 @@ This section documents the systematic manual testing performed on The Literary L
 | CHKT-01 | Checkout Form | 1. Add items to bag<br>2. Proceed to checkout<br>3. View checkout form | Form displays with all required fields | Form loaded correctly | ✅ PASS |
 | CHKT-02 | Form Validation | 1. Submit checkout form with missing fields<br>2. Observe validation messages | Appropriate error messages shown | Validation worked as expected | ✅ PASS |
 | CHKT-03 | Save Information | 1. Check "Save this information" box<br>2. Complete checkout<br>3. Check profile for saved info | Information saved to user profile | Save function worked correctly | ✅ PASS |
-| CHKT-04 | Payment Processing | 1. Enter valid card details (4242 4242 4242 4242)<br>2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS |
-| CHKT-05 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS |
-| CHKT-06 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS |
+| CHKT-04 | Payment Processing (Valid Card) | 1. Enter valid card details (4242 4242 4242 4242)<br>2. Complete payment | Payment processed successfully | Payment completed | ✅ PASS |
+| CHKT-05 | Payment Processing (Declined Card) | 1. Enter declined card details (4000 0000 0000 9995)<br>2. Complete payment | Payment is declined with error message | Declined card error shown | ✅ PASS |
+| CHKT-06 | Payment Processing (Authentication Required) | 1. Enter authentication required card details (4000 0000 0000 0002)<br>2. Complete payment | Payment fails with authentication error | Authentication error displayed | ✅ PASS |
+| CHKT-07 | Payment Processing (Processing Error) | 1. Enter processing error card details (4000 0000 0000 9999)<br>2. Complete payment | Payment fails with processing error | Processing error message shown | ✅ PASS |
+| CHKT-08 | Order Confirmation | 1. Complete checkout<br>2. View confirmation page | Order confirmation with details displayed | Confirmation showed correctly | ✅ PASS |
+| CHKT-09 | Confirmation Email | 1. Complete checkout<br>2. Check email | Order confirmation email received | Email sent successfully | ✅ PASS |
 
 ### Test Evidence (Checkout)
 
@@ -557,16 +560,25 @@ This section documents the systematic manual testing performed on The Literary L
 ![Form Validation](./readme_files/testing_evidence/checkout/Checkout_Validation_25042025.gif)
 
 **CHKT-03: Save Information**  
-![Save Information](./readme_files/testing_evidence/checkout/Checkout_SaveInfo_25042025.gif)
+![Save Information](./readme_files/testing_evidence/checkout/Checkout_SaveInfo_18052025.gif)
 
-**CHKT-04: Payment Processing**  
-![Payment Processing](./readme_files/testing_evidence/Checkout_Payment_20250414.gif)
+**CHKT-04: Payment Processing (Valid Card)**  
+![Payment Processing (Valid Card)](./readme_files/testing_evidence/Checkout_Payment_18052025.gif)
 
-**CHKT-05: Order Confirmation**  
-![Order Confirmation](./readme_files/testing_evidence/checkout/Checkout_Confirmation_25042025.gif)
+**CHKT-05: Payment Processing (Declined Card)**  
+![Payment Processing (Declined Card)](./readme_files/testing_evidence/Checkout_Declined_18052025.gif)
 
-**CHKT-06: Confirmation Email**  
-![Confirmation Email](./readme_files/testing_evidence/checkout/Checkout_Email_25042025.gif)
+**CHKT-06: Payment Processing (Authentication Required)**  
+![Payment Processing (Authentication Required)](./readme_files/testing_evidence/Checkout_AuthError_18052025.gif)
+
+**CHKT-07: Payment Processing (Processing Error)**  
+![Payment Processing (Processing Error)](./readme_files/testing_evidence/Checkout_ProcessingError_18052025.gif)
+
+**CHKT-08: Order Confirmation**  
+![Order Confirmation](./readme_files/testing_evidence/checkout/Checkout_Confirmation_18052025.gif)
+
+**CHKT-09: Confirmation Email**  
+![Confirmation Email](./readme_files/testing_evidence/checkout/Checkout_Email_18052025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
