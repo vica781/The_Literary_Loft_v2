@@ -6,102 +6,60 @@
     <!-- Required meta tags -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta charset="utf-8" />
-    <meta name="viewport" 
-    content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
     <!-- SEO Meta Tags -->
-    <meta name="keywords" 
-    content="books, online bookstore, 
-    literary books, fiction, non-fiction, 
-    classic literature, thriller books, historical fiction, fantasy books, 
-    biography books, true stories books, art books, craft books, photography, 
-    food and drink books, foraging, educational books, activity books, 
-    online book store, literature, bestsellers, novels, book shopping, 
-    book lovers, book collection, book store UK, free delivery books" />
+    <meta name="keywords" content="books, online bookstore, literary books, fiction, non-fiction, classic literature, thriller books, historical fiction, fantasy books, biography books, true stories books, art books, craft books, photography, food and drink books, foraging, educational books, activity books, online book store, literature, bestsellers, novels, book shopping, book lovers, book collection, book store UK, delivery books" />
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
     {% endblock %}
 
     {% block meta_description %}
-    <meta name="description" 
-    content="The Literary Loft - Your sanctuary for loyal literary friends. 
-    Discover books with free UK shipping on orders over £20." />
+    <meta name="description" content="The Literary Loft - Your sanctuary for loyal literary friends. Discover books with free UK shipping on orders over £20." />
     {% endblock %}
 
     {% block favicon %}
     <!-- Favicon -->
-    <link rel="icon" 
-    type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}" />
-    <link rel="icon" 
-    type="image/png" sizes="32x32" 
-    href="{% static 'images/favicon/favicon-32x32.png' %}" />
-    <link rel="icon" 
-    type="image/png" sizes="48x48" 
-    href="{% static 'images/favicon/favicon-48x48.png' %}" />
-    <link rel="icon" 
-    type="image/png" sizes="192x192" 
-    href="{% static 'images/favicon/android-chrome-192x192.png' %}" />
-    <link rel="icon" 
-    type="image/png" sizes="256x256" 
-    href="{% static 'images/favicon/favicon-256x256.png' %}" />
-    <link rel="icon" 
-    type="image/png" sizes="512x512" 
-    href="{% static 'images/favicon/android-chrome-512x512.png' %}" />
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" sizes="180x180" 
-    href="{% static 'images/favicon/apple-touch-icon.png' %}" />
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}" />
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}" />
+    <link rel="icon" type="image/png" sizes="48x48" href="{% static 'images/favicon/favicon-48x48.png' %}" />
+    <link rel="icon" type="image/png" sizes="192x192" href="{% static 'images/favicon/android-chrome-192x192.png' %}" />
+    <link rel="icon" type="image/png" sizes="256x256" href="{% static 'images/favicon/favicon-256x256.png' %}" />
+    <link rel="icon" type="image/png" sizes="512x512" href="{% static 'images/favicon/android-chrome-512x512.png' %}" />
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicon/apple-touch-icon.png' %}" />
     {% endblock %}
 
     {% block extra_meta %}
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" 
-    rel="stylesheet" />
-    
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+
     <!-- Open Graph Tags -->
-    <meta property="og:title" 
-    content="{% block og_title %}Home - The Literary Loft{% endblock %}" />
-    <meta property="og:description" 
-    content="{% block og_description %}
-    Your sanctuary for loyal literary friends. Discover books with free UK 
-    shipping on orders over £20.
-    {% endblock %}" />
-    <meta property="og:image" 
-    content="{% static 'images/loft_1.webp' %}" />
+    <meta property="og:title" content="{% block og_title %}Home - The Literary Loft{% endblock %}" />
+    <meta property="og:description" content="{% block og_description %}Your sanctuary for loyal literary friends. Discover books with free UK shipping on orders over £20.{% endblock %}" />
+    <meta property="og:image" content="{% static 'images/loft_1.webp' %}" />
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
     <meta property="og:type" content="website" />
+
+    {% block override_meta %}{% endblock %}
     {% endblock %}
 
     {% block corecss %}
     <!-- Core CSS -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" 
-    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" 
-    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" 
-    crossorigin="anonymous" />
-    <!-- Font Awesome (Latest Version) -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
-    rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
     {% endblock %}
 
     {% block extra_css %}
-    <!-- Additional CSS can be added in templates that extend this one -->
+    <!-- Additional page-specific CSS -->
     {% endblock %}
 
     {% block corejs %}
     <!-- Core JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" 
-    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
-    crossorigin="anonymous">
-  </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" 
-    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" 
-    crossorigin="anonymous">
-  </script>
-
-    <!-- Stripe -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- Dropdown Initialization -->
     <script>
       $(document).ready(function() {
         $(".dropdown-toggle").dropdown();
@@ -110,7 +68,7 @@
     {% endblock %}
 
     {% block extra_js %}
-    <!-- Site-specific JavaScript -->
+    <!-- Page-specific JS -->
     <script src="{% static 'js/csrf.js' %}"></script>
     <script src="{% static 'js/search.js' %}"></script>
     <script src="{% static 'js/category_nav.js' %}"></script>
@@ -119,42 +77,34 @@
     {% endblock %}
 
     <title>{% block title %}The Literary Loft{% endblock %}</title>
+  </head>
 
-    </head>
-
-  <body 
-  class="coding {% if request.path == '/cart/' %}cart-page
-  {% elif request.path == '/checkout/' %}checkout-page{% endif %}">
+  <body class="coding {% if request.path == '/cart/' %}cart-page{% elif request.path == '/checkout/' %}checkout-page{% endif %}">
     {% csrf_token %}
+
     {% block notifications %}
-        {% include 'includes/notifications.html' %}
+      {% include 'includes/notifications.html' %}
     {% endblock %}
 
     {% block header %}
-        {% include 'includes/header.html' %}
+      {% include 'includes/header.html' %}
     {% endblock %}
 
     {% block messages %}
-        {% include 'includes/messages.html' %}
+      {% include 'includes/messages.html' %}
     {% endblock %}
 
-    {% block hero_content %}
-    {% endblock %}
-
-    {% block content %}
-    {% endblock %}
+    {% block hero_content %}{% endblock %}
+    {% block content %}{% endblock %}
 
     {% block footer %}
-        {% include 'includes/footer.html' %}
+      {% include 'includes/footer.html' %}
     {% endblock %}
 
     {% block postloadjs %}
     <script>
       $(document).ready(function() {
-        // Initialize toasts
-        $(".toast").toast({
-          autohide: false
-        });
+        $(".toast").toast({ autohide: false });
       });
     </script>
     {% endblock %}

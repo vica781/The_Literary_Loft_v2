@@ -205,7 +205,6 @@ STANDARD_DELIVERY_COST = 10  # Percentage charge for orders under the threshold
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# CKEditor settings
 CKEDITOR_5_CONFIGS = {
     'default': {
         'toolbar': {
@@ -215,14 +214,17 @@ CKEDITOR_5_CONFIGS = {
                 'link', '|',
                 'bulletedList', 'numberedList', '|',
                 'blockQuote', '|',
-                'undo', 'redo'
+                'undo', 'redo', '|',
+                'sourceEditing'  # Enable source mode (</> button)
             ],
-            'shouldNotGroupWhenFull': True
+            'shouldNotGroupWhenFull': True,
         },
+        'extraPlugins': ['SourceEditing'],  
         'height': 300,
         'width': '100%',
     },
 }
+
 
 # Logging configuration
 if not DEBUG:
