@@ -602,12 +602,26 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### User Profile Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| PROF-01 | View Profile | 1. Login<br>2. Click user icon<br>3. Select "My Profile" | Profile page displays correctly | Profile loaded properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_View_20250414.gif) |
-| PROF-02 | Update Information | 1. Navigate to profile<br>2. Edit personal information<br>3. Save changes | Information updated successfully | Update function worked | ✅ PASS | [Recording](./testing_evidence/Profile_Update_20250414.gif) |
-| PROF-03 | View Order History | 1. Navigate to profile<br>2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderHistory_20250414.gif) |
-| PROF-04 | Order Details | 1. Navigate to order history<br>2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS | [Screenshot](./testing_evidence/Profile_OrderDetails_20250414.gif) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| PROF-01 | View Profile | 1. Login<br>2. Click user icon<br>3. Select "My Profile" | Profile page displays correctly | Profile loaded properly | ✅ PASS |
+| PROF-02 | Update Information | 1. Navigate to profile<br>2. Edit personal information<br>3. Save changes | Information updated successfully | Update function worked | ✅ PASS |
+| PROF-03 | View Order History | 1. Navigate to profile<br>2. View Order History section | Previous orders displayed correctly | Order history showed properly | ✅ PASS |
+| PROF-04 | Order Details | 1. Navigate to order history<br>2. Click on order number | Detailed order information displayed | Order details showed correctly | ✅ PASS |
+
+### Test Evidence (User Profile)
+
+**PROF-01: View Profile**  
+![View Profile](./testing_evidence/Profile_View_18052025.gif)
+
+**PROF-02: Update Information**  
+![Update Information](./testing_evidence/Profile_Update_18052025.gif)
+
+**PROF-03: View Order History**  
+![View Order History](./testing_evidence/Profile_OrderHistory_18052025.gif)
+
+**PROF-04: Order Details**  
+![Order Details](./testing_evidence/Profile_OrderDetails_ 18052025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
@@ -678,12 +692,12 @@ Overall, the manual testing confirms that The Literary Loft meets the requiremen
 <details>
 <summary>Accessibility Results</summary>
 
-![Home Page](./readme_files/testing_evidence/home_page_accessibility.png)
-![All Books](./readme_files/testing_evidence/allBooks_page_accessibility.png)
-![Contact Page](./readme_files/testing_evidence/contact_page_accessibility.png)
-![About Us Page](./readme_files/testing_evidence/aboutUs_page_accessibility.png)
-![Bag](./readme_files/testing_evidence/bag_page_accessibility.png)
-![404 Page](./readme_files/testing_evidence/404_page_accessibility.png)
+![Home Page](./readme_files/testing_evidence/accessibility/home_page_accessibility.png)
+![All Books](./readme_files/testing_evidence/accessibility/allBooks_page_accessibility.png)
+![Contact Page](./readme_files/testing_evidence/accessibility/contact_page_accessibility.png)
+![About Us Page](./readme_files/testing_evidence/accessibility/aboutUs_page_accessibility.png)
+![Bag](./readme_files/testing_evidence/accessibility/bag_page_accessibility.png)
+![404 Page](./readme_files/testing_evidence/accessibility/404_page_accessibility.png)
 
 </details>
 
