@@ -624,13 +624,20 @@ This section documents the systematic manual testing performed on The Literary L
 
 ### Admin Functionality Testing
 
-| ID | Test Description | Steps | Expected Result | Actual Result | Status | Evidence |
-|---|---|---|---|---|---|---|
-| ADMIN-01 | Product Management | 1. Login as admin<br>2. Navigate to admin dashboard<br>3. Access product management | Product management interface loads | Interface loaded correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_ProductManagement_20250414.gif) |
-| ADMIN-02 | Add Product | 1. Access product management<br>2. Click "Add Product"<br>3. Complete form and submit | New product added to store | Product added successfully | ✅ PASS | [Recording](./testing_evidence/Admin_AddProduct_20250414.gif) |
-| ADMIN-03 | Edit Product | 1. Access product management<br>2. Select product to edit<br>3. Make changes and save | Product information updated | Edit function worked correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_EditProduct_20250414.gif) |
-| ADMIN-04 | Delete Product | 1. Access product management<br>2. Select product to delete<br>3. Confirm deletion | Product removed from store | Delete function worked | ✅ PASS | [Screenshot](./testing_evidence/Admin_DeleteProduct_20250414.gif) |
-| ADMIN-05 | Order Management | 1. Access admin dashboard<br>2. Navigate to orders section<br>3. View order details | Order management interface works | Interface functioned correctly | ✅ PASS | [Screenshot](./testing_evidence/Admin_OrderManagement_20250414.gif) |
+| ID | Test Description | Steps | Expected Result | Actual Result | Status |
+|---|---|---|---|---|---|
+| ADMIN-01 | Access Admin Dashboard | 1. Login as staff<br>2. Visit admin dashboard URL | Admin panel loads successfully | Admin interface displayed correctly | ✅ PASS |
+| ADMIN-02 | Add New Book | 1. Login as staff<br>2. Navigate to "Add Book" page<br>3. Submit valid book data | Book is added and visible in book list | Book added successfully | ✅ PASS |
+| ADMIN-03 | Edit Book | 1. Login as staff<br>2. Navigate to "Edit" link of an existing book<br>3. Modify and save details | Changes appear on the book detail page | Edit function worked properly | ✅ PASS |
+| ADMIN-04 | Delete Book | 1. Login as staff<br>2. Navigate to book list<br>3. Click "Delete" on a book<br>4. Confirm deletion | Book removed from database and list | Book deleted correctly | ✅ PASS |
+
+### Test Evidence (Admin Functionality)
+
+**ADMIN-01: Access Admin Dashboard** and **ADMIN-02: Add New Book** and **ADMIN-03: Edit Book**
+![Access Admin Dashboard](./readme_files/testing_evidence/admin_functionality/Admin_Dashboard_AddBook_EditBook_18052025.gif)
+
+**ADMIN-04: Delete Book**  
+![Delete Book](./readme_files/testing_evidence/admin_functionality/Admin_DeleteBook_18052025.gif)
 
 [Back to top ⬆](#table-of-contents)
 
